@@ -152,3 +152,5 @@ $RECYCLE.BIN/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+.vs\slnx.sqlite
+.vs\ProjectSettings.json
