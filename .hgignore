@@ -154,3 +154,8 @@ ehthumbs.db
 Desktop.ini
 .vs\slnx.sqlite
 .vs\ProjectSettings.json
+
+
+_ReSharper*\*
+TestResults\*
+desktop.ini

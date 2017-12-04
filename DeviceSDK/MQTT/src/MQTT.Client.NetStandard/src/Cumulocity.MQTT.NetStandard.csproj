@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Cumulocity.MQTT</AssemblyName>
+    <RootNamespace>Cumulocity.MQTT</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.5.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="6.4.0.3347" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Externals\MQTTnet\MQTTnet.Core\src\MQTTnet.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\..\Externals\MQTTnet\MQTTnet.NetStandard\src\MQTTnet.Netstandard.csproj" />
+  </ItemGroup>
+
+</Project>
