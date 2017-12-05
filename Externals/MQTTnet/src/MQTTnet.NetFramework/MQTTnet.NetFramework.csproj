@@ -108,8 +108,8 @@
     <Compile Include="Implementations\MqttTcpChannel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MQTTnet.Core\src\MQTTnet.Core.csproj">
-      <Project>{56628960-e994-47ef-8d4c-5427f828be80}</Project>
+    <ProjectReference Include="..\MQTTnet.Core\MQTTnet.Core.csproj">
+      <Project>{1644ac31-7622-4cbd-a444-ccd9f2b8ac68}</Project>
       <Name>MQTTnet.Core</Name>
     </ProjectReference>
   </ItemGroup>

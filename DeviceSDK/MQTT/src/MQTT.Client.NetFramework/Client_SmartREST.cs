@@ -1,7 +1,6 @@
 ﻿using Cumulocity.MQTT.Enums;
 using Cumulocity.MQTT.Interfaces;
 using Cumulocity.MQTT.Model;
-using Cumulocity.MQTT.Interfaces;
 using MQTTnet.Core;
 using MQTTnet.Core.Packets;
 using MQTTnet.Core.Protocol;

@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Cumulocity.MQTT.NetStandard.csproj" />
+    <ProjectReference Include="..\..\..\..\Externals\MQTTnet\src\MQTTnet.NetStandard\MQTTnet.Netstandard.csproj" />
+    <ProjectReference Include="..\..\src\MQTT.Client.NetStandard\MQTT.NetStandard.csproj" />
   </ItemGroup>
 
 </Project>

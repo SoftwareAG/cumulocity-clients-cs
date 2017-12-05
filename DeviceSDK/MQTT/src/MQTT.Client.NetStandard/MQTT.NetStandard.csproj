@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Cumulocity.MQTT</AssemblyName>
+    <AssemblyName>MQTT</AssemblyName>
     <RootNamespace>Cumulocity.MQTT</RootNamespace>
   </PropertyGroup>
 
@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Externals\MQTTnet\MQTTnet.Core\src\MQTTnet.Core.csproj" />
-    <ProjectReference Include="..\..\..\..\..\Externals\MQTTnet\MQTTnet.NetStandard\src\MQTTnet.Netstandard.csproj" />
+    <ProjectReference Include="..\..\..\..\Externals\MQTTnet\src\MQTTnet.Core\MQTTnet.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\Externals\MQTTnet\src\MQTTnet.NetStandard\MQTTnet.Netstandard.csproj" />
   </ItemGroup>
 
 </Project>

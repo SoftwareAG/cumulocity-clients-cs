@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Cumulocity.MQTT</RootNamespace>
-    <AssemblyName>Cumulocity.MQTT.NetFramework</AssemblyName>
+    <AssemblyName>MQTT</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -87,11 +87,11 @@
     <Compile Include="Utils\LinqExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Externals\MQTTnet\MQTTnet.Core\src\MQTTnet.Core.csproj">
-      <Project>{56628960-e994-47ef-8d4c-5427f828be80}</Project>
+    <ProjectReference Include="..\..\..\..\Externals\MQTTnet\src\MQTTnet.Core\MQTTnet.Core.csproj">
+      <Project>{1644ac31-7622-4cbd-a444-ccd9f2b8ac68}</Project>
       <Name>MQTTnet.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\Externals\MQTTnet\MQTTnet.NetFramework\src\MQTTnet.NetFramework.csproj">
+    <ProjectReference Include="..\..\..\..\Externals\MQTTnet\src\MQTTnet.NetFramework\MQTTnet.NetFramework.csproj">
       <Project>{a480ef90-0eaa-4d9a-b271-47a9c47f6f7d}</Project>
       <Name>MQTTnet.NetFramework</Name>
     </ProjectReference>
