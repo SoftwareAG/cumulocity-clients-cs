@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Cumulocity.SDK.Microservices.Model.User>
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+
+
+@using System.Security.Claims;
+
+@if (!User.Identities.Any(u => u.IsAuthenticated))
+{
+    <h1>Hello World</h1>
+}
+else
+{
+    <h1>
+        Hello @User.Identities.First(
+      u => u.IsAuthenticated &&
+      u.HasClaim(c => c.Type == ClaimTypes.Name)).FindFirst(ClaimTypes.Name).Value
+    </h1>
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <h2>Hello word!</h2>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+
+<script>
+</script>

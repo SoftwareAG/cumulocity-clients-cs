@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>3643b7e4-72af-418e-ba7e-a9a30f474910</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="hello-world-multi\**" />
+    <Compile Remove="hello-world-single\**" />
+    <Compile Remove="Service\**" />
+    <Content Remove="hello-world-multi\**" />
+    <Content Remove="hello-world-single\**" />
+    <Content Remove="Service\**" />
+    <EmbeddedResource Remove="hello-world-multi\**" />
+    <EmbeddedResource Remove="hello-world-single\**" />
+    <EmbeddedResource Remove="Service\**" />
+    <None Remove="hello-world-multi\**" />
+    <None Remove="hello-world-single\**" />
+    <None Remove="Service\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Easy.MessageHub" Version="3.2.1" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0-dev-00023" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Cumulocity.AspNetCore.Authentication.Basic">
+      <HintPath>..\..\..\..\..\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\bin\Debug\netcoreapp2.0\Cumulocity.AspNetCore.Authentication.Basic.dll</HintPath>
+    </Reference>
+    <Reference Include="Cumulocity.SDK.Microservices">
+      <HintPath>..\..\..\..\..\MicroservicesSDK\src\Cumulocity.SDK.Microservices\bin\Debug\netcoreapp2.0\Cumulocity.SDK.Microservices.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+</Project>

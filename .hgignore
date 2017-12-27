@@ -1,5 +1,5 @@
 ############################################################
-## Visual Studio 
+## Visual Studio
 ############################################################
 syntax: glob
 
@@ -159,3 +159,18 @@ Desktop.ini
 _ReSharper*\*
 TestResults\*
 desktop.ini
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/images/hello-world-multi/image.tar
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/images/hello-world-multi/image.zip
+MicroservicesSDK/.vs/Cumulocity.AspNetCore.Authentication.Basic/v15/Server/sqlite3/storage.ide-wal
+MicroservicesSDK/.vs/Cumulocity.AspNetCore.Authentication.Basic/v15/Server/sqlite3/storage.ide-shm
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/tools/packages.config.md5sum
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/DockerWebApp.Demo/v15/Server/sqlite3/db.lock
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/DockerWebApp.Demo/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/DockerWebApp.Demo/v15/Server/sqlite3/storage.ide-shm
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/DockerWebApp.Demo/v15/Server/sqlite3/storage.ide-wal
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/VSWorkspaceState.json
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/config/applicationhost.config
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/tasks.vs.json
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vscode/launch.json
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vscode/tasks.json
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/source/DockerWebApp.Demo/bower_components
