@@ -162,8 +162,8 @@ Task("Deploy")
 			   			Pscp("./publish/Release/" + project.GetFilename(), destination, new PscpSettings
 							{
 								SshVersion=SshVersion.V2,
-								User=username,
-								KeyFileForUserAuthentication="/home/pnow/upload/id_rsa.ppk"
+								User=username
+								//,KeyFileForUserAuthentication="/home/pnow/upload/id_rsa.ppk"
 							}
 						);
 			}			
