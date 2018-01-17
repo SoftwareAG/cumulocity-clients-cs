@@ -122,9 +122,9 @@ Task("Build")
 		}
 
 		// Copy test result files.
-		var tmpTestResultFiles = GetFiles("./**/*.trx");
+		var tmpTestResultFiles = GetFiles("./**/Result.xml");
 		CopyFiles(tmpTestResultFiles, testResultDir);
-		XmlTransform("./tools/MsUnit2.xslt", testResultDir +"/Result.xml", testResultDir +"/JUnit.Result.xml");	
+		XmlTransform("./tools/MsUnit.xslt", testResultDir +"/Result.xml", testResultDir +"/JUnit.Result.xml");	
 	});
 
 Task("Package")    
