@@ -110,7 +110,7 @@ Task("Build")
 			    Information("Solution Directory: {0}", solutionDir);
 				DotNetCoreTest(test.FullPath, new DotNetCoreTestSettings
 				{
-					ArgumentCustomization = args => args.Append("-l trx"),
+					ArgumentCustomization = args => args.Append("-l \"trx;LogFileName=Result.xml\""),
 					WorkingDirectory = projectFolder
 				});
 			}
@@ -124,6 +124,7 @@ Task("Build")
 		// Copy test result files.
 		var tmpTestResultFiles = GetFiles("./**/*.trx");
 		CopyFiles(tmpTestResultFiles, testResultDir);
+		XmlTransform("./tools/MsUnit2.xslt", testResultDir +"/Result.xml", testResultDir +"/JUnit.Result.xml");	
 	});
 
 Task("Package")    
