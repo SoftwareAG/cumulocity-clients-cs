@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService
+  commentId: T:Cumulocity.SDK.Microservices.Utils.HostedService
+  id: HostedService
+  parent: Cumulocity.SDK.Microservices.Utils
+  children:
+  - Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync(CancellationToken)
+  - Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync(CancellationToken)
+  - Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync(CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: HostedService
+  nameWithType: HostedService
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/HostedService.cs
+    id: HostedService
+    path: ../src/Cumulocity.SDK.Microservices/Utils/HostedService.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils
+  syntax:
+    content: 'public abstract class HostedService : IHostedService'
+    content.vb: >-
+      Public MustInherit Class HostedService
+          Inherits IHostedService
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+  modifiers.csharp:
+  - public
+  - abstract
+  - class
+  modifiers.vb:
+  - Public
+  - MustInherit
+  - Class
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync(CancellationToken)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync(CancellationToken)
+  id: StartAsync(CancellationToken)
+  parent: Cumulocity.SDK.Microservices.Utils.HostedService
+  langs:
+  - csharp
+  - vb
+  name: StartAsync(CancellationToken)
+  nameWithType: HostedService.StartAsync(CancellationToken)
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync(CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/HostedService.cs
+    id: StartAsync
+    path: ../src/Cumulocity.SDK.Microservices/Utils/HostedService.cs
+    startLine: 16
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils
+  syntax:
+    content: public Task StartAsync(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: CancellationToken
+    return:
+      type: Task
+    content.vb: Public Function StartAsync(cancellationToken As CancellationToken) As Task
+  overload: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync(CancellationToken)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync(CancellationToken)
+  id: StopAsync(CancellationToken)
+  parent: Cumulocity.SDK.Microservices.Utils.HostedService
+  langs:
+  - csharp
+  - vb
+  name: StopAsync(CancellationToken)
+  nameWithType: HostedService.StopAsync(CancellationToken)
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync(CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/HostedService.cs
+    id: StopAsync
+    path: ../src/Cumulocity.SDK.Microservices/Utils/HostedService.cs
+    startLine: 28
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils
+  syntax:
+    content: public Task StopAsync(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: CancellationToken
+    return:
+      type: Task
+    content.vb: Public Function StopAsync(cancellationToken As CancellationToken) As Task
+  overload: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync(CancellationToken)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync(CancellationToken)
+  id: ExecuteAsync(CancellationToken)
+  parent: Cumulocity.SDK.Microservices.Utils.HostedService
+  langs:
+  - csharp
+  - vb
+  name: ExecuteAsync(CancellationToken)
+  nameWithType: HostedService.ExecuteAsync(CancellationToken)
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync(CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/HostedService.cs
+    id: ExecuteAsync
+    path: ../src/Cumulocity.SDK.Microservices/Utils/HostedService.cs
+    startLine: 48
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils
+  syntax:
+    content: protected abstract Task ExecuteAsync(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: CancellationToken
+    return:
+      type: Task
+    content.vb: Protected MustOverride Function ExecuteAsync(cancellationToken As CancellationToken) As Task
+  overload: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync*
+  modifiers.csharp:
+  - protected
+  - abstract
+  modifiers.vb:
+  - Protected
+  - MustOverride
+references:
+- uid: Cumulocity.SDK.Microservices.Utils
+  commentId: N:Cumulocity.SDK.Microservices.Utils
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils
+  nameWithType: Cumulocity.SDK.Microservices.Utils
+  fullName: Cumulocity.SDK.Microservices.Utils
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync
+  isExternal: false
+  name: StartAsync
+  nameWithType: HostedService.StartAsync
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync
+- uid: CancellationToken
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: CancellationToken
+- uid: Task
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: Task
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync
+  isExternal: false
+  name: StopAsync
+  nameWithType: HostedService.StopAsync
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync
+  isExternal: false
+  name: ExecuteAsync
+  nameWithType: HostedService.ExecuteAsync
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync

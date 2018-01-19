@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Configure
+  commentId: N:Cumulocity.SDK.Microservices.Configure
+  id: Cumulocity.SDK.Microservices.Configure
+  children:
+  - Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.SDK.Microservices.Configure
+  nameWithType: Cumulocity.SDK.Microservices.Configure
+  fullName: Cumulocity.SDK.Microservices.Configure
+  type: Namespace
+  assemblies:
+  - Cumulocity.SDK.Microservices
+references:
+- uid: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions
+  commentId: T:Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions
+  isExternal: false
+  name: AddCumulocityAuthenticationExtensions
+  nameWithType: AddCumulocityAuthenticationExtensions
+  fullName: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions

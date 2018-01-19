@@ -1,0 +1,149 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware
+  commentId: T:Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware
+  id: BasicAuthenticationMiddleware
+  parent: Cumulocity.SDK.Microservices.BasicAuthentication
+  children:
+  - Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.#ctor(RequestDelegate,ILoggerFactory)
+  - Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.Invoke(HttpContext)
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationMiddleware
+  nameWithType: BasicAuthenticationMiddleware
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/BasicAuthentication/BasicAuthenticationMiddleware.cs
+    id: BasicAuthenticationMiddleware
+    path: ../src/Cumulocity.SDK.Microservices/BasicAuthentication/BasicAuthenticationMiddleware.cs
+    startLine: 12
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.BasicAuthentication
+  syntax:
+    content: 'public class BasicAuthenticationMiddleware : object'
+    content.vb: >-
+      Public Class BasicAuthenticationMiddleware
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.#ctor(RequestDelegate,ILoggerFactory)
+  commentId: M:Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.#ctor(RequestDelegate,ILoggerFactory)
+  id: '#ctor(RequestDelegate,ILoggerFactory)'
+  parent: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationMiddleware(RequestDelegate, ILoggerFactory)
+  nameWithType: BasicAuthenticationMiddleware.BasicAuthenticationMiddleware(RequestDelegate, ILoggerFactory)
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.BasicAuthenticationMiddleware(RequestDelegate, ILoggerFactory)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/BasicAuthentication/BasicAuthenticationMiddleware.cs
+    id: .ctor
+    path: ../src/Cumulocity.SDK.Microservices/BasicAuthentication/BasicAuthenticationMiddleware.cs
+    startLine: 18
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.BasicAuthentication
+  syntax:
+    content: public BasicAuthenticationMiddleware(RequestDelegate next, ILoggerFactory loggerFactory)
+    parameters:
+    - id: next
+      type: RequestDelegate
+    - id: loggerFactory
+      type: ILoggerFactory
+    content.vb: Public Sub New(next As RequestDelegate, loggerFactory As ILoggerFactory)
+  overload: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.Invoke(HttpContext)
+  commentId: M:Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.Invoke(HttpContext)
+  id: Invoke(HttpContext)
+  parent: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware
+  langs:
+  - csharp
+  - vb
+  name: Invoke(HttpContext)
+  nameWithType: BasicAuthenticationMiddleware.Invoke(HttpContext)
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.Invoke(HttpContext)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/BasicAuthentication/BasicAuthenticationMiddleware.cs
+    id: Invoke
+    path: ../src/Cumulocity.SDK.Microservices/BasicAuthentication/BasicAuthenticationMiddleware.cs
+    startLine: 24
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.BasicAuthentication
+  syntax:
+    content: public Task Invoke(HttpContext context)
+    parameters:
+    - id: context
+      type: HttpContext
+    return:
+      type: Task
+    content.vb: Public Function Invoke(context As HttpContext) As Task
+  overload: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.Invoke*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication
+  commentId: N:Cumulocity.SDK.Microservices.BasicAuthentication
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.BasicAuthentication
+  nameWithType: Cumulocity.SDK.Microservices.BasicAuthentication
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.#ctor*
+  commentId: Overload:Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.#ctor
+  isExternal: false
+  name: BasicAuthenticationMiddleware
+  nameWithType: BasicAuthenticationMiddleware.BasicAuthenticationMiddleware
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.BasicAuthenticationMiddleware
+- uid: RequestDelegate
+  commentId: '!:RequestDelegate'
+  isExternal: true
+  name: RequestDelegate
+  nameWithType: RequestDelegate
+  fullName: RequestDelegate
+- uid: ILoggerFactory
+  isExternal: true
+  name: ILoggerFactory
+  nameWithType: ILoggerFactory
+  fullName: ILoggerFactory
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.Invoke*
+  commentId: Overload:Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.Invoke
+  isExternal: false
+  name: Invoke
+  nameWithType: BasicAuthenticationMiddleware.Invoke
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.Invoke
+- uid: HttpContext
+  isExternal: true
+  name: HttpContext
+  nameWithType: HttpContext
+  fullName: HttpContext
+- uid: Task
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: Task

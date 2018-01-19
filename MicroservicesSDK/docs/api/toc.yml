@@ -1,0 +1,118 @@
+### YamlMime:TableOfContent
+- uid: Cumulocity.AspNetCore.Authentication.Basic
+  name: Cumulocity.AspNetCore.Authentication.Basic
+  items:
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults
+    name: BasicAuthenticationDefaults
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+    name: BasicAuthenticationEvents
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+    name: BasicAuthenticationExtensions
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler
+    name: BasicAuthenticationHandler
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+    name: BasicAuthenticationOptions
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+    name: BasicAuthenticationResult
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.FuncBasicCredentialVerifier
+    name: FuncBasicCredentialVerifier
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier
+    name: IBasicCredentialVerifier
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events
+  name: Cumulocity.AspNetCore.Authentication.Basic.Events
+  items:
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+    name: AuthenticationFailedContext
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+    name: AuthenticationSucceededContext
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+    name: BasicAuthenticationChallengeContext
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication
+  name: Cumulocity.SDK.Microservices.BasicAuthentication
+  items:
+  - uid: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware
+    name: BasicAuthenticationMiddleware
+  - uid: Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier
+    name: BasicCredentialVerifier
+  - uid: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions
+    name: RequestResponseLoggingMiddlewareExtensions
+- uid: Cumulocity.SDK.Microservices.Configure
+  name: Cumulocity.SDK.Microservices.Configure
+  items:
+  - uid: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions
+    name: AddCumulocityAuthenticationExtensions
+- uid: Cumulocity.SDK.Microservices.Model
+  name: Cumulocity.SDK.Microservices.Model
+  items:
+  - uid: Cumulocity.SDK.Microservices.Model.ChangedSubscription
+    name: ChangedSubscription
+  - uid: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription
+    name: CurrentApplicationSubscription
+  - uid: Cumulocity.SDK.Microservices.Model.Role
+    name: Role
+  - uid: Cumulocity.SDK.Microservices.Model.Subscription
+    name: Subscription
+  - uid: Cumulocity.SDK.Microservices.Model.User
+    name: User
+  - uid: Cumulocity.SDK.Microservices.Model.UserRoles
+    name: UserRoles
+  - uid: Cumulocity.SDK.Microservices.Model.UserRolesConverter
+    name: UserRolesConverter
+- uid: Cumulocity.SDK.Microservices.Services
+  name: Cumulocity.SDK.Microservices.Services
+  items:
+  - uid: Cumulocity.SDK.Microservices.Services.ApplicationService
+    name: ApplicationService
+  - uid: Cumulocity.SDK.Microservices.Services.IApplicationService
+    name: IApplicationService
+- uid: Cumulocity.SDK.Microservices.Settings
+  name: Cumulocity.SDK.Microservices.Settings
+  items:
+  - uid: Cumulocity.SDK.Microservices.Settings.Platform
+    name: Platform
+  - uid: Cumulocity.SDK.Microservices.Settings.PlatformExtensions
+    name: PlatformExtensions
+  - uid: Cumulocity.SDK.Microservices.Settings.PlatformSettings
+    name: PlatformSettings
+- uid: Cumulocity.SDK.Microservices.Utils
+  name: Cumulocity.SDK.Microservices.Utils
+  items:
+  - uid: Cumulocity.SDK.Microservices.Utils.HostedService
+    name: HostedService
+  - uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+    name: TimedLogger<T>
+    name.vb: TimedLogger(Of T)
+- uid: Cumulocity.SDK.Microservices.Utils.Crone
+  name: Cumulocity.SDK.Microservices.Utils.Crone
+  items:
+  - uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+    name: CrontabField
+  - uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+    name: CrontabFieldAccumulator
+  - uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+    name: CrontabFieldImpl
+  - uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+    name: CrontabFieldKind
+  - uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+    name: CrontabSchedule
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions
+  name: Cumulocity.SDK.Microservices.Utils.Extenions
+  items:
+  - uid: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal
+    name: CurrentPrincipal
+  - uid: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions
+    name: GenericPrincipalExtensions
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled
+  name: Cumulocity.SDK.Microservices.Utils.Scheduled
+  items:
+  - uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+    name: CurrentApplicationSubscriptionsTask
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling
+  name: Cumulocity.SDK.Microservices.Utils.Scheduling
+  items:
+  - uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+    name: IScheduledTask
+  - uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions
+    name: SchedulerExtensions
+  - uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+    name: SchedulerHostedService

@@ -1,0 +1,133 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Model.User
+  commentId: T:Cumulocity.SDK.Microservices.Model.User
+  id: User
+  parent: Cumulocity.SDK.Microservices.Model
+  children:
+  - Cumulocity.SDK.Microservices.Model.User.Enabled
+  - Cumulocity.SDK.Microservices.Model.User.Name
+  langs:
+  - csharp
+  - vb
+  name: User
+  nameWithType: User
+  fullName: Cumulocity.SDK.Microservices.Model.User
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/User.cs
+    id: User
+    path: ../src/Cumulocity.SDK.Microservices/Model/User.cs
+    startLine: 6
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: 'public class User : object'
+    content.vb: >-
+      Public Class User
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Model.User.Name
+  commentId: P:Cumulocity.SDK.Microservices.Model.User.Name
+  id: Name
+  parent: Cumulocity.SDK.Microservices.Model.User
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: User.Name
+  fullName: Cumulocity.SDK.Microservices.Model.User.Name
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/User.cs
+    id: Name
+    path: ../src/Cumulocity.SDK.Microservices/Model/User.cs
+    startLine: 8
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Cumulocity.SDK.Microservices.Model.User.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.User.Enabled
+  commentId: P:Cumulocity.SDK.Microservices.Model.User.Enabled
+  id: Enabled
+  parent: Cumulocity.SDK.Microservices.Model.User
+  langs:
+  - csharp
+  - vb
+  name: Enabled
+  nameWithType: User.Enabled
+  fullName: Cumulocity.SDK.Microservices.Model.User.Enabled
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/User.cs
+    id: Enabled
+    path: ../src/Cumulocity.SDK.Microservices/Model/User.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string Enabled { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Enabled As String
+  overload: Cumulocity.SDK.Microservices.Model.User.Enabled*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.SDK.Microservices.Model
+  commentId: N:Cumulocity.SDK.Microservices.Model
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Model
+  nameWithType: Cumulocity.SDK.Microservices.Model
+  fullName: Cumulocity.SDK.Microservices.Model
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Model.User.Name*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.User.Name
+  isExternal: false
+  name: Name
+  nameWithType: User.Name
+  fullName: Cumulocity.SDK.Microservices.Model.User.Name
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Model.User.Enabled*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.User.Enabled
+  isExternal: false
+  name: Enabled
+  nameWithType: User.Enabled
+  fullName: Cumulocity.SDK.Microservices.Model.User.Enabled

@@ -1,0 +1,349 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  id: CrontabSchedule
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence(DateTime)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence(DateTime,DateTime)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrences(DateTime,DateTime)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.Parse(System.String)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.ToString
+  langs:
+  - csharp
+  - vb
+  name: CrontabSchedule
+  nameWithType: CrontabSchedule
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    id: CrontabSchedule
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    startLine: 11
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nRepresents a schedule initialized from the crontab expression.\n"
+  example: []
+  syntax:
+    content: 'public sealed class CrontabSchedule : object'
+    content.vb: >-
+      Public NotInheritable Class CrontabSchedule
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.Parse(System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.Parse(System.String)
+  id: Parse(System.String)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  langs:
+  - csharp
+  - vb
+  name: Parse(String)
+  nameWithType: CrontabSchedule.Parse(String)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.Parse(System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    id: Parse
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    startLine: 47
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public static CrontabSchedule Parse(string expression)
+    parameters:
+    - id: expression
+      type: System.String
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+    content.vb: Public Shared Function Parse(expression As String) As CrontabSchedule
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.Parse*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrences(DateTime,DateTime)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrences(DateTime,DateTime)
+  id: GetNextOccurrences(DateTime,DateTime)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  langs:
+  - csharp
+  - vb
+  name: GetNextOccurrences(DateTime, DateTime)
+  nameWithType: CrontabSchedule.GetNextOccurrences(DateTime, DateTime)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrences(DateTime, DateTime)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    id: GetNextOccurrences
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    startLine: 57
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public IEnumerable<DateTime> GetNextOccurrences(DateTime baseTime, DateTime endTime)
+    parameters:
+    - id: baseTime
+      type: DateTime
+    - id: endTime
+      type: DateTime
+    return:
+      type: IEnumerable{DateTime}
+    content.vb: Public Function GetNextOccurrences(baseTime As DateTime, endTime As DateTime) As IEnumerable(Of DateTime)
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrences*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence(DateTime)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence(DateTime)
+  id: GetNextOccurrence(DateTime)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  langs:
+  - csharp
+  - vb
+  name: GetNextOccurrence(DateTime)
+  nameWithType: CrontabSchedule.GetNextOccurrence(DateTime)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence(DateTime)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    id: GetNextOccurrence
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    startLine: 67
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public DateTime GetNextOccurrence(DateTime baseTime)
+    parameters:
+    - id: baseTime
+      type: DateTime
+    return:
+      type: DateTime
+    content.vb: Public Function GetNextOccurrence(baseTime As DateTime) As DateTime
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence(DateTime,DateTime)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence(DateTime,DateTime)
+  id: GetNextOccurrence(DateTime,DateTime)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  langs:
+  - csharp
+  - vb
+  name: GetNextOccurrence(DateTime, DateTime)
+  nameWithType: CrontabSchedule.GetNextOccurrence(DateTime, DateTime)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence(DateTime, DateTime)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    id: GetNextOccurrence
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    startLine: 72
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public DateTime GetNextOccurrence(DateTime baseTime, DateTime endTime)
+    parameters:
+    - id: baseTime
+      type: DateTime
+    - id: endTime
+      type: DateTime
+    return:
+      type: DateTime
+    content.vb: Public Function GetNextOccurrence(baseTime As DateTime, endTime As DateTime) As DateTime
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.ToString
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.ToString
+  id: ToString
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: CrontabSchedule.ToString()
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.ToString()
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    id: ToString
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabSchedule.cs
+    startLine: 206
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString As String
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.ToString*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Crone
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Crone
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.Parse*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.Parse
+  isExternal: false
+  name: Parse
+  nameWithType: CrontabSchedule.Parse
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.Parse
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabSchedule
+  nameWithType: CrontabSchedule
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrences*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrences
+  isExternal: false
+  name: GetNextOccurrences
+  nameWithType: CrontabSchedule.GetNextOccurrences
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrences
+- uid: DateTime
+  isExternal: true
+  name: DateTime
+  nameWithType: DateTime
+  fullName: DateTime
+- uid: IEnumerable{DateTime}
+  commentId: '!:IEnumerable{DateTime}'
+  definition: IEnumerable`1
+  name: IEnumerable<DateTime>
+  nameWithType: IEnumerable<DateTime>
+  fullName: IEnumerable<DateTime>
+  nameWithType.vb: IEnumerable(Of DateTime)
+  fullName.vb: IEnumerable(Of DateTime)
+  name.vb: IEnumerable(Of DateTime)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: DateTime
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: DateTime
+    name: DateTime
+    nameWithType: DateTime
+    fullName: DateTime
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence
+  isExternal: false
+  name: GetNextOccurrence
+  nameWithType: CrontabSchedule.GetNextOccurrence
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.GetNextOccurrence
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.ToString*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.ToString
+  isExternal: false
+  name: ToString
+  nameWithType: CrontabSchedule.ToString
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.ToString

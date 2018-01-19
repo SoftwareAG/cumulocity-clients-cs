@@ -1,0 +1,209 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Model.UserRolesConverter
+  commentId: T:Cumulocity.SDK.Microservices.Model.UserRolesConverter
+  id: UserRolesConverter
+  parent: Cumulocity.SDK.Microservices.Model
+  children:
+  - Cumulocity.SDK.Microservices.Model.UserRolesConverter.CanConvert(Type)
+  - Cumulocity.SDK.Microservices.Model.UserRolesConverter.ReadJson(JsonReader,Type,System.Object,JsonSerializer)
+  - Cumulocity.SDK.Microservices.Model.UserRolesConverter.WriteJson(JsonWriter,System.Object,JsonSerializer)
+  langs:
+  - csharp
+  - vb
+  name: UserRolesConverter
+  nameWithType: UserRolesConverter
+  fullName: Cumulocity.SDK.Microservices.Model.UserRolesConverter
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRolesConverter.cs
+    id: UserRolesConverter
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRolesConverter.cs
+    startLine: 8
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: 'public class UserRolesConverter : JsonConverter'
+    content.vb: >-
+      Public Class UserRolesConverter
+          Inherits JsonConverter
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Model.UserRolesConverter.CanConvert(Type)
+  commentId: M:Cumulocity.SDK.Microservices.Model.UserRolesConverter.CanConvert(Type)
+  id: CanConvert(Type)
+  parent: Cumulocity.SDK.Microservices.Model.UserRolesConverter
+  langs:
+  - csharp
+  - vb
+  name: CanConvert(Type)
+  nameWithType: UserRolesConverter.CanConvert(Type)
+  fullName: Cumulocity.SDK.Microservices.Model.UserRolesConverter.CanConvert(Type)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRolesConverter.cs
+    id: CanConvert
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRolesConverter.cs
+    startLine: 10
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public override bool CanConvert(Type objectType)
+    parameters:
+    - id: objectType
+      type: Type
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function CanConvert(objectType As Type) As Boolean
+  overload: Cumulocity.SDK.Microservices.Model.UserRolesConverter.CanConvert*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: Cumulocity.SDK.Microservices.Model.UserRolesConverter.ReadJson(JsonReader,Type,System.Object,JsonSerializer)
+  commentId: M:Cumulocity.SDK.Microservices.Model.UserRolesConverter.ReadJson(JsonReader,Type,System.Object,JsonSerializer)
+  id: ReadJson(JsonReader,Type,System.Object,JsonSerializer)
+  parent: Cumulocity.SDK.Microservices.Model.UserRolesConverter
+  langs:
+  - csharp
+  - vb
+  name: ReadJson(JsonReader, Type, Object, JsonSerializer)
+  nameWithType: UserRolesConverter.ReadJson(JsonReader, Type, Object, JsonSerializer)
+  fullName: Cumulocity.SDK.Microservices.Model.UserRolesConverter.ReadJson(JsonReader, Type, System.Object, JsonSerializer)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRolesConverter.cs
+    id: ReadJson
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRolesConverter.cs
+    startLine: 15
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    parameters:
+    - id: reader
+      type: JsonReader
+    - id: objectType
+      type: Type
+    - id: existingValue
+      type: System.Object
+    - id: serializer
+      type: JsonSerializer
+    return:
+      type: System.Object
+    content.vb: Public Overrides Function ReadJson(reader As JsonReader, objectType As Type, existingValue As Object, serializer As JsonSerializer) As Object
+  overload: Cumulocity.SDK.Microservices.Model.UserRolesConverter.ReadJson*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: Cumulocity.SDK.Microservices.Model.UserRolesConverter.WriteJson(JsonWriter,System.Object,JsonSerializer)
+  commentId: M:Cumulocity.SDK.Microservices.Model.UserRolesConverter.WriteJson(JsonWriter,System.Object,JsonSerializer)
+  id: WriteJson(JsonWriter,System.Object,JsonSerializer)
+  parent: Cumulocity.SDK.Microservices.Model.UserRolesConverter
+  langs:
+  - csharp
+  - vb
+  name: WriteJson(JsonWriter, Object, JsonSerializer)
+  nameWithType: UserRolesConverter.WriteJson(JsonWriter, Object, JsonSerializer)
+  fullName: Cumulocity.SDK.Microservices.Model.UserRolesConverter.WriteJson(JsonWriter, System.Object, JsonSerializer)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRolesConverter.cs
+    id: WriteJson
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRolesConverter.cs
+    startLine: 23
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    parameters:
+    - id: writer
+      type: JsonWriter
+    - id: value
+      type: System.Object
+    - id: serializer
+      type: JsonSerializer
+    content.vb: Public Overrides Sub WriteJson(writer As JsonWriter, value As Object, serializer As JsonSerializer)
+  overload: Cumulocity.SDK.Microservices.Model.UserRolesConverter.WriteJson*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+references:
+- uid: Cumulocity.SDK.Microservices.Model
+  commentId: N:Cumulocity.SDK.Microservices.Model
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Model
+  nameWithType: Cumulocity.SDK.Microservices.Model
+  fullName: Cumulocity.SDK.Microservices.Model
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Model.UserRolesConverter.CanConvert*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.UserRolesConverter.CanConvert
+  isExternal: false
+  name: CanConvert
+  nameWithType: UserRolesConverter.CanConvert
+  fullName: Cumulocity.SDK.Microservices.Model.UserRolesConverter.CanConvert
+- uid: Type
+  isExternal: true
+  name: Type
+  nameWithType: Type
+  fullName: Type
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Cumulocity.SDK.Microservices.Model.UserRolesConverter.ReadJson*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.UserRolesConverter.ReadJson
+  isExternal: false
+  name: ReadJson
+  nameWithType: UserRolesConverter.ReadJson
+  fullName: Cumulocity.SDK.Microservices.Model.UserRolesConverter.ReadJson
+- uid: JsonReader
+  commentId: '!:JsonReader'
+  isExternal: true
+  name: JsonReader
+  nameWithType: JsonReader
+  fullName: JsonReader
+- uid: JsonSerializer
+  isExternal: true
+  name: JsonSerializer
+  nameWithType: JsonSerializer
+  fullName: JsonSerializer
+- uid: Cumulocity.SDK.Microservices.Model.UserRolesConverter.WriteJson*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.UserRolesConverter.WriteJson
+  isExternal: false
+  name: WriteJson
+  nameWithType: UserRolesConverter.WriteJson
+  fullName: Cumulocity.SDK.Microservices.Model.UserRolesConverter.WriteJson
+- uid: JsonWriter
+  commentId: '!:JsonWriter'
+  isExternal: true
+  name: JsonWriter
+  nameWithType: JsonWriter
+  fullName: JsonWriter

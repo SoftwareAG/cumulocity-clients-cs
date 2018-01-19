@@ -1,0 +1,456 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+  commentId: T:Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+  id: TimedLogger`1
+  parent: Cumulocity.SDK.Microservices.Utils
+  children:
+  - Cumulocity.SDK.Microservices.Utils.TimedLogger`1.#ctor(ILogger)
+  - Cumulocity.SDK.Microservices.Utils.TimedLogger`1.#ctor(ILoggerFactory)
+  - Cumulocity.SDK.Microservices.Utils.TimedLogger`1.BeginScope``1(``0)
+  - Cumulocity.SDK.Microservices.Utils.TimedLogger`1.IsEnabled(LogLevel)
+  - Cumulocity.SDK.Microservices.Utils.TimedLogger`1.Log``1(LogLevel,EventId,``0,Exception,Func{``0,Exception,System.String})
+  langs:
+  - csharp
+  - vb
+  name: TimedLogger<T>
+  nameWithType: TimedLogger<T>
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    id: TimedLogger
+    path: ../src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils
+  syntax:
+    content: 'public class TimedLogger<T> : ILogger<T>'
+    typeParameters:
+    - id: T
+    content.vb: >-
+      Public Class TimedLogger(Of T)
+          Inherits ILogger(Of T)
+  inheritance:
+  - System.Object
+  nameWithType.vb: TimedLogger(Of T)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T)
+  name.vb: TimedLogger(Of T)
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.#ctor(ILogger)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.TimedLogger`1.#ctor(ILogger)
+  id: '#ctor(ILogger)'
+  parent: Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+  langs:
+  - csharp
+  - vb
+  name: TimedLogger(ILogger)
+  nameWithType: TimedLogger<T>.TimedLogger(ILogger)
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>.TimedLogger(ILogger)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    id: .ctor
+    path: ../src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    startLine: 13
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils
+  syntax:
+    content: public TimedLogger(ILogger logger)
+    parameters:
+    - id: logger
+      type: ILogger
+    content.vb: Public Sub New(logger As ILogger)
+  overload: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.#ctor*
+  nameWithType.vb: TimedLogger(Of T).TimedLogger(ILogger)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T).TimedLogger(ILogger)
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.#ctor(ILoggerFactory)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.TimedLogger`1.#ctor(ILoggerFactory)
+  id: '#ctor(ILoggerFactory)'
+  parent: Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+  langs:
+  - csharp
+  - vb
+  name: TimedLogger(ILoggerFactory)
+  nameWithType: TimedLogger<T>.TimedLogger(ILoggerFactory)
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>.TimedLogger(ILoggerFactory)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    id: .ctor
+    path: ../src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    startLine: 15
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils
+  syntax:
+    content: public TimedLogger(ILoggerFactory loggerFactory)
+    parameters:
+    - id: loggerFactory
+      type: ILoggerFactory
+    content.vb: Public Sub New(loggerFactory As ILoggerFactory)
+  overload: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.#ctor*
+  nameWithType.vb: TimedLogger(Of T).TimedLogger(ILoggerFactory)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T).TimedLogger(ILoggerFactory)
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.Log``1(LogLevel,EventId,``0,Exception,Func{``0,Exception,System.String})
+  commentId: M:Cumulocity.SDK.Microservices.Utils.TimedLogger`1.Log``1(LogLevel,EventId,``0,Exception,Func{``0,Exception,System.String})
+  id: Log``1(LogLevel,EventId,``0,Exception,Func{``0,Exception,System.String})
+  parent: Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+  langs:
+  - csharp
+  - vb
+  name: Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, String>)
+  nameWithType: TimedLogger<T>.Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, String>)
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>.Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, System.String>)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    id: Log
+    path: ../src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    startLine: 17
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils
+  syntax:
+    content: public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    parameters:
+    - id: logLevel
+      type: LogLevel
+    - id: eventId
+      type: EventId
+    - id: state
+      type: '{TState}'
+    - id: exception
+      type: Exception
+    - id: formatter
+      type: Func{{TState},Exception,System.String}
+    typeParameters:
+    - id: TState
+    content.vb: Public Sub Log(Of TState)(logLevel As LogLevel, eventId As EventId, state As TState, exception As Exception, formatter As Func(Of TState, Exception, String))
+  overload: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.Log*
+  nameWithType.vb: TimedLogger(Of T).Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, String))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T).Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, System.String))
+  name.vb: Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, String))
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.IsEnabled(LogLevel)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.TimedLogger`1.IsEnabled(LogLevel)
+  id: IsEnabled(LogLevel)
+  parent: Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+  langs:
+  - csharp
+  - vb
+  name: IsEnabled(LogLevel)
+  nameWithType: TimedLogger<T>.IsEnabled(LogLevel)
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>.IsEnabled(LogLevel)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    id: IsEnabled
+    path: ../src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    startLine: 20
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils
+  syntax:
+    content: public bool IsEnabled(LogLevel logLevel)
+    parameters:
+    - id: logLevel
+      type: LogLevel
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsEnabled(logLevel As LogLevel) As Boolean
+  overload: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.IsEnabled*
+  nameWithType.vb: TimedLogger(Of T).IsEnabled(LogLevel)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T).IsEnabled(LogLevel)
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.BeginScope``1(``0)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.TimedLogger`1.BeginScope``1(``0)
+  id: BeginScope``1(``0)
+  parent: Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+  langs:
+  - csharp
+  - vb
+  name: BeginScope<TState>(TState)
+  nameWithType: TimedLogger<T>.BeginScope<TState>(TState)
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>.BeginScope<TState>(TState)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    id: BeginScope
+    path: ../src/Cumulocity.SDK.Microservices/Utils/TimedLogger.cs
+    startLine: 22
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils
+  syntax:
+    content: public IDisposable BeginScope<TState>(TState state)
+    parameters:
+    - id: state
+      type: '{TState}'
+    typeParameters:
+    - id: TState
+    return:
+      type: IDisposable
+    content.vb: Public Function BeginScope(Of TState)(state As TState) As IDisposable
+  overload: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.BeginScope*
+  nameWithType.vb: TimedLogger(Of T).BeginScope(Of TState)(TState)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T).BeginScope(Of TState)(TState)
+  name.vb: BeginScope(Of TState)(TState)
+references:
+- uid: Cumulocity.SDK.Microservices.Utils
+  commentId: N:Cumulocity.SDK.Microservices.Utils
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils
+  nameWithType: Cumulocity.SDK.Microservices.Utils
+  fullName: Cumulocity.SDK.Microservices.Utils
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.#ctor*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.TimedLogger`1.#ctor
+  isExternal: false
+  name: TimedLogger
+  nameWithType: TimedLogger<T>.TimedLogger
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>.TimedLogger
+  nameWithType.vb: TimedLogger(Of T).TimedLogger
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T).TimedLogger
+- uid: ILogger
+  commentId: '!:ILogger'
+  isExternal: true
+  name: ILogger
+  nameWithType: ILogger
+  fullName: ILogger
+- uid: ILoggerFactory
+  isExternal: true
+  name: ILoggerFactory
+  nameWithType: ILoggerFactory
+  fullName: ILoggerFactory
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.Log*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.TimedLogger`1.Log
+  isExternal: false
+  name: Log
+  nameWithType: TimedLogger<T>.Log
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>.Log
+  nameWithType.vb: TimedLogger(Of T).Log
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T).Log
+- uid: LogLevel
+  isExternal: true
+  name: LogLevel
+  nameWithType: LogLevel
+  fullName: LogLevel
+- uid: EventId
+  commentId: '!:EventId'
+  isExternal: true
+  name: EventId
+  nameWithType: EventId
+  fullName: EventId
+- uid: '{TState}'
+  commentId: '!:TState'
+  definition: TState
+  name: TState
+  nameWithType: TState
+  fullName: TState
+- uid: Exception
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: Exception
+- uid: Func{{TState},Exception,System.String}
+  commentId: '!:Func{``0,Exception,System.String}'
+  definition: Func`3
+  name: Func<TState, Exception, String>
+  nameWithType: Func<TState, Exception, String>
+  fullName: Func<TState, Exception, System.String>
+  nameWithType.vb: Func(Of TState, Exception, String)
+  fullName.vb: Func(Of TState, Exception, System.String)
+  name.vb: Func(Of TState, Exception, String)
+  spec.csharp:
+  - uid: Func`3
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: TState
+    nameWithType: TState
+    fullName: TState
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Exception
+    name: Exception
+    nameWithType: Exception
+    fullName: Exception
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`3
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: TState
+    nameWithType: TState
+    fullName: TState
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Exception
+    name: Exception
+    nameWithType: Exception
+    fullName: Exception
+    isExternal: true
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: TState
+  isExternal: false
+  name: TState
+  nameWithType: TState
+  fullName: TState
+- uid: Func`3
+  commentId: '!:Func`3'
+  isExternal: true
+  name: Func<, , >
+  nameWithType: Func<, , >
+  fullName: Func<, , >
+  nameWithType.vb: Func(Of , , )
+  fullName.vb: Func(Of , , )
+  name.vb: Func(Of , , )
+  spec.csharp:
+  - uid: Func`3
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`3
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.IsEnabled*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.TimedLogger`1.IsEnabled
+  isExternal: false
+  name: IsEnabled
+  nameWithType: TimedLogger<T>.IsEnabled
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>.IsEnabled
+  nameWithType.vb: TimedLogger(Of T).IsEnabled
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T).IsEnabled
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1.BeginScope*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.TimedLogger`1.BeginScope
+  isExternal: false
+  name: BeginScope
+  nameWithType: TimedLogger<T>.BeginScope
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>.BeginScope
+  nameWithType.vb: TimedLogger(Of T).BeginScope
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T).BeginScope
+- uid: IDisposable
+  commentId: '!:IDisposable'
+  isExternal: true
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: IDisposable

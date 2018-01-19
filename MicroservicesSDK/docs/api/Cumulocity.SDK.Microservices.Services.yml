@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Services
+  commentId: N:Cumulocity.SDK.Microservices.Services
+  id: Cumulocity.SDK.Microservices.Services
+  children:
+  - Cumulocity.SDK.Microservices.Services.ApplicationService
+  - Cumulocity.SDK.Microservices.Services.IApplicationService
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.SDK.Microservices.Services
+  nameWithType: Cumulocity.SDK.Microservices.Services
+  fullName: Cumulocity.SDK.Microservices.Services
+  type: Namespace
+  assemblies:
+  - Cumulocity.SDK.Microservices
+references:
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService
+  commentId: T:Cumulocity.SDK.Microservices.Services.ApplicationService
+  isExternal: false
+  name: ApplicationService
+  nameWithType: ApplicationService
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService
+  commentId: T:Cumulocity.SDK.Microservices.Services.IApplicationService
+  parent: Cumulocity.SDK.Microservices.Services
+  isExternal: false
+  name: IApplicationService
+  nameWithType: IApplicationService
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService
+- uid: Cumulocity.SDK.Microservices.Services
+  commentId: N:Cumulocity.SDK.Microservices.Services
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Services
+  nameWithType: Cumulocity.SDK.Microservices.Services
+  fullName: Cumulocity.SDK.Microservices.Services

@@ -1,0 +1,125 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults
+  id: BasicAuthenticationDefaults
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  children:
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults.AuthenticationScheme
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults.DisplayName
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationDefaults
+  nameWithType: BasicAuthenticationDefaults
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationDefaults.cs
+    id: BasicAuthenticationDefaults
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationDefaults.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nDefault values used by Basic Access Authentication scheme.\n"
+  example: []
+  syntax:
+    content: 'public class BasicAuthenticationDefaults : object'
+    content.vb: >-
+      Public Class BasicAuthenticationDefaults
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults.AuthenticationScheme
+  commentId: F:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults.AuthenticationScheme
+  id: AuthenticationScheme
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults
+  langs:
+  - csharp
+  - vb
+  name: AuthenticationScheme
+  nameWithType: BasicAuthenticationDefaults.AuthenticationScheme
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults.AuthenticationScheme
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationDefaults.cs
+    id: AuthenticationScheme
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationDefaults.cs
+    startLine: 14
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nBasic authentication scheme\n"
+  example: []
+  syntax:
+    content: public const string AuthenticationScheme = null
+    return:
+      type: System.String
+    content.vb: Public Const AuthenticationScheme As String = Nothing
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults.DisplayName
+  commentId: F:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults.DisplayName
+  id: DisplayName
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: BasicAuthenticationDefaults.DisplayName
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults.DisplayName
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationDefaults.cs
+    id: DisplayName
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationDefaults.cs
+    startLine: 18
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nDefault authentication display name\n"
+  example: []
+  syntax:
+    content: public static readonly string DisplayName
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly DisplayName As String
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+references:
+- uid: Cumulocity.AspNetCore.Authentication.Basic
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic
+  fullName: Cumulocity.AspNetCore.Authentication.Basic
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

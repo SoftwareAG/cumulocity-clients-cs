@@ -1,0 +1,201 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  id: CrontabFieldKind
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Day
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.DayOfWeek
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Hour
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Minute
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Month
+  langs:
+  - csharp
+  - vb
+  name: CrontabFieldKind
+  nameWithType: CrontabFieldKind
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  type: Enum
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    id: CrontabFieldKind
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    startLine: 6
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: 'public enum CrontabFieldKind : int'
+    content.vb: Public Enum CrontabFieldKind As Integer
+  modifiers.csharp:
+  - public
+  - enum
+  modifiers.vb:
+  - Public
+  - Enum
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Minute
+  commentId: F:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Minute
+  id: Minute
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  langs:
+  - csharp
+  - vb
+  name: Minute
+  nameWithType: CrontabFieldKind.Minute
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Minute
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    id: Minute
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: Minute = 0
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Hour
+  commentId: F:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Hour
+  id: Hour
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  langs:
+  - csharp
+  - vb
+  name: Hour
+  nameWithType: CrontabFieldKind.Hour
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Hour
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    id: Hour
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    startLine: 10
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: Hour = 1
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Day
+  commentId: F:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Day
+  id: Day
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  langs:
+  - csharp
+  - vb
+  name: Day
+  nameWithType: CrontabFieldKind.Day
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Day
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    id: Day
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    startLine: 11
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: Day = 2
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Month
+  commentId: F:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Month
+  id: Month
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  langs:
+  - csharp
+  - vb
+  name: Month
+  nameWithType: CrontabFieldKind.Month
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.Month
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    id: Month
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    startLine: 12
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: Month = 3
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.DayOfWeek
+  commentId: F:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.DayOfWeek
+  id: DayOfWeek
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  langs:
+  - csharp
+  - vb
+  name: DayOfWeek
+  nameWithType: CrontabFieldKind.DayOfWeek
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.DayOfWeek
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    id: DayOfWeek
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldKind.cs
+    startLine: 13
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: DayOfWeek = 4
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  modifiers.csharp:
+  - public
+  - const
+  modifiers.vb:
+  - Public
+  - Const
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Crone
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Crone
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabFieldKind
+  nameWithType: CrontabFieldKind
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind

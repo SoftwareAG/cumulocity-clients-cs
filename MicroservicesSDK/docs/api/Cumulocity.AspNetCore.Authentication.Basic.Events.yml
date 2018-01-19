@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic.Events
+  id: Cumulocity.AspNetCore.Authentication.Basic.Events
+  children:
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.AspNetCore.Authentication.Basic.Events
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic.Events
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events
+  type: Namespace
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+references:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: AuthenticationFailedContext
+  nameWithType: AuthenticationFailedContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: AuthenticationSucceededContext
+  nameWithType: AuthenticationSucceededContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: BasicAuthenticationChallengeContext
+  nameWithType: BasicAuthenticationChallengeContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic.Events
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic.Events
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events

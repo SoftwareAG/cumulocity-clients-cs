@@ -1,0 +1,436 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  id: CurrentApplicationSubscriptionsTask
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduled
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.#ctor(IMemoryCache,Cumulocity.SDK.Microservices.Services.IApplicationService,MessageHub)
+  - Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Cache
+  - Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.CurrentAppSubscriptions
+  - Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.ExecuteAsync(CancellationToken)
+  - Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Hub
+  - Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Schedule
+  - Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Service
+  langs:
+  - csharp
+  - vb
+  name: CurrentApplicationSubscriptionsTask
+  nameWithType: CurrentApplicationSubscriptionsTask
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    id: CurrentApplicationSubscriptionsTask
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    startLine: 12
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduled
+  syntax:
+    content: 'public class CurrentApplicationSubscriptionsTask : object, IScheduledTask'
+    content.vb: >-
+      Public Class CurrentApplicationSubscriptionsTask
+          Inherits Object
+          Implements IScheduledTask
+  inheritance:
+  - System.Object
+  implements:
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Schedule
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Schedule
+  id: Schedule
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  langs:
+  - csharp
+  - vb
+  name: Schedule
+  nameWithType: CurrentApplicationSubscriptionsTask.Schedule
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Schedule
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    id: Schedule
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    startLine: 14
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduled
+  syntax:
+    content: public string Schedule { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Schedule As String
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Schedule*
+  implements:
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Cache
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Cache
+  id: Cache
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  langs:
+  - csharp
+  - vb
+  name: Cache
+  nameWithType: CurrentApplicationSubscriptionsTask.Cache
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Cache
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    id: Cache
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    startLine: 16
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduled
+  syntax:
+    content: public IMemoryCache Cache { get; }
+    parameters: []
+    return:
+      type: IMemoryCache
+    content.vb: Public ReadOnly Property Cache As IMemoryCache
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Cache*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Service
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Service
+  id: Service
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  langs:
+  - csharp
+  - vb
+  name: Service
+  nameWithType: CurrentApplicationSubscriptionsTask.Service
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Service
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    id: Service
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    startLine: 17
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduled
+  syntax:
+    content: public IApplicationService Service { get; }
+    parameters: []
+    return:
+      type: Cumulocity.SDK.Microservices.Services.IApplicationService
+    content.vb: Public ReadOnly Property Service As IApplicationService
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Service*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Hub
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Hub
+  id: Hub
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  langs:
+  - csharp
+  - vb
+  name: Hub
+  nameWithType: CurrentApplicationSubscriptionsTask.Hub
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Hub
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    id: Hub
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    startLine: 18
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduled
+  syntax:
+    content: public MessageHub Hub { get; }
+    parameters: []
+    return:
+      type: MessageHub
+    content.vb: Public ReadOnly Property Hub As MessageHub
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Hub*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.CurrentAppSubscriptions
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.CurrentAppSubscriptions
+  id: CurrentAppSubscriptions
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  langs:
+  - csharp
+  - vb
+  name: CurrentAppSubscriptions
+  nameWithType: CurrentApplicationSubscriptionsTask.CurrentAppSubscriptions
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.CurrentAppSubscriptions
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    id: CurrentAppSubscriptions
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    startLine: 20
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduled
+  syntax:
+    content: public static string CurrentAppSubscriptions { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Shared ReadOnly Property CurrentAppSubscriptions As String
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.CurrentAppSubscriptions*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.#ctor(IMemoryCache,Cumulocity.SDK.Microservices.Services.IApplicationService,MessageHub)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.#ctor(IMemoryCache,Cumulocity.SDK.Microservices.Services.IApplicationService,MessageHub)
+  id: '#ctor(IMemoryCache,Cumulocity.SDK.Microservices.Services.IApplicationService,MessageHub)'
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  langs:
+  - csharp
+  - vb
+  name: CurrentApplicationSubscriptionsTask(IMemoryCache, IApplicationService, MessageHub)
+  nameWithType: CurrentApplicationSubscriptionsTask.CurrentApplicationSubscriptionsTask(IMemoryCache, IApplicationService, MessageHub)
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.CurrentApplicationSubscriptionsTask(IMemoryCache, Cumulocity.SDK.Microservices.Services.IApplicationService, MessageHub)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    id: .ctor
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    startLine: 22
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduled
+  syntax:
+    content: public CurrentApplicationSubscriptionsTask(IMemoryCache cache, IApplicationService service, MessageHub hub)
+    parameters:
+    - id: cache
+      type: IMemoryCache
+    - id: service
+      type: Cumulocity.SDK.Microservices.Services.IApplicationService
+    - id: hub
+      type: MessageHub
+    content.vb: Public Sub New(cache As IMemoryCache, service As IApplicationService, hub As MessageHub)
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.ExecuteAsync(CancellationToken)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.ExecuteAsync(CancellationToken)
+  id: ExecuteAsync(CancellationToken)
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  langs:
+  - csharp
+  - vb
+  name: ExecuteAsync(CancellationToken)
+  nameWithType: CurrentApplicationSubscriptionsTask.ExecuteAsync(CancellationToken)
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.ExecuteAsync(CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    id: ExecuteAsync
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduled/CurrentApplicationSubscriptionsTask.cs
+    startLine: 29
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduled
+  syntax:
+    content: public Task ExecuteAsync(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: CancellationToken
+    return:
+      type: Task
+    content.vb: Public Function ExecuteAsync(cancellationToken As CancellationToken) As Task
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.ExecuteAsync*
+  implements:
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync(CancellationToken)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Scheduled
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Scheduled
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Scheduled
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling
+  isExternal: false
+  name: IScheduledTask
+  nameWithType: IScheduledTask
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Scheduling
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Scheduling
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Scheduling
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Schedule*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Schedule
+  isExternal: false
+  name: Schedule
+  nameWithType: CurrentApplicationSubscriptionsTask.Schedule
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Schedule
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  isExternal: false
+  name: Schedule
+  nameWithType: IScheduledTask.Schedule
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Cache*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Cache
+  isExternal: false
+  name: Cache
+  nameWithType: CurrentApplicationSubscriptionsTask.Cache
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Cache
+- uid: IMemoryCache
+  isExternal: true
+  name: IMemoryCache
+  nameWithType: IMemoryCache
+  fullName: IMemoryCache
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Service*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Service
+  isExternal: false
+  name: Service
+  nameWithType: CurrentApplicationSubscriptionsTask.Service
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Service
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService
+  commentId: T:Cumulocity.SDK.Microservices.Services.IApplicationService
+  parent: Cumulocity.SDK.Microservices.Services
+  isExternal: false
+  name: IApplicationService
+  nameWithType: IApplicationService
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService
+- uid: Cumulocity.SDK.Microservices.Services
+  commentId: N:Cumulocity.SDK.Microservices.Services
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Services
+  nameWithType: Cumulocity.SDK.Microservices.Services
+  fullName: Cumulocity.SDK.Microservices.Services
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Hub*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Hub
+  isExternal: false
+  name: Hub
+  nameWithType: CurrentApplicationSubscriptionsTask.Hub
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.Hub
+- uid: MessageHub
+  isExternal: true
+  name: MessageHub
+  nameWithType: MessageHub
+  fullName: MessageHub
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.CurrentAppSubscriptions*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.CurrentAppSubscriptions
+  isExternal: false
+  name: CurrentAppSubscriptions
+  nameWithType: CurrentApplicationSubscriptionsTask.CurrentAppSubscriptions
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.CurrentAppSubscriptions
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.#ctor*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.#ctor
+  isExternal: false
+  name: CurrentApplicationSubscriptionsTask
+  nameWithType: CurrentApplicationSubscriptionsTask.CurrentApplicationSubscriptionsTask
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.CurrentApplicationSubscriptionsTask
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.ExecuteAsync*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.ExecuteAsync
+  isExternal: false
+  name: ExecuteAsync
+  nameWithType: CurrentApplicationSubscriptionsTask.ExecuteAsync
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.ExecuteAsync
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync(CancellationToken)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync(CancellationToken)
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  isExternal: true
+  name: ExecuteAsync(CancellationToken)
+  nameWithType: IScheduledTask.ExecuteAsync(CancellationToken)
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync(CancellationToken)
+  spec.csharp:
+  - uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync(CancellationToken)
+    name: ExecuteAsync
+    nameWithType: IScheduledTask.ExecuteAsync
+    fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync(CancellationToken)
+    name: ExecuteAsync
+    nameWithType: IScheduledTask.ExecuteAsync
+    fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: CancellationToken
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: CancellationToken
+- uid: Task
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: Task

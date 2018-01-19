@@ -1,0 +1,134 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Model.ChangedSubscription
+  commentId: T:Cumulocity.SDK.Microservices.Model.ChangedSubscription
+  id: ChangedSubscription
+  parent: Cumulocity.SDK.Microservices.Model
+  children:
+  - Cumulocity.SDK.Microservices.Model.ChangedSubscription.Status
+  langs:
+  - csharp
+  - vb
+  name: ChangedSubscription
+  nameWithType: ChangedSubscription
+  fullName: Cumulocity.SDK.Microservices.Model.ChangedSubscription
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    id: ChangedSubscription
+    path: ../src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    startLine: 49
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: 'public class ChangedSubscription : Subscription'
+    content.vb: >-
+      Public Class ChangedSubscription
+          Inherits Subscription
+  inheritance:
+  - System.Object
+  - Cumulocity.SDK.Microservices.Model.Subscription
+  inheritedMembers:
+  - Cumulocity.SDK.Microservices.Model.Subscription.Name
+  - Cumulocity.SDK.Microservices.Model.Subscription.Password
+  - Cumulocity.SDK.Microservices.Model.Subscription.Tenant
+  - Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Model.ChangedSubscription.Status
+  commentId: P:Cumulocity.SDK.Microservices.Model.ChangedSubscription.Status
+  id: Status
+  parent: Cumulocity.SDK.Microservices.Model.ChangedSubscription
+  langs:
+  - csharp
+  - vb
+  name: Status
+  nameWithType: ChangedSubscription.Status
+  fullName: Cumulocity.SDK.Microservices.Model.ChangedSubscription.Status
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    id: Status
+    path: ../src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    startLine: 51
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string Status { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Status As String
+  overload: Cumulocity.SDK.Microservices.Model.ChangedSubscription.Status*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.SDK.Microservices.Model
+  commentId: N:Cumulocity.SDK.Microservices.Model
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Model
+  nameWithType: Cumulocity.SDK.Microservices.Model
+  fullName: Cumulocity.SDK.Microservices.Model
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Model.Subscription
+  commentId: T:Cumulocity.SDK.Microservices.Model.Subscription
+  parent: Cumulocity.SDK.Microservices.Model
+  isExternal: false
+  name: Subscription
+  nameWithType: Subscription
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.Name
+  commentId: P:Cumulocity.SDK.Microservices.Model.Subscription.Name
+  parent: Cumulocity.SDK.Microservices.Model.Subscription
+  isExternal: false
+  name: Name
+  nameWithType: Subscription.Name
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.Name
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.Password
+  commentId: P:Cumulocity.SDK.Microservices.Model.Subscription.Password
+  parent: Cumulocity.SDK.Microservices.Model.Subscription
+  isExternal: false
+  name: Password
+  nameWithType: Subscription.Password
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.Password
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.Tenant
+  commentId: P:Cumulocity.SDK.Microservices.Model.Subscription.Tenant
+  parent: Cumulocity.SDK.Microservices.Model.Subscription
+  isExternal: false
+  name: Tenant
+  nameWithType: Subscription.Tenant
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.Tenant
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer
+  commentId: P:Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer
+  parent: Cumulocity.SDK.Microservices.Model.Subscription
+  isExternal: false
+  name: SubscriptionComparer
+  nameWithType: Subscription.SubscriptionComparer
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer
+- uid: Cumulocity.SDK.Microservices.Model.ChangedSubscription.Status*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.ChangedSubscription.Status
+  isExternal: false
+  name: Status
+  nameWithType: ChangedSubscription.Status
+  fullName: Cumulocity.SDK.Microservices.Model.ChangedSubscription.Status
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

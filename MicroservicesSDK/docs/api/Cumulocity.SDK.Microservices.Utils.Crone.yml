@@ -1,0 +1,62 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Crone
+  id: Cumulocity.SDK.Microservices.Utils.Crone
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.SDK.Microservices.Utils.Crone
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Crone
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone
+  type: Namespace
+  assemblies:
+  - Cumulocity.SDK.Microservices
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabField
+  nameWithType: CrontabField
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabFieldAccumulator
+  nameWithType: CrontabFieldAccumulator
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabFieldImpl
+  nameWithType: CrontabFieldImpl
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabFieldKind
+  nameWithType: CrontabFieldKind
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabSchedule
+  nameWithType: CrontabSchedule
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule
+- uid: Cumulocity.SDK.Microservices.Utils.Crone
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Crone
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Crone
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone

@@ -1,0 +1,555 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  id: BasicAuthenticationEvents
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  children:
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.AuthenticationFailed(Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext)
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.Challenge(Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext)
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.CredentialsValidated(Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext)
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnAuthenticationFailed
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnChallenge
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnCredentialsValidated
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationEvents
+  nameWithType: BasicAuthenticationEvents
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    id: BasicAuthenticationEvents
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nBasic authentication events\n"
+  example: []
+  syntax:
+    content: 'public class BasicAuthenticationEvents : object'
+    content.vb: >-
+      Public Class BasicAuthenticationEvents
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnAuthenticationFailed
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnAuthenticationFailed
+  id: OnAuthenticationFailed
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  langs:
+  - csharp
+  - vb
+  name: OnAuthenticationFailed
+  nameWithType: BasicAuthenticationEvents.OnAuthenticationFailed
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnAuthenticationFailed
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    id: OnAuthenticationFailed
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    startLine: 14
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nInvoked if exceptions are thrown during request processing. The exceptions will be re-thrown after this event unless suppressed.\n"
+  example: []
+  syntax:
+    content: public Func<AuthenticationFailedContext, Task> OnAuthenticationFailed { get; set; }
+    parameters: []
+    return:
+      type: Func{Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext,Task}
+    content.vb: Public Property OnAuthenticationFailed As Func(Of AuthenticationFailedContext, Task)
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnAuthenticationFailed*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnCredentialsValidated
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnCredentialsValidated
+  id: OnCredentialsValidated
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  langs:
+  - csharp
+  - vb
+  name: OnCredentialsValidated
+  nameWithType: BasicAuthenticationEvents.OnCredentialsValidated
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnCredentialsValidated
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    id: OnCredentialsValidated
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    startLine: 19
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nInvoked after the security token has passed validation and a ClaimsIdentity has been generated.\n"
+  example: []
+  syntax:
+    content: public Func<AuthenticationSucceededContext, Task> OnCredentialsValidated { get; set; }
+    parameters: []
+    return:
+      type: Func{Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext,Task}
+    content.vb: Public Property OnCredentialsValidated As Func(Of AuthenticationSucceededContext, Task)
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnCredentialsValidated*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnChallenge
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnChallenge
+  id: OnChallenge
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  langs:
+  - csharp
+  - vb
+  name: OnChallenge
+  nameWithType: BasicAuthenticationEvents.OnChallenge
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnChallenge
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    id: OnChallenge
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    startLine: 24
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nInvoked before a challenge is sent back to the caller.\n"
+  example: []
+  syntax:
+    content: public Func<BasicAuthenticationChallengeContext, Task> OnChallenge { get; set; }
+    parameters: []
+    return:
+      type: Func{Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext,Task}
+    content.vb: Public Property OnChallenge As Func(Of BasicAuthenticationChallengeContext, Task)
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnChallenge*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.AuthenticationFailed(Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext)
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.AuthenticationFailed(Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext)
+  id: AuthenticationFailed(Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext)
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  langs:
+  - csharp
+  - vb
+  name: AuthenticationFailed(AuthenticationFailedContext)
+  nameWithType: BasicAuthenticationEvents.AuthenticationFailed(AuthenticationFailedContext)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.AuthenticationFailed(Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    id: AuthenticationFailed
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    startLine: 26
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: public virtual Task AuthenticationFailed(AuthenticationFailedContext context)
+    parameters:
+    - id: context
+      type: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+    return:
+      type: Task
+    content.vb: Public Overridable Function AuthenticationFailed(context As AuthenticationFailedContext) As Task
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.AuthenticationFailed*
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.CredentialsValidated(Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext)
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.CredentialsValidated(Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext)
+  id: CredentialsValidated(Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext)
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  langs:
+  - csharp
+  - vb
+  name: CredentialsValidated(AuthenticationSucceededContext)
+  nameWithType: BasicAuthenticationEvents.CredentialsValidated(AuthenticationSucceededContext)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.CredentialsValidated(Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    id: CredentialsValidated
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    startLine: 28
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: public virtual Task CredentialsValidated(AuthenticationSucceededContext context)
+    parameters:
+    - id: context
+      type: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+    return:
+      type: Task
+    content.vb: Public Overridable Function CredentialsValidated(context As AuthenticationSucceededContext) As Task
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.CredentialsValidated*
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.Challenge(Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext)
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.Challenge(Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext)
+  id: Challenge(Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext)
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  langs:
+  - csharp
+  - vb
+  name: Challenge(BasicAuthenticationChallengeContext)
+  nameWithType: BasicAuthenticationEvents.Challenge(BasicAuthenticationChallengeContext)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.Challenge(Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    id: Challenge
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationEvents.cs
+    startLine: 30
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: public virtual Task Challenge(BasicAuthenticationChallengeContext context)
+    parameters:
+    - id: context
+      type: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+    return:
+      type: Task
+    content.vb: Public Overridable Function Challenge(context As BasicAuthenticationChallengeContext) As Task
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.Challenge*
+  modifiers.csharp:
+  - public
+  - virtual
+  modifiers.vb:
+  - Public
+  - Overridable
+references:
+- uid: Cumulocity.AspNetCore.Authentication.Basic
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic
+  fullName: Cumulocity.AspNetCore.Authentication.Basic
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnAuthenticationFailed*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnAuthenticationFailed
+  isExternal: false
+  name: OnAuthenticationFailed
+  nameWithType: BasicAuthenticationEvents.OnAuthenticationFailed
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnAuthenticationFailed
+- uid: Func{Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext,Task}
+  commentId: '!:Func{Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext,Task}'
+  definition: Func`2
+  name: Func<AuthenticationFailedContext, Task>
+  nameWithType: Func<AuthenticationFailedContext, Task>
+  fullName: Func<Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext, Task>
+  nameWithType.vb: Func(Of AuthenticationFailedContext, Task)
+  fullName.vb: Func(Of Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext, Task)
+  name.vb: Func(Of AuthenticationFailedContext, Task)
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+    name: AuthenticationFailedContext
+    nameWithType: AuthenticationFailedContext
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Task
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+    name: AuthenticationFailedContext
+    nameWithType: AuthenticationFailedContext
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Task
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnCredentialsValidated*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnCredentialsValidated
+  isExternal: false
+  name: OnCredentialsValidated
+  nameWithType: BasicAuthenticationEvents.OnCredentialsValidated
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnCredentialsValidated
+- uid: Func{Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext,Task}
+  commentId: '!:Func{Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext,Task}'
+  definition: Func`2
+  name: Func<AuthenticationSucceededContext, Task>
+  nameWithType: Func<AuthenticationSucceededContext, Task>
+  fullName: Func<Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext, Task>
+  nameWithType.vb: Func(Of AuthenticationSucceededContext, Task)
+  fullName.vb: Func(Of Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext, Task)
+  name.vb: Func(Of AuthenticationSucceededContext, Task)
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+    name: AuthenticationSucceededContext
+    nameWithType: AuthenticationSucceededContext
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Task
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+    name: AuthenticationSucceededContext
+    nameWithType: AuthenticationSucceededContext
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Task
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnChallenge*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnChallenge
+  isExternal: false
+  name: OnChallenge
+  nameWithType: BasicAuthenticationEvents.OnChallenge
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.OnChallenge
+- uid: Func{Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext,Task}
+  commentId: '!:Func{Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext,Task}'
+  definition: Func`2
+  name: Func<BasicAuthenticationChallengeContext, Task>
+  nameWithType: Func<BasicAuthenticationChallengeContext, Task>
+  fullName: Func<Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext, Task>
+  nameWithType.vb: Func(Of BasicAuthenticationChallengeContext, Task)
+  fullName.vb: Func(Of Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext, Task)
+  name.vb: Func(Of BasicAuthenticationChallengeContext, Task)
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+    name: BasicAuthenticationChallengeContext
+    nameWithType: BasicAuthenticationChallengeContext
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Task
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+    name: BasicAuthenticationChallengeContext
+    nameWithType: BasicAuthenticationChallengeContext
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Task
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.AuthenticationFailed*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.AuthenticationFailed
+  isExternal: false
+  name: AuthenticationFailed
+  nameWithType: BasicAuthenticationEvents.AuthenticationFailed
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.AuthenticationFailed
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: AuthenticationFailedContext
+  nameWithType: AuthenticationFailedContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+- uid: Task
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: Task
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic.Events
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic.Events
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.CredentialsValidated*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.CredentialsValidated
+  isExternal: false
+  name: CredentialsValidated
+  nameWithType: BasicAuthenticationEvents.CredentialsValidated
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.CredentialsValidated
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: AuthenticationSucceededContext
+  nameWithType: AuthenticationSucceededContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.Challenge*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.Challenge
+  isExternal: false
+  name: Challenge
+  nameWithType: BasicAuthenticationEvents.Challenge
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.Challenge
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: BasicAuthenticationChallengeContext
+  nameWithType: BasicAuthenticationChallengeContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext

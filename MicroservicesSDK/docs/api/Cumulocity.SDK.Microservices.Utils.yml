@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils
+  commentId: N:Cumulocity.SDK.Microservices.Utils
+  id: Cumulocity.SDK.Microservices.Utils
+  children:
+  - Cumulocity.SDK.Microservices.Utils.HostedService
+  - Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.SDK.Microservices.Utils
+  nameWithType: Cumulocity.SDK.Microservices.Utils
+  fullName: Cumulocity.SDK.Microservices.Utils
+  type: Namespace
+  assemblies:
+  - Cumulocity.SDK.Microservices
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService
+  commentId: T:Cumulocity.SDK.Microservices.Utils.HostedService
+  parent: Cumulocity.SDK.Microservices.Utils
+  isExternal: false
+  name: HostedService
+  nameWithType: HostedService
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService
+- uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+  commentId: T:Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+  isExternal: false
+  name: TimedLogger<T>
+  nameWithType: TimedLogger<T>
+  fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger<T>
+  nameWithType.vb: TimedLogger(Of T)
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.TimedLogger(Of T)
+  name.vb: TimedLogger(Of T)
+  spec.csharp:
+  - uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+    name: TimedLogger
+    nameWithType: TimedLogger
+    fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Cumulocity.SDK.Microservices.Utils.TimedLogger`1
+    name: TimedLogger
+    nameWithType: TimedLogger
+    fullName: Cumulocity.SDK.Microservices.Utils.TimedLogger
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: T
+    nameWithType: T
+    fullName: T
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Utils
+  commentId: N:Cumulocity.SDK.Microservices.Utils
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils
+  nameWithType: Cumulocity.SDK.Microservices.Utils
+  fullName: Cumulocity.SDK.Microservices.Utils

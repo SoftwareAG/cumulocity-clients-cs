@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Scheduled
+  id: Cumulocity.SDK.Microservices.Utils.Scheduled
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.SDK.Microservices.Utils.Scheduled
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Scheduled
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled
+  type: Namespace
+  assemblies:
+  - Cumulocity.SDK.Microservices
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask
+  isExternal: false
+  name: CurrentApplicationSubscriptionsTask
+  nameWithType: CurrentApplicationSubscriptionsTask
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask

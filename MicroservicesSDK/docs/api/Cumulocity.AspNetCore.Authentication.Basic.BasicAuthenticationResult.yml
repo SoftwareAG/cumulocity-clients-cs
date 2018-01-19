@@ -1,0 +1,299 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  id: BasicAuthenticationResult
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  children:
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Claims
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.IsAuthenticated
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Password
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Tenant
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.User
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationResult
+  nameWithType: BasicAuthenticationResult
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    id: BasicAuthenticationResult
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    startLine: 7
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: 'public class BasicAuthenticationResult : object'
+    content.vb: >-
+      Public Class BasicAuthenticationResult
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.IsAuthenticated
+  commentId: F:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.IsAuthenticated
+  id: IsAuthenticated
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  langs:
+  - csharp
+  - vb
+  name: IsAuthenticated
+  nameWithType: BasicAuthenticationResult.IsAuthenticated
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.IsAuthenticated
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    id: IsAuthenticated
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    startLine: 12
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nGets a value indicating whether the request has been authenticated.\n"
+  example: []
+  syntax:
+    content: public bool IsAuthenticated
+    return:
+      type: System.Boolean
+    content.vb: Public IsAuthenticated As Boolean
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Claims
+  commentId: F:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Claims
+  id: Claims
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  langs:
+  - csharp
+  - vb
+  name: Claims
+  nameWithType: BasicAuthenticationResult.Claims
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Claims
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    id: Claims
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    startLine: 17
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nRepresents a list of claims\n"
+  example: []
+  syntax:
+    content: public List<Claim> Claims
+    return:
+      type: List{Claim}
+    content.vb: Public Claims As List(Of Claim)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.User
+  commentId: F:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.User
+  id: User
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  langs:
+  - csharp
+  - vb
+  name: User
+  nameWithType: BasicAuthenticationResult.User
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.User
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    id: User
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    startLine: 22
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nRepresents a current user\n"
+  example: []
+  syntax:
+    content: public string User
+    return:
+      type: System.String
+    content.vb: Public User As String
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Password
+  commentId: F:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Password
+  id: Password
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  langs:
+  - csharp
+  - vb
+  name: Password
+  nameWithType: BasicAuthenticationResult.Password
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Password
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    id: Password
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    startLine: 27
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nThe password of the current user\n"
+  example: []
+  syntax:
+    content: public string Password
+    return:
+      type: System.String
+    content.vb: Public Password As String
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Tenant
+  commentId: F:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Tenant
+  id: Tenant
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  langs:
+  - csharp
+  - vb
+  name: Tenant
+  nameWithType: BasicAuthenticationResult.Tenant
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.Tenant
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    id: Tenant
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationResult.cs
+    startLine: 32
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nThe tenant of the current user\n"
+  example: []
+  syntax:
+    content: public string Tenant
+    return:
+      type: System.String
+    content.vb: Public Tenant As String
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.AspNetCore.Authentication.Basic
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic
+  fullName: Cumulocity.AspNetCore.Authentication.Basic
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: List{Claim}
+  commentId: '!:List{Claim}'
+  definition: List`1
+  name: List<Claim>
+  nameWithType: List<Claim>
+  fullName: List<Claim>
+  nameWithType.vb: List(Of Claim)
+  fullName.vb: List(Of Claim)
+  name.vb: List(Of Claim)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Claim
+    name: Claim
+    nameWithType: Claim
+    fullName: Claim
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Claim
+    name: Claim
+    nameWithType: Claim
+    fullName: Claim
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

@@ -1,0 +1,45 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Settings
+  commentId: N:Cumulocity.SDK.Microservices.Settings
+  id: Cumulocity.SDK.Microservices.Settings
+  children:
+  - Cumulocity.SDK.Microservices.Settings.Platform
+  - Cumulocity.SDK.Microservices.Settings.PlatformExtensions
+  - Cumulocity.SDK.Microservices.Settings.PlatformSettings
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.SDK.Microservices.Settings
+  nameWithType: Cumulocity.SDK.Microservices.Settings
+  fullName: Cumulocity.SDK.Microservices.Settings
+  type: Namespace
+  assemblies:
+  - Cumulocity.SDK.Microservices
+references:
+- uid: Cumulocity.SDK.Microservices.Settings.Platform
+  commentId: T:Cumulocity.SDK.Microservices.Settings.Platform
+  parent: Cumulocity.SDK.Microservices.Settings
+  isExternal: false
+  name: Platform
+  nameWithType: Platform
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform
+- uid: Cumulocity.SDK.Microservices.Settings.PlatformSettings
+  commentId: T:Cumulocity.SDK.Microservices.Settings.PlatformSettings
+  parent: Cumulocity.SDK.Microservices.Settings
+  isExternal: false
+  name: PlatformSettings
+  nameWithType: PlatformSettings
+  fullName: Cumulocity.SDK.Microservices.Settings.PlatformSettings
+- uid: Cumulocity.SDK.Microservices.Settings.PlatformExtensions
+  commentId: T:Cumulocity.SDK.Microservices.Settings.PlatformExtensions
+  isExternal: false
+  name: PlatformExtensions
+  nameWithType: PlatformExtensions
+  fullName: Cumulocity.SDK.Microservices.Settings.PlatformExtensions
+- uid: Cumulocity.SDK.Microservices.Settings
+  commentId: N:Cumulocity.SDK.Microservices.Settings
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Settings
+  nameWithType: Cumulocity.SDK.Microservices.Settings
+  fullName: Cumulocity.SDK.Microservices.Settings

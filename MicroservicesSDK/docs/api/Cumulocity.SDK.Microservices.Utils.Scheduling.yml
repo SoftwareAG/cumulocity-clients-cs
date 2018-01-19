@@ -1,0 +1,44 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Scheduling
+  id: Cumulocity.SDK.Microservices.Utils.Scheduling
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.SDK.Microservices.Utils.Scheduling
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Scheduling
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling
+  type: Namespace
+  assemblies:
+  - Cumulocity.SDK.Microservices
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling
+  isExternal: false
+  name: IScheduledTask
+  nameWithType: IScheduledTask
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions
+  isExternal: false
+  name: SchedulerExtensions
+  nameWithType: SchedulerExtensions
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+  isExternal: false
+  name: SchedulerHostedService
+  nameWithType: SchedulerHostedService
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Scheduling
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Scheduling
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Scheduling
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling

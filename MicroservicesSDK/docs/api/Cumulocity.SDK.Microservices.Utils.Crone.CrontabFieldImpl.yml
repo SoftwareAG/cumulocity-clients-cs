@@ -1,0 +1,552 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  id: CrontabFieldImpl
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Day
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.DayOfWeek
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Format(Cumulocity.SDK.Microservices.Utils.Crone.CrontabField,TextWriter,System.Boolean)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.FromKind(Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Hour
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Kind
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MaxValue
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Minute
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MinValue
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Month
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Parse(System.String,Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.ValueCount
+  langs:
+  - csharp
+  - vb
+  name: CrontabFieldImpl
+  nameWithType: CrontabFieldImpl
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: CrontabFieldImpl
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 8
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: 'public sealed class CrontabFieldImpl : IObjectReference'
+    content.vb: >-
+      Public NotInheritable Class CrontabFieldImpl
+          Inherits IObjectReference
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Minute
+  commentId: F:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Minute
+  id: Minute
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: Minute
+  nameWithType: CrontabFieldImpl.Minute
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Minute
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: Minute
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 11
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public static readonly CrontabFieldImpl Minute
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+    content.vb: Public Shared ReadOnly Minute As CrontabFieldImpl
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Hour
+  commentId: F:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Hour
+  id: Hour
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: Hour
+  nameWithType: CrontabFieldImpl.Hour
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Hour
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: Hour
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 12
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public static readonly CrontabFieldImpl Hour
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+    content.vb: Public Shared ReadOnly Hour As CrontabFieldImpl
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Day
+  commentId: F:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Day
+  id: Day
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: Day
+  nameWithType: CrontabFieldImpl.Day
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Day
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: Day
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 13
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public static readonly CrontabFieldImpl Day
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+    content.vb: Public Shared ReadOnly Day As CrontabFieldImpl
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Month
+  commentId: F:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Month
+  id: Month
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: Month
+  nameWithType: CrontabFieldImpl.Month
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Month
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: Month
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 15
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public static readonly CrontabFieldImpl Month
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+    content.vb: Public Shared ReadOnly Month As CrontabFieldImpl
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.DayOfWeek
+  commentId: F:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.DayOfWeek
+  id: DayOfWeek
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: DayOfWeek
+  nameWithType: CrontabFieldImpl.DayOfWeek
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.DayOfWeek
+  type: Field
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: DayOfWeek
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 24
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public static readonly CrontabFieldImpl DayOfWeek
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+    content.vb: Public Shared ReadOnly DayOfWeek As CrontabFieldImpl
+  modifiers.csharp:
+  - public
+  - static
+  - readonly
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Kind
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Kind
+  id: Kind
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: Kind
+  nameWithType: CrontabFieldImpl.Kind
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Kind
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: Kind
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 55
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public CrontabFieldKind Kind { get; }
+    parameters: []
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+    content.vb: Public ReadOnly Property Kind As CrontabFieldKind
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Kind*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MinValue
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MinValue
+  id: MinValue
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: MinValue
+  nameWithType: CrontabFieldImpl.MinValue
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MinValue
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: MinValue
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 60
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public int MinValue { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MinValue As Integer
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MinValue*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MaxValue
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MaxValue
+  id: MaxValue
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: MaxValue
+  nameWithType: CrontabFieldImpl.MaxValue
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MaxValue
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: MaxValue
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 65
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public int MaxValue { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MaxValue As Integer
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MaxValue*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.ValueCount
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.ValueCount
+  id: ValueCount
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: ValueCount
+  nameWithType: CrontabFieldImpl.ValueCount
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.ValueCount
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: ValueCount
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 70
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public int ValueCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property ValueCount As Integer
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.ValueCount*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.FromKind(Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.FromKind(Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind)
+  id: FromKind(Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: FromKind(CrontabFieldKind)
+  nameWithType: CrontabFieldImpl.FromKind(CrontabFieldKind)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.FromKind(Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: FromKind
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 84
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public static CrontabFieldImpl FromKind(CrontabFieldKind kind)
+    parameters:
+    - id: kind
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+    content.vb: Public Shared Function FromKind(kind As CrontabFieldKind) As CrontabFieldImpl
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.FromKind*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Format(Cumulocity.SDK.Microservices.Utils.Crone.CrontabField,TextWriter,System.Boolean)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Format(Cumulocity.SDK.Microservices.Utils.Crone.CrontabField,TextWriter,System.Boolean)
+  id: Format(Cumulocity.SDK.Microservices.Utils.Crone.CrontabField,TextWriter,System.Boolean)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: Format(CrontabField, TextWriter, Boolean)
+  nameWithType: CrontabFieldImpl.Format(CrontabField, TextWriter, Boolean)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Format(Cumulocity.SDK.Microservices.Utils.Crone.CrontabField, TextWriter, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: Format
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 96
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public void Format(CrontabField field, TextWriter writer, bool noNames)
+    parameters:
+    - id: field
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+    - id: writer
+      type: TextWriter
+    - id: noNames
+      type: System.Boolean
+    content.vb: Public Sub Format(field As CrontabField, writer As TextWriter, noNames As Boolean)
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Format*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Parse(System.String,Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Parse(System.String,Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator)
+  id: Parse(System.String,Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  langs:
+  - csharp
+  - vb
+  name: Parse(String, CrontabFieldAccumulator)
+  nameWithType: CrontabFieldImpl.Parse(String, CrontabFieldAccumulator)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Parse(System.String, Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    id: Parse
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldImpl.cs
+    startLine: 181
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public void Parse(string str, CrontabFieldAccumulator acc)
+    parameters:
+    - id: str
+      type: System.String
+    - id: acc
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+    content.vb: Public Sub Parse(str As String, acc As CrontabFieldAccumulator)
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Parse*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Crone
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Crone
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabFieldImpl
+  nameWithType: CrontabFieldImpl
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Kind*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Kind
+  isExternal: false
+  name: Kind
+  nameWithType: CrontabFieldImpl.Kind
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Kind
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabFieldKind
+  nameWithType: CrontabFieldKind
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MinValue*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MinValue
+  isExternal: false
+  name: MinValue
+  nameWithType: CrontabFieldImpl.MinValue
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MinValue
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MaxValue*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MaxValue
+  isExternal: false
+  name: MaxValue
+  nameWithType: CrontabFieldImpl.MaxValue
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.MaxValue
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.ValueCount*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.ValueCount
+  isExternal: false
+  name: ValueCount
+  nameWithType: CrontabFieldImpl.ValueCount
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.ValueCount
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.FromKind*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.FromKind
+  isExternal: false
+  name: FromKind
+  nameWithType: CrontabFieldImpl.FromKind
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.FromKind
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Format*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Format
+  isExternal: false
+  name: Format
+  nameWithType: CrontabFieldImpl.Format
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Format
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabField
+  nameWithType: CrontabField
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+- uid: TextWriter
+  isExternal: true
+  name: TextWriter
+  nameWithType: TextWriter
+  fullName: TextWriter
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Parse*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Parse
+  isExternal: false
+  name: Parse
+  nameWithType: CrontabFieldImpl.Parse
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.Parse
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabFieldAccumulator
+  nameWithType: CrontabFieldAccumulator
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator

@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Extenions
+  id: Cumulocity.SDK.Microservices.Utils.Extenions
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal
+  - Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.SDK.Microservices.Utils.Extenions
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Extenions
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions
+  type: Namespace
+  assemblies:
+  - Cumulocity.SDK.Microservices
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal
+  isExternal: false
+  name: CurrentPrincipal
+  nameWithType: CurrentPrincipal
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions
+  isExternal: false
+  name: GenericPrincipalExtensions
+  nameWithType: GenericPrincipalExtensions
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions

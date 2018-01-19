@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication
+  commentId: N:Cumulocity.SDK.Microservices.BasicAuthentication
+  id: Cumulocity.SDK.Microservices.BasicAuthentication
+  children:
+  - Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware
+  - Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier
+  - Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.SDK.Microservices.BasicAuthentication
+  nameWithType: Cumulocity.SDK.Microservices.BasicAuthentication
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication
+  type: Namespace
+  assemblies:
+  - Cumulocity.SDK.Microservices
+references:
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware
+  commentId: T:Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware
+  isExternal: false
+  name: BasicAuthenticationMiddleware
+  nameWithType: BasicAuthenticationMiddleware
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions
+  commentId: T:Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions
+  isExternal: false
+  name: RequestResponseLoggingMiddlewareExtensions
+  nameWithType: RequestResponseLoggingMiddlewareExtensions
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier
+  commentId: T:Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier
+  isExternal: false
+  name: BasicCredentialVerifier
+  nameWithType: BasicCredentialVerifier
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier

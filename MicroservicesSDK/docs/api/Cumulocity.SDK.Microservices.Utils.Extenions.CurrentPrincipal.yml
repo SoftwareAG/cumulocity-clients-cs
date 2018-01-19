@@ -1,0 +1,108 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal
+  id: CurrentPrincipal
+  parent: Cumulocity.SDK.Microservices.Utils.Extenions
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal.GetSpecificClaim(ClaimsIdentity,System.String)
+  langs:
+  - csharp
+  - vb
+  name: CurrentPrincipal
+  nameWithType: CurrentPrincipal
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    id: CurrentPrincipal
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Extenions
+  syntax:
+    content: 'public static class CurrentPrincipal : object'
+    content.vb: >-
+      Public Module CurrentPrincipal
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal.GetSpecificClaim(ClaimsIdentity,System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal.GetSpecificClaim(ClaimsIdentity,System.String)
+  id: GetSpecificClaim(ClaimsIdentity,System.String)
+  isExtensionMethod: true
+  parent: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal
+  langs:
+  - csharp
+  - vb
+  name: GetSpecificClaim(ClaimsIdentity, String)
+  nameWithType: CurrentPrincipal.GetSpecificClaim(ClaimsIdentity, String)
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal.GetSpecificClaim(ClaimsIdentity, System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    id: GetSpecificClaim
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    startLine: 11
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Extenions
+  syntax:
+    content: public static string GetSpecificClaim(this ClaimsIdentity claimsIdentity, string claimType)
+    parameters:
+    - id: claimsIdentity
+      type: ClaimsIdentity
+    - id: claimType
+      type: System.String
+    return:
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function GetSpecificClaim(claimsIdentity As ClaimsIdentity, claimType As String) As String
+  overload: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal.GetSpecificClaim*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Extenions
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Extenions
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Extenions
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal.GetSpecificClaim*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal.GetSpecificClaim
+  isExternal: false
+  name: GetSpecificClaim
+  nameWithType: CurrentPrincipal.GetSpecificClaim
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal.GetSpecificClaim
+- uid: ClaimsIdentity
+  commentId: '!:ClaimsIdentity'
+  isExternal: true
+  name: ClaimsIdentity
+  nameWithType: ClaimsIdentity
+  fullName: ClaimsIdentity
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String

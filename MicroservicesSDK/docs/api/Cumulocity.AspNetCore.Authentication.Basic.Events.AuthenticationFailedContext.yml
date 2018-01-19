@@ -1,0 +1,167 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  id: AuthenticationFailedContext
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events
+  children:
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.#ctor(HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.Exception
+  langs:
+  - csharp
+  - vb
+  name: AuthenticationFailedContext
+  nameWithType: AuthenticationFailedContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationFailedContext.cs
+    id: AuthenticationFailedContext
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationFailedContext.cs
+    startLine: 11
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  summary: "\nContext of a failed basic authentication\n"
+  example: []
+  syntax:
+    content: 'public class AuthenticationFailedContext : ResultContext<BasicAuthenticationOptions>'
+    content.vb: >-
+      Public Class AuthenticationFailedContext
+          Inherits ResultContext(Of BasicAuthenticationOptions)
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.Exception
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.Exception
+  id: Exception
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  langs:
+  - csharp
+  - vb
+  name: Exception
+  nameWithType: AuthenticationFailedContext.Exception
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.Exception
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationFailedContext.cs
+    id: Exception
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationFailedContext.cs
+    startLine: 16
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  summary: "\nThe exception thrown while authenticating the request\n"
+  example: []
+  syntax:
+    content: public Exception Exception { get; set; }
+    parameters: []
+    return:
+      type: Exception
+    content.vb: Public Property Exception As Exception
+  overload: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.Exception*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.#ctor(HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.#ctor(HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)
+  id: '#ctor(HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)'
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext
+  langs:
+  - csharp
+  - vb
+  name: AuthenticationFailedContext(HttpContext, AuthenticationScheme, BasicAuthenticationOptions)
+  nameWithType: AuthenticationFailedContext.AuthenticationFailedContext(HttpContext, AuthenticationScheme, BasicAuthenticationOptions)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.AuthenticationFailedContext(HttpContext, AuthenticationScheme, Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationFailedContext.cs
+    id: .ctor
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationFailedContext.cs
+    startLine: 24
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  summary: "\nAuthentication Failed Context constructor\n"
+  example: []
+  syntax:
+    content: public AuthenticationFailedContext(HttpContext context, AuthenticationScheme scheme, BasicAuthenticationOptions options)
+    parameters:
+    - id: context
+      type: HttpContext
+      description: HttpContext of the request containing the Authorize header
+    - id: scheme
+      type: AuthenticationScheme
+      description: The auth scheme
+    - id: options
+      type: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+      description: Basic auth options
+    content.vb: Public Sub New(context As HttpContext, scheme As AuthenticationScheme, options As BasicAuthenticationOptions)
+  overload: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic.Events
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic.Events
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.Exception*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.Exception
+  isExternal: false
+  name: Exception
+  nameWithType: AuthenticationFailedContext.Exception
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.Exception
+- uid: Exception
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: Exception
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.#ctor*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.#ctor
+  isExternal: false
+  name: AuthenticationFailedContext
+  nameWithType: AuthenticationFailedContext.AuthenticationFailedContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.AuthenticationFailedContext
+- uid: HttpContext
+  isExternal: true
+  name: HttpContext
+  nameWithType: HttpContext
+  fullName: HttpContext
+- uid: AuthenticationScheme
+  isExternal: true
+  name: AuthenticationScheme
+  nameWithType: AuthenticationScheme
+  fullName: AuthenticationScheme
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: BasicAuthenticationOptions
+  nameWithType: BasicAuthenticationOptions
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+- uid: Cumulocity.AspNetCore.Authentication.Basic
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic
+  fullName: Cumulocity.AspNetCore.Authentication.Basic

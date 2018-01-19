@@ -1,0 +1,502 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler
+  id: BasicAuthenticationHandler
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  children:
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.#ctor(Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier,IOptionsMonitor{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},ILoggerFactory,UrlEncoder,ISystemClock)
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.CreateEventsAsync
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.Events
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleChallengeAsync(AuthenticationProperties)
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationHandler
+  nameWithType: BasicAuthenticationHandler
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    id: BasicAuthenticationHandler
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    startLine: 15
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: 'public class BasicAuthenticationHandler : AuthenticationHandler<BasicAuthenticationOptions>'
+    content.vb: >-
+      Public Class BasicAuthenticationHandler
+          Inherits AuthenticationHandler(Of BasicAuthenticationOptions)
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.CreateEventsAsync
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.CreateEventsAsync
+  id: CreateEventsAsync
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler
+  langs:
+  - csharp
+  - vb
+  name: CreateEventsAsync()
+  nameWithType: BasicAuthenticationHandler.CreateEventsAsync()
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.CreateEventsAsync()
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    id: CreateEventsAsync
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    startLine: 19
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: protected override Task<object> CreateEventsAsync()
+    return:
+      type: Task{System.Object}
+    content.vb: Protected Overrides Function CreateEventsAsync As Task(Of Object)
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.CreateEventsAsync*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.Events
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.Events
+  id: Events
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler
+  langs:
+  - csharp
+  - vb
+  name: Events
+  nameWithType: BasicAuthenticationHandler.Events
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.Events
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    id: Events
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    startLine: 21
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: protected BasicAuthenticationEvents Events { get; set; }
+    parameters: []
+    return:
+      type: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+    content.vb: Protected Property Events As BasicAuthenticationEvents
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.Events*
+  modifiers.csharp:
+  - protected
+  - get
+  - set
+  modifiers.vb:
+  - Protected
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.#ctor(Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier,IOptionsMonitor{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},ILoggerFactory,UrlEncoder,ISystemClock)
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.#ctor(Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier,IOptionsMonitor{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},ILoggerFactory,UrlEncoder,ISystemClock)
+  id: '#ctor(Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier,IOptionsMonitor{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},ILoggerFactory,UrlEncoder,ISystemClock)'
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationHandler(IBasicCredentialVerifier, IOptionsMonitor<BasicAuthenticationOptions>, ILoggerFactory, UrlEncoder, ISystemClock)
+  nameWithType: BasicAuthenticationHandler.BasicAuthenticationHandler(IBasicCredentialVerifier, IOptionsMonitor<BasicAuthenticationOptions>, ILoggerFactory, UrlEncoder, ISystemClock)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.BasicAuthenticationHandler(Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier, IOptionsMonitor<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions>, ILoggerFactory, UrlEncoder, ISystemClock)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    id: .ctor
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    startLine: 27
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: public BasicAuthenticationHandler(IBasicCredentialVerifier authenticationVerifier, IOptionsMonitor<BasicAuthenticationOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
+    parameters:
+    - id: authenticationVerifier
+      type: Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier
+    - id: options
+      type: IOptionsMonitor{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}
+    - id: logger
+      type: ILoggerFactory
+    - id: encoder
+      type: UrlEncoder
+    - id: clock
+      type: ISystemClock
+    content.vb: Public Sub New(authenticationVerifier As IBasicCredentialVerifier, options As IOptionsMonitor(Of BasicAuthenticationOptions), logger As ILoggerFactory, encoder As UrlEncoder, clock As ISystemClock)
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.#ctor*
+  nameWithType.vb: BasicAuthenticationHandler.BasicAuthenticationHandler(IBasicCredentialVerifier, IOptionsMonitor(Of BasicAuthenticationOptions), ILoggerFactory, UrlEncoder, ISystemClock)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.BasicAuthenticationHandler(Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier, IOptionsMonitor(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions), ILoggerFactory, UrlEncoder, ISystemClock)
+  name.vb: BasicAuthenticationHandler(IBasicCredentialVerifier, IOptionsMonitor(Of BasicAuthenticationOptions), ILoggerFactory, UrlEncoder, ISystemClock)
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync
+  id: HandleAuthenticateAsync
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler
+  langs:
+  - csharp
+  - vb
+  name: HandleAuthenticateAsync()
+  nameWithType: BasicAuthenticationHandler.HandleAuthenticateAsync()
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync()
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    id: HandleAuthenticateAsync
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    startLine: 47
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: protected override Task<AuthenticateResult> HandleAuthenticateAsync()
+    return:
+      type: Task{AuthenticateResult}
+    content.vb: Protected Overrides Function HandleAuthenticateAsync As Task(Of AuthenticateResult)
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleChallengeAsync(AuthenticationProperties)
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleChallengeAsync(AuthenticationProperties)
+  id: HandleChallengeAsync(AuthenticationProperties)
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler
+  langs:
+  - csharp
+  - vb
+  name: HandleChallengeAsync(AuthenticationProperties)
+  nameWithType: BasicAuthenticationHandler.HandleChallengeAsync(AuthenticationProperties)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleChallengeAsync(AuthenticationProperties)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    id: HandleChallengeAsync
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationHandler.cs
+    startLine: 121
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: protected override Task HandleChallengeAsync(AuthenticationProperties properties)
+    parameters:
+    - id: properties
+      type: AuthenticationProperties
+    return:
+      type: Task
+    content.vb: Protected Overrides Function HandleChallengeAsync(properties As AuthenticationProperties) As Task
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleChallengeAsync*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+references:
+- uid: Cumulocity.AspNetCore.Authentication.Basic
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic
+  fullName: Cumulocity.AspNetCore.Authentication.Basic
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.CreateEventsAsync*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.CreateEventsAsync
+  isExternal: false
+  name: CreateEventsAsync
+  nameWithType: BasicAuthenticationHandler.CreateEventsAsync
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.CreateEventsAsync
+- uid: Task{System.Object}
+  commentId: '!:Task{System.Object}'
+  definition: Task`1
+  name: Task<Object>
+  nameWithType: Task<Object>
+  fullName: Task<System.Object>
+  nameWithType.vb: Task(Of Object)
+  fullName.vb: Task(Of System.Object)
+  name.vb: Task(Of Object)
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.Object
+    name: Object
+    nameWithType: Object
+    fullName: System.Object
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Task`1
+  isExternal: true
+  name: Task<>
+  nameWithType: Task<>
+  fullName: Task<>
+  nameWithType.vb: Task(Of )
+  fullName.vb: Task(Of )
+  name.vb: Task(Of )
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.Events*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.Events
+  isExternal: false
+  name: Events
+  nameWithType: BasicAuthenticationHandler.Events
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.Events
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: BasicAuthenticationEvents
+  nameWithType: BasicAuthenticationEvents
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.#ctor*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.#ctor
+  isExternal: false
+  name: BasicAuthenticationHandler
+  nameWithType: BasicAuthenticationHandler.BasicAuthenticationHandler
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.BasicAuthenticationHandler
+- uid: Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: IBasicCredentialVerifier
+  nameWithType: IBasicCredentialVerifier
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier
+- uid: IOptionsMonitor{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}
+  commentId: '!:IOptionsMonitor{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}'
+  definition: IOptionsMonitor`1
+  name: IOptionsMonitor<BasicAuthenticationOptions>
+  nameWithType: IOptionsMonitor<BasicAuthenticationOptions>
+  fullName: IOptionsMonitor<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions>
+  nameWithType.vb: IOptionsMonitor(Of BasicAuthenticationOptions)
+  fullName.vb: IOptionsMonitor(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)
+  name.vb: IOptionsMonitor(Of BasicAuthenticationOptions)
+  spec.csharp:
+  - uid: IOptionsMonitor`1
+    name: IOptionsMonitor
+    nameWithType: IOptionsMonitor
+    fullName: IOptionsMonitor
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+    name: BasicAuthenticationOptions
+    nameWithType: BasicAuthenticationOptions
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IOptionsMonitor`1
+    name: IOptionsMonitor
+    nameWithType: IOptionsMonitor
+    fullName: IOptionsMonitor
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+    name: BasicAuthenticationOptions
+    nameWithType: BasicAuthenticationOptions
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: ILoggerFactory
+  isExternal: true
+  name: ILoggerFactory
+  nameWithType: ILoggerFactory
+  fullName: ILoggerFactory
+- uid: UrlEncoder
+  commentId: '!:UrlEncoder'
+  isExternal: true
+  name: UrlEncoder
+  nameWithType: UrlEncoder
+  fullName: UrlEncoder
+- uid: ISystemClock
+  commentId: '!:ISystemClock'
+  isExternal: true
+  name: ISystemClock
+  nameWithType: ISystemClock
+  fullName: ISystemClock
+- uid: IOptionsMonitor`1
+  commentId: '!:IOptionsMonitor`1'
+  isExternal: true
+  name: IOptionsMonitor<>
+  nameWithType: IOptionsMonitor<>
+  fullName: IOptionsMonitor<>
+  nameWithType.vb: IOptionsMonitor(Of )
+  fullName.vb: IOptionsMonitor(Of )
+  name.vb: IOptionsMonitor(Of )
+  spec.csharp:
+  - uid: IOptionsMonitor`1
+    name: IOptionsMonitor
+    nameWithType: IOptionsMonitor
+    fullName: IOptionsMonitor
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IOptionsMonitor`1
+    name: IOptionsMonitor
+    nameWithType: IOptionsMonitor
+    fullName: IOptionsMonitor
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync
+  isExternal: false
+  name: HandleAuthenticateAsync
+  nameWithType: BasicAuthenticationHandler.HandleAuthenticateAsync
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync
+- uid: Task{AuthenticateResult}
+  commentId: '!:Task{AuthenticateResult}'
+  definition: Task`1
+  name: Task<AuthenticateResult>
+  nameWithType: Task<AuthenticateResult>
+  fullName: Task<AuthenticateResult>
+  nameWithType.vb: Task(Of AuthenticateResult)
+  fullName.vb: Task(Of AuthenticateResult)
+  name.vb: Task(Of AuthenticateResult)
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: AuthenticateResult
+    name: AuthenticateResult
+    nameWithType: AuthenticateResult
+    fullName: AuthenticateResult
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: AuthenticateResult
+    name: AuthenticateResult
+    nameWithType: AuthenticateResult
+    fullName: AuthenticateResult
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleChallengeAsync*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleChallengeAsync
+  isExternal: false
+  name: HandleChallengeAsync
+  nameWithType: BasicAuthenticationHandler.HandleChallengeAsync
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleChallengeAsync
+- uid: AuthenticationProperties
+  isExternal: true
+  name: AuthenticationProperties
+  nameWithType: AuthenticationProperties
+  fullName: AuthenticationProperties
+- uid: Task
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: Task

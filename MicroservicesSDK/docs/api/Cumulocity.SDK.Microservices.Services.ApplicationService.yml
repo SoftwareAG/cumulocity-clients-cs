@@ -1,0 +1,668 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService
+  commentId: T:Cumulocity.SDK.Microservices.Services.ApplicationService
+  id: ApplicationService
+  parent: Cumulocity.SDK.Microservices.Services
+  children:
+  - Cumulocity.SDK.Microservices.Services.ApplicationService.#ctor(ILogger{Cumulocity.SDK.Microservices.Services.ApplicationService},Cumulocity.SDK.Microservices.Settings.Platform,IHttpContextAccessor)
+  - Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentApplicationSubscriptions
+  - Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser(System.String)
+  - Cumulocity.SDK.Microservices.Services.ApplicationService.GetUsers
+  - Cumulocity.SDK.Microservices.Services.ApplicationService.HttpContextAccessor
+  langs:
+  - csharp
+  - vb
+  name: ApplicationService
+  nameWithType: ApplicationService
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    id: ApplicationService
+    path: ../src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    startLine: 17
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Services
+  syntax:
+    content: 'public class ApplicationService : object, IApplicationService'
+    content.vb: >-
+      Public Class ApplicationService
+          Inherits Object
+          Implements IApplicationService
+  inheritance:
+  - System.Object
+  implements:
+  - Cumulocity.SDK.Microservices.Services.IApplicationService
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService.HttpContextAccessor
+  commentId: P:Cumulocity.SDK.Microservices.Services.ApplicationService.HttpContextAccessor
+  id: HttpContextAccessor
+  parent: Cumulocity.SDK.Microservices.Services.ApplicationService
+  langs:
+  - csharp
+  - vb
+  name: HttpContextAccessor
+  nameWithType: ApplicationService.HttpContextAccessor
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService.HttpContextAccessor
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    id: HttpContextAccessor
+    path: ../src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    startLine: 23
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Services
+  syntax:
+    content: public IHttpContextAccessor HttpContextAccessor { get; }
+    parameters: []
+    return:
+      type: IHttpContextAccessor
+    content.vb: Public ReadOnly Property HttpContextAccessor As IHttpContextAccessor
+  overload: Cumulocity.SDK.Microservices.Services.ApplicationService.HttpContextAccessor*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService.#ctor(ILogger{Cumulocity.SDK.Microservices.Services.ApplicationService},Cumulocity.SDK.Microservices.Settings.Platform,IHttpContextAccessor)
+  commentId: M:Cumulocity.SDK.Microservices.Services.ApplicationService.#ctor(ILogger{Cumulocity.SDK.Microservices.Services.ApplicationService},Cumulocity.SDK.Microservices.Settings.Platform,IHttpContextAccessor)
+  id: '#ctor(ILogger{Cumulocity.SDK.Microservices.Services.ApplicationService},Cumulocity.SDK.Microservices.Settings.Platform,IHttpContextAccessor)'
+  parent: Cumulocity.SDK.Microservices.Services.ApplicationService
+  langs:
+  - csharp
+  - vb
+  name: ApplicationService(ILogger<ApplicationService>, Platform, IHttpContextAccessor)
+  nameWithType: ApplicationService.ApplicationService(ILogger<ApplicationService>, Platform, IHttpContextAccessor)
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService.ApplicationService(ILogger<Cumulocity.SDK.Microservices.Services.ApplicationService>, Cumulocity.SDK.Microservices.Settings.Platform, IHttpContextAccessor)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    id: .ctor
+    path: ../src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    startLine: 25
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Services
+  syntax:
+    content: public ApplicationService(ILogger<ApplicationService> logger, Platform platform, IHttpContextAccessor httpContextAccessor)
+    parameters:
+    - id: logger
+      type: ILogger{Cumulocity.SDK.Microservices.Services.ApplicationService}
+    - id: platform
+      type: Cumulocity.SDK.Microservices.Settings.Platform
+    - id: httpContextAccessor
+      type: IHttpContextAccessor
+    content.vb: Public Sub New(logger As ILogger(Of ApplicationService), platform As Platform, httpContextAccessor As IHttpContextAccessor)
+  overload: Cumulocity.SDK.Microservices.Services.ApplicationService.#ctor*
+  nameWithType.vb: ApplicationService.ApplicationService(ILogger(Of ApplicationService), Platform, IHttpContextAccessor)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Cumulocity.SDK.Microservices.Services.ApplicationService.ApplicationService(ILogger(Of Cumulocity.SDK.Microservices.Services.ApplicationService), Cumulocity.SDK.Microservices.Settings.Platform, IHttpContextAccessor)
+  name.vb: ApplicationService(ILogger(Of ApplicationService), Platform, IHttpContextAccessor)
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentApplicationSubscriptions
+  commentId: M:Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentApplicationSubscriptions
+  id: GetCurrentApplicationSubscriptions
+  parent: Cumulocity.SDK.Microservices.Services.ApplicationService
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentApplicationSubscriptions()
+  nameWithType: ApplicationService.GetCurrentApplicationSubscriptions()
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentApplicationSubscriptions()
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    id: GetCurrentApplicationSubscriptions
+    path: ../src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    startLine: 32
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Services
+  syntax:
+    content: public Task<List<Subscription>> GetCurrentApplicationSubscriptions()
+    return:
+      type: Task{List{Cumulocity.SDK.Microservices.Model.Subscription}}
+    content.vb: Public Function GetCurrentApplicationSubscriptions As Task(Of List(Of Subscription))
+  overload: Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentApplicationSubscriptions*
+  implements:
+  - Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser(System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser(System.String)
+  id: GetCurrentUser(System.String)
+  parent: Cumulocity.SDK.Microservices.Services.ApplicationService
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentUser(String)
+  nameWithType: ApplicationService.GetCurrentUser(String)
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser(System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    id: GetCurrentUser
+    path: ../src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    startLine: 61
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Services
+  syntax:
+    content: public Task<BasicAuthenticationResult> GetCurrentUser(string authCred)
+    parameters:
+    - id: authCred
+      type: System.String
+    return:
+      type: Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}
+    content.vb: Public Function GetCurrentUser(authCred As String) As Task(Of BasicAuthenticationResult)
+  overload: Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser*
+  implements:
+  - Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser(System.String)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService.GetUsers
+  commentId: M:Cumulocity.SDK.Microservices.Services.ApplicationService.GetUsers
+  id: GetUsers
+  parent: Cumulocity.SDK.Microservices.Services.ApplicationService
+  langs:
+  - csharp
+  - vb
+  name: GetUsers()
+  nameWithType: ApplicationService.GetUsers()
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService.GetUsers()
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    id: GetUsers
+    path: ../src/Cumulocity.SDK.Microservices/Services/ApplicationService.cs
+    startLine: 95
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Services
+  syntax:
+    content: public Task<IList<User>> GetUsers()
+    return:
+      type: Task{IList{Cumulocity.SDK.Microservices.Model.User}}
+    content.vb: Public Function GetUsers As Task(Of IList(Of User))
+  overload: Cumulocity.SDK.Microservices.Services.ApplicationService.GetUsers*
+  implements:
+  - Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.SDK.Microservices.Services
+  commentId: N:Cumulocity.SDK.Microservices.Services
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Services
+  nameWithType: Cumulocity.SDK.Microservices.Services
+  fullName: Cumulocity.SDK.Microservices.Services
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService
+  commentId: T:Cumulocity.SDK.Microservices.Services.IApplicationService
+  parent: Cumulocity.SDK.Microservices.Services
+  isExternal: false
+  name: IApplicationService
+  nameWithType: IApplicationService
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService.HttpContextAccessor*
+  commentId: Overload:Cumulocity.SDK.Microservices.Services.ApplicationService.HttpContextAccessor
+  isExternal: false
+  name: HttpContextAccessor
+  nameWithType: ApplicationService.HttpContextAccessor
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService.HttpContextAccessor
+- uid: IHttpContextAccessor
+  isExternal: true
+  name: IHttpContextAccessor
+  nameWithType: IHttpContextAccessor
+  fullName: IHttpContextAccessor
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService.#ctor*
+  commentId: Overload:Cumulocity.SDK.Microservices.Services.ApplicationService.#ctor
+  isExternal: false
+  name: ApplicationService
+  nameWithType: ApplicationService.ApplicationService
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService.ApplicationService
+- uid: ILogger{Cumulocity.SDK.Microservices.Services.ApplicationService}
+  commentId: '!:ILogger{Cumulocity.SDK.Microservices.Services.ApplicationService}'
+  definition: ILogger`1
+  name: ILogger<ApplicationService>
+  nameWithType: ILogger<ApplicationService>
+  fullName: ILogger<Cumulocity.SDK.Microservices.Services.ApplicationService>
+  nameWithType.vb: ILogger(Of ApplicationService)
+  fullName.vb: ILogger(Of Cumulocity.SDK.Microservices.Services.ApplicationService)
+  name.vb: ILogger(Of ApplicationService)
+  spec.csharp:
+  - uid: ILogger`1
+    name: ILogger
+    nameWithType: ILogger
+    fullName: ILogger
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.SDK.Microservices.Services.ApplicationService
+    name: ApplicationService
+    nameWithType: ApplicationService
+    fullName: Cumulocity.SDK.Microservices.Services.ApplicationService
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: ILogger`1
+    name: ILogger
+    nameWithType: ILogger
+    fullName: ILogger
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.SDK.Microservices.Services.ApplicationService
+    name: ApplicationService
+    nameWithType: ApplicationService
+    fullName: Cumulocity.SDK.Microservices.Services.ApplicationService
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Settings.Platform
+  commentId: T:Cumulocity.SDK.Microservices.Settings.Platform
+  parent: Cumulocity.SDK.Microservices.Settings
+  isExternal: false
+  name: Platform
+  nameWithType: Platform
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform
+- uid: ILogger`1
+  commentId: '!:ILogger`1'
+  isExternal: true
+  name: ILogger<>
+  nameWithType: ILogger<>
+  fullName: ILogger<>
+  nameWithType.vb: ILogger(Of )
+  fullName.vb: ILogger(Of )
+  name.vb: ILogger(Of )
+  spec.csharp:
+  - uid: ILogger`1
+    name: ILogger
+    nameWithType: ILogger
+    fullName: ILogger
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: ILogger`1
+    name: ILogger
+    nameWithType: ILogger
+    fullName: ILogger
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Settings
+  commentId: N:Cumulocity.SDK.Microservices.Settings
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Settings
+  nameWithType: Cumulocity.SDK.Microservices.Settings
+  fullName: Cumulocity.SDK.Microservices.Settings
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentApplicationSubscriptions*
+  commentId: Overload:Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentApplicationSubscriptions
+  isExternal: false
+  name: GetCurrentApplicationSubscriptions
+  nameWithType: ApplicationService.GetCurrentApplicationSubscriptions
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentApplicationSubscriptions
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+  commentId: M:Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+  parent: Cumulocity.SDK.Microservices.Services.IApplicationService
+  isExternal: false
+  name: GetCurrentApplicationSubscriptions()
+  nameWithType: IApplicationService.GetCurrentApplicationSubscriptions()
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions()
+  spec.csharp:
+  - uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+    name: GetCurrentApplicationSubscriptions
+    nameWithType: IApplicationService.GetCurrentApplicationSubscriptions
+    fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+    name: GetCurrentApplicationSubscriptions
+    nameWithType: IApplicationService.GetCurrentApplicationSubscriptions
+    fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Task{List{Cumulocity.SDK.Microservices.Model.Subscription}}
+  commentId: '!:Task{List{Cumulocity.SDK.Microservices.Model.Subscription}}'
+  definition: Task`1
+  name: Task<List<Subscription>>
+  nameWithType: Task<List<Subscription>>
+  fullName: Task<List<Cumulocity.SDK.Microservices.Model.Subscription>>
+  nameWithType.vb: Task(Of List(Of Subscription))
+  fullName.vb: Task(Of List(Of Cumulocity.SDK.Microservices.Model.Subscription))
+  name.vb: Task(Of List(Of Subscription))
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.SDK.Microservices.Model.Subscription
+    name: Subscription
+    nameWithType: Subscription
+    fullName: Cumulocity.SDK.Microservices.Model.Subscription
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.SDK.Microservices.Model.Subscription
+    name: Subscription
+    nameWithType: Subscription
+    fullName: Cumulocity.SDK.Microservices.Model.Subscription
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Task`1
+  isExternal: true
+  name: Task<>
+  nameWithType: Task<>
+  fullName: Task<>
+  nameWithType.vb: Task(Of )
+  fullName.vb: Task(Of )
+  name.vb: Task(Of )
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser*
+  commentId: Overload:Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser
+  isExternal: false
+  name: GetCurrentUser
+  nameWithType: ApplicationService.GetCurrentUser
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser(System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser(System.String)
+  parent: Cumulocity.SDK.Microservices.Services.IApplicationService
+  isExternal: true
+  name: GetCurrentUser(String)
+  nameWithType: IApplicationService.GetCurrentUser(String)
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser(System.String)
+  spec.csharp:
+  - uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser(System.String)
+    name: GetCurrentUser
+    nameWithType: IApplicationService.GetCurrentUser
+    fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser(System.String)
+    name: GetCurrentUser
+    nameWithType: IApplicationService.GetCurrentUser
+    fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: System.String
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}
+  commentId: '!:Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}'
+  definition: Task`1
+  name: Task<BasicAuthenticationResult>
+  nameWithType: Task<BasicAuthenticationResult>
+  fullName: Task<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult>
+  nameWithType.vb: Task(Of BasicAuthenticationResult)
+  fullName.vb: Task(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult)
+  name.vb: Task(Of BasicAuthenticationResult)
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+    name: BasicAuthenticationResult
+    nameWithType: BasicAuthenticationResult
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+    name: BasicAuthenticationResult
+    nameWithType: BasicAuthenticationResult
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Services.ApplicationService.GetUsers*
+  commentId: Overload:Cumulocity.SDK.Microservices.Services.ApplicationService.GetUsers
+  isExternal: false
+  name: GetUsers
+  nameWithType: ApplicationService.GetUsers
+  fullName: Cumulocity.SDK.Microservices.Services.ApplicationService.GetUsers
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+  commentId: M:Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+  parent: Cumulocity.SDK.Microservices.Services.IApplicationService
+  isExternal: false
+  name: GetUsers()
+  nameWithType: IApplicationService.GetUsers()
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers()
+  spec.csharp:
+  - uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+    name: GetUsers
+    nameWithType: IApplicationService.GetUsers
+    fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+    name: GetUsers
+    nameWithType: IApplicationService.GetUsers
+    fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+  - name: (
+    nameWithType: (
+    fullName: (
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Task{IList{Cumulocity.SDK.Microservices.Model.User}}
+  commentId: '!:Task{IList{Cumulocity.SDK.Microservices.Model.User}}'
+  definition: Task`1
+  name: Task<IList<User>>
+  nameWithType: Task<IList<User>>
+  fullName: Task<IList<Cumulocity.SDK.Microservices.Model.User>>
+  nameWithType.vb: Task(Of IList(Of User))
+  fullName.vb: Task(Of IList(Of Cumulocity.SDK.Microservices.Model.User))
+  name.vb: Task(Of IList(Of User))
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.SDK.Microservices.Model.User
+    name: User
+    nameWithType: User
+    fullName: Cumulocity.SDK.Microservices.Model.User
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.SDK.Microservices.Model.User
+    name: User
+    nameWithType: User
+    fullName: Cumulocity.SDK.Microservices.Model.User
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )

@@ -1,0 +1,72 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Model
+  commentId: N:Cumulocity.SDK.Microservices.Model
+  id: Cumulocity.SDK.Microservices.Model
+  children:
+  - Cumulocity.SDK.Microservices.Model.ChangedSubscription
+  - Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription
+  - Cumulocity.SDK.Microservices.Model.Role
+  - Cumulocity.SDK.Microservices.Model.Subscription
+  - Cumulocity.SDK.Microservices.Model.User
+  - Cumulocity.SDK.Microservices.Model.UserRoles
+  - Cumulocity.SDK.Microservices.Model.UserRolesConverter
+  langs:
+  - csharp
+  - vb
+  name: Cumulocity.SDK.Microservices.Model
+  nameWithType: Cumulocity.SDK.Microservices.Model
+  fullName: Cumulocity.SDK.Microservices.Model
+  type: Namespace
+  assemblies:
+  - Cumulocity.SDK.Microservices
+references:
+- uid: Cumulocity.SDK.Microservices.Model.Role
+  commentId: T:Cumulocity.SDK.Microservices.Model.Role
+  isExternal: false
+  name: Role
+  nameWithType: Role
+  fullName: Cumulocity.SDK.Microservices.Model.Role
+- uid: Cumulocity.SDK.Microservices.Model.Subscription
+  commentId: T:Cumulocity.SDK.Microservices.Model.Subscription
+  parent: Cumulocity.SDK.Microservices.Model
+  isExternal: false
+  name: Subscription
+  nameWithType: Subscription
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription
+- uid: Cumulocity.SDK.Microservices.Model.ChangedSubscription
+  commentId: T:Cumulocity.SDK.Microservices.Model.ChangedSubscription
+  isExternal: false
+  name: ChangedSubscription
+  nameWithType: ChangedSubscription
+  fullName: Cumulocity.SDK.Microservices.Model.ChangedSubscription
+- uid: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription
+  commentId: T:Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription
+  isExternal: false
+  name: CurrentApplicationSubscription
+  nameWithType: CurrentApplicationSubscription
+  fullName: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription
+- uid: Cumulocity.SDK.Microservices.Model.User
+  commentId: T:Cumulocity.SDK.Microservices.Model.User
+  isExternal: false
+  name: User
+  nameWithType: User
+  fullName: Cumulocity.SDK.Microservices.Model.User
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles
+  commentId: T:Cumulocity.SDK.Microservices.Model.UserRoles
+  isExternal: false
+  name: UserRoles
+  nameWithType: UserRoles
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles
+- uid: Cumulocity.SDK.Microservices.Model.UserRolesConverter
+  commentId: T:Cumulocity.SDK.Microservices.Model.UserRolesConverter
+  isExternal: false
+  name: UserRolesConverter
+  nameWithType: UserRolesConverter
+  fullName: Cumulocity.SDK.Microservices.Model.UserRolesConverter
+- uid: Cumulocity.SDK.Microservices.Model
+  commentId: N:Cumulocity.SDK.Microservices.Model
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Model
+  nameWithType: Cumulocity.SDK.Microservices.Model
+  fullName: Cumulocity.SDK.Microservices.Model

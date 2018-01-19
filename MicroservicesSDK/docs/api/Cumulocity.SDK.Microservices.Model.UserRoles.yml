@@ -1,0 +1,372 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles
+  commentId: T:Cumulocity.SDK.Microservices.Model.UserRoles
+  id: UserRoles
+  parent: Cumulocity.SDK.Microservices.Model
+  children:
+  - Cumulocity.SDK.Microservices.Model.UserRoles.LastPasswordChange
+  - Cumulocity.SDK.Microservices.Model.UserRoles.Lists
+  - Cumulocity.SDK.Microservices.Model.UserRoles.Self
+  - Cumulocity.SDK.Microservices.Model.UserRoles.ShouldResetPassword
+  - Cumulocity.SDK.Microservices.Model.UserRoles.UserName
+  - Cumulocity.SDK.Microservices.Model.UserRoles.UserNo
+  langs:
+  - csharp
+  - vb
+  name: UserRoles
+  nameWithType: UserRoles
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    id: UserRoles
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    startLine: 7
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: 'public class UserRoles : object'
+    content.vb: >-
+      Public Class UserRoles
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.UserNo
+  commentId: P:Cumulocity.SDK.Microservices.Model.UserRoles.UserNo
+  id: UserNo
+  parent: Cumulocity.SDK.Microservices.Model.UserRoles
+  langs:
+  - csharp
+  - vb
+  name: UserNo
+  nameWithType: UserRoles.UserNo
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.UserNo
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    id: UserNo
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string UserNo { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property UserNo As String
+  overload: Cumulocity.SDK.Microservices.Model.UserRoles.UserNo*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.LastPasswordChange
+  commentId: P:Cumulocity.SDK.Microservices.Model.UserRoles.LastPasswordChange
+  id: LastPasswordChange
+  parent: Cumulocity.SDK.Microservices.Model.UserRoles
+  langs:
+  - csharp
+  - vb
+  name: LastPasswordChange
+  nameWithType: UserRoles.LastPasswordChange
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.LastPasswordChange
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    id: LastPasswordChange
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    startLine: 12
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string LastPasswordChange { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property LastPasswordChange As String
+  overload: Cumulocity.SDK.Microservices.Model.UserRoles.LastPasswordChange*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.Self
+  commentId: P:Cumulocity.SDK.Microservices.Model.UserRoles.Self
+  id: Self
+  parent: Cumulocity.SDK.Microservices.Model.UserRoles
+  langs:
+  - csharp
+  - vb
+  name: Self
+  nameWithType: UserRoles.Self
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.Self
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    id: Self
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    startLine: 15
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string Self { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Self As String
+  overload: Cumulocity.SDK.Microservices.Model.UserRoles.Self*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.ShouldResetPassword
+  commentId: P:Cumulocity.SDK.Microservices.Model.UserRoles.ShouldResetPassword
+  id: ShouldResetPassword
+  parent: Cumulocity.SDK.Microservices.Model.UserRoles
+  langs:
+  - csharp
+  - vb
+  name: ShouldResetPassword
+  nameWithType: UserRoles.ShouldResetPassword
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.ShouldResetPassword
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    id: ShouldResetPassword
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    startLine: 18
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string ShouldResetPassword { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ShouldResetPassword As String
+  overload: Cumulocity.SDK.Microservices.Model.UserRoles.ShouldResetPassword*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.UserName
+  commentId: P:Cumulocity.SDK.Microservices.Model.UserRoles.UserName
+  id: UserName
+  parent: Cumulocity.SDK.Microservices.Model.UserRoles
+  langs:
+  - csharp
+  - vb
+  name: UserName
+  nameWithType: UserRoles.UserName
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.UserName
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    id: UserName
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    startLine: 21
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string UserName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property UserName As String
+  overload: Cumulocity.SDK.Microservices.Model.UserRoles.UserName*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.Lists
+  commentId: P:Cumulocity.SDK.Microservices.Model.UserRoles.Lists
+  id: Lists
+  parent: Cumulocity.SDK.Microservices.Model.UserRoles
+  langs:
+  - csharp
+  - vb
+  name: Lists
+  nameWithType: UserRoles.Lists
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.Lists
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    id: Lists
+    path: ../src/Cumulocity.SDK.Microservices/Model/UserRoles.cs
+    startLine: 24
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public List<Role> Lists { get; set; }
+    parameters: []
+    return:
+      type: List{Cumulocity.SDK.Microservices.Model.Role}
+    content.vb: Public Property Lists As List(Of Role)
+  overload: Cumulocity.SDK.Microservices.Model.UserRoles.Lists*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.SDK.Microservices.Model
+  commentId: N:Cumulocity.SDK.Microservices.Model
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Model
+  nameWithType: Cumulocity.SDK.Microservices.Model
+  fullName: Cumulocity.SDK.Microservices.Model
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.UserNo*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.UserRoles.UserNo
+  isExternal: false
+  name: UserNo
+  nameWithType: UserRoles.UserNo
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.UserNo
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.LastPasswordChange*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.UserRoles.LastPasswordChange
+  isExternal: false
+  name: LastPasswordChange
+  nameWithType: UserRoles.LastPasswordChange
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.LastPasswordChange
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.Self*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.UserRoles.Self
+  isExternal: false
+  name: Self
+  nameWithType: UserRoles.Self
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.Self
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.ShouldResetPassword*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.UserRoles.ShouldResetPassword
+  isExternal: false
+  name: ShouldResetPassword
+  nameWithType: UserRoles.ShouldResetPassword
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.ShouldResetPassword
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.UserName*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.UserRoles.UserName
+  isExternal: false
+  name: UserName
+  nameWithType: UserRoles.UserName
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.UserName
+- uid: Cumulocity.SDK.Microservices.Model.UserRoles.Lists*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.UserRoles.Lists
+  isExternal: false
+  name: Lists
+  nameWithType: UserRoles.Lists
+  fullName: Cumulocity.SDK.Microservices.Model.UserRoles.Lists
+- uid: List{Cumulocity.SDK.Microservices.Model.Role}
+  commentId: '!:List{Cumulocity.SDK.Microservices.Model.Role}'
+  definition: List`1
+  name: List<Role>
+  nameWithType: List<Role>
+  fullName: List<Cumulocity.SDK.Microservices.Model.Role>
+  nameWithType.vb: List(Of Role)
+  fullName.vb: List(Of Cumulocity.SDK.Microservices.Model.Role)
+  name.vb: List(Of Role)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.SDK.Microservices.Model.Role
+    name: Role
+    nameWithType: Role
+    fullName: Cumulocity.SDK.Microservices.Model.Role
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.SDK.Microservices.Model.Role
+    name: Role
+    nameWithType: Role
+    fullName: Cumulocity.SDK.Microservices.Model.Role
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

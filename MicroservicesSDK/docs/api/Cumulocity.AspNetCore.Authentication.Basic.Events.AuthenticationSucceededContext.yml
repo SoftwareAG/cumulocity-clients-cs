@@ -1,0 +1,170 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  id: AuthenticationSucceededContext
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events
+  children:
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.#ctor(System.String,HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.UserId
+  langs:
+  - csharp
+  - vb
+  name: AuthenticationSucceededContext
+  nameWithType: AuthenticationSucceededContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationSucceededContext.cs
+    id: AuthenticationSucceededContext
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationSucceededContext.cs
+    startLine: 10
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  summary: "\nContext of a successful basic authentication\n"
+  example: []
+  syntax:
+    content: 'public class AuthenticationSucceededContext : ResultContext<BasicAuthenticationOptions>'
+    content.vb: >-
+      Public Class AuthenticationSucceededContext
+          Inherits ResultContext(Of BasicAuthenticationOptions)
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.UserId
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.UserId
+  id: UserId
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  langs:
+  - csharp
+  - vb
+  name: UserId
+  nameWithType: AuthenticationSucceededContext.UserId
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.UserId
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationSucceededContext.cs
+    id: UserId
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationSucceededContext.cs
+    startLine: 15
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  summary: "\nThe user id which successfully authenticated\n"
+  example: []
+  syntax:
+    content: public string UserId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property UserId As String
+  overload: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.UserId*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.#ctor(System.String,HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.#ctor(System.String,HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)
+  id: '#ctor(System.String,HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)'
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext
+  langs:
+  - csharp
+  - vb
+  name: AuthenticationSucceededContext(String, HttpContext, AuthenticationScheme, BasicAuthenticationOptions)
+  nameWithType: AuthenticationSucceededContext.AuthenticationSucceededContext(String, HttpContext, AuthenticationScheme, BasicAuthenticationOptions)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.AuthenticationSucceededContext(System.String, HttpContext, AuthenticationScheme, Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationSucceededContext.cs
+    id: .ctor
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/AuthenticationSucceededContext.cs
+    startLine: 24
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  summary: "\nAuthentication Succeeded Context constructor\n"
+  example: []
+  syntax:
+    content: public AuthenticationSucceededContext(string userId, HttpContext context, AuthenticationScheme scheme, BasicAuthenticationOptions options)
+    parameters:
+    - id: userId
+      type: System.String
+      description: The user id which successfully authenticated
+    - id: context
+      type: HttpContext
+      description: HttpContext of the request containing the Authorize header
+    - id: scheme
+      type: AuthenticationScheme
+      description: The auth scheme
+    - id: options
+      type: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+      description: Basic auth options
+    content.vb: Public Sub New(userId As String, context As HttpContext, scheme As AuthenticationScheme, options As BasicAuthenticationOptions)
+  overload: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic.Events
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic.Events
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.UserId*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.UserId
+  isExternal: false
+  name: UserId
+  nameWithType: AuthenticationSucceededContext.UserId
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.UserId
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.#ctor*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.#ctor
+  isExternal: false
+  name: AuthenticationSucceededContext
+  nameWithType: AuthenticationSucceededContext.AuthenticationSucceededContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.AuthenticationSucceededContext
+- uid: HttpContext
+  isExternal: true
+  name: HttpContext
+  nameWithType: HttpContext
+  fullName: HttpContext
+- uid: AuthenticationScheme
+  isExternal: true
+  name: AuthenticationScheme
+  nameWithType: AuthenticationScheme
+  fullName: AuthenticationScheme
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: BasicAuthenticationOptions
+  nameWithType: BasicAuthenticationOptions
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+- uid: Cumulocity.AspNetCore.Authentication.Basic
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic
+  fullName: Cumulocity.AspNetCore.Authentication.Basic

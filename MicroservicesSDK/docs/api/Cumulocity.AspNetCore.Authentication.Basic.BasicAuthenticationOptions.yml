@@ -1,0 +1,193 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  id: BasicAuthenticationOptions
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  children:
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Challenge
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Events
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Realm
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationOptions
+  nameWithType: BasicAuthenticationOptions
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationOptions.cs
+    id: BasicAuthenticationOptions
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationOptions.cs
+    startLine: 7
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nOptions class provides information needed to control Basic Authentication handler behavior\n"
+  example: []
+  syntax:
+    content: 'public class BasicAuthenticationOptions : AuthenticationSchemeOptions'
+    content.vb: >-
+      Public Class BasicAuthenticationOptions
+          Inherits AuthenticationSchemeOptions
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Realm
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Realm
+  id: Realm
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  langs:
+  - csharp
+  - vb
+  name: Realm
+  nameWithType: BasicAuthenticationOptions.Realm
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Realm
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationOptions.cs
+    id: Realm
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationOptions.cs
+    startLine: 16
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nGets or sets the Realm\n"
+  example: []
+  syntax:
+    content: public string Realm { get; set; }
+    parameters: []
+    return:
+      type: System.String
+      description: "\nThe Realm \n"
+    content.vb: Public Property Realm As String
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Realm*
+  seealso:
+  - linkType: HRef
+    linkId: https://tools.ietf.org/html/rfc2617#section-1.2
+    altText: https://tools.ietf.org/html/rfc2617#section-1.2
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Challenge
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Challenge
+  id: Challenge
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  langs:
+  - csharp
+  - vb
+  name: Challenge
+  nameWithType: BasicAuthenticationOptions.Challenge
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Challenge
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationOptions.cs
+    id: Challenge
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationOptions.cs
+    startLine: 21
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nGets the challenge to put in the &quot;WWW-Authenticate&quot; header.\n"
+  example: []
+  syntax:
+    content: public string Challenge { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Challenge As String
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Challenge*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Events
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Events
+  id: Events
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  langs:
+  - csharp
+  - vb
+  name: Events
+  nameWithType: BasicAuthenticationOptions.Events
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Events
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationOptions.cs
+    id: Events
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationOptions.cs
+    startLine: 26
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  summary: "\nThe object provided by the application to process events raised by the basic authentication handler.\n"
+  example: []
+  syntax:
+    content: public BasicAuthenticationEvents Events { get; set; }
+    parameters: []
+    return:
+      type: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+    content.vb: Public Property Events As BasicAuthenticationEvents
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Events*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.AspNetCore.Authentication.Basic
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic
+  fullName: Cumulocity.AspNetCore.Authentication.Basic
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Realm*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Realm
+  isExternal: false
+  name: Realm
+  nameWithType: BasicAuthenticationOptions.Realm
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Realm
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Challenge*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Challenge
+  isExternal: false
+  name: Challenge
+  nameWithType: BasicAuthenticationOptions.Challenge
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Challenge
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Events*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Events
+  isExternal: false
+  name: Events
+  nameWithType: BasicAuthenticationOptions.Events
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.Events
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: BasicAuthenticationEvents
+  nameWithType: BasicAuthenticationEvents
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents

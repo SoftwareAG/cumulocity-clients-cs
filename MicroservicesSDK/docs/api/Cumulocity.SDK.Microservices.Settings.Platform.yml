@@ -1,0 +1,518 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Settings.Platform
+  commentId: T:Cumulocity.SDK.Microservices.Settings.Platform
+  id: Platform
+  parent: Cumulocity.SDK.Microservices.Settings
+  children:
+  - Cumulocity.SDK.Microservices.Settings.Platform.#ctor(Cumulocity.SDK.Microservices.Settings.PlatformSettings)
+  - Cumulocity.SDK.Microservices.Settings.Platform.BASEURL
+  - Cumulocity.SDK.Microservices.Settings.Platform.BASEURL_MQTT
+  - Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_PASSWORD
+  - Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_TENANT
+  - Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_USERNAME
+  - Cumulocity.SDK.Microservices.Settings.Platform.MICROSERIVCE_ISOLATION
+  - Cumulocity.SDK.Microservices.Settings.Platform.PASSWORD
+  - Cumulocity.SDK.Microservices.Settings.Platform.SERVER_PORT
+  - Cumulocity.SDK.Microservices.Settings.Platform.TENANT
+  - Cumulocity.SDK.Microservices.Settings.Platform.USERNAME
+  langs:
+  - csharp
+  - vb
+  name: Platform
+  nameWithType: Platform
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: Platform
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 6
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: 'public class Platform : object'
+    content.vb: >-
+      Public Class Platform
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.#ctor(Cumulocity.SDK.Microservices.Settings.PlatformSettings)
+  commentId: M:Cumulocity.SDK.Microservices.Settings.Platform.#ctor(Cumulocity.SDK.Microservices.Settings.PlatformSettings)
+  id: '#ctor(Cumulocity.SDK.Microservices.Settings.PlatformSettings)'
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: Platform(PlatformSettings)
+  nameWithType: Platform.Platform(PlatformSettings)
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.Platform(Cumulocity.SDK.Microservices.Settings.PlatformSettings)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: .ctor
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 8
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public Platform(PlatformSettings config)
+    parameters:
+    - id: config
+      type: Cumulocity.SDK.Microservices.Settings.PlatformSettings
+    content.vb: Public Sub New(config As PlatformSettings)
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.MICROSERIVCE_ISOLATION
+  commentId: P:Cumulocity.SDK.Microservices.Settings.Platform.MICROSERIVCE_ISOLATION
+  id: MICROSERIVCE_ISOLATION
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: MICROSERIVCE_ISOLATION
+  nameWithType: Platform.MICROSERIVCE_ISOLATION
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.MICROSERIVCE_ISOLATION
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: MICROSERIVCE_ISOLATION
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 24
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public string MICROSERIVCE_ISOLATION { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property MICROSERIVCE_ISOLATION As String
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.MICROSERIVCE_ISOLATION*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.BASEURL
+  commentId: P:Cumulocity.SDK.Microservices.Settings.Platform.BASEURL
+  id: BASEURL
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: BASEURL
+  nameWithType: Platform.BASEURL
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.BASEURL
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: BASEURL
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 25
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public string BASEURL { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property BASEURL As String
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.BASEURL*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.BASEURL_MQTT
+  commentId: P:Cumulocity.SDK.Microservices.Settings.Platform.BASEURL_MQTT
+  id: BASEURL_MQTT
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: BASEURL_MQTT
+  nameWithType: Platform.BASEURL_MQTT
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.BASEURL_MQTT
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: BASEURL_MQTT
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 26
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public string BASEURL_MQTT { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property BASEURL_MQTT As String
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.BASEURL_MQTT*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.TENANT
+  commentId: P:Cumulocity.SDK.Microservices.Settings.Platform.TENANT
+  id: TENANT
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: TENANT
+  nameWithType: Platform.TENANT
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.TENANT
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: TENANT
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 27
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public string TENANT { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TENANT As String
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.TENANT*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.PASSWORD
+  commentId: P:Cumulocity.SDK.Microservices.Settings.Platform.PASSWORD
+  id: PASSWORD
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: PASSWORD
+  nameWithType: Platform.PASSWORD
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.PASSWORD
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: PASSWORD
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 28
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public string PASSWORD { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PASSWORD As String
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.PASSWORD*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.USERNAME
+  commentId: P:Cumulocity.SDK.Microservices.Settings.Platform.USERNAME
+  id: USERNAME
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: USERNAME
+  nameWithType: Platform.USERNAME
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.USERNAME
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: USERNAME
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 29
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public string USERNAME { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property USERNAME As String
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.USERNAME*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.SERVER_PORT
+  commentId: P:Cumulocity.SDK.Microservices.Settings.Platform.SERVER_PORT
+  id: SERVER_PORT
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: SERVER_PORT
+  nameWithType: Platform.SERVER_PORT
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.SERVER_PORT
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: SERVER_PORT
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 30
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public string SERVER_PORT { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SERVER_PORT As String
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.SERVER_PORT*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_TENANT
+  commentId: P:Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_TENANT
+  id: BOOTSTRAP_TENANT
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: BOOTSTRAP_TENANT
+  nameWithType: Platform.BOOTSTRAP_TENANT
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_TENANT
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: BOOTSTRAP_TENANT
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 31
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public string BOOTSTRAP_TENANT { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property BOOTSTRAP_TENANT As String
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_TENANT*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_USERNAME
+  commentId: P:Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_USERNAME
+  id: BOOTSTRAP_USERNAME
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: BOOTSTRAP_USERNAME
+  nameWithType: Platform.BOOTSTRAP_USERNAME
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_USERNAME
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: BOOTSTRAP_USERNAME
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 32
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public string BOOTSTRAP_USERNAME { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property BOOTSTRAP_USERNAME As String
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_USERNAME*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_PASSWORD
+  commentId: P:Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_PASSWORD
+  id: BOOTSTRAP_PASSWORD
+  parent: Cumulocity.SDK.Microservices.Settings.Platform
+  langs:
+  - csharp
+  - vb
+  name: BOOTSTRAP_PASSWORD
+  nameWithType: Platform.BOOTSTRAP_PASSWORD
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_PASSWORD
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    id: BOOTSTRAP_PASSWORD
+    path: ../src/Cumulocity.SDK.Microservices/Settings/Platform.cs
+    startLine: 33
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public string BOOTSTRAP_PASSWORD { get; protected set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property BOOTSTRAP_PASSWORD As String
+  overload: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_PASSWORD*
+  modifiers.csharp:
+  - public
+  - get
+  - protected set
+  modifiers.vb:
+  - Public
+  - Get
+  - Protected Set
+references:
+- uid: Cumulocity.SDK.Microservices.Settings
+  commentId: N:Cumulocity.SDK.Microservices.Settings
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Settings
+  nameWithType: Cumulocity.SDK.Microservices.Settings
+  fullName: Cumulocity.SDK.Microservices.Settings
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.#ctor*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.#ctor
+  isExternal: false
+  name: Platform
+  nameWithType: Platform.Platform
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.Platform
+- uid: Cumulocity.SDK.Microservices.Settings.PlatformSettings
+  commentId: T:Cumulocity.SDK.Microservices.Settings.PlatformSettings
+  parent: Cumulocity.SDK.Microservices.Settings
+  isExternal: false
+  name: PlatformSettings
+  nameWithType: PlatformSettings
+  fullName: Cumulocity.SDK.Microservices.Settings.PlatformSettings
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.MICROSERIVCE_ISOLATION*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.MICROSERIVCE_ISOLATION
+  isExternal: false
+  name: MICROSERIVCE_ISOLATION
+  nameWithType: Platform.MICROSERIVCE_ISOLATION
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.MICROSERIVCE_ISOLATION
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.BASEURL*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.BASEURL
+  isExternal: false
+  name: BASEURL
+  nameWithType: Platform.BASEURL
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.BASEURL
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.BASEURL_MQTT*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.BASEURL_MQTT
+  isExternal: false
+  name: BASEURL_MQTT
+  nameWithType: Platform.BASEURL_MQTT
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.BASEURL_MQTT
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.TENANT*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.TENANT
+  isExternal: false
+  name: TENANT
+  nameWithType: Platform.TENANT
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.TENANT
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.PASSWORD*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.PASSWORD
+  isExternal: false
+  name: PASSWORD
+  nameWithType: Platform.PASSWORD
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.PASSWORD
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.USERNAME*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.USERNAME
+  isExternal: false
+  name: USERNAME
+  nameWithType: Platform.USERNAME
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.USERNAME
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.SERVER_PORT*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.SERVER_PORT
+  isExternal: false
+  name: SERVER_PORT
+  nameWithType: Platform.SERVER_PORT
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.SERVER_PORT
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_TENANT*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_TENANT
+  isExternal: false
+  name: BOOTSTRAP_TENANT
+  nameWithType: Platform.BOOTSTRAP_TENANT
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_TENANT
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_USERNAME*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_USERNAME
+  isExternal: false
+  name: BOOTSTRAP_USERNAME
+  nameWithType: Platform.BOOTSTRAP_USERNAME
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_USERNAME
+- uid: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_PASSWORD*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_PASSWORD
+  isExternal: false
+  name: BOOTSTRAP_PASSWORD
+  nameWithType: Platform.BOOTSTRAP_PASSWORD
+  fullName: Cumulocity.SDK.Microservices.Settings.Platform.BOOTSTRAP_PASSWORD

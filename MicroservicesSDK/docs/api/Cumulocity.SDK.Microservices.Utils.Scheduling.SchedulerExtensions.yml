@@ -1,0 +1,226 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions
+  id: SchedulerExtensions
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler(IServiceCollection)
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler(IServiceCollection,EventHandler{UnobservedTaskExceptionEventArgs})
+  langs:
+  - csharp
+  - vb
+  name: SchedulerExtensions
+  nameWithType: SchedulerExtensions
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerExtensions.cs
+    id: SchedulerExtensions
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerExtensions.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduling
+  syntax:
+    content: 'public static class SchedulerExtensions : object'
+    content.vb: >-
+      Public Module SchedulerExtensions
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler(IServiceCollection)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler(IServiceCollection)
+  id: AddScheduler(IServiceCollection)
+  isExtensionMethod: true
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddScheduler(IServiceCollection)
+  nameWithType: SchedulerExtensions.AddScheduler(IServiceCollection)
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler(IServiceCollection)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerExtensions.cs
+    id: AddScheduler
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerExtensions.cs
+    startLine: 11
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduling
+  syntax:
+    content: public static IServiceCollection AddScheduler(this IServiceCollection services)
+    parameters:
+    - id: services
+      type: IServiceCollection
+    return:
+      type: IServiceCollection
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddScheduler(services As IServiceCollection) As IServiceCollection
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler(IServiceCollection,EventHandler{UnobservedTaskExceptionEventArgs})
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler(IServiceCollection,EventHandler{UnobservedTaskExceptionEventArgs})
+  id: AddScheduler(IServiceCollection,EventHandler{UnobservedTaskExceptionEventArgs})
+  isExtensionMethod: true
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddScheduler(IServiceCollection, EventHandler<UnobservedTaskExceptionEventArgs>)
+  nameWithType: SchedulerExtensions.AddScheduler(IServiceCollection, EventHandler<UnobservedTaskExceptionEventArgs>)
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler(IServiceCollection, EventHandler<UnobservedTaskExceptionEventArgs>)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerExtensions.cs
+    id: AddScheduler
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerExtensions.cs
+    startLine: 16
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduling
+  syntax:
+    content: public static IServiceCollection AddScheduler(this IServiceCollection services, EventHandler<UnobservedTaskExceptionEventArgs> unobservedTaskExceptionHandler)
+    parameters:
+    - id: services
+      type: IServiceCollection
+    - id: unobservedTaskExceptionHandler
+      type: EventHandler{UnobservedTaskExceptionEventArgs}
+    return:
+      type: IServiceCollection
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddScheduler(services As IServiceCollection, unobservedTaskExceptionHandler As EventHandler(Of UnobservedTaskExceptionEventArgs)) As IServiceCollection
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler*
+  nameWithType.vb: SchedulerExtensions.AddScheduler(IServiceCollection, EventHandler(Of UnobservedTaskExceptionEventArgs))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler(IServiceCollection, EventHandler(Of UnobservedTaskExceptionEventArgs))
+  name.vb: AddScheduler(IServiceCollection, EventHandler(Of UnobservedTaskExceptionEventArgs))
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Scheduling
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Scheduling
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Scheduling
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler
+  isExternal: false
+  name: AddScheduler
+  nameWithType: SchedulerExtensions.AddScheduler
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.AddScheduler
+- uid: IServiceCollection
+  isExternal: true
+  name: IServiceCollection
+  nameWithType: IServiceCollection
+  fullName: IServiceCollection
+- uid: EventHandler{UnobservedTaskExceptionEventArgs}
+  commentId: '!:EventHandler{UnobservedTaskExceptionEventArgs}'
+  definition: EventHandler`1
+  name: EventHandler<UnobservedTaskExceptionEventArgs>
+  nameWithType: EventHandler<UnobservedTaskExceptionEventArgs>
+  fullName: EventHandler<UnobservedTaskExceptionEventArgs>
+  nameWithType.vb: EventHandler(Of UnobservedTaskExceptionEventArgs)
+  fullName.vb: EventHandler(Of UnobservedTaskExceptionEventArgs)
+  name.vb: EventHandler(Of UnobservedTaskExceptionEventArgs)
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: UnobservedTaskExceptionEventArgs
+    name: UnobservedTaskExceptionEventArgs
+    nameWithType: UnobservedTaskExceptionEventArgs
+    fullName: UnobservedTaskExceptionEventArgs
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: UnobservedTaskExceptionEventArgs
+    name: UnobservedTaskExceptionEventArgs
+    nameWithType: UnobservedTaskExceptionEventArgs
+    fullName: UnobservedTaskExceptionEventArgs
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EventHandler`1
+  isExternal: true
+  name: EventHandler<>
+  nameWithType: EventHandler<>
+  fullName: EventHandler<>
+  nameWithType.vb: EventHandler(Of )
+  fullName.vb: EventHandler(Of )
+  name.vb: EventHandler(Of )
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

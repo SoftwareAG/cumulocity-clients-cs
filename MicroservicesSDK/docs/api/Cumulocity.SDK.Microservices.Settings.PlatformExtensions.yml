@@ -1,0 +1,107 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Settings.PlatformExtensions
+  commentId: T:Cumulocity.SDK.Microservices.Settings.PlatformExtensions
+  id: PlatformExtensions
+  parent: Cumulocity.SDK.Microservices.Settings
+  children:
+  - Cumulocity.SDK.Microservices.Settings.PlatformExtensions.AddPlatform(IServiceCollection,IConfiguration)
+  langs:
+  - csharp
+  - vb
+  name: PlatformExtensions
+  nameWithType: PlatformExtensions
+  fullName: Cumulocity.SDK.Microservices.Settings.PlatformExtensions
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/PlatformExtensions.cs
+    id: PlatformExtensions
+    path: ../src/Cumulocity.SDK.Microservices/Settings/PlatformExtensions.cs
+    startLine: 7
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: 'public static class PlatformExtensions : object'
+    content.vb: >-
+      Public Module PlatformExtensions
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Cumulocity.SDK.Microservices.Settings.PlatformExtensions.AddPlatform(IServiceCollection,IConfiguration)
+  commentId: M:Cumulocity.SDK.Microservices.Settings.PlatformExtensions.AddPlatform(IServiceCollection,IConfiguration)
+  id: AddPlatform(IServiceCollection,IConfiguration)
+  isExtensionMethod: true
+  parent: Cumulocity.SDK.Microservices.Settings.PlatformExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddPlatform(IServiceCollection, IConfiguration)
+  nameWithType: PlatformExtensions.AddPlatform(IServiceCollection, IConfiguration)
+  fullName: Cumulocity.SDK.Microservices.Settings.PlatformExtensions.AddPlatform(IServiceCollection, IConfiguration)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Settings/PlatformExtensions.cs
+    id: AddPlatform
+    path: ../src/Cumulocity.SDK.Microservices/Settings/PlatformExtensions.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Settings
+  syntax:
+    content: public static IServiceCollection AddPlatform(this IServiceCollection services, IConfiguration configuration)
+    parameters:
+    - id: services
+      type: IServiceCollection
+    - id: configuration
+      type: IConfiguration
+    return:
+      type: IServiceCollection
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddPlatform(services As IServiceCollection, configuration As IConfiguration) As IServiceCollection
+  overload: Cumulocity.SDK.Microservices.Settings.PlatformExtensions.AddPlatform*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Cumulocity.SDK.Microservices.Settings
+  commentId: N:Cumulocity.SDK.Microservices.Settings
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Settings
+  nameWithType: Cumulocity.SDK.Microservices.Settings
+  fullName: Cumulocity.SDK.Microservices.Settings
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Settings.PlatformExtensions.AddPlatform*
+  commentId: Overload:Cumulocity.SDK.Microservices.Settings.PlatformExtensions.AddPlatform
+  isExternal: false
+  name: AddPlatform
+  nameWithType: PlatformExtensions.AddPlatform
+  fullName: Cumulocity.SDK.Microservices.Settings.PlatformExtensions.AddPlatform
+- uid: IServiceCollection
+  isExternal: true
+  name: IServiceCollection
+  nameWithType: IServiceCollection
+  fullName: IServiceCollection
+- uid: IConfiguration
+  isExternal: true
+  name: IConfiguration
+  nameWithType: IConfiguration
+  fullName: IConfiguration

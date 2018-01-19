@@ -1,0 +1,251 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  id: BasicAuthenticationChallengeContext
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events
+  children:
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.#ctor(HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions,AuthenticationProperties)
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.AuthenticateFailure
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.Handled
+  - Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.HandleResponse
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationChallengeContext
+  nameWithType: BasicAuthenticationChallengeContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/BasicAuthenticationChallengeContext.cs
+    id: BasicAuthenticationChallengeContext
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/BasicAuthenticationChallengeContext.cs
+    startLine: 6
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  syntax:
+    content: 'public class BasicAuthenticationChallengeContext : PropertiesContext<BasicAuthenticationOptions>'
+    content.vb: >-
+      Public Class BasicAuthenticationChallengeContext
+          Inherits PropertiesContext(Of BasicAuthenticationOptions)
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.#ctor(HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions,AuthenticationProperties)
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.#ctor(HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions,AuthenticationProperties)
+  id: '#ctor(HttpContext,AuthenticationScheme,Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions,AuthenticationProperties)'
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationChallengeContext(HttpContext, AuthenticationScheme, BasicAuthenticationOptions, AuthenticationProperties)
+  nameWithType: BasicAuthenticationChallengeContext.BasicAuthenticationChallengeContext(HttpContext, AuthenticationScheme, BasicAuthenticationOptions, AuthenticationProperties)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.BasicAuthenticationChallengeContext(HttpContext, AuthenticationScheme, Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions, AuthenticationProperties)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/BasicAuthenticationChallengeContext.cs
+    id: .ctor
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/BasicAuthenticationChallengeContext.cs
+    startLine: 8
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  syntax:
+    content: public BasicAuthenticationChallengeContext(HttpContext context, AuthenticationScheme scheme, BasicAuthenticationOptions options, AuthenticationProperties properties)
+    parameters:
+    - id: context
+      type: HttpContext
+    - id: scheme
+      type: AuthenticationScheme
+    - id: options
+      type: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+    - id: properties
+      type: AuthenticationProperties
+    content.vb: Public Sub New(context As HttpContext, scheme As AuthenticationScheme, options As BasicAuthenticationOptions, properties As AuthenticationProperties)
+  overload: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.#ctor*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.AuthenticateFailure
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.AuthenticateFailure
+  id: AuthenticateFailure
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  langs:
+  - csharp
+  - vb
+  name: AuthenticateFailure
+  nameWithType: BasicAuthenticationChallengeContext.AuthenticateFailure
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.AuthenticateFailure
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/BasicAuthenticationChallengeContext.cs
+    id: AuthenticateFailure
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/BasicAuthenticationChallengeContext.cs
+    startLine: 18
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  summary: "\nAny failures encountered during the authentication process.\n"
+  example: []
+  syntax:
+    content: public Exception AuthenticateFailure { get; set; }
+    parameters: []
+    return:
+      type: Exception
+    content.vb: Public Property AuthenticateFailure As Exception
+  overload: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.AuthenticateFailure*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.Handled
+  commentId: P:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.Handled
+  id: Handled
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  langs:
+  - csharp
+  - vb
+  name: Handled
+  nameWithType: BasicAuthenticationChallengeContext.Handled
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.Handled
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/BasicAuthenticationChallengeContext.cs
+    id: Handled
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/BasicAuthenticationChallengeContext.cs
+    startLine: 23
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  summary: "\nIf true, will skip any default logic for this challenge.\n"
+  example: []
+  syntax:
+    content: public bool Handled { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property Handled As Boolean
+  overload: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.Handled*
+  modifiers.csharp:
+  - public
+  - get
+  modifiers.vb:
+  - Public
+  - ReadOnly
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.HandleResponse
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.HandleResponse
+  id: HandleResponse
+  parent: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext
+  langs:
+  - csharp
+  - vb
+  name: HandleResponse()
+  nameWithType: BasicAuthenticationChallengeContext.HandleResponse()
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.HandleResponse()
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Events/BasicAuthenticationChallengeContext.cs
+    id: HandleResponse
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/Events/BasicAuthenticationChallengeContext.cs
+    startLine: 28
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic.Events
+  summary: "\nSkips any default logic for this challenge.\n"
+  example: []
+  syntax:
+    content: public void HandleResponse()
+    content.vb: Public Sub HandleResponse
+  overload: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.HandleResponse*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic.Events
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic.Events
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic.Events
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.#ctor*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.#ctor
+  isExternal: false
+  name: BasicAuthenticationChallengeContext
+  nameWithType: BasicAuthenticationChallengeContext.BasicAuthenticationChallengeContext
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.BasicAuthenticationChallengeContext
+- uid: HttpContext
+  isExternal: true
+  name: HttpContext
+  nameWithType: HttpContext
+  fullName: HttpContext
+- uid: AuthenticationScheme
+  isExternal: true
+  name: AuthenticationScheme
+  nameWithType: AuthenticationScheme
+  fullName: AuthenticationScheme
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: BasicAuthenticationOptions
+  nameWithType: BasicAuthenticationOptions
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+- uid: AuthenticationProperties
+  isExternal: true
+  name: AuthenticationProperties
+  nameWithType: AuthenticationProperties
+  fullName: AuthenticationProperties
+- uid: Cumulocity.AspNetCore.Authentication.Basic
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic
+  fullName: Cumulocity.AspNetCore.Authentication.Basic
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.AuthenticateFailure*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.AuthenticateFailure
+  isExternal: false
+  name: AuthenticateFailure
+  nameWithType: BasicAuthenticationChallengeContext.AuthenticateFailure
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.AuthenticateFailure
+- uid: Exception
+  isExternal: true
+  name: Exception
+  nameWithType: Exception
+  fullName: Exception
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.Handled*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.Handled
+  isExternal: false
+  name: Handled
+  nameWithType: BasicAuthenticationChallengeContext.Handled
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.Handled
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.HandleResponse*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.HandleResponse
+  isExternal: false
+  name: HandleResponse
+  nameWithType: BasicAuthenticationChallengeContext.HandleResponse
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.HandleResponse

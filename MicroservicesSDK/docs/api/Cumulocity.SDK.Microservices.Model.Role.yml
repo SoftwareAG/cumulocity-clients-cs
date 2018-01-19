@@ -1,0 +1,173 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Model.Role
+  commentId: T:Cumulocity.SDK.Microservices.Model.Role
+  id: Role
+  parent: Cumulocity.SDK.Microservices.Model
+  children:
+  - Cumulocity.SDK.Microservices.Model.Role.Id
+  - Cumulocity.SDK.Microservices.Model.Role.Name
+  - Cumulocity.SDK.Microservices.Model.Role.Self
+  langs:
+  - csharp
+  - vb
+  name: Role
+  nameWithType: Role
+  fullName: Cumulocity.SDK.Microservices.Model.Role
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Role.cs
+    id: Role
+    path: ../src/Cumulocity.SDK.Microservices/Model/Role.cs
+    startLine: 7
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: 'public class Role : object'
+    content.vb: >-
+      Public Class Role
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Model.Role.Id
+  commentId: P:Cumulocity.SDK.Microservices.Model.Role.Id
+  id: Id
+  parent: Cumulocity.SDK.Microservices.Model.Role
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: Role.Id
+  fullName: Cumulocity.SDK.Microservices.Model.Role.Id
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Role.cs
+    id: Id
+    path: ../src/Cumulocity.SDK.Microservices/Model/Role.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: Cumulocity.SDK.Microservices.Model.Role.Id*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.Role.Name
+  commentId: P:Cumulocity.SDK.Microservices.Model.Role.Name
+  id: Name
+  parent: Cumulocity.SDK.Microservices.Model.Role
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: Role.Name
+  fullName: Cumulocity.SDK.Microservices.Model.Role.Name
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Role.cs
+    id: Name
+    path: ../src/Cumulocity.SDK.Microservices/Model/Role.cs
+    startLine: 12
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Cumulocity.SDK.Microservices.Model.Role.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.Role.Self
+  commentId: P:Cumulocity.SDK.Microservices.Model.Role.Self
+  id: Self
+  parent: Cumulocity.SDK.Microservices.Model.Role
+  langs:
+  - csharp
+  - vb
+  name: Self
+  nameWithType: Role.Self
+  fullName: Cumulocity.SDK.Microservices.Model.Role.Self
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Role.cs
+    id: Self
+    path: ../src/Cumulocity.SDK.Microservices/Model/Role.cs
+    startLine: 15
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string Self { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Self As String
+  overload: Cumulocity.SDK.Microservices.Model.Role.Self*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.SDK.Microservices.Model
+  commentId: N:Cumulocity.SDK.Microservices.Model
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Model
+  nameWithType: Cumulocity.SDK.Microservices.Model
+  fullName: Cumulocity.SDK.Microservices.Model
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Model.Role.Id*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.Role.Id
+  isExternal: false
+  name: Id
+  nameWithType: Role.Id
+  fullName: Cumulocity.SDK.Microservices.Model.Role.Id
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Model.Role.Name*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.Role.Name
+  isExternal: false
+  name: Name
+  nameWithType: Role.Name
+  fullName: Cumulocity.SDK.Microservices.Model.Role.Name
+- uid: Cumulocity.SDK.Microservices.Model.Role.Self*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.Role.Self
+  isExternal: false
+  name: Self
+  nameWithType: Role.Self
+  fullName: Cumulocity.SDK.Microservices.Model.Role.Self

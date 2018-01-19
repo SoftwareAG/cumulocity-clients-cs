@@ -1,0 +1,620 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  id: CrontabField
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Contains(System.Int32)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Days(System.String)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.DaysOfWeek(System.String)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format(TextWriter)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format(TextWriter,System.Boolean)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.GetFirst
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Hours(System.String)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Minutes(System.String)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Months(System.String)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Next(System.Int32)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Parse(Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind,System.String)
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString
+  - Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString(System.String)
+  langs:
+  - csharp
+  - vb
+  name: CrontabField
+  nameWithType: CrontabField
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: CrontabField
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 11
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nRepresents a single crontab field.\n"
+  example: []
+  syntax:
+    content: 'public sealed class CrontabField : object'
+    content.vb: >-
+      Public NotInheritable Class CrontabField
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - sealed
+  - class
+  modifiers.vb:
+  - Public
+  - NotInheritable
+  - Class
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.GetFirst
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.GetFirst
+  id: GetFirst
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: GetFirst()
+  nameWithType: CrontabField.GetFirst()
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.GetFirst()
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: GetFirst
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 36
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nGets the first value of the field or -1.\n"
+  example: []
+  syntax:
+    content: public int GetFirst()
+    return:
+      type: System.Int32
+    content.vb: Public Function GetFirst As Integer
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.GetFirst*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Next(System.Int32)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Next(System.Int32)
+  id: Next(System.Int32)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: Next(Int32)
+  nameWithType: CrontabField.Next(Int32)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Next(System.Int32)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: Next
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 45
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nGets the next value of the field that occurs after the given \nstart value or -1 if there is no next value available.\n"
+  example: []
+  syntax:
+    content: public int Next(int start)
+    parameters:
+    - id: start
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Function Next(start As Integer) As Integer
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Next*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Contains(System.Int32)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Contains(System.Int32)
+  id: Contains(System.Int32)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: Contains(Int32)
+  nameWithType: CrontabField.Contains(Int32)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Contains(System.Int32)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: Contains
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 65
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nDetermines if the given value occurs in the field.\n"
+  example: []
+  syntax:
+    content: public bool Contains(int value)
+    parameters:
+    - id: value
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Function Contains(value As Integer) As Boolean
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Contains*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Parse(Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind,System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Parse(Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind,System.String)
+  id: Parse(Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind,System.String)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: Parse(CrontabFieldKind, String)
+  nameWithType: CrontabField.Parse(CrontabFieldKind, String)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Parse(Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind, System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: Parse
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 75
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nParses a crontab field expression given its kind.\n"
+  example: []
+  syntax:
+    content: public static CrontabField Parse(CrontabFieldKind kind, string expression)
+    parameters:
+    - id: kind
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+    - id: expression
+      type: System.String
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+    content.vb: Public Shared Function Parse(kind As CrontabFieldKind, expression As String) As CrontabField
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Parse*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Minutes(System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Minutes(System.String)
+  id: Minutes(System.String)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: Minutes(String)
+  nameWithType: CrontabField.Minutes(String)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Minutes(System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: Minutes
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 83
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nParses a crontab field expression representing minutes.\n"
+  example: []
+  syntax:
+    content: public static CrontabField Minutes(string expression)
+    parameters:
+    - id: expression
+      type: System.String
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+    content.vb: Public Shared Function Minutes(expression As String) As CrontabField
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Minutes*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Hours(System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Hours(System.String)
+  id: Hours(System.String)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: Hours(String)
+  nameWithType: CrontabField.Hours(String)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Hours(System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: Hours
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 91
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nParses a crontab field expression representing hours.\n"
+  example: []
+  syntax:
+    content: public static CrontabField Hours(string expression)
+    parameters:
+    - id: expression
+      type: System.String
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+    content.vb: Public Shared Function Hours(expression As String) As CrontabField
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Hours*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Days(System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Days(System.String)
+  id: Days(System.String)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: Days(String)
+  nameWithType: CrontabField.Days(String)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Days(System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: Days
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 99
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nParses a crontab field expression representing days in any given month.\n"
+  example: []
+  syntax:
+    content: public static CrontabField Days(string expression)
+    parameters:
+    - id: expression
+      type: System.String
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+    content.vb: Public Shared Function Days(expression As String) As CrontabField
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Days*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Months(System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Months(System.String)
+  id: Months(System.String)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: Months(String)
+  nameWithType: CrontabField.Months(String)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Months(System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: Months
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 107
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nParses a crontab field expression representing months.\n"
+  example: []
+  syntax:
+    content: public static CrontabField Months(string expression)
+    parameters:
+    - id: expression
+      type: System.String
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+    content.vb: Public Shared Function Months(expression As String) As CrontabField
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Months*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.DaysOfWeek(System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.DaysOfWeek(System.String)
+  id: DaysOfWeek(System.String)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: DaysOfWeek(String)
+  nameWithType: CrontabField.DaysOfWeek(String)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.DaysOfWeek(System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: DaysOfWeek
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 115
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  summary: "\nParses a crontab field expression representing days of a week.\n"
+  example: []
+  syntax:
+    content: public static CrontabField DaysOfWeek(string expression)
+    parameters:
+    - id: expression
+      type: System.String
+    return:
+      type: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+    content.vb: Public Shared Function DaysOfWeek(expression As String) As CrontabField
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.DaysOfWeek*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString
+  id: ToString
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: CrontabField.ToString()
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString()
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: ToString
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 249
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToString As String
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString*
+  modifiers.csharp:
+  - public
+  - override
+  modifiers.vb:
+  - Public
+  - Overrides
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString(System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString(System.String)
+  id: ToString(System.String)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: ToString(String)
+  nameWithType: CrontabField.ToString(String)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString(System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: ToString
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 254
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public string ToString(string format)
+    parameters:
+    - id: format
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Function ToString(format As String) As String
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format(TextWriter)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format(TextWriter)
+  id: Format(TextWriter)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: Format(TextWriter)
+  nameWithType: CrontabField.Format(TextWriter)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format(TextWriter)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: Format
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 274
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public void Format(TextWriter writer)
+    parameters:
+    - id: writer
+      type: TextWriter
+    content.vb: Public Sub Format(writer As TextWriter)
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format(TextWriter,System.Boolean)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format(TextWriter,System.Boolean)
+  id: Format(TextWriter,System.Boolean)
+  parent: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  langs:
+  - csharp
+  - vb
+  name: Format(TextWriter, Boolean)
+  nameWithType: CrontabField.Format(TextWriter, Boolean)
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format(TextWriter, System.Boolean)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    id: Format
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabField.cs
+    startLine: 279
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public void Format(TextWriter writer, bool noNames)
+    parameters:
+    - id: writer
+      type: TextWriter
+    - id: noNames
+      type: System.Boolean
+    content.vb: Public Sub Format(writer As TextWriter, noNames As Boolean)
+  overload: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format*
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Crone
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Crone
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.GetFirst*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.GetFirst
+  isExternal: false
+  name: GetFirst
+  nameWithType: CrontabField.GetFirst
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.GetFirst
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Next*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Next
+  isExternal: false
+  name: Next
+  nameWithType: CrontabField.Next
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Next
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Contains*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Contains
+  isExternal: false
+  name: Contains
+  nameWithType: CrontabField.Contains
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Contains
+- uid: System.Boolean
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Parse*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Parse
+  isExternal: false
+  name: Parse
+  nameWithType: CrontabField.Parse
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Parse
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabFieldKind
+  nameWithType: CrontabFieldKind
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: CrontabField
+  nameWithType: CrontabField
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Minutes*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Minutes
+  isExternal: false
+  name: Minutes
+  nameWithType: CrontabField.Minutes
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Minutes
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Hours*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Hours
+  isExternal: false
+  name: Hours
+  nameWithType: CrontabField.Hours
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Hours
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Days*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Days
+  isExternal: false
+  name: Days
+  nameWithType: CrontabField.Days
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Days
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Months*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Months
+  isExternal: false
+  name: Months
+  nameWithType: CrontabField.Months
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Months
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.DaysOfWeek*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.DaysOfWeek
+  isExternal: false
+  name: DaysOfWeek
+  nameWithType: CrontabField.DaysOfWeek
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.DaysOfWeek
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString
+  isExternal: false
+  name: ToString
+  nameWithType: CrontabField.ToString
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.ToString
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format
+  isExternal: false
+  name: Format
+  nameWithType: CrontabField.Format
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.Format
+- uid: TextWriter
+  isExternal: true
+  name: TextWriter
+  nameWithType: TextWriter
+  fullName: TextWriter

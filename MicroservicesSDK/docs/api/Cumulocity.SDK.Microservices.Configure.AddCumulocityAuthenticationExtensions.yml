@@ -1,0 +1,107 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions
+  commentId: T:Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions
+  id: AddCumulocityAuthenticationExtensions
+  parent: Cumulocity.SDK.Microservices.Configure
+  children:
+  - Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions.AddCumulocityAuthentication(IServiceCollection,IConfiguration)
+  langs:
+  - csharp
+  - vb
+  name: AddCumulocityAuthenticationExtensions
+  nameWithType: AddCumulocityAuthenticationExtensions
+  fullName: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Configure/AddCumulocityAuthenticationExtensions.cs
+    id: AddCumulocityAuthenticationExtensions
+    path: ../src/Cumulocity.SDK.Microservices/Configure/AddCumulocityAuthenticationExtensions.cs
+    startLine: 10
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Configure
+  syntax:
+    content: 'public static class AddCumulocityAuthenticationExtensions : object'
+    content.vb: >-
+      Public Module AddCumulocityAuthenticationExtensions
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions.AddCumulocityAuthentication(IServiceCollection,IConfiguration)
+  commentId: M:Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions.AddCumulocityAuthentication(IServiceCollection,IConfiguration)
+  id: AddCumulocityAuthentication(IServiceCollection,IConfiguration)
+  isExtensionMethod: true
+  parent: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddCumulocityAuthentication(IServiceCollection, IConfiguration)
+  nameWithType: AddCumulocityAuthenticationExtensions.AddCumulocityAuthentication(IServiceCollection, IConfiguration)
+  fullName: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions.AddCumulocityAuthentication(IServiceCollection, IConfiguration)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Configure/AddCumulocityAuthenticationExtensions.cs
+    id: AddCumulocityAuthentication
+    path: ../src/Cumulocity.SDK.Microservices/Configure/AddCumulocityAuthenticationExtensions.cs
+    startLine: 12
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Configure
+  syntax:
+    content: public static IServiceCollection AddCumulocityAuthentication(this IServiceCollection services, IConfiguration configuration)
+    parameters:
+    - id: services
+      type: IServiceCollection
+    - id: configuration
+      type: IConfiguration
+    return:
+      type: IServiceCollection
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddCumulocityAuthentication(services As IServiceCollection, configuration As IConfiguration) As IServiceCollection
+  overload: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions.AddCumulocityAuthentication*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Cumulocity.SDK.Microservices.Configure
+  commentId: N:Cumulocity.SDK.Microservices.Configure
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Configure
+  nameWithType: Cumulocity.SDK.Microservices.Configure
+  fullName: Cumulocity.SDK.Microservices.Configure
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions.AddCumulocityAuthentication*
+  commentId: Overload:Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions.AddCumulocityAuthentication
+  isExternal: false
+  name: AddCumulocityAuthentication
+  nameWithType: AddCumulocityAuthenticationExtensions.AddCumulocityAuthentication
+  fullName: Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions.AddCumulocityAuthentication
+- uid: IServiceCollection
+  isExternal: true
+  name: IServiceCollection
+  nameWithType: IServiceCollection
+  fullName: IServiceCollection
+- uid: IConfiguration
+  isExternal: true
+  name: IConfiguration
+  nameWithType: IConfiguration
+  fullName: IConfiguration

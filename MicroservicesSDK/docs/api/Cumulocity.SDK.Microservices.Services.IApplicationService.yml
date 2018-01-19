@@ -1,0 +1,351 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService
+  commentId: T:Cumulocity.SDK.Microservices.Services.IApplicationService
+  id: IApplicationService
+  parent: Cumulocity.SDK.Microservices.Services
+  children:
+  - Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+  - Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser(System.String)
+  - Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+  langs:
+  - csharp
+  - vb
+  name: IApplicationService
+  nameWithType: IApplicationService
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService
+  type: Interface
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Services/IApplicationService.cs
+    id: IApplicationService
+    path: ../src/Cumulocity.SDK.Microservices/Services/IApplicationService.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Services
+  syntax:
+    content: public interface IApplicationService
+    content.vb: Public Interface IApplicationService
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+  commentId: M:Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+  id: GetUsers
+  parent: Cumulocity.SDK.Microservices.Services.IApplicationService
+  langs:
+  - csharp
+  - vb
+  name: GetUsers()
+  nameWithType: IApplicationService.GetUsers()
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers()
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Services/IApplicationService.cs
+    id: GetUsers
+    path: ../src/Cumulocity.SDK.Microservices/Services/IApplicationService.cs
+    startLine: 11
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Services
+  syntax:
+    content: Task<IList<User>> GetUsers()
+    return:
+      type: Task{IList{Cumulocity.SDK.Microservices.Model.User}}
+    content.vb: Function GetUsers As Task(Of IList(Of User))
+  overload: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers*
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+  commentId: M:Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+  id: GetCurrentApplicationSubscriptions
+  parent: Cumulocity.SDK.Microservices.Services.IApplicationService
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentApplicationSubscriptions()
+  nameWithType: IApplicationService.GetCurrentApplicationSubscriptions()
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions()
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Services/IApplicationService.cs
+    id: GetCurrentApplicationSubscriptions
+    path: ../src/Cumulocity.SDK.Microservices/Services/IApplicationService.cs
+    startLine: 12
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Services
+  syntax:
+    content: Task<List<Subscription>> GetCurrentApplicationSubscriptions()
+    return:
+      type: Task{List{Cumulocity.SDK.Microservices.Model.Subscription}}
+    content.vb: Function GetCurrentApplicationSubscriptions As Task(Of List(Of Subscription))
+  overload: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions*
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser(System.String)
+  commentId: M:Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser(System.String)
+  id: GetCurrentUser(System.String)
+  parent: Cumulocity.SDK.Microservices.Services.IApplicationService
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentUser(String)
+  nameWithType: IApplicationService.GetCurrentUser(String)
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser(System.String)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Services/IApplicationService.cs
+    id: GetCurrentUser
+    path: ../src/Cumulocity.SDK.Microservices/Services/IApplicationService.cs
+    startLine: 14
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Services
+  syntax:
+    content: Task<BasicAuthenticationResult> GetCurrentUser(string authCred)
+    parameters:
+    - id: authCred
+      type: System.String
+    return:
+      type: Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}
+    content.vb: Function GetCurrentUser(authCred As String) As Task(Of BasicAuthenticationResult)
+  overload: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser*
+references:
+- uid: Cumulocity.SDK.Microservices.Services
+  commentId: N:Cumulocity.SDK.Microservices.Services
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Services
+  nameWithType: Cumulocity.SDK.Microservices.Services
+  fullName: Cumulocity.SDK.Microservices.Services
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers*
+  commentId: Overload:Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+  isExternal: false
+  name: GetUsers
+  nameWithType: IApplicationService.GetUsers
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetUsers
+- uid: Task{IList{Cumulocity.SDK.Microservices.Model.User}}
+  commentId: '!:Task{IList{Cumulocity.SDK.Microservices.Model.User}}'
+  definition: Task`1
+  name: Task<IList<User>>
+  nameWithType: Task<IList<User>>
+  fullName: Task<IList<Cumulocity.SDK.Microservices.Model.User>>
+  nameWithType.vb: Task(Of IList(Of User))
+  fullName.vb: Task(Of IList(Of Cumulocity.SDK.Microservices.Model.User))
+  name.vb: Task(Of IList(Of User))
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.SDK.Microservices.Model.User
+    name: User
+    nameWithType: User
+    fullName: Cumulocity.SDK.Microservices.Model.User
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: IList`1
+    name: IList
+    nameWithType: IList
+    fullName: IList
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.SDK.Microservices.Model.User
+    name: User
+    nameWithType: User
+    fullName: Cumulocity.SDK.Microservices.Model.User
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Task`1
+  isExternal: true
+  name: Task<>
+  nameWithType: Task<>
+  fullName: Task<>
+  nameWithType.vb: Task(Of )
+  fullName.vb: Task(Of )
+  name.vb: Task(Of )
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions*
+  commentId: Overload:Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+  isExternal: false
+  name: GetCurrentApplicationSubscriptions
+  nameWithType: IApplicationService.GetCurrentApplicationSubscriptions
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentApplicationSubscriptions
+- uid: Task{List{Cumulocity.SDK.Microservices.Model.Subscription}}
+  commentId: '!:Task{List{Cumulocity.SDK.Microservices.Model.Subscription}}'
+  definition: Task`1
+  name: Task<List<Subscription>>
+  nameWithType: Task<List<Subscription>>
+  fullName: Task<List<Cumulocity.SDK.Microservices.Model.Subscription>>
+  nameWithType.vb: Task(Of List(Of Subscription))
+  fullName.vb: Task(Of List(Of Cumulocity.SDK.Microservices.Model.Subscription))
+  name.vb: Task(Of List(Of Subscription))
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.SDK.Microservices.Model.Subscription
+    name: Subscription
+    nameWithType: Subscription
+    fullName: Cumulocity.SDK.Microservices.Model.Subscription
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.SDK.Microservices.Model.Subscription
+    name: Subscription
+    nameWithType: Subscription
+    fullName: Cumulocity.SDK.Microservices.Model.Subscription
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser*
+  commentId: Overload:Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser
+  isExternal: false
+  name: GetCurrentUser
+  nameWithType: IApplicationService.GetCurrentUser
+  fullName: Cumulocity.SDK.Microservices.Services.IApplicationService.GetCurrentUser
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}
+  commentId: '!:Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}'
+  definition: Task`1
+  name: Task<BasicAuthenticationResult>
+  nameWithType: Task<BasicAuthenticationResult>
+  fullName: Task<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult>
+  nameWithType.vb: Task(Of BasicAuthenticationResult)
+  fullName.vb: Task(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult)
+  name.vb: Task(Of BasicAuthenticationResult)
+  spec.csharp:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+    name: BasicAuthenticationResult
+    nameWithType: BasicAuthenticationResult
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+    name: BasicAuthenticationResult
+    nameWithType: BasicAuthenticationResult
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  - name: )
+    nameWithType: )
+    fullName: )

@@ -1,0 +1,714 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  commentId: T:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  id: BasicAuthenticationExtensions
+  parent: Cumulocity.AspNetCore.Authentication.Basic
+  children:
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder)
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  - Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},ServiceLifetime)
+  langs:
+  - csharp
+  - vb
+  name: BasicAuthenticationExtensions
+  nameWithType: BasicAuthenticationExtensions
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    id: BasicAuthenticationExtensions
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: 'public static class BasicAuthenticationExtensions : object'
+    content.vb: >-
+      Public Module BasicAuthenticationExtensions
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  id: AddBasicAuthentication(AuthenticationBuilder,Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  isExtensionMethod: true
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddBasicAuthentication(AuthenticationBuilder, Func<, Task<BasicAuthenticationResult>>)
+  nameWithType: BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, Func<, Task<BasicAuthenticationResult>>)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, Func<System., Task<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult>>)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    id: AddBasicAuthentication
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    startLine: 11
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: public static AuthenticationBuilder AddBasicAuthentication(this AuthenticationBuilder builder, Func<, Task<BasicAuthenticationResult>> verify)
+    parameters:
+    - id: builder
+      type: AuthenticationBuilder
+    - id: verify
+      type: Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}}
+    return:
+      type: AuthenticationBuilder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddBasicAuthentication(builder As AuthenticationBuilder, verify As Func(Of , Task(Of BasicAuthenticationResult))) As AuthenticationBuilder
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication*
+  nameWithType.vb: BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, Func(Of , Task(Of BasicAuthenticationResult)))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, Func(Of System., Task(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult)))
+  name.vb: AddBasicAuthentication(AuthenticationBuilder, Func(Of , Task(Of BasicAuthenticationResult)))
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  id: AddBasicAuthentication(AuthenticationBuilder,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  isExtensionMethod: true
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddBasicAuthentication(AuthenticationBuilder, Action<BasicAuthenticationOptions>, Func<, Task<BasicAuthenticationResult>>)
+  nameWithType: BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, Action<BasicAuthenticationOptions>, Func<, Task<BasicAuthenticationResult>>)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, Action<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions>, Func<System., Task<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult>>)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    id: AddBasicAuthentication
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    startLine: 14
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: public static AuthenticationBuilder AddBasicAuthentication(this AuthenticationBuilder builder, Action<BasicAuthenticationOptions> configureOptions, Func<, Task<BasicAuthenticationResult>> verify)
+    parameters:
+    - id: builder
+      type: AuthenticationBuilder
+    - id: configureOptions
+      type: Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}
+    - id: verify
+      type: Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}}
+    return:
+      type: AuthenticationBuilder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddBasicAuthentication(builder As AuthenticationBuilder, configureOptions As Action(Of BasicAuthenticationOptions), verify As Func(Of , Task(Of BasicAuthenticationResult))) As AuthenticationBuilder
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication*
+  nameWithType.vb: BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, Action(Of BasicAuthenticationOptions), Func(Of , Task(Of BasicAuthenticationResult)))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, Action(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions), Func(Of System., Task(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult)))
+  name.vb: AddBasicAuthentication(AuthenticationBuilder, Action(Of BasicAuthenticationOptions), Func(Of , Task(Of BasicAuthenticationResult)))
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  id: AddBasicAuthentication(AuthenticationBuilder,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  isExtensionMethod: true
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddBasicAuthentication(AuthenticationBuilder, String, Action<BasicAuthenticationOptions>, Func<, Task<BasicAuthenticationResult>>)
+  nameWithType: BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, String, Action<BasicAuthenticationOptions>, Func<, Task<BasicAuthenticationResult>>)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, System.String, Action<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions>, Func<System., Task<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult>>)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    id: AddBasicAuthentication
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    startLine: 17
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: public static AuthenticationBuilder AddBasicAuthentication(this AuthenticationBuilder builder, string authenticationScheme, Action<BasicAuthenticationOptions> configureOptions, Func<, Task<BasicAuthenticationResult>> verify)
+    parameters:
+    - id: builder
+      type: AuthenticationBuilder
+    - id: authenticationScheme
+      type: System.String
+    - id: configureOptions
+      type: Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}
+    - id: verify
+      type: Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}}
+    return:
+      type: AuthenticationBuilder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddBasicAuthentication(builder As AuthenticationBuilder, authenticationScheme As String, configureOptions As Action(Of BasicAuthenticationOptions), verify As Func(Of , Task(Of BasicAuthenticationResult))) As AuthenticationBuilder
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication*
+  nameWithType.vb: BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, String, Action(Of BasicAuthenticationOptions), Func(Of , Task(Of BasicAuthenticationResult)))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, System.String, Action(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions), Func(Of System., Task(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult)))
+  name.vb: AddBasicAuthentication(AuthenticationBuilder, String, Action(Of BasicAuthenticationOptions), Func(Of , Task(Of BasicAuthenticationResult)))
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  id: AddBasicAuthentication(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}})
+  isExtensionMethod: true
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddBasicAuthentication(AuthenticationBuilder, String, String, Action<BasicAuthenticationOptions>, Func<, Task<BasicAuthenticationResult>>)
+  nameWithType: BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, String, String, Action<BasicAuthenticationOptions>, Func<, Task<BasicAuthenticationResult>>)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, System.String, System.String, Action<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions>, Func<System., Task<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult>>)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    id: AddBasicAuthentication
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    startLine: 20
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: public static AuthenticationBuilder AddBasicAuthentication(this AuthenticationBuilder builder, string authenticationScheme, string displayName, Action<BasicAuthenticationOptions> configureOptions, Func<, Task<BasicAuthenticationResult>> verify)
+    parameters:
+    - id: builder
+      type: AuthenticationBuilder
+    - id: authenticationScheme
+      type: System.String
+    - id: displayName
+      type: System.String
+    - id: configureOptions
+      type: Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}
+    - id: verify
+      type: Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}}
+    return:
+      type: AuthenticationBuilder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddBasicAuthentication(builder As AuthenticationBuilder, authenticationScheme As String, displayName As String, configureOptions As Action(Of BasicAuthenticationOptions), verify As Func(Of , Task(Of BasicAuthenticationResult))) As AuthenticationBuilder
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication*
+  nameWithType.vb: BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, String, String, Action(Of BasicAuthenticationOptions), Func(Of , Task(Of BasicAuthenticationResult)))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(AuthenticationBuilder, System.String, System.String, Action(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions), Func(Of System., Task(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult)))
+  name.vb: AddBasicAuthentication(AuthenticationBuilder, String, String, Action(Of BasicAuthenticationOptions), Func(Of , Task(Of BasicAuthenticationResult)))
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder)
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder)
+  id: AddBasicAuthentication``1(AuthenticationBuilder)
+  isExtensionMethod: true
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddBasicAuthentication<TVerifier>(AuthenticationBuilder)
+  nameWithType: BasicAuthenticationExtensions.AddBasicAuthentication<TVerifier>(AuthenticationBuilder)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication<TVerifier>(AuthenticationBuilder)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    id: AddBasicAuthentication
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    startLine: 26
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: 'public static AuthenticationBuilder AddBasicAuthentication<TVerifier>(this AuthenticationBuilder builder)where TVerifier : IBasicCredentialVerifier'
+    parameters:
+    - id: builder
+      type: AuthenticationBuilder
+    typeParameters:
+    - id: TVerifier
+    return:
+      type: AuthenticationBuilder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddBasicAuthentication(Of TVerifier As IBasicCredentialVerifier)(builder As AuthenticationBuilder) As AuthenticationBuilder
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication*
+  nameWithType.vb: BasicAuthenticationExtensions.AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder)
+  name.vb: AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder)
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  id: AddBasicAuthentication``1(AuthenticationBuilder,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  isExtensionMethod: true
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddBasicAuthentication<TVerifier>(AuthenticationBuilder, Action<BasicAuthenticationOptions>)
+  nameWithType: BasicAuthenticationExtensions.AddBasicAuthentication<TVerifier>(AuthenticationBuilder, Action<BasicAuthenticationOptions>)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication<TVerifier>(AuthenticationBuilder, Action<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions>)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    id: AddBasicAuthentication
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    startLine: 30
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: 'public static AuthenticationBuilder AddBasicAuthentication<TVerifier>(this AuthenticationBuilder builder, Action<BasicAuthenticationOptions> configureOptions)where TVerifier : IBasicCredentialVerifier'
+    parameters:
+    - id: builder
+      type: AuthenticationBuilder
+    - id: configureOptions
+      type: Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}
+    typeParameters:
+    - id: TVerifier
+    return:
+      type: AuthenticationBuilder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddBasicAuthentication(Of TVerifier As IBasicCredentialVerifier)(builder As AuthenticationBuilder, configureOptions As Action(Of BasicAuthenticationOptions)) As AuthenticationBuilder
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication*
+  nameWithType.vb: BasicAuthenticationExtensions.AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, Action(Of BasicAuthenticationOptions))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, Action(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions))
+  name.vb: AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, Action(Of BasicAuthenticationOptions))
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  id: AddBasicAuthentication``1(AuthenticationBuilder,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  isExtensionMethod: true
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddBasicAuthentication<TVerifier>(AuthenticationBuilder, String, Action<BasicAuthenticationOptions>)
+  nameWithType: BasicAuthenticationExtensions.AddBasicAuthentication<TVerifier>(AuthenticationBuilder, String, Action<BasicAuthenticationOptions>)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication<TVerifier>(AuthenticationBuilder, System.String, Action<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions>)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    id: AddBasicAuthentication
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    startLine: 34
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: 'public static AuthenticationBuilder AddBasicAuthentication<TVerifier>(this AuthenticationBuilder builder, string authenticationScheme, Action<BasicAuthenticationOptions> configureOptions)where TVerifier : IBasicCredentialVerifier'
+    parameters:
+    - id: builder
+      type: AuthenticationBuilder
+    - id: authenticationScheme
+      type: System.String
+    - id: configureOptions
+      type: Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}
+    typeParameters:
+    - id: TVerifier
+    return:
+      type: AuthenticationBuilder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddBasicAuthentication(Of TVerifier As IBasicCredentialVerifier)(builder As AuthenticationBuilder, authenticationScheme As String, configureOptions As Action(Of BasicAuthenticationOptions)) As AuthenticationBuilder
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication*
+  nameWithType.vb: BasicAuthenticationExtensions.AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, String, Action(Of BasicAuthenticationOptions))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, System.String, Action(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions))
+  name.vb: AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, String, Action(Of BasicAuthenticationOptions))
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  id: AddBasicAuthentication``1(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions})
+  isExtensionMethod: true
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddBasicAuthentication<TVerifier>(AuthenticationBuilder, String, String, Action<BasicAuthenticationOptions>)
+  nameWithType: BasicAuthenticationExtensions.AddBasicAuthentication<TVerifier>(AuthenticationBuilder, String, String, Action<BasicAuthenticationOptions>)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication<TVerifier>(AuthenticationBuilder, System.String, System.String, Action<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions>)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    id: AddBasicAuthentication
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    startLine: 38
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: 'public static AuthenticationBuilder AddBasicAuthentication<TVerifier>(this AuthenticationBuilder builder, string authenticationScheme, string displayName, Action<BasicAuthenticationOptions> configureOptions)where TVerifier : IBasicCredentialVerifier'
+    parameters:
+    - id: builder
+      type: AuthenticationBuilder
+    - id: authenticationScheme
+      type: System.String
+    - id: displayName
+      type: System.String
+    - id: configureOptions
+      type: Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}
+    typeParameters:
+    - id: TVerifier
+    return:
+      type: AuthenticationBuilder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddBasicAuthentication(Of TVerifier As IBasicCredentialVerifier)(builder As AuthenticationBuilder, authenticationScheme As String, displayName As String, configureOptions As Action(Of BasicAuthenticationOptions)) As AuthenticationBuilder
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication*
+  nameWithType.vb: BasicAuthenticationExtensions.AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, String, String, Action(Of BasicAuthenticationOptions))
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, System.String, System.String, Action(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions))
+  name.vb: AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, String, String, Action(Of BasicAuthenticationOptions))
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},ServiceLifetime)
+  commentId: M:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication``1(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},ServiceLifetime)
+  id: AddBasicAuthentication``1(AuthenticationBuilder,System.String,System.String,Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions},ServiceLifetime)
+  isExtensionMethod: true
+  parent: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions
+  langs:
+  - csharp
+  - vb
+  name: AddBasicAuthentication<TVerifier>(AuthenticationBuilder, String, String, Action<BasicAuthenticationOptions>, ServiceLifetime)
+  nameWithType: BasicAuthenticationExtensions.AddBasicAuthentication<TVerifier>(AuthenticationBuilder, String, String, Action<BasicAuthenticationOptions>, ServiceLifetime)
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication<TVerifier>(AuthenticationBuilder, System.String, System.String, Action<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions>, ServiceLifetime)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    id: AddBasicAuthentication
+    path: ../src/Cumulocity.AspNetCore.Authentication.Basic/BasicAuthenticationExtensions.cs
+    startLine: 42
+  assemblies:
+  - Cumulocity.AspNetCore.Authentication.Basic
+  namespace: Cumulocity.AspNetCore.Authentication.Basic
+  syntax:
+    content: 'public static AuthenticationBuilder AddBasicAuthentication<TVerifier>(this AuthenticationBuilder builder, string authenticationScheme, string displayName, Action<BasicAuthenticationOptions> configureOptions, ServiceLifetime verifierLifetime)where TVerifier : IBasicCredentialVerifier'
+    parameters:
+    - id: builder
+      type: AuthenticationBuilder
+    - id: authenticationScheme
+      type: System.String
+    - id: displayName
+      type: System.String
+    - id: configureOptions
+      type: Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}
+    - id: verifierLifetime
+      type: ServiceLifetime
+    typeParameters:
+    - id: TVerifier
+    return:
+      type: AuthenticationBuilder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function AddBasicAuthentication(Of TVerifier As IBasicCredentialVerifier)(builder As AuthenticationBuilder, authenticationScheme As String, displayName As String, configureOptions As Action(Of BasicAuthenticationOptions), verifierLifetime As ServiceLifetime) As AuthenticationBuilder
+  overload: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication*
+  nameWithType.vb: BasicAuthenticationExtensions.AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, String, String, Action(Of BasicAuthenticationOptions), ServiceLifetime)
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+  fullName.vb: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, System.String, System.String, Action(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions), ServiceLifetime)
+  name.vb: AddBasicAuthentication(Of TVerifier)(AuthenticationBuilder, String, String, Action(Of BasicAuthenticationOptions), ServiceLifetime)
+references:
+- uid: Cumulocity.AspNetCore.Authentication.Basic
+  commentId: N:Cumulocity.AspNetCore.Authentication.Basic
+  isExternal: false
+  name: Cumulocity.AspNetCore.Authentication.Basic
+  nameWithType: Cumulocity.AspNetCore.Authentication.Basic
+  fullName: Cumulocity.AspNetCore.Authentication.Basic
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication*
+  commentId: Overload:Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication
+  isExternal: false
+  name: AddBasicAuthentication
+  nameWithType: BasicAuthenticationExtensions.AddBasicAuthentication
+  fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.AddBasicAuthentication
+- uid: AuthenticationBuilder
+  isExternal: true
+  name: AuthenticationBuilder
+  nameWithType: AuthenticationBuilder
+  fullName: AuthenticationBuilder
+- uid: Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}}
+  commentId: '!:Func{System.ValueTuple{System.String,System.String},Task{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult}}'
+  definition: Func`2
+  name: Func<, Task<BasicAuthenticationResult>>
+  nameWithType: Func<, Task<BasicAuthenticationResult>>
+  fullName: Func<System., Task<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult>>
+  nameWithType.vb: Func(Of , Task(Of BasicAuthenticationResult))
+  fullName.vb: Func(Of System., Task(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult))
+  name.vb: Func(Of , Task(Of BasicAuthenticationResult))
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: System.ValueTuple{System.String,System.String}
+    name: ''
+    nameWithType: ''
+    fullName: System.
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+    name: BasicAuthenticationResult
+    nameWithType: BasicAuthenticationResult
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: System.ValueTuple{System.String,System.String}
+    name: ''
+    nameWithType: ''
+    fullName: System.
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - uid: Task`1
+    name: Task
+    nameWithType: Task
+    fullName: Task
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+    name: BasicAuthenticationResult
+    nameWithType: BasicAuthenticationResult
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult
+  - name: )
+    nameWithType: )
+    fullName: )
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Func`2
+  isExternal: true
+  name: Func<, >
+  nameWithType: Func<, >
+  fullName: Func<, >
+  nameWithType.vb: Func(Of , )
+  fullName.vb: Func(Of , )
+  name.vb: Func(Of , )
+  spec.csharp:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Func`2
+    name: Func
+    nameWithType: Func
+    fullName: Func
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: ', '
+    nameWithType: ', '
+    fullName: ', '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}
+  commentId: '!:Action{Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions}'
+  definition: Action`1
+  name: Action<BasicAuthenticationOptions>
+  nameWithType: Action<BasicAuthenticationOptions>
+  fullName: Action<Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions>
+  nameWithType.vb: Action(Of BasicAuthenticationOptions)
+  fullName.vb: Action(Of Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions)
+  name.vb: Action(Of BasicAuthenticationOptions)
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+    name: BasicAuthenticationOptions
+    nameWithType: BasicAuthenticationOptions
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+    name: BasicAuthenticationOptions
+    nameWithType: BasicAuthenticationOptions
+    fullName: Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Action`1
+  isExternal: true
+  name: Action<>
+  nameWithType: Action<>
+  fullName: Action<>
+  nameWithType.vb: Action(Of )
+  fullName.vb: Action(Of )
+  name.vb: Action(Of )
+  spec.csharp:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: Action`1
+    name: Action
+    nameWithType: Action
+    fullName: Action
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: ServiceLifetime
+  commentId: '!:ServiceLifetime'
+  isExternal: true
+  name: ServiceLifetime
+  nameWithType: ServiceLifetime
+  fullName: ServiceLifetime

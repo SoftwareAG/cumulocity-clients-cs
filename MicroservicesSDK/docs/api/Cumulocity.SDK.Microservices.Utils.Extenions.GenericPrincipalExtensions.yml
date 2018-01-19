@@ -1,0 +1,197 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions
+  id: GenericPrincipalExtensions
+  parent: Cumulocity.SDK.Microservices.Utils.Extenions
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserName(IPrincipal)
+  - Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserPassword(IPrincipal)
+  - Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserTenant(IPrincipal)
+  langs:
+  - csharp
+  - vb
+  name: GenericPrincipalExtensions
+  nameWithType: GenericPrincipalExtensions
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    id: GenericPrincipalExtensions
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    startLine: 19
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Extenions
+  syntax:
+    content: 'public static class GenericPrincipalExtensions : object'
+    content.vb: >-
+      Public Module GenericPrincipalExtensions
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserName(IPrincipal)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserName(IPrincipal)
+  id: UserName(IPrincipal)
+  isExtensionMethod: true
+  parent: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions
+  langs:
+  - csharp
+  - vb
+  name: UserName(IPrincipal)
+  nameWithType: GenericPrincipalExtensions.UserName(IPrincipal)
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserName(IPrincipal)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    id: UserName
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    startLine: 21
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Extenions
+  syntax:
+    content: public static string UserName(this IPrincipal user)
+    parameters:
+    - id: user
+      type: IPrincipal
+    return:
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function UserName(user As IPrincipal) As String
+  overload: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserName*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserPassword(IPrincipal)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserPassword(IPrincipal)
+  id: UserPassword(IPrincipal)
+  isExtensionMethod: true
+  parent: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions
+  langs:
+  - csharp
+  - vb
+  name: UserPassword(IPrincipal)
+  nameWithType: GenericPrincipalExtensions.UserPassword(IPrincipal)
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserPassword(IPrincipal)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    id: UserPassword
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    startLine: 37
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Extenions
+  syntax:
+    content: public static string UserPassword(this IPrincipal user)
+    parameters:
+    - id: user
+      type: IPrincipal
+    return:
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function UserPassword(user As IPrincipal) As String
+  overload: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserPassword*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserTenant(IPrincipal)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserTenant(IPrincipal)
+  id: UserTenant(IPrincipal)
+  isExtensionMethod: true
+  parent: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions
+  langs:
+  - csharp
+  - vb
+  name: UserTenant(IPrincipal)
+  nameWithType: GenericPrincipalExtensions.UserTenant(IPrincipal)
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserTenant(IPrincipal)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    id: UserTenant
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Extenions/CurrentPrincipal.cs
+    startLine: 53
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Extenions
+  syntax:
+    content: public static string UserTenant(this IPrincipal user)
+    parameters:
+    - id: user
+      type: IPrincipal
+    return:
+      type: System.String
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function UserTenant(user As IPrincipal) As String
+  overload: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserTenant*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Extenions
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Extenions
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Extenions
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserName*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserName
+  isExternal: false
+  name: UserName
+  nameWithType: GenericPrincipalExtensions.UserName
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserName
+- uid: IPrincipal
+  isExternal: true
+  name: IPrincipal
+  nameWithType: IPrincipal
+  fullName: IPrincipal
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserPassword*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserPassword
+  isExternal: false
+  name: UserPassword
+  nameWithType: GenericPrincipalExtensions.UserPassword
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserPassword
+- uid: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserTenant*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserTenant
+  isExternal: false
+  name: UserTenant
+  nameWithType: GenericPrincipalExtensions.UserTenant
+  fullName: Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.UserTenant

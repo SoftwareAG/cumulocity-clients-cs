@@ -1,0 +1,100 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions
+  commentId: T:Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions
+  id: RequestResponseLoggingMiddlewareExtensions
+  parent: Cumulocity.SDK.Microservices.BasicAuthentication
+  children:
+  - Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions.UseBasicAuthentication(IApplicationBuilder)
+  langs:
+  - csharp
+  - vb
+  name: RequestResponseLoggingMiddlewareExtensions
+  nameWithType: RequestResponseLoggingMiddlewareExtensions
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/BasicAuthentication/BasicAuthenticationMiddleware.cs
+    id: RequestResponseLoggingMiddlewareExtensions
+    path: ../src/Cumulocity.SDK.Microservices/BasicAuthentication/BasicAuthenticationMiddleware.cs
+    startLine: 38
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.BasicAuthentication
+  syntax:
+    content: 'public static class RequestResponseLoggingMiddlewareExtensions : object'
+    content.vb: >-
+      Public Module RequestResponseLoggingMiddlewareExtensions
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - static
+  - class
+  modifiers.vb:
+  - Public
+  - Module
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions.UseBasicAuthentication(IApplicationBuilder)
+  commentId: M:Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions.UseBasicAuthentication(IApplicationBuilder)
+  id: UseBasicAuthentication(IApplicationBuilder)
+  isExtensionMethod: true
+  parent: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions
+  langs:
+  - csharp
+  - vb
+  name: UseBasicAuthentication(IApplicationBuilder)
+  nameWithType: RequestResponseLoggingMiddlewareExtensions.UseBasicAuthentication(IApplicationBuilder)
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions.UseBasicAuthentication(IApplicationBuilder)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/BasicAuthentication/BasicAuthenticationMiddleware.cs
+    id: UseBasicAuthentication
+    path: ../src/Cumulocity.SDK.Microservices/BasicAuthentication/BasicAuthenticationMiddleware.cs
+    startLine: 40
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.BasicAuthentication
+  syntax:
+    content: public static IApplicationBuilder UseBasicAuthentication(this IApplicationBuilder builder)
+    parameters:
+    - id: builder
+      type: IApplicationBuilder
+    return:
+      type: IApplicationBuilder
+    content.vb: >-
+      <ExtensionAttribute>
+
+      Public Shared Function UseBasicAuthentication(builder As IApplicationBuilder) As IApplicationBuilder
+  overload: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions.UseBasicAuthentication*
+  modifiers.csharp:
+  - public
+  - static
+  modifiers.vb:
+  - Public
+  - Shared
+references:
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication
+  commentId: N:Cumulocity.SDK.Microservices.BasicAuthentication
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.BasicAuthentication
+  nameWithType: Cumulocity.SDK.Microservices.BasicAuthentication
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions.UseBasicAuthentication*
+  commentId: Overload:Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions.UseBasicAuthentication
+  isExternal: false
+  name: UseBasicAuthentication
+  nameWithType: RequestResponseLoggingMiddlewareExtensions.UseBasicAuthentication
+  fullName: Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions.UseBasicAuthentication
+- uid: IApplicationBuilder
+  isExternal: true
+  name: IApplicationBuilder
+  nameWithType: IApplicationBuilder
+  fullName: IApplicationBuilder

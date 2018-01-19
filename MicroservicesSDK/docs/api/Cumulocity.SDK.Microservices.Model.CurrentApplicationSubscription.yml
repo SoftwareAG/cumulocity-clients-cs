@@ -1,0 +1,167 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription
+  commentId: T:Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription
+  id: CurrentApplicationSubscription
+  parent: Cumulocity.SDK.Microservices.Model
+  children:
+  - Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription.Users
+  langs:
+  - csharp
+  - vb
+  name: CurrentApplicationSubscription
+  nameWithType: CurrentApplicationSubscription
+  fullName: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    id: CurrentApplicationSubscription
+    path: ../src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    startLine: 54
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: 'public class CurrentApplicationSubscription : object'
+    content.vb: >-
+      Public Class CurrentApplicationSubscription
+          Inherits Object
+  inheritance:
+  - System.Object
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription.Users
+  commentId: P:Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription.Users
+  id: Users
+  parent: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription
+  langs:
+  - csharp
+  - vb
+  name: Users
+  nameWithType: CurrentApplicationSubscription.Users
+  fullName: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription.Users
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    id: Users
+    path: ../src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    startLine: 56
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public List<Subscription> Users { get; set; }
+    parameters: []
+    return:
+      type: List{Cumulocity.SDK.Microservices.Model.Subscription}
+    content.vb: Public Property Users As List(Of Subscription)
+  overload: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription.Users*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+references:
+- uid: Cumulocity.SDK.Microservices.Model
+  commentId: N:Cumulocity.SDK.Microservices.Model
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Model
+  nameWithType: Cumulocity.SDK.Microservices.Model
+  fullName: Cumulocity.SDK.Microservices.Model
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription.Users*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription.Users
+  isExternal: false
+  name: Users
+  nameWithType: CurrentApplicationSubscription.Users
+  fullName: Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription.Users
+- uid: List{Cumulocity.SDK.Microservices.Model.Subscription}
+  commentId: '!:List{Cumulocity.SDK.Microservices.Model.Subscription}'
+  definition: List`1
+  name: List<Subscription>
+  nameWithType: List<Subscription>
+  fullName: List<Cumulocity.SDK.Microservices.Model.Subscription>
+  nameWithType.vb: List(Of Subscription)
+  fullName.vb: List(Of Cumulocity.SDK.Microservices.Model.Subscription)
+  name.vb: List(Of Subscription)
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.SDK.Microservices.Model.Subscription
+    name: Subscription
+    nameWithType: Subscription
+    fullName: Cumulocity.SDK.Microservices.Model.Subscription
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.SDK.Microservices.Model.Subscription
+    name: Subscription
+    nameWithType: Subscription
+    fullName: Cumulocity.SDK.Microservices.Model.Subscription
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: List`1
+  isExternal: true
+  name: List<>
+  nameWithType: List<>
+  fullName: List<>
+  nameWithType.vb: List(Of )
+  fullName.vb: List(Of )
+  name.vb: List(Of )
+  spec.csharp:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: List`1
+    name: List
+    nameWithType: List
+    fullName: List
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

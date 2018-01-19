@@ -1,0 +1,466 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+  id: SchedulerHostedService
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.#ctor(IEnumerable{Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask})
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.ExecuteAsync(CancellationToken)
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.UnobservedTaskException
+  langs:
+  - csharp
+  - vb
+  name: SchedulerHostedService
+  nameWithType: SchedulerHostedService
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerHostedService.cs
+    id: SchedulerHostedService
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerHostedService.cs
+    startLine: 11
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduling
+  syntax:
+    content: 'public class SchedulerHostedService : HostedService'
+    content.vb: >-
+      Public Class SchedulerHostedService
+          Inherits HostedService
+  inheritance:
+  - System.Object
+  - Cumulocity.SDK.Microservices.Utils.HostedService
+  inheritedMembers:
+  - Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync(CancellationToken)
+  - Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync(CancellationToken)
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.UnobservedTaskException
+  commentId: E:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.UnobservedTaskException
+  id: UnobservedTaskException
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+  langs:
+  - csharp
+  - vb
+  name: UnobservedTaskException
+  nameWithType: SchedulerHostedService.UnobservedTaskException
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.UnobservedTaskException
+  type: Event
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerHostedService.cs
+    id: UnobservedTaskException
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerHostedService.cs
+    startLine: 13
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduling
+  syntax:
+    content: public event EventHandler<UnobservedTaskExceptionEventArgs> UnobservedTaskException
+    return:
+      type: EventHandler{UnobservedTaskExceptionEventArgs}
+    content.vb: Public Event UnobservedTaskException As EventHandler(Of UnobservedTaskExceptionEventArgs)
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.#ctor(IEnumerable{Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask})
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.#ctor(IEnumerable{Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask})
+  id: '#ctor(IEnumerable{Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask})'
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+  langs:
+  - csharp
+  - vb
+  name: SchedulerHostedService(IEnumerable<IScheduledTask>)
+  nameWithType: SchedulerHostedService.SchedulerHostedService(IEnumerable<IScheduledTask>)
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.SchedulerHostedService(IEnumerable<Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask>)
+  type: Constructor
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerHostedService.cs
+    id: .ctor
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerHostedService.cs
+    startLine: 17
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduling
+  syntax:
+    content: public SchedulerHostedService(IEnumerable<IScheduledTask> scheduledTasks)
+    parameters:
+    - id: scheduledTasks
+      type: IEnumerable{Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask}
+    content.vb: Public Sub New(scheduledTasks As IEnumerable(Of IScheduledTask))
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.#ctor*
+  nameWithType.vb: SchedulerHostedService.SchedulerHostedService(IEnumerable(Of IScheduledTask))
+  modifiers.csharp:
+  - public
+  modifiers.vb:
+  - Public
+  fullName.vb: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.SchedulerHostedService(IEnumerable(Of Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask))
+  name.vb: SchedulerHostedService(IEnumerable(Of IScheduledTask))
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.ExecuteAsync(CancellationToken)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.ExecuteAsync(CancellationToken)
+  id: ExecuteAsync(CancellationToken)
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService
+  langs:
+  - csharp
+  - vb
+  name: ExecuteAsync(CancellationToken)
+  nameWithType: SchedulerHostedService.ExecuteAsync(CancellationToken)
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.ExecuteAsync(CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerHostedService.cs
+    id: ExecuteAsync
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduling/SchedulerHostedService.cs
+    startLine: 32
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduling
+  syntax:
+    content: protected override Task ExecuteAsync(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: CancellationToken
+    return:
+      type: Task
+    content.vb: Protected Overrides Function ExecuteAsync(cancellationToken As CancellationToken) As Task
+  overridden: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync(CancellationToken)
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.ExecuteAsync*
+  modifiers.csharp:
+  - protected
+  - override
+  modifiers.vb:
+  - Protected
+  - Overrides
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Scheduling
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Scheduling
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Scheduling
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService
+  commentId: T:Cumulocity.SDK.Microservices.Utils.HostedService
+  parent: Cumulocity.SDK.Microservices.Utils
+  isExternal: false
+  name: HostedService
+  nameWithType: HostedService
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync(CancellationToken)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync(CancellationToken)
+  parent: Cumulocity.SDK.Microservices.Utils.HostedService
+  isExternal: true
+  name: StartAsync(CancellationToken)
+  nameWithType: HostedService.StartAsync(CancellationToken)
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync(CancellationToken)
+  spec.csharp:
+  - uid: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync(CancellationToken)
+    name: StartAsync
+    nameWithType: HostedService.StartAsync
+    fullName: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync(CancellationToken)
+    name: StartAsync
+    nameWithType: HostedService.StartAsync
+    fullName: Cumulocity.SDK.Microservices.Utils.HostedService.StartAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync(CancellationToken)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync(CancellationToken)
+  parent: Cumulocity.SDK.Microservices.Utils.HostedService
+  isExternal: true
+  name: StopAsync(CancellationToken)
+  nameWithType: HostedService.StopAsync(CancellationToken)
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync(CancellationToken)
+  spec.csharp:
+  - uid: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync(CancellationToken)
+    name: StopAsync
+    nameWithType: HostedService.StopAsync
+    fullName: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync(CancellationToken)
+    name: StopAsync
+    nameWithType: HostedService.StopAsync
+    fullName: Cumulocity.SDK.Microservices.Utils.HostedService.StopAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Utils
+  commentId: N:Cumulocity.SDK.Microservices.Utils
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils
+  nameWithType: Cumulocity.SDK.Microservices.Utils
+  fullName: Cumulocity.SDK.Microservices.Utils
+- uid: EventHandler{UnobservedTaskExceptionEventArgs}
+  commentId: '!:EventHandler{UnobservedTaskExceptionEventArgs}'
+  definition: EventHandler`1
+  name: EventHandler<UnobservedTaskExceptionEventArgs>
+  nameWithType: EventHandler<UnobservedTaskExceptionEventArgs>
+  fullName: EventHandler<UnobservedTaskExceptionEventArgs>
+  nameWithType.vb: EventHandler(Of UnobservedTaskExceptionEventArgs)
+  fullName.vb: EventHandler(Of UnobservedTaskExceptionEventArgs)
+  name.vb: EventHandler(Of UnobservedTaskExceptionEventArgs)
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: UnobservedTaskExceptionEventArgs
+    name: UnobservedTaskExceptionEventArgs
+    nameWithType: UnobservedTaskExceptionEventArgs
+    fullName: UnobservedTaskExceptionEventArgs
+    isExternal: true
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: UnobservedTaskExceptionEventArgs
+    name: UnobservedTaskExceptionEventArgs
+    nameWithType: UnobservedTaskExceptionEventArgs
+    fullName: UnobservedTaskExceptionEventArgs
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: EventHandler`1
+  isExternal: true
+  name: EventHandler<>
+  nameWithType: EventHandler<>
+  fullName: EventHandler<>
+  nameWithType.vb: EventHandler(Of )
+  fullName.vb: EventHandler(Of )
+  name.vb: EventHandler(Of )
+  spec.csharp:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: EventHandler`1
+    name: EventHandler
+    nameWithType: EventHandler
+    fullName: EventHandler
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.#ctor*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.#ctor
+  isExternal: false
+  name: SchedulerHostedService
+  nameWithType: SchedulerHostedService.SchedulerHostedService
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.SchedulerHostedService
+- uid: IEnumerable{Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask}
+  commentId: '!:IEnumerable{Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask}'
+  definition: IEnumerable`1
+  name: IEnumerable<IScheduledTask>
+  nameWithType: IEnumerable<IScheduledTask>
+  fullName: IEnumerable<Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask>
+  nameWithType.vb: IEnumerable(Of IScheduledTask)
+  fullName.vb: IEnumerable(Of Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask)
+  name.vb: IEnumerable(Of IScheduledTask)
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+    name: IScheduledTask
+    nameWithType: IScheduledTask
+    fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+    name: IScheduledTask
+    nameWithType: IScheduledTask
+    fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IEnumerable`1
+  isExternal: true
+  name: IEnumerable<>
+  nameWithType: IEnumerable<>
+  fullName: IEnumerable<>
+  nameWithType.vb: IEnumerable(Of )
+  fullName.vb: IEnumerable(Of )
+  name.vb: IEnumerable(Of )
+  spec.csharp:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEnumerable`1
+    name: IEnumerable
+    nameWithType: IEnumerable
+    fullName: IEnumerable
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync(CancellationToken)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync(CancellationToken)
+  parent: Cumulocity.SDK.Microservices.Utils.HostedService
+  isExternal: true
+  name: ExecuteAsync(CancellationToken)
+  nameWithType: HostedService.ExecuteAsync(CancellationToken)
+  fullName: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync(CancellationToken)
+  spec.csharp:
+  - uid: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync(CancellationToken)
+    name: ExecuteAsync
+    nameWithType: HostedService.ExecuteAsync
+    fullName: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+  spec.vb:
+  - uid: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync(CancellationToken)
+    name: ExecuteAsync
+    nameWithType: HostedService.ExecuteAsync
+    fullName: Cumulocity.SDK.Microservices.Utils.HostedService.ExecuteAsync
+  - name: (
+    nameWithType: (
+    fullName: (
+  - uid: CancellationToken
+    name: CancellationToken
+    nameWithType: CancellationToken
+    fullName: CancellationToken
+    isExternal: true
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.ExecuteAsync*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.ExecuteAsync
+  isExternal: false
+  name: ExecuteAsync
+  nameWithType: SchedulerHostedService.ExecuteAsync
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.ExecuteAsync
+- uid: CancellationToken
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: CancellationToken
+- uid: Task
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: Task

@@ -1,0 +1,297 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Model.Subscription
+  commentId: T:Cumulocity.SDK.Microservices.Model.Subscription
+  id: Subscription
+  parent: Cumulocity.SDK.Microservices.Model
+  children:
+  - Cumulocity.SDK.Microservices.Model.Subscription.Name
+  - Cumulocity.SDK.Microservices.Model.Subscription.Password
+  - Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer
+  - Cumulocity.SDK.Microservices.Model.Subscription.Tenant
+  langs:
+  - csharp
+  - vb
+  name: Subscription
+  nameWithType: Subscription
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription
+  type: Class
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    id: Subscription
+    path: ../src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    startLine: 5
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: 'public class Subscription : object'
+    content.vb: >-
+      Public Class Subscription
+          Inherits Object
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Cumulocity.SDK.Microservices.Model.ChangedSubscription
+  modifiers.csharp:
+  - public
+  - class
+  modifiers.vb:
+  - Public
+  - Class
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.Name
+  commentId: P:Cumulocity.SDK.Microservices.Model.Subscription.Name
+  id: Name
+  parent: Cumulocity.SDK.Microservices.Model.Subscription
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: Subscription.Name
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.Name
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    id: Name
+    path: ../src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    startLine: 7
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: Cumulocity.SDK.Microservices.Model.Subscription.Name*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.Password
+  commentId: P:Cumulocity.SDK.Microservices.Model.Subscription.Password
+  id: Password
+  parent: Cumulocity.SDK.Microservices.Model.Subscription
+  langs:
+  - csharp
+  - vb
+  name: Password
+  nameWithType: Subscription.Password
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.Password
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    id: Password
+    path: ../src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    startLine: 8
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string Password { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Password As String
+  overload: Cumulocity.SDK.Microservices.Model.Subscription.Password*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.Tenant
+  commentId: P:Cumulocity.SDK.Microservices.Model.Subscription.Tenant
+  id: Tenant
+  parent: Cumulocity.SDK.Microservices.Model.Subscription
+  langs:
+  - csharp
+  - vb
+  name: Tenant
+  nameWithType: Subscription.Tenant
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.Tenant
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    id: Tenant
+    path: ../src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    startLine: 9
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public string Tenant { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Tenant As String
+  overload: Cumulocity.SDK.Microservices.Model.Subscription.Tenant*
+  modifiers.csharp:
+  - public
+  - get
+  - set
+  modifiers.vb:
+  - Public
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer
+  commentId: P:Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer
+  id: SubscriptionComparer
+  parent: Cumulocity.SDK.Microservices.Model.Subscription
+  langs:
+  - csharp
+  - vb
+  name: SubscriptionComparer
+  nameWithType: Subscription.SubscriptionComparer
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    id: SubscriptionComparer
+    path: ../src/Cumulocity.SDK.Microservices/Model/Subscription.cs
+    startLine: 43
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Model
+  syntax:
+    content: public static IEqualityComparer<Subscription> SubscriptionComparer { get; }
+    parameters: []
+    return:
+      type: IEqualityComparer{Cumulocity.SDK.Microservices.Model.Subscription}
+    content.vb: Public Shared ReadOnly Property SubscriptionComparer As IEqualityComparer(Of Subscription)
+  overload: Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer*
+  modifiers.csharp:
+  - public
+  - static
+  - get
+  modifiers.vb:
+  - Public
+  - Shared
+  - ReadOnly
+references:
+- uid: Cumulocity.SDK.Microservices.Model
+  commentId: N:Cumulocity.SDK.Microservices.Model
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Model
+  nameWithType: Cumulocity.SDK.Microservices.Model
+  fullName: Cumulocity.SDK.Microservices.Model
+- uid: System.Object
+  isExternal: true
+  name: Object
+  nameWithType: Object
+  fullName: System.Object
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.Name*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.Subscription.Name
+  isExternal: false
+  name: Name
+  nameWithType: Subscription.Name
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.Name
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.Password*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.Subscription.Password
+  isExternal: false
+  name: Password
+  nameWithType: Subscription.Password
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.Password
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.Tenant*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.Subscription.Tenant
+  isExternal: false
+  name: Tenant
+  nameWithType: Subscription.Tenant
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.Tenant
+- uid: Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer*
+  commentId: Overload:Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer
+  isExternal: false
+  name: SubscriptionComparer
+  nameWithType: Subscription.SubscriptionComparer
+  fullName: Cumulocity.SDK.Microservices.Model.Subscription.SubscriptionComparer
+- uid: IEqualityComparer{Cumulocity.SDK.Microservices.Model.Subscription}
+  commentId: '!:IEqualityComparer{Cumulocity.SDK.Microservices.Model.Subscription}'
+  definition: IEqualityComparer`1
+  name: IEqualityComparer<Subscription>
+  nameWithType: IEqualityComparer<Subscription>
+  fullName: IEqualityComparer<Cumulocity.SDK.Microservices.Model.Subscription>
+  nameWithType.vb: IEqualityComparer(Of Subscription)
+  fullName.vb: IEqualityComparer(Of Cumulocity.SDK.Microservices.Model.Subscription)
+  name.vb: IEqualityComparer(Of Subscription)
+  spec.csharp:
+  - uid: IEqualityComparer`1
+    name: IEqualityComparer
+    nameWithType: IEqualityComparer
+    fullName: IEqualityComparer
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - uid: Cumulocity.SDK.Microservices.Model.Subscription
+    name: Subscription
+    nameWithType: Subscription
+    fullName: Cumulocity.SDK.Microservices.Model.Subscription
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEqualityComparer`1
+    name: IEqualityComparer
+    nameWithType: IEqualityComparer
+    fullName: IEqualityComparer
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - uid: Cumulocity.SDK.Microservices.Model.Subscription
+    name: Subscription
+    nameWithType: Subscription
+    fullName: Cumulocity.SDK.Microservices.Model.Subscription
+  - name: )
+    nameWithType: )
+    fullName: )
+- uid: IEqualityComparer`1
+  commentId: '!:IEqualityComparer`1'
+  isExternal: true
+  name: IEqualityComparer<>
+  nameWithType: IEqualityComparer<>
+  fullName: IEqualityComparer<>
+  nameWithType.vb: IEqualityComparer(Of )
+  fullName.vb: IEqualityComparer(Of )
+  name.vb: IEqualityComparer(Of )
+  spec.csharp:
+  - uid: IEqualityComparer`1
+    name: IEqualityComparer
+    nameWithType: IEqualityComparer
+    fullName: IEqualityComparer
+    isExternal: true
+  - name: <
+    nameWithType: <
+    fullName: <
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: '>'
+    nameWithType: '>'
+    fullName: '>'
+  spec.vb:
+  - uid: IEqualityComparer`1
+    name: IEqualityComparer
+    nameWithType: IEqualityComparer
+    fullName: IEqualityComparer
+    isExternal: true
+  - name: '(Of '
+    nameWithType: '(Of '
+    fullName: '(Of '
+  - name: ''
+    nameWithType: ''
+    fullName: ''
+  - name: )
+    nameWithType: )
+    fullName: )

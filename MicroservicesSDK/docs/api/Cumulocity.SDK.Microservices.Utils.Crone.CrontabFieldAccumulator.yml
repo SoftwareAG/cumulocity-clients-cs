@@ -1,0 +1,51 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+  id: CrontabFieldAccumulator
+  parent: Cumulocity.SDK.Microservices.Utils.Crone
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: CrontabFieldAccumulator
+  nameWithType: CrontabFieldAccumulator
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator
+  type: Delegate
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldAccumulator.cs
+    id: CrontabFieldAccumulator
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Crone/CrontabFieldAccumulator.cs
+    startLine: 6
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Crone
+  syntax:
+    content: public delegate void CrontabFieldAccumulator(int start, int end, int interval);
+    parameters:
+    - id: start
+      type: System.Int32
+    - id: end
+      type: System.Int32
+    - id: interval
+      type: System.Int32
+    content.vb: Public Delegate Sub CrontabFieldAccumulator(start As Integer, end As Integer, interval As Integer)
+  modifiers.csharp:
+  - public
+  - delegate
+  modifiers.vb:
+  - Public
+  - Delegate
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Crone
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Crone
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Crone
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Crone
+  fullName: Cumulocity.SDK.Microservices.Utils.Crone
+- uid: System.Int32
+  isExternal: true
+  name: Int32
+  nameWithType: Int32
+  fullName: System.Int32

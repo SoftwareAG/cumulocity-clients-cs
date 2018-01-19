@@ -1,0 +1,128 @@
+### YamlMime:ManagedReference
+items:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  commentId: T:Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  id: IScheduledTask
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling
+  children:
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync(CancellationToken)
+  - Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule
+  langs:
+  - csharp
+  - vb
+  name: IScheduledTask
+  nameWithType: IScheduledTask
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  type: Interface
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduling/IScheduledTask.cs
+    id: IScheduledTask
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduling/IScheduledTask.cs
+    startLine: 4
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduling
+  syntax:
+    content: public interface IScheduledTask
+    content.vb: Public Interface IScheduledTask
+  modifiers.csharp:
+  - public
+  - interface
+  modifiers.vb:
+  - Public
+  - Interface
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule
+  commentId: P:Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule
+  id: Schedule
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  langs:
+  - csharp
+  - vb
+  name: Schedule
+  nameWithType: IScheduledTask.Schedule
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule
+  type: Property
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduling/IScheduledTask.cs
+    id: Schedule
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduling/IScheduledTask.cs
+    startLine: 6
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduling
+  syntax:
+    content: string Schedule { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Schedule As String
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule*
+  modifiers.csharp:
+  - get
+  modifiers.vb:
+  - ReadOnly
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync(CancellationToken)
+  commentId: M:Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync(CancellationToken)
+  id: ExecuteAsync(CancellationToken)
+  parent: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask
+  langs:
+  - csharp
+  - vb
+  name: ExecuteAsync(CancellationToken)
+  nameWithType: IScheduledTask.ExecuteAsync(CancellationToken)
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync(CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/src/Cumulocity.SDK.Microservices/Utils/Scheduling/IScheduledTask.cs
+    id: ExecuteAsync
+    path: ../src/Cumulocity.SDK.Microservices/Utils/Scheduling/IScheduledTask.cs
+    startLine: 7
+  assemblies:
+  - Cumulocity.SDK.Microservices
+  namespace: Cumulocity.SDK.Microservices.Utils.Scheduling
+  syntax:
+    content: Task ExecuteAsync(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: CancellationToken
+    return:
+      type: Task
+    content.vb: Function ExecuteAsync(cancellationToken As CancellationToken) As Task
+  overload: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync*
+references:
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling
+  commentId: N:Cumulocity.SDK.Microservices.Utils.Scheduling
+  isExternal: false
+  name: Cumulocity.SDK.Microservices.Utils.Scheduling
+  nameWithType: Cumulocity.SDK.Microservices.Utils.Scheduling
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule
+  isExternal: false
+  name: Schedule
+  nameWithType: IScheduledTask.Schedule
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.Schedule
+- uid: System.String
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync*
+  commentId: Overload:Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync
+  isExternal: false
+  name: ExecuteAsync
+  nameWithType: IScheduledTask.ExecuteAsync
+  fullName: Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.ExecuteAsync
+- uid: CancellationToken
+  isExternal: true
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: CancellationToken
+- uid: Task
+  isExternal: true
+  name: Task
+  nameWithType: Task
+  fullName: Task

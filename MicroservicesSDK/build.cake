@@ -1,4 +1,7 @@
 #addin "Cake.Putty"
+#addin "Cake.DocFx"
+#tool "docfx.console"
+
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -14,14 +17,15 @@ var binDir = "";       //Destination Binary File Directory name i.e. bin
 var solutionFile = ""; // Solution file if needed
 var outputDir = Directory("./publish") + Directory(configuration);  // The output directory the build artefacts saved too
 
-var destinationIp = "52.174.102.182";
-var destinationDirectory = "/home/pnow/upload";
-var username = "pnow";
+var destinationIp = "";
+var destinationDirectory = "";
+var username = "";
 
 var testFailed = false;
 var solutionDir = System.IO.Directory.GetCurrentDirectory();
 var testResultDir = System.IO.Path.Combine(solutionDir, "test-results");
 var artifactDir = "./artifacts";
+var docfxDir = "./docs/_site";
  
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -45,6 +49,14 @@ Task("Clean")
 			{
 				//DeleteDirectory(outputDir, recursive:true);
 				CleanDirectory(outputDir);
+			}
+		if (DirectoryExists(docfxDir))
+			{
+				CleanDirectory(docfxDir);
+			}
+		if (DirectoryExists(testResultDir))
+			{
+				CleanDirectory(testResultDir);
 			}
 	});
 
@@ -130,6 +142,7 @@ Task("Build")
 Task("Package")    
 	.IsDependentOn("Build")
 	.IsDependentOn("Test")
+	.IsDependentOn("Docs")
 	.ContinueOnError()  	
 	.Does(() => { 
         	var packSettings = new DotNetCorePackSettings  
@@ -145,6 +158,8 @@ Task("Package")
 		   DotNetCorePack(project.FullPath, packSettings);
 		}
 });
+
+Task("Docs").Does(() => DocFxBuild("./docs/docfx.json"));
 
 //Task("Deploy")
 //    .IsDependentOn("Package")
