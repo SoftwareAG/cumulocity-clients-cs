@@ -17,23 +17,34 @@ invocation='say_verbose "Calling: ${yellow:-}${FUNCNAME[0]} ${green:-}$*${normal
 # Exposing stream 3 as a pipe to standard output of the script itself
 exec 3>&1
 
-##########
+ARG1=${1:-project}
+ARG2=${2:-api}
 
+if [ -n "$ARG1" ] && [ -n "$ARG2" ]; then
+  if [ $ARG1 = "project" ] && [ $ARG2 = "api" ]; then
+	
+		echo "Enter the solution name:"
+		read projectName
+		echo "Enter the name of a web API project:"
+		read webApiProject
+   else
+	   projectName=$ARG1
+	   webApiProject=$ARG2
+   fi
+fi
+
+##########
 cakeBuildOutput="build.cake"
 dockerfileOutput="Dockerfile"
-
+deployOutput="deploy.sh"
 ##########
-
-echo "Enter the solution name:"
-read projectName
-echo "Enter the name of a web API project:"
-read webApiProject
 
 mkdir $projectName
 
 echo "$projectName/$cakeBuildOutput"
 mv "$cakeBuildOutput" "$projectName/$cakeBuildOutput"
 mv "$dockerfileOutput" "$projectName/$dockerfileOutput"
+mv "$deployOutput" "$projectName/$deployOutput"
 
 cd $projectName
 
@@ -83,8 +94,8 @@ dotnet new webapi --name "$webApiProject" --output "$webApiProject"
 mkdir nugets
 cd nugets
 
-sudo wget http://resources.cumulocity.com/nuget/releases/Cumulocity.AspNetCore.Authentication.Basic.1.0.0.nupkg
-sudo wget http://resources.cumulocity.com/nuget/releases/Cumulocity.SDK.Microservices.1.0.0.nupkg
+sudo wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.1.0.0.nupkg
+sudo wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.1.0.0.nupkg
 
 cd ..
 cd $webApiProject

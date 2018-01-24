@@ -1,5 +1,26 @@
-$ProjectName = Read-Host -Prompt 'Enter the solution name:'
-$WebApiProject = Read-Host -Prompt 'Enter the name of a web API project:'
+Param(
+[string]$ProjectName = "Project",
+[string]$WebApiProject = "WebApi"
+)
+
+If( ($ProjectName -And !$WebApiProject) -Or (!$ProjectName -And $WebApiProject) )
+{     
+     Write-Host "Break Out! The script needs two not null parameters."
+     Break
+}
+ 
+If( (!$ProjectName -And !$WebApiProject) -Or ($ProjectName -eq "Project" -And $WebApiProject -eq "WebApi") )
+{
+	$ProjectName = Read-Host -Prompt 'Enter the solution name:'
+	$WebApiProject = Read-Host -Prompt 'Enter the name of a web API project:'
+}
+ 
+If( (!$ProjectName -And !$WebApiProject)
+{
+	$ProjectName = Read-Host -Prompt 'Enter the solution name:'
+	$WebApiProject = Read-Host -Prompt 'Enter the name of a web API project:'
+}
+ 
 
 IF ([string]::IsNullOrWhitespace($ProjectName )){
 	Write-Host "The solution name is empty.";
