@@ -15,7 +15,7 @@ If( (!$ProjectName -And !$WebApiProject) -Or ($ProjectName -eq "Project" -And $W
 	$WebApiProject = Read-Host -Prompt 'Enter the name of a web API project:'
 }
  
-If( (!$ProjectName -And !$WebApiProject)
+If(!$ProjectName -And !$WebApiProject)
 {
 	$ProjectName = Read-Host -Prompt 'Enter the solution name:'
 	$WebApiProject = Read-Host -Prompt 'Enter the name of a web API project:'
@@ -102,11 +102,10 @@ $currentDir = Get-Location
 $start_time = Get-Date
 
 ##FTP
- $folder = 'Files/Nugets'
  $target = "$currentDir/"
 
-Invoke-WebRequest  http://resources.cumulocity.com/nuget/releases/Cumulocity.AspNetCore.Authentication.Basic.1.0.0.nupkg -OutFile Cumulocity.AspNetCore.Authentication.Basic.1.0.0.nupkg
-Invoke-WebRequest  http://resources.cumulocity.com/nuget/releases/Cumulocity.SDK.Microservices.1.0.0.nupkg -OutFile Cumulocity.SDK.Microservices.1.0.0.nupkg
+Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.1.0.0.nupkg -OutFile Cumulocity.AspNetCore.Authentication.Basic.1.0.0.nupkg
+Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.1.0.0.nupkg -OutFile Cumulocity.SDK.Microservices.1.0.0.nupkg
 
 cd..
 cd $WebApiProject 
