@@ -94,8 +94,10 @@ dotnet new webapi --name "$webApiProject" --output "$webApiProject"
 mkdir nugets
 cd nugets
 
-sudo wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.1.0.0.nupkg
-sudo wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.1.0.0.nupkg
+
+
+wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.1.0.0.nupkg
+wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.1.0.0.nupkg
 
 cd ..
 cd $webApiProject
@@ -108,6 +110,8 @@ pkg=$(basename $f);
 pkg=$(sed 's/.\{12\}$//' <<< "$pkg");
 dotnet add package $pkg;	
 done;
+
+echo "Packages were added";
 
 csProgram="
 {   
@@ -148,6 +152,7 @@ using System.Net;
     }
 }"
 sed -i '/{/Q' "Program.cs"
+
 echo "$csProgram" >> "Program.cs"
 
 cd ../..
