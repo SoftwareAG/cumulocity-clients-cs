@@ -26,6 +26,16 @@ var solutionDir = System.IO.Directory.GetCurrentDirectory();
 var testResultDir = System.IO.Path.Combine(solutionDir, "test-results");
 var artifactDir = "./artifacts";
 var docfxDir = "./docs/_site";
+
+
+var local = BuildSystem.IsLocalBuild;
+string version = null;
+string semanticVersion = null;
+string prerelease = null;
+string isTagged = null;
+var isReleaseBranch = false;
+
+var isCreatedRelease = false;
  
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -79,13 +89,10 @@ Task("Build")
 	var buildSettings = new DotNetCoreBuildSettings
      {
          Configuration = configuration
-		//, OutputDirectory = outputDir
      };
 	 
     if(IsRunningOnWindows())
     {
-      // Use MSBuild
-      // MSBuild(solutionFile , settings => settings.SetConfiguration(configuration));
 	 
 	  	var projects = GetFiles("./src/**/*.csproj");
 		foreach (var project in projects)
@@ -139,16 +146,22 @@ Task("Build")
 		XmlTransform("./tools/MsUnit.xslt", testResultDir +"/Result.xml", testResultDir +"/JUnit.Result.xml");	
 	});
 
-Task("Package")    
-	.IsDependentOn("Build")
-	.IsDependentOn("Test")
-	.IsDependentOn("Docs")
+Task("Package")   
+	.IsDependentOn("CreateRelease") 
+	//.IsDependentOn("Build")
+	//.IsDependentOn("Test")
+	//.IsDependentOn("Docs")
 	.ContinueOnError()  	
 	.Does(() => { 
+	        
+			var buildSettings = new DotNetCoreMSBuildSettings();
+			buildSettings.SetVersion(version);
+	  
         	var packSettings = new DotNetCorePackSettings  
        		{             OutputDirectory = outputDir,
 						  NoBuild = true,
-                          Configuration = configuration
+                          Configuration = configuration,
+						  MSBuildSettings = buildSettings
        		};           
         //DotNetCorePack(projJson, packSettings);
 		
@@ -160,6 +173,71 @@ Task("Package")
 });
 
 Task("Docs").Does(() => DocFxBuild("./docs/docfx.json"));
+
+Task("CreateRelease")
+.IsDependentOn("Test")
+.Does(() => {
+		Information("CreateRelease");
+		
+		Information(@"BuildNumber: {0}",BuildSystem.Jenkins.Environment.Build.BuildNumber);
+	
+		var settings = new ProcessSettings
+		{
+		   Arguments = new ProcessArgumentBuilder().Append("hgversion.ps1 -local false")
+		};
+		StartProcess("pwsh", settings);
+		
+		if (FileExists("./version.props"))
+		{
+			
+			string[] lines = System.IO.File.ReadAllLines("./version.props");
+			
+			foreach (string line in lines)
+			{
+					if (line.StartsWith("version"))
+					{
+						version = line.Substring("version=".Length).Trim();
+					}
+					else if (line.StartsWith("semanticVersion"))
+					{
+						semanticVersion = line.Substring("semanticVersion=".Length).Trim();
+					}
+					else if (line.StartsWith("prerelease"))
+					{
+						prerelease = line.Substring("prerelease=".Length).Trim();
+					}
+					else if (line.StartsWith("istagged"))
+					{
+						isTagged = line.Substring("istagged=".Length).Trim();
+					}
+			}
+			
+			var newVersion = Convert.ToInt32(version.Replace(".",""));
+			var oldVersion = Convert.ToInt32(isTagged.Replace(".",""));
+			
+			if(newVersion <= oldVersion)
+			{
+			    throw new Exception("The version of build is incorrect.");  
+			}else{
+			
+			   			
+				var settingsCreateRelease = new ProcessSettings
+				{
+				   Arguments = new ProcessArgumentBuilder().Append("createrelease.ps1 -version " + version)
+				};
+				isCreatedRelease = true;
+				Information("Settings release:" + version);								
+				Information("isCreatedRelease:" + isCreatedRelease);	
+				StartProcess("pwsh", settingsCreateRelease);
+			}
+			
+		}else{
+			throw new Exception("Version.props not found");  
+		}
+	
+   
+});
+
 
 //Task("Deploy")
 //    .IsDependentOn("Package")

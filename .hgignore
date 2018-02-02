@@ -174,3 +174,9 @@ Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/tasks.vs.json
 Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vscode/launch.json
 Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vscode/tasks.json
 Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/source/DockerWebApp.Demo/bower_components
+^Examples/BuildingScripts/microservicesdk-lin-dev/tools$
+^Examples/BuildingScripts/microservicesdk-win-dev/tools$
+Examples/BuildingScripts/microservicesdk-lin-dev/version.props
+Examples/BuildingScripts/microservicesdk-win-dev/version.props
+^MicroservicesSDK/tools$
+^MQTT/tools$
