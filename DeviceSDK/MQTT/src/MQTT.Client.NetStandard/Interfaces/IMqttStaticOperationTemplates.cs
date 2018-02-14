@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Cumulocity.MQTT.Interfaces
 {
-    internal interface IMqttStaticOperationTemplates
+    public interface IMqttStaticOperationTemplates
     {
         Task<bool> GetPendingOperationsAsync(Func<Exception, Task<bool>> errorHandlerAsync, ProcessingMode? processingMode = null);
 

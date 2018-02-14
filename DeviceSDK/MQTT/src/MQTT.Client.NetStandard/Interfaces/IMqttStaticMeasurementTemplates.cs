@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Cumulocity.MQTT.Interfaces
 {
-    internal interface IMqttStaticMeasurementTemplates
+    public interface IMqttStaticMeasurementTemplates
     {
         //200
         Task<bool> CreateCustomMeasurementAsync(string fragment, string series, string value, string unit, string time, Func<Exception, Task<bool>> errorHandlerAsync, ProcessingMode? processingMode = null);

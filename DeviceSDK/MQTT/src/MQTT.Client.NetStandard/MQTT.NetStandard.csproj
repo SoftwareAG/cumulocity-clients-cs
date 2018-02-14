@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Externals\MQTTnet\src\MQTTnet.Core\MQTTnet.Core.csproj" />
     <ProjectReference Include="..\..\..\..\Externals\MQTTnet\src\MQTTnet.NetStandard\MQTTnet.Netstandard.csproj" />
   </ItemGroup>
 

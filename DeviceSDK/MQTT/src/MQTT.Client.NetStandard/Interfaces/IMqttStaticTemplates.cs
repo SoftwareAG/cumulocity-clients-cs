@@ -2,7 +2,7 @@
 
 namespace Cumulocity.MQTT.Interfaces
 {
-    internal interface IMqttStaticTemplates : IMqttStaticInventoryTemplates
+    public interface IMqttStaticTemplates : IMqttStaticInventoryTemplates
     {
 
     }
