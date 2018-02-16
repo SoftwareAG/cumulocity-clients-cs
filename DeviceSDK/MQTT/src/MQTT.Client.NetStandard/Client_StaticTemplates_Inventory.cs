@@ -1,8 +1,8 @@
 ﻿using Cumulocity.MQTT.Enums;
 using Cumulocity.MQTT.Interfaces;
-using Cumulocity.MQTT.Interfaces;
-using MQTTnet.Core;
-using MQTTnet.Core.Protocol;
+using MQTTnet;
+using MQTTnet.Client;
+using MQTTnet.Protocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +12,15 @@ using System.Threading.Tasks;
 
 namespace Cumulocity.MQTT
 {
-    public partial class Client : IMqttStaticInventoryTemplates
+    public class MqttStaticInventoryTemplates : IMqttStaticInventoryTemplates
     {
+        private readonly IMqttClient _mqttClient;
+
+        public MqttStaticInventoryTemplates(IMqttClient cl)
+        {
+            this._mqttClient = cl;
+        }
+
         /// <summary>
         /// Childs the device creation. Will create a new child device for the current device.
         /// The newly created object will be added as child device. Additionally an externaId
@@ -483,6 +490,17 @@ namespace Cumulocity.MQTT
             {
                 return true;
             }
+        }
+
+        private static string GetProcessingMode(ProcessingMode? processingMode)
+        {
+            var stringProcessingMode = "s";
+            if (processingMode.HasValue && processingMode.Value.Equals(ProcessingMode.TRANSIENT))
+            {
+                stringProcessingMode = "t";
+            }
+
+            return stringProcessingMode;
         }
     }
 }

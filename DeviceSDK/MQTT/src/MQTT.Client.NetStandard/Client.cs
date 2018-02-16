@@ -2,9 +2,8 @@
 using Cumulocity.MQTT.Interfaces;
 using Cumulocity.MQTT.Utils;
 using MQTTnet;
-using MQTTnet.Core.Client;
-using MQTTnet.Core.Packets;
-using MQTTnet.Core.Protocol;
+using MQTTnet.Client;
+using MQTTnet.Protocol;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -22,61 +21,79 @@ namespace Cumulocity.MQTT
     /// <seealso cref="Cumulocity.MQTT.Interfaces.IClient" />
     public partial class Client : IClient
     {
-        private readonly IIniParser _iniParser;
+        private readonly IConfiguration _config;
         private readonly IMqttClient _mqttClient;
         private readonly Dictionary<int, Func<List<string>, bool>> _storeSmartRest;
         private readonly Dictionary<int, Func<List<string>, bool>> _storeStaticOperations;
         private readonly Dictionary<int, Func<List<string>, bool>> _storeStaticOther;
 
+        private enum ConnectionTypes
+        {
+            TCP,
+            TLS,
+            WS,
+            WSS
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Client"/> class.
         /// </summary>
-        /// <param name="iniParser">The ini parser.</param>
-        /// <exception cref="System.ArgumentNullException">iniParser</exception>
-        public Client(IIniParser iniParser)
+        /// <param name="config">The configuration.</param>
+        /// <exception cref="System.ArgumentNullException">config</exception>
+        public Client(IConfiguration config)
         {
             Log.Logger = new LoggerConfiguration()
             .MinimumLevel.Debug()
             .WriteTo.RollingFile(Path.Combine(Environment.CurrentDirectory, "MQTTClient-{Date}.txt"))
             .CreateLogger();
-
-            if (iniParser == null)
-            {
-                throw new ArgumentNullException(nameof(iniParser));
-            }
-            _iniParser = iniParser;
-
-            Enum.TryParse(_iniParser.GetSetting("Device", "ConnectionType"), out ConnectionTypes connType);
-
-            _mqttClient = new MqttClientFactory().CreateMqttClient(GetClientOptions(connType));
+            _config = config ?? throw new ArgumentNullException(nameof(config));
+            _mqttClient = new MqttFactory().CreateMqttClient();
             _storeStaticOperations = AddOperationsToStore();
             _storeSmartRest = AddSmartRestToStore();
             _storeStaticOther = AddOtherStore();
             SubscribeEvt();
+            DeviceCredentials = new DeviceCredentials(_mqttClient);
+            MqttCustomSmartRest = new MqttCustomSmartRest(_mqttClient);
+            MqttStaticAlarmTemplates = new MqttStaticAlarmTemplates(_mqttClient);
+            MqttStaticEventTemplates = new MqttStaticEventTemplates(_mqttClient);
+            MqttStaticInventoryTemplates = new MqttStaticInventoryTemplates(_mqttClient);
+            MqttStaticMeasurementTemplates = new MqttStaticMeasurementTemplates(_mqttClient);
+            MqttStaticOperationTemplates = new MqttStaticOperationTemplates(_mqttClient);
         }
 
-        public Client(IIniParser iniParser, IMqttClient mqttClient)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Client"/> class.
+        /// </summary>
+        /// <param name="config">The configuration.</param>
+        /// <exception cref="System.ArgumentNullException">config</exception>
+        public Client(IConfiguration config, IMqttClient mqttClient)
         {
-            if (iniParser == null)
-            {
-                throw new ArgumentNullException(nameof(iniParser));
-            }
-            if (mqttClient == null)
-            {
-                throw new ArgumentNullException(nameof(mqttClient));
-            }
-            _iniParser = iniParser;
+            Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.RollingFile(Path.Combine(Environment.CurrentDirectory, "MQTTClient-{Date}.txt"))
+            .CreateLogger();
+            _config = config ?? throw new ArgumentNullException(nameof(config));
             _mqttClient = mqttClient;
-
-            Enum.TryParse(_iniParser.GetSetting("Device", "ConnectionType"), out ConnectionTypes connType);
-
-
-
             _storeStaticOperations = AddOperationsToStore();
             _storeSmartRest = AddSmartRestToStore();
             _storeStaticOther = AddOtherStore();
             SubscribeEvt();
+            DeviceCredentials = new DeviceCredentials(_mqttClient);
+            MqttCustomSmartRest = new MqttCustomSmartRest(_mqttClient);
+            MqttStaticAlarmTemplates = new MqttStaticAlarmTemplates(_mqttClient);
+            MqttStaticEventTemplates = new MqttStaticEventTemplates(_mqttClient);
+            MqttStaticInventoryTemplates = new MqttStaticInventoryTemplates(_mqttClient);
+            MqttStaticMeasurementTemplates = new MqttStaticMeasurementTemplates(_mqttClient);
+            MqttStaticOperationTemplates = new MqttStaticOperationTemplates(_mqttClient);
         }
+
+        public IDeviceCredentials DeviceCredentials { get; }
+        public IMqttCustomSmartRest MqttCustomSmartRest { get; }
+        public IMqttStaticAlarmTemplates MqttStaticAlarmTemplates { get; }
+        public IMqttStaticEventTemplates MqttStaticEventTemplates { get; }
+        public IMqttStaticInventoryTemplates MqttStaticInventoryTemplates { get; }
+        public IMqttStaticMeasurementTemplates MqttStaticMeasurementTemplates { get; }
+        public IMqttStaticOperationTemplates MqttStaticOperationTemplates { get; }
 
         /// <summary>
         /// Lists all children of the device
@@ -166,7 +183,8 @@ namespace Cumulocity.MQTT
         {
             try
             {
-                await _mqttClient.ConnectAsync();
+                MqttClientOptions options = GetConnectOptions();
+                await _mqttClient.ConnectAsync(options);
             }
             catch
             {
@@ -176,6 +194,7 @@ namespace Cumulocity.MQTT
 
             return true;
         }
+
 
         /// <summary>
         /// Disconnects the asynchronous.
@@ -402,20 +421,6 @@ namespace Cumulocity.MQTT
             return method(msgs);
         }
 
-        private MqttClientOptions GetClientOptions(ConnectionTypes connType)
-        {
-            return new MqttClientOptions
-            {
-                Server = _iniParser.GetSetting("Device", "Server"),
-                UserName = _iniParser.GetSetting("Device", "UserName"),
-                Password = _iniParser.GetSetting("Device", "Password"),
-                Port = Int32.Parse(_iniParser.GetSetting("Device", "Port")),
-                ConnectionType = connType,
-                TlsOptions = connType.Equals(ConnectionTypes.TLS) ? new MqttClientTlsOptions() { UseTls = true } : new MqttClientTlsOptions() { UseTls = false },
-                ClientId = _iniParser.GetSetting("Device", "ClientId")
-            };
-        }
-
         private void SubscribeEvt()
         {
             _mqttClient.Connected += async (s, e) =>
@@ -440,7 +445,8 @@ namespace Cumulocity.MQTT
 
                 try
                 {
-                    await _mqttClient.ConnectAsync();
+                    MqttClientOptions options = GetConnectOptions();
+                    await _mqttClient.ConnectAsync(options);
                 }
                 catch
                 {
@@ -500,7 +506,7 @@ namespace Cumulocity.MQTT
                 {
 
                     var topic = e.ApplicationMessage.Topic;
-                    var template = topic.Substring(5, topic.Length-5);
+                    var template = topic.Substring(5, topic.Length - 5);
 
                     string[] lines = Encoding.UTF8.GetString(e.ApplicationMessage.Payload).Split(new[] { '\n' }, StringSplitOptions.None);
 
@@ -519,8 +525,41 @@ namespace Cumulocity.MQTT
 
                     SmartRestResponseEvt?.Invoke(topic, smartRestResponseEventArgs);
                 }
-                
+
             };
+        }
+
+        private MqttClientOptions GetConnectOptions()
+        {
+            var options = new MqttClientOptions
+            {
+                ClientId = _config.ClientId,
+                CleanSession = true
+            };
+            if (!String.IsNullOrEmpty(_config.UserName) && !String.IsNullOrEmpty(_config.Password))
+            {
+                options.Credentials = new MqttClientCredentials() { Username = _config.UserName, Password = _config.Password };
+            }
+            Enum.TryParse(_config.ConnectionType, out ConnectionTypes connType);
+
+            if (connType.Equals(ConnectionTypes.WS) || connType.Equals(ConnectionTypes.WSS))
+            {
+                options.ChannelOptions = new MqttClientWebSocketOptions
+                {
+                    Uri = _config.Server,
+                    TlsOptions = connType.Equals(ConnectionTypes.WSS) ? new MqttClientTlsOptions() { UseTls = true } : new MqttClientTlsOptions() { UseTls = false }
+                };
+            }
+            else if (connType.Equals(ConnectionTypes.TCP))
+            {
+                options.ChannelOptions = new MqttClientTcpOptions { Server = _config.Server };
+            }
+            else if (connType.Equals(ConnectionTypes.TLS))
+            {
+                //options.ChannelOptions = new MqttClientTlsOptions { Server = _config.Server };
+            }
+
+            return options;
         }
 
         public struct CustomValue
@@ -538,11 +577,12 @@ namespace Cumulocity.MQTT
             public string Value { get; set; }
         }
 
-        public struct Software
-        {
-            public string Name { get; set; }
-            public string Url { get; set; }
-            public string Version { get; set; }
-        }
+    }
+
+    public class Software
+    {
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public string Version { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Cumulocity.MQTT.Enums;
 using Cumulocity.MQTT.Interfaces;
-using Cumulocity.MQTT.Interfaces;
-using MQTTnet.Core;
-using MQTTnet.Core.Protocol;
+using MQTTnet;
+using MQTTnet.Client;
+using MQTTnet.Protocol;
 using System;
 using System.Runtime.ExceptionServices;
 using System.Text;
@@ -10,8 +10,15 @@ using System.Threading.Tasks;
 
 namespace Cumulocity.MQTT
 {
-    public partial class Client : IMqttStaticMeasurementTemplates
+    public class MqttStaticMeasurementTemplates : IMqttStaticMeasurementTemplates
     {
+        private readonly IMqttClient _mqttClient;
+
+        public MqttStaticMeasurementTemplates(IMqttClient cl)
+        {
+            this._mqttClient = cl;
+        }
+
         /// <summary>
         /// Creates the battery measurement asynchronous. Will create a measurement of type c8y_Battery
         /// </summary>
@@ -201,6 +208,17 @@ namespace Cumulocity.MQTT
             {
                 return true;
             }
+        }
+
+        private static string GetProcessingMode(ProcessingMode? processingMode)
+        {
+            var stringProcessingMode = "s";
+            if (processingMode.HasValue && processingMode.Value.Equals(ProcessingMode.TRANSIENT))
+            {
+                stringProcessingMode = "t";
+            }
+
+            return stringProcessingMode;
         }
     }
 }

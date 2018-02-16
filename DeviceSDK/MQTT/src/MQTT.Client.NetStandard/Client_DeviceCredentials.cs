@@ -1,7 +1,7 @@
 ﻿using Cumulocity.MQTT.Interfaces;
-using Cumulocity.MQTT.Interfaces;
-using MQTTnet.Core;
-using MQTTnet.Core.Protocol;
+using MQTTnet;
+using MQTTnet.Client;
+using MQTTnet.Protocol;
 using Serilog;
 using System;
 using System.Runtime.ExceptionServices;
@@ -13,8 +13,14 @@ namespace Cumulocity.MQTT
     /// Lightweight client for talking to an MQTT server
     /// </summary>
     /// <seealso cref="Cumulocity.MQTT.NetStandard.Interfaces.IClient" />
-    public partial class Client : IClient, IDeviceCredentials
+    public class DeviceCredentials : IDeviceCredentials
     {
+        private readonly IMqttClient cl;
+
+        public DeviceCredentials(IMqttClient cl)
+        {
+            this.cl = cl;
+        }
         public async Task<bool> RequestDeviceCredentials(Func<Exception, Task<bool>> errorHandlerAsync)
         {
             ExceptionDispatchInfo capturedException = null;
@@ -28,7 +34,7 @@ namespace Cumulocity.MQTT
                     false
                 );
 
-                await _mqttClient.PublishAsync(commandMsg);
+                await cl.PublishAsync(commandMsg);
             }
             catch (Exception ex)
             {

@@ -1,7 +1,5 @@
 ﻿using Moq;
 using Cumulocity.MQTT.Utils;
-using MQTTnet.Core;
-using MQTTnet.Core.Client;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,42 +9,36 @@ using System.Threading;
 using System.Threading.Tasks;
 using Cumulocity.MQTT.Model;
 using static Cumulocity.MQTT.Client;
+using Cumulocity.MQTT.Interfaces;
+using MQTT.Test;
+using MQTTnet;
+using MQTTnet.Protocol;
+using MQTTnet.Client;
 
 namespace Cumulocity.MQTT.Test
 {
     [TestFixture]
     internal class ClientTest_Ws_SmartREST_FullMock
     {
-        private Mock<IIniParser> ini;
         private Mock<IMqttClient> mqttClient;
         private Client cl;
         private string clientId;
         private static Random random = new Random();
 
-        public static string RandomString(int length)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
-
         [SetUp]
         public void SetUp()
         {
-            //clientId = Guid.NewGuid().ToString("N");
-            clientId = "4927468bdd4b4171a23e31476ff82674";
-
-            ini = new Mock<IIniParser>();
+            var cnf = ConfigData.Instance;
+            var config = new Mock<IConfiguration>();
             mqttClient = new Mock<IMqttClient>();
-
-            ini.Setup(i => i.GetSetting("Device", "Server")).Returns("ws://piotr.staging.c8y.io/mqtt");
-            ini.Setup(i => i.GetSetting("Device", "UserName")).Returns(@"piotr/pnow");
-            ini.Setup(i => i.GetSetting("Device", "Password")).Returns(@"test1234");
-            ini.Setup(i => i.GetSetting("Device", "Port")).Returns("80");
-            ini.Setup(i => i.GetSetting("Device", "ConnectionType")).Returns("WS");
-            ini.Setup(i => i.GetSetting("Device", "ClientId")).Returns(clientId);
-
-            cl = new Client(ini.Object, mqttClient.Object);
+            config.Setup(c => c.Server).Returns(cnf.WsServer);
+            config.Setup(c => c.UserName).Returns(cnf.UserName);
+            config.Setup(c => c.Password).Returns(cnf.Password);
+            config.Setup(c => c.Port).Returns(cnf.WsPort);
+            config.Setup(c => c.ConnectionType).Returns("WS");
+            config.Setup(c => c.ClientId).Returns(cnf.ClientId);
+            clientId = cnf.ClientId;
+            cl = new Client(config.Object, mqttClient.Object);
         }
 
         [Test, MaxTime(10000)]
@@ -57,8 +49,8 @@ namespace Cumulocity.MQTT.Test
                 Assert.AreEqual(123456, e.IdCollection);
             };
 
-            MqttApplicationMessage applicationMessage = new MqttApplicationMessage("s/dt", Encoding.UTF8.GetBytes("20,myExistingTemplateCollection,123456"), MQTTnet.Core.Protocol.MqttQualityOfServiceLevel.AtLeastOnce, false);
-            mqttClient.Raise(e => e.ApplicationMessageReceived += null, new MqttApplicationMessageReceivedEventArgs(applicationMessage));
+            MqttApplicationMessage applicationMessage = new MqttApplicationMessage("s/dt", Encoding.UTF8.GetBytes("20,myExistingTemplateCollection,123456"), MqttQualityOfServiceLevel.AtLeastOnce, false);
+            mqttClient.Raise(e => e.ApplicationMessageReceived += null, new MqttApplicationMessageReceivedEventArgs(clientId, applicationMessage));
         }
 
         [Test, MaxTime(10000)]
@@ -69,16 +61,15 @@ namespace Cumulocity.MQTT.Test
                 Assert.AreEqual(false, e.IsExist);
             };
 
-            MqttApplicationMessage applicationMessage = new MqttApplicationMessage("s/dt", Encoding.UTF8.GetBytes("41,myExistingTemplateCollection"), MQTTnet.Core.Protocol.MqttQualityOfServiceLevel.AtLeastOnce, false);
-            mqttClient.Raise(e => e.ApplicationMessageReceived += null, new MqttApplicationMessageReceivedEventArgs(applicationMessage));
+            MqttApplicationMessage applicationMessage = new MqttApplicationMessage("s/dt", Encoding.UTF8.GetBytes("41,myExistingTemplateCollection"), MqttQualityOfServiceLevel.AtLeastOnce, false);
+            mqttClient.Raise(e => e.ApplicationMessageReceived += null, new MqttApplicationMessageReceivedEventArgs(clientId, applicationMessage));
         }
     }
 
     [TestFixture]
     internal class ClientTest_Ws_SmartREST
     {
-        private Mock<IIniParser> ini;
-        private Mock<IMqttClient> mqttClient;
+
         private Client cl;
         private string clientId;
         private static Random random = new Random();
@@ -93,17 +84,19 @@ namespace Cumulocity.MQTT.Test
         [SetUp]
         public void SetUp()
         {
+            var cnf = ConfigData.Instance;
+
             clientId = "4927468bdd4b4171a23e31476ff82674";
 
-            ini = new Mock<IIniParser>();
-            ini.Setup(i => i.GetSetting("Device", "Server")).Returns("ws://piotr.staging.c8y.io/mqtt");
-            ini.Setup(i => i.GetSetting("Device", "UserName")).Returns(@"piotr/pnow");
-            ini.Setup(i => i.GetSetting("Device", "Password")).Returns(@"test1234");
-            ini.Setup(i => i.GetSetting("Device", "Port")).Returns("80");
-            ini.Setup(i => i.GetSetting("Device", "ConnectionType")).Returns("WS");
-            ini.Setup(i => i.GetSetting("Device", "ClientId")).Returns(clientId);
+            var config = new Mock<IConfiguration>();
+            config.Setup(c => c.Server).Returns(cnf.WsServer);
+            config.Setup(c => c.UserName).Returns(cnf.UserName);
+            config.Setup(c => c.Password).Returns(cnf.Password);
+            config.Setup(c => c.Port).Returns(cnf.WsPort);
+            config.Setup(c => c.ConnectionType).Returns("WS");
+            config.Setup(c => c.ClientId).Returns(cnf.ClientId);
 
-            cl = new Client(ini.Object);
+            cl = new Client(config.Object);
 
             var res1 = Task.Run(() => cl.ConnectAsync()).Result;
         }
@@ -119,7 +112,7 @@ namespace Cumulocity.MQTT.Test
                 autoEvent.Set();
             };
 
-            Task.Run(() => cl.CheckTemplateCollectionExists("test2", (e) => { return Task.FromResult(false); }));
+            Task.Run(() => cl.MqttCustomSmartRest.CheckTemplateCollectionExists("test2", (e) => { return Task.FromResult(false); }));
 
             autoEvent.WaitOne();
         }
@@ -135,7 +128,7 @@ namespace Cumulocity.MQTT.Test
                 autoEvent.Set();
             };
 
-            Task.Run(() => cl.CheckTemplateCollectionExists("test2", (e) => { return Task.FromResult(false); }));
+            Task.Run(() => cl.MqttCustomSmartRest.CheckTemplateCollectionExists("test2", (e) => { return Task.FromResult(false); }));
 
             autoEvent.WaitOne();
         }
@@ -143,7 +136,7 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_CheckTemplateCollectionExists_CreateGetInventoryDataAsync()
         {
-            var res2 = Task.Run(() => cl.CreateTemplateDataAsync("GetTemplate4",
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("GetTemplate4",
                                                                      new List<Request> {
                                                                         new InventoryGetRequest("9999",null, String.Empty, true),
                                                                         new InventoryGetRequest("9998",null, "c8y_Serial", false)
@@ -162,10 +155,11 @@ namespace Cumulocity.MQTT.Test
         }
 
         [Test]
+        [Ignore("Firewall")]
         public void ClientTest_WsConnection_CheckTemplateCollectionExists_GetInventoryDataAsync()
         {
-            var res1 = Task.Run(() => cl.SubscribeSmartRestAsync("GetTemplate4")).Result;
-            var res2 = Task.Run(() => cl.SendRequestDataAsync("GetTemplate4", "9998", new List<string> { "4927468bdd4b4171a23e31476ff82674" })).Result;
+            var res1 = Task.Run(() => cl.MqttCustomSmartRest.SubscribeSmartRestAsync("GetTemplate4")).Result;
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.SendRequestDataAsync("GetTemplate4", "9998", new List<string> { "4927468bdd4b4171a23e31476ff82674" })).Result;
             Assert.IsTrue(res2);
         }
 
@@ -173,7 +167,7 @@ namespace Cumulocity.MQTT.Test
         public void ClientTest_WsConnection_CreatePostDataAsync_MeasurementRequest()
         {
             //(string messageId, bool? response, string type, string time, IList<CustomValue> customValues)
-            var res2 = Task.Run(() => cl.CreateTemplateDataAsync("PostTemplateMeasurement",
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("PostTemplateMeasurement",
                                                                      new List<Request> {
                                                                         new MeasurementRequest("7777",
                                                                         null,
@@ -202,7 +196,7 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_CreatePostDataAsync_AlarmRequest()
         {
-            var res2 = Task.Run(() => cl.CreateTemplateDataAsync("PostTemplateAlarm",
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("PostTemplateAlarm",
                                                                      new List<Request> {
                                                                         new AlarmRequest("6666",
                                                                         null,
@@ -241,7 +235,7 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_CreatePostDataAsync_EventRequest()
         {
-            var res2 = Task.Run(() => cl.CreateTemplateDataAsync("PostTemplateEvent",
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("PostTemplateEvent",
                                                                      new List<Request> {
                                                                         new EventRequest("5555",
                                                                         null,
@@ -270,7 +264,7 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_CreatePostDataAsync_InventoryRequest()
         {
-            var res2 = Task.Run(() => cl.CreateTemplateDataAsync("PostTemplateInventory",
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("PostTemplateInventory",
                                                                      new List<Request> {
                                                                         new InventoryRequest("4444",
                                                                         null,
@@ -294,7 +288,7 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_AddUpdateDataAsync_InventoryRequest()
         {
-            var res2 = Task.Run(() => cl.CreateTemplateDataAsync("UpdateTemplateInventory",
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("UpdateTemplateInventory",
                                                                      new List<Request> {
                                                                         new InventoryRequest("3333",
                                                                         null,
@@ -318,7 +312,7 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_AddUpdateDataAsync_AlarmRequest()
         {
-            var res2 = Task.Run(() => cl.CreateTemplateDataAsync("UpdateTemplateAlarm",
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("UpdateTemplateAlarm",
                                                                      new List<Request> {
                                                                         new AlarmUpdateRequest("2222",
                                                                         null,
@@ -340,7 +334,7 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_AddUpdateDataAsync_ClearingAlarmRequest()
         {
-            var res2 = Task.Run(() => cl.CreateTemplateDataAsync("UpdateTemplateClearingAlarm ",
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("UpdateTemplateClearingAlarm ",
                                                                      new List<Request> {
                                                                         new AlarmUpdateRequest("0000",
                                                                         null,
@@ -367,7 +361,7 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_AddUpdateDataAsync_OperationRequest()
         {
-            var res2 = Task.Run(() => cl.CreateTemplateDataAsync("UpdateTemplateOperation",
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("UpdateTemplateOperation",
                                                                      new List<Request> {
                                                                         new OperationRequest("1111",
                                                                         null,
@@ -394,32 +388,32 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_PostDataAsync_SendMeasurement()
         {
-            var res1 = Task.Run(() => cl.SubscribeSmartRestAsync("PostTemplate")).Result;
-            var res2 = Task.Run(() => cl.SendRequestDataAsync("PostTemplate", "7777", new List<string> { "", "25" })).Result;
+            var res1 = Task.Run(() => cl.MqttCustomSmartRest.SubscribeSmartRestAsync("PostTemplate")).Result;
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.SendRequestDataAsync("PostTemplate", "7777", new List<string> { "", "25" })).Result;
             Assert.IsTrue(res2);
         }
 
         [Test]
         public void ClientTest_WsConnection_PostDataAsync_SendAlarm()
         {
-            var res1 = Task.Run(() => cl.SubscribeSmartRestAsync("PostTemplateAlarm")).Result;
-            var res2 = Task.Run(() => cl.SendRequestDataAsync("PostTemplateAlarm", "6666", new List<string> { "ACTIVE", "MAJOR", "2017-09-20T09:03:14.000+02:00", "100" })).Result;
+            var res1 = Task.Run(() => cl.MqttCustomSmartRest.SubscribeSmartRestAsync("PostTemplateAlarm")).Result;
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.SendRequestDataAsync("PostTemplateAlarm", "6666", new List<string> { "ACTIVE", "MAJOR", "2017-09-20T09:03:14.000+02:00", "100" })).Result;
             Assert.IsTrue(res2);
         }
 
         [Test]
         public void ClientTest_WsConnection_PostDataAsync_SendEvent()
         {
-            var res1 = Task.Run(() => cl.SubscribeSmartRestAsync("PostTemplateEvent")).Result;
-            var res2 = Task.Run(() => cl.SendRequestDataAsync("PostTemplateEvent", "5555", new List<string> { "", "100" })).Result;
+            var res1 = Task.Run(() => cl.MqttCustomSmartRest.SubscribeSmartRestAsync("PostTemplateEvent")).Result;
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.SendRequestDataAsync("PostTemplateEvent", "5555", new List<string> { "", "100" })).Result;
             Assert.IsTrue(res2);
         }
 
         [Test]
         public void ClientTest_WsConnection_PostDataAsync_AddToInventory()
         {
-            var res1 = Task.Run(() => cl.SubscribeSmartRestAsync("PostTemplateInventory")).Result;
-            var res2 = Task.Run(() => cl.SendRequestDataAsync("PostTemplateInventory", "4444", new List<string> {  "myImei300", "2"
+            var res1 = Task.Run(() => cl.MqttCustomSmartRest.SubscribeSmartRestAsync("PostTemplateInventory")).Result;
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.SendRequestDataAsync("PostTemplateInventory", "4444", new List<string> {  "myImei300", "2"
         })).Result;
             Assert.IsTrue(res2);
         }
@@ -427,8 +421,8 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_UpdateDataAsync_Inventory()
         {
-            var res1 = Task.Run(() => cl.SubscribeSmartRestAsync("UpdateTemplateInventory")).Result;
-            var res2 = Task.Run(() => cl.SendRequestDataAsync("UpdateTemplateInventory", "3333", new List<string> { "myImei300", "2" })).Result;
+            var res1 = Task.Run(() => cl.MqttCustomSmartRest.SubscribeSmartRestAsync("UpdateTemplateInventory")).Result;
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.SendRequestDataAsync("UpdateTemplateInventory", "3333", new List<string> { "myImei300", "2" })).Result;
             Assert.IsTrue(res1);
             Assert.IsTrue(res2);
         }
@@ -436,8 +430,8 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_UpdateDataAsync_Alarm()
         {
-            var res1 = Task.Run(() => cl.SubscribeSmartRestAsync("UpdateTemplateAlarm")).Result;
-            var res2 = Task.Run(() => cl.SendRequestDataAsync("UpdateTemplateAlarm", "2222", new List<string> { "ACKNOWLEDGED" })).Result;
+            var res1 = Task.Run(() => cl.MqttCustomSmartRest.SubscribeSmartRestAsync("UpdateTemplateAlarm")).Result;
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.SendRequestDataAsync("UpdateTemplateAlarm", "2222", new List<string> { "ACKNOWLEDGED" })).Result;
             Assert.IsTrue(res2);
         }
 
@@ -445,8 +439,8 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_UpdateDataAsync_Operation()
         {
-            var res1 = Task.Run(() => cl.SubscribeSmartRestAsync("UpdateTemplateOperation")).Result;
-            var res2 = Task.Run(() => cl.SendRequestDataAsync("UpdateTemplateOperation", "1111", new List<string> { "\"Take a picture!\"" })).Result;
+            var res1 = Task.Run(() => cl.MqttCustomSmartRest.SubscribeSmartRestAsync("UpdateTemplateOperation")).Result;
+            var res2 = Task.Run(() => cl.MqttCustomSmartRest.SendRequestDataAsync("UpdateTemplateOperation", "1111", new List<string> { "\"Take a picture!\"" })).Result;
             Assert.IsTrue(res2);
         }
     }

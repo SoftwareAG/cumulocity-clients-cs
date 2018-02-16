@@ -2,25 +2,29 @@
 using Cumulocity.MQTT.Utils;
 using NUnit.Framework;
 using System.Threading.Tasks;
+using Cumulocity.MQTT.Interfaces;
+using MQTT.Test;
 
 namespace Cumulocity.MQTT.Test
 {
     [TestFixture]
     public class ClientTest_Tls
     {
-        private Mock<IIniParser> ini;
+        private Mock<IConfiguration> ini;
         private Client cl;
 
         [SetUp]
         public void SetUp()
         {
-            ini = new Mock<IIniParser>();
-            ini.Setup(i => i.GetSetting("Device", "Server")).Returns("piotr.staging.c8y.io");
-            ini.Setup(i => i.GetSetting("Device", "UserName")).Returns(@"piotr/pnow");
-            ini.Setup(i => i.GetSetting("Device", "Password")).Returns(@"test1234");
-            ini.Setup(i => i.GetSetting("Device", "Port")).Returns("8883");
-            ini.Setup(i => i.GetSetting("Device", "ConnectionType")).Returns("TLS");
-            ini.Setup(i => i.GetSetting("Device", "ClientId")).Returns("5b09e8a1c29948999d2e30430858c0ae");
+            var cnf = ConfigData.Instance;
+
+            ini = new Mock<IConfiguration>();
+            ini.Setup(i => i.Server).Returns(cnf.TlsServer);
+            ini.Setup(i => i.UserName).Returns(cnf.UserName);
+            ini.Setup(i => i.Password).Returns(cnf.Password);
+            ini.Setup(i => i.Port).Returns(cnf.TlsPort);
+            ini.Setup(i => i.ConnectionType).Returns("TLS");
+            ini.Setup(i => i.ClientId).Returns(cnf.ClientId);
 
             cl = new Client(ini.Object);
         }

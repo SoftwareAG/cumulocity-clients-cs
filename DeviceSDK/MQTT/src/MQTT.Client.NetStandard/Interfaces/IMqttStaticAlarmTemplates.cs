@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Cumulocity.MQTT.Interfaces
 {
-    internal interface IMqttStaticAlarmTemplates
+    public interface IMqttStaticAlarmTemplates
     {
         //Create CRITICAL alarm (301)
         Task<bool> CreateCriticalAlarmAsync(string type, string text, string time, Func<Exception, Task<bool>> errorHandlerAsync, ProcessingMode? processingMode = null);

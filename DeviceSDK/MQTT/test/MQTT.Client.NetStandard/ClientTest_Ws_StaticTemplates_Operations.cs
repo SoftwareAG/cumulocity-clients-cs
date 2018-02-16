@@ -6,15 +6,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cumulocity.MQTT.Interfaces;
+using MQTT.Test;
 
 namespace Cumulocity.MQTT.Test
 {
     [TestFixture]
     internal class ClientTest_Ws_StaticTemplates_Operations
     {
-        private Mock<IIniParser> ini;
         private Client cl;
-        private string clientId;
 
         private static Random random = new Random();
 
@@ -28,28 +28,27 @@ namespace Cumulocity.MQTT.Test
         [SetUp]
         public void SetUp()
         {
-            //clientId = Guid.NewGuid().ToString("N");
-            clientId = "4927468bdd4b4171a23e31476ff82674";
+            var cnf = ConfigData.Instance;
 
-            ini = new Mock<IIniParser>();
-            ini.Setup(i => i.GetSetting("Device", "Server")).Returns("ws://piotr.staging.c8y.io/mqtt");
-            ini.Setup(i => i.GetSetting("Device", "UserName")).Returns(@"piotr/pnow");
-            ini.Setup(i => i.GetSetting("Device", "Password")).Returns(@"test1234");
-            ini.Setup(i => i.GetSetting("Device", "Port")).Returns("80");
-            ini.Setup(i => i.GetSetting("Device", "ConnectionType")).Returns("WS");
-            ini.Setup(i => i.GetSetting("Device", "ClientId")).Returns(clientId);
+            var config = new Mock<IConfiguration>();
+            config.Setup(c => c.Server).Returns(cnf.WsServer);
+            config.Setup(c => c.UserName).Returns(cnf.UserName);
+            config.Setup(c => c.Password).Returns(cnf.Password);
+            config.Setup(c => c.Port).Returns(cnf.WsPort);
+            config.Setup(c => c.ConnectionType).Returns("WS");
+            config.Setup(c => c.ClientId).Returns(cnf.ClientId);
 
-            cl = new Client(ini.Object);
+            cl = new Client(config.Object);
 
             var res1 = Task.Run(() => cl.ConnectAsync()).Result;
             Assert.IsTrue(cl.IsConnected);
         }
-     
+
         [Test]
         public void ClientTest_WsConnection_GetPendingOperations()
         {
             //Will trigger the sending of all PENDING operations for the agent.
-            var res2 = Task.Run(() => cl.GetPendingOperationsAsync((e) => { return Task.FromResult(false); })).Result;
+            var res2 = Task.Run(() => cl.MqttStaticOperationTemplates.GetPendingOperationsAsync((e) => { return Task.FromResult(false); })).Result;
             Assert.IsTrue(res2);
         }
 
@@ -57,7 +56,7 @@ namespace Cumulocity.MQTT.Test
         public void ClientTest_WsConnection_GetExecutingOperations()
         {
             //Will set the oldest EXECUTING operation with given fragment to FAILED
-            var res2 = Task.Run(() => cl.SetExecutingOperationsAsync("c8y_Restart", (e) => { return Task.FromResult(false); })).Result;
+            var res2 = Task.Run(() => cl.MqttStaticOperationTemplates.SetExecutingOperationsAsync("c8y_Restart", (e) => { return Task.FromResult(false); })).Result;
             Assert.IsTrue(res2);
         }
 
@@ -66,7 +65,7 @@ namespace Cumulocity.MQTT.Test
         {
             //Will set the oldest EXECUTING operation with given fragment to SUCCESSFUL.
             //It enables the device to send additional parameters that trigger additional steps based on the type of operation send as fragment (see section Updating operations).
-            var res2 = Task.Run(() => cl.SetOperationToFailedAsync("c8y_Restart", "Could not restart", (e) => { return Task.FromResult(false); })).Result;
+            var res2 = Task.Run(() => cl.MqttStaticOperationTemplates.SetOperationToFailedAsync("c8y_Restart", "Could not restart", (e) => { return Task.FromResult(false); })).Result;
             Assert.IsTrue(res2);
         }
 
@@ -74,7 +73,7 @@ namespace Cumulocity.MQTT.Test
         public void ClientTest_WsConnection_SetOperationToSuccessful()
         {
             //
-            var res2 = Task.Run(() => cl.SetOperationToSuccessfulAsync("c8y_Restart", string.Empty, (e) => { return Task.FromResult(false); })).Result;
+            var res2 = Task.Run(() => cl.MqttStaticOperationTemplates.SetOperationToSuccessfulAsync("c8y_Restart", string.Empty, (e) => { return Task.FromResult(false); })).Result;
             Assert.IsTrue(res2);
         }
     }

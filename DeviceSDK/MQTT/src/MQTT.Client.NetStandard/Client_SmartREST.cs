@@ -2,9 +2,7 @@
 using Cumulocity.MQTT.Interfaces;
 using Cumulocity.MQTT.Model;
 using Cumulocity.MQTT.Interfaces;
-using MQTTnet.Core;
-using MQTTnet.Core.Packets;
-using MQTTnet.Core.Protocol;
+
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -12,6 +10,9 @@ using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
+using MQTTnet;
+using MQTTnet.Protocol;
+using MQTTnet.Client;
 
 namespace Cumulocity.MQTT
 {
@@ -19,8 +20,14 @@ namespace Cumulocity.MQTT
     /// Lightweight client for talking to an MQTT server
     /// </summary>
     /// <seealso cref="Cumulocity.MQTT.Interfaces.IClient" />
-    public partial class Client : IClient, IMqttCustomSmartRest
+    public class MqttCustomSmartRest : IMqttCustomSmartRest
     {
+        private readonly IMqttClient _mqttClient;
+
+        public MqttCustomSmartRest(IMqttClient cl)
+        {
+            this._mqttClient = cl;
+        }
         /// <summary>
         /// Checks the template collection exists.
         /// </summary>

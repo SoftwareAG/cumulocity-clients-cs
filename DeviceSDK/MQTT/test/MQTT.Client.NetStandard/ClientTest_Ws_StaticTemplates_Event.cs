@@ -6,40 +6,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cumulocity.MQTT.Interfaces;
+using MQTT.Test;
 
 namespace Cumulocity.MQTT.Test
 {
     [TestFixture]
-    internal  class ClientTest_Ws_StaticTemplates_Event
+    internal class ClientTest_Ws_StaticTemplates_Event
     {
-        private Mock<IIniParser> ini;
         private Client cl;
-        private string clientId;
-
-        private static Random random = new Random();
-
-        public static string RandomString(int length)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
 
         [SetUp]
         public void SetUp()
         {
-            //clientId = Guid.NewGuid().ToString("N");
-            clientId = "4927468bdd4b4171a23e31476ff82674";
+            var cnf = ConfigData.Instance;
 
-            ini = new Mock<IIniParser>();
-            ini.Setup(i => i.GetSetting("Device", "Server")).Returns("ws://piotr.staging.c8y.io/mqtt");
-            ini.Setup(i => i.GetSetting("Device", "UserName")).Returns(@"piotr/pnow");
-            ini.Setup(i => i.GetSetting("Device", "Password")).Returns(@"test1234");
-            ini.Setup(i => i.GetSetting("Device", "Port")).Returns("80");
-            ini.Setup(i => i.GetSetting("Device", "ConnectionType")).Returns("WS");
-            ini.Setup(i => i.GetSetting("Device", "ClientId")).Returns(clientId);
+            var config = new Mock<IConfiguration>();
+            config.Setup(c => c.Server).Returns(cnf.WsServer);
+            config.Setup(c => c.UserName).Returns(cnf.UserName);
+            config.Setup(c => c.Password).Returns(cnf.Password);
+            config.Setup(c => c.Port).Returns(cnf.WsPort);
+            config.Setup(c => c.ConnectionType).Returns("WS");
+            config.Setup(c => c.ClientId).Returns(cnf.ClientId);
 
-            cl = new Client(ini.Object);
+            cl = new Client(config.Object);
 
             var res1 = Task.Run(() => cl.ConnectAsync()).Result;
             Assert.IsTrue(cl.IsConnected);
@@ -49,15 +39,15 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_CreateBasicEvent()
         {
-            var res2 = Task.Run(() => cl.CreateBasicEventAsync("c8y_MyEvent", "Something was triggered", string.Empty, (e) => { return Task.FromResult(false); })).Result;
+            var res2 = Task.Run(() => cl.MqttStaticEventTemplates.CreateBasicEventAsync("c8y_MyEvent", "Something was triggered", string.Empty, (e) => { return Task.FromResult(false); })).Result;
             Assert.IsTrue(res2);
         }
         //Create location update event (401)
-       
+
         [Test]
         public void ClientTest_WsConnection_CreateLocationUpdateEvent()
         {
-            var res2 = Task.Run(() => cl.CreateLocationUpdateEventAsync(
+            var res2 = Task.Run(() => cl.MqttStaticEventTemplates.CreateLocationUpdateEventAsync(
                  "52.209538",
                  "16.831992",
                  "76",
@@ -70,7 +60,7 @@ namespace Cumulocity.MQTT.Test
         [Test]
         public void ClientTest_WsConnection_CreateLocationUpdateEventWithDeviceUpdate()
         {
-            var res2 = Task.Run(() => cl.CreateLocationUpdateEventWithDeviceUpdateAsync(
+            var res2 = Task.Run(() => cl.MqttStaticEventTemplates.CreateLocationUpdateEventWithDeviceUpdateAsync(
                                  "52.209538",
                                  "16.831992",
                                  "76",

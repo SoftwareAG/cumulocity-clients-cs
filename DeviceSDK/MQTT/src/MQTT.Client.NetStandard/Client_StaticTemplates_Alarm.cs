@@ -1,8 +1,8 @@
 ﻿using Cumulocity.MQTT.Enums;
 using Cumulocity.MQTT.Interfaces;
-using Cumulocity.MQTT.Interfaces;
-using MQTTnet.Core;
-using MQTTnet.Core.Protocol;
+using MQTTnet;
+using MQTTnet.Client;
+using MQTTnet.Protocol;
 using Serilog;
 using System;
 using System.Runtime.ExceptionServices;
@@ -11,8 +11,14 @@ using System.Threading.Tasks;
 
 namespace Cumulocity.MQTT
 {
-    public partial class Client : IMqttStaticAlarmTemplates
+    public class MqttStaticAlarmTemplates : IMqttStaticAlarmTemplates
     {
+        private readonly IMqttClient _mqttClient;
+
+        public MqttStaticAlarmTemplates(IMqttClient cl)
+        {
+            this._mqttClient = cl;
+        }
         /// <summary>
         /// Clears the existing alarm asynchronous.
         /// </summary>
@@ -303,6 +309,16 @@ namespace Cumulocity.MQTT
             {
                 return true;
             }
+        }
+        private static string GetProcessingMode(ProcessingMode? processingMode)
+        {
+            var stringProcessingMode = "s";
+            if (processingMode.HasValue && processingMode.Value.Equals(ProcessingMode.TRANSIENT))
+            {
+                stringProcessingMode = "t";
+            }
+
+            return stringProcessingMode;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Cumulocity.MQTT.Interfaces
 {
-    internal interface IMqttStaticEventTemplates
+    public interface IMqttStaticEventTemplates
     {
         //Create basic event (400)
         Task<bool> CreateBasicEventAsync(string type, string text, string time, Func<Exception, Task<bool>> errorHandlerAsync, ProcessingMode? processingMode = null);
