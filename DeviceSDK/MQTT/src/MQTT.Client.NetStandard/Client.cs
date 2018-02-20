@@ -460,6 +460,18 @@ namespace Cumulocity.MQTT
                 Debug.WriteLine($"+ Topic = {e.ApplicationMessage.Topic}");
                 Debug.WriteLine($"+ Payload = {Encoding.UTF8.GetString(e.ApplicationMessage.Payload)}");
 
+                if (e.ApplicationMessage.Topic.Equals("s/e"))
+                {
+                    Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
+                    List<string> msgs = Encoding.UTF8.GetString(e.ApplicationMessage.Payload)
+                                                       .Split(new char[] { ',' }).ToList();
+
+                    if (msgs != null && msgs.Any())
+                    {
+                        var msgID = msgs.FirstOrDefault();
+
+                    }
+                }
                 if (e.ApplicationMessage.Topic.Equals("s/ds"))
                 {
                     Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
