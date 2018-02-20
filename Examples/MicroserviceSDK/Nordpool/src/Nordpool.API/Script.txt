@@ -1,0 +1,79 @@
+﻿'''
+Created on April 20, 2015
+
+@author: Tobias Sommer
+@contact: tobias.sommer@cumulocity.com
+'''
+import urllib, time, datetime, httplib, json
+
+# -----------------------------------------------
+# --------------- Configuration -----------------
+# -----------------------------------------------
+devices = ['']
+host = ''
+auth = ''
+# -----------------------------------------------
+# -----------------------------------------------
+
+
+apiLink = 'http://www.nordpoolspot.com/api/marketdata/page/35?currency=,,EUR,EUR'
+headers = {
+  'Authorization': auth,
+  'Content-Type': 'application/vnd.com.nsn.cumulocity.measurement+json'
+}
+conn = httplib.HTTPConnection(host+':80')
+
+def getDataFromWebsite():
+  global apiLink
+  response = urllib.urlopen(apiLink);
+  return json.loads(response.read())
+
+def extractCurrentPrice(jsondata):
+  current = datetime.datetime.now()
+  tablerows = jsondata['data']['Rows'];
+  for row in tablerows:
+    start = datetime.datetime.strptime(row['StartTime'], "%Y-%m-%dT%H:%M:%S").time()
+    end = datetime.datetime.strptime(row['EndTime'], "%Y-%m-%dT%H:%M:%S").time()
+    if start < current.time() < end:
+      for column in row['Columns']:
+        date = datetime.datetime.strptime(column['Name'], "%d-%m-%Y").date()
+        if date == current.date():
+          return column['Value'].replace(',','.')
+  return None
+
+def createMeasurement(price, source):
+  global conn
+  global headers
+  measurementTime = datetime.datetime.now()
+  measurementTime = str(measurementTime.isoformat())[:-3]+'+02:00'
+  jsonBody = {
+  	'energy': {
+      'cost': {
+        'value': price,
+        'unit': 'EUR' }
+      },
+    'time': measurementTime,
+    'source': {
+      'id': source },
+    'type': 'energyCost'
+  }
+  conn.request('POST', "/measurement/measurements", json.dumps(jsonBody) , headers)
+  conn.close()
+
+def postData():
+  json = getDataFromWebsite()
+  price = extractCurrentPrice(json)
+  if price != None:
+    for device in devices:
+      createMeasurement(price, device)
+
+try:
+  last = datetime.datetime.now()
+  while True:
+    now = datetime.datetime.now()
+    if now.hour > last.hour:
+      postData()
+    last = now
+    time.sleep(60)
+except (KeyboardInterrupt, SystemExit):
+  pass

@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Cumulocity.SDK.Microservices.BasicAuthentication;
+using Cumulocity.SDK.Microservices.Configure;
+using Cumulocity.SDK.Microservices.Services;
+using Cumulocity.SDK.Microservices.Settings;
+using Cumulocity.SDK.Microservices.Utils;
+using Cumulocity.SDK.Microservices.Utils.Scheduled;
+using Cumulocity.SDK.Microservices.Utils.Scheduling;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Serialization;
+using Nordpool.API.Utils;
+using System.Diagnostics;
 
 namespace Nordpool.API
 {
@@ -23,18 +30,29 @@ namespace Nordpool.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMemoryCache();
+            services.AddCumulocityAuthentication(Configuration);
+            services.AddPlatform(Configuration);
+            services.AddSingleton<IApplicationService, ApplicationService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // Add scheduled tasks & scheduler
+            services.AddSingleton<IScheduledTask, NordpoolTask>();
+            services.AddScheduler((sender, args) =>
+            {
+                Debug.Write(args.Exception.Message);
+                args.SetObserved();
+            });
+            //MVC
+            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseMvc();
+            app.UseAuthentication();
+            app.UseBasicAuthentication();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
