@@ -1,0 +1,13 @@
+FROM microsoft/dotnet:2.0-runtime
+WORKDIR /app
+COPY ./publish/Web ./
+
+ENV SERVER_PORT 4700
+#ENV C8Y_BASEURL "http://baseurl"
+#ENV C8Y_BOOTSTRAP_TENANT "tenant"
+#ENV C8Y_BOOTSTRAP_USERNAME "username"
+#ENV C8Y_BOOTSTRAP_PASSWORD "password"
+#ENV C8Y_MICROSERIVCE_ISOLATION "PER_TENANT"
+
+ENTRYPOINT ["dotnet", "Nordpool.API.dll"]
+
