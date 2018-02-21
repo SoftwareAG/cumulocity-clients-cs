@@ -98,4 +98,8 @@ namespace Cumulocity.MQTT
         public string MessageID { get; set; }
         public List<string> Fields { get; set; }
     }
+    public class ErrorMessageEventArgs : EventArgs
+    {
+        public string Message { get; set; }
+    }
 }

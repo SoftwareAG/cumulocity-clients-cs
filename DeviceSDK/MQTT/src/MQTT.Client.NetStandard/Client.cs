@@ -167,6 +167,12 @@ namespace Cumulocity.MQTT
         /// Tells the device to upload its current configuration
         /// </summary>
         public event EventHandler<UploadConfigurationFileEventArgs> UploadConfigurationFileEvt;
+
+        /// <summary>
+        /// An unexpected error occurred
+        /// </summary>
+        public event EventHandler<ErrorMessageEventArgs> ErrorEvt;
+
         /// <summary>
         /// Gets a value indicating whether this instance is connected.
         /// </summary>
@@ -469,6 +475,10 @@ namespace Cumulocity.MQTT
                     if (msgs != null && msgs.Any())
                     {
                         var msgID = msgs.FirstOrDefault();
+                        ErrorEvt?.Invoke(msgID, new ErrorMessageEventArgs()
+                        {
+                            Message = msgs.ElementAt(2)
+                        });
 
                     }
                 }
