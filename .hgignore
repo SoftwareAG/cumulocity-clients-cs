@@ -180,3 +180,5 @@ Examples/BuildingScripts/microservicesdk-lin-dev/version.props
 Examples/BuildingScripts/microservicesdk-win-dev/version.props
 ^MicroservicesSDK/tools$
 ^MQTT/tools$
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/Server/sqlite3/storage.ide-shm
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/Server/sqlite3/storage.ide-wal
