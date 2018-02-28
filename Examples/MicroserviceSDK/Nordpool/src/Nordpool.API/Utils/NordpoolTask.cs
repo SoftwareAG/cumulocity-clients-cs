@@ -38,34 +38,68 @@ namespace Nordpool.API.Utils
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var response = client.GetAsync("/api/marketdata/page/35?currency=,,EUR,EUR").Result;
                 string res = "";
+
                 using (HttpContent content = response.Content)
                 {
-                    // ... Read the string.
                     Task<string> result = content.ReadAsStringAsync();
                     res = result.Result;
 
                     dynamic dynJson = JsonConvert.DeserializeObject(res);
 
-                    foreach (var item in dynJson.data.Rows)
+                    string price = ExtractCurrentPrice(dynJson);
+                    List<string> devices = new List<string>();
+                    CreateMeasurment(price,devices);
+                }
+            }
+
+                return Task.FromResult<object>(null);
+        }
+
+        private void CreateMeasurment(string price, List<string> devices)
+        {
+            var measurementTime = DateTime.UtcNow.ToString(("yyyy-MM-ddTHH:mm:ss.fff+02:00"), System.Globalization.CultureInfo.InvariantCulture);
+
+            string jsonBody = @"{
+                        'energy': {
+                            'cost': {
+                                'value': " + price + @",
+                        'unit': 'EUR' }
+                                },
+                    'time':" + measurementTime + @",
+                    'source': {
+                                    'id': source },
+                    'type': 'energyCost'
+                  }";
+
+            //Here: Send Post
+        }
+
+        private static string ExtractCurrentPrice(dynamic dynJson)
+        {
+            foreach (var item in dynJson.data.Rows)
+            {
+                var startTime = Convert.ToDateTime(item.StartTime);
+                var endTime = Convert.ToDateTime(item.EndTime);
+
+
+                var v1 = TimeSpan.Compare(startTime.TimeOfDay, DateTime.Now.TimeOfDay) <= 0;
+                var v2 = TimeSpan.Compare(DateTime.Now.TimeOfDay, endTime.TimeOfDay) <= 0;
+
+                if (v1 && v2)
+                {
+                    //Console.WriteLine($"{item.StartTime} {item.EndTime}");
+                    foreach (var col in item.Columns)
                     {
-                        var startTime = Convert.ToDateTime(item.StartTime);
-                        var endTime = Convert.ToDateTime(item.EndTime);
-
-
-                        if ((startTime < DateTime.Now) && (DateTime.Now < endTime))
+                        if (DateTime.Now.Date == DateTime.Now.Date)
                         {
-                            //Console.WriteLine($"{item.StartTime} {item.EndTime}");
-                            foreach (var col in item.Columns)
-                            {
-                                //Console.WriteLine(col.Name);
-
-                                if (DateTime.Now.Date == DateTime.Now.Date) ;
-                            }
+                            string value = Convert.ToString(col.Value);
+                            return value.Replace(',', '.');
                         }
                     }
                 }
+            }
 
-                return Task.FromResult<object>(null);
+            return null;
         }
     }
 }
