@@ -1,4 +1,4 @@
-#addin nuget:https://www.nuget.org/api/v2/?package=cake.docker
+//#addin nuget:https://www.nuget.org/api/v2/?package=cake.docker
 #addin Cake.Hg
 
 using Path = System.IO.Path;
