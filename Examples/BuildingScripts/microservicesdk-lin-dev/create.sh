@@ -96,8 +96,8 @@ cd nugets
 
 
 
-wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.1.0.0.nupkg
-wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.1.0.0.nupkg
+wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.1.0.nupkg
+wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.1.0.nupkg
 
 cd ..
 cd $webApiProject

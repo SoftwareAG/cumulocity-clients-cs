@@ -147,7 +147,7 @@ Task("Build")
 	});
 
 Task("Package")   
-	.IsDependentOn("CreateRelease") 
+	.IsDependentOn("Test") 
 	//.IsDependentOn("Build")
 	//.IsDependentOn("Test")
 	//.IsDependentOn("Docs")

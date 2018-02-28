@@ -1,29 +1,18 @@
-
-[CmdletBinding()]
-Param(
-    [string] $local = "true",
-    [string] $branch = $null
+function ReadCommitCountInBranch
+(
+    [string] $branch
 )
-
-function ReadBuildProps
 {
-    $currentDir = Get-Location	
-	$filePath = "$currentDir/version.props"
+
+	$hglog = (& hg log -r "branch('$branch')" --template "{node}\n"  )
 	
-	if (Test-Path $filePath){
-	  Write-Host "version.props was deleted."
-	  Remove-Item $filePath
-	}
-	
-	$filePath = "$currentDir/build.props"		
-	if (-not (Test-Path $filePath) -or (-not (IsRepository)) )  {
-		Write-Host "build.props not found or repository not found"
-		Break
+	if ($hglog -eq $null) 
+	{
+		return 0;
 	}else
-	{   		
-		$buildProps = ConvertFrom-StringData (Get-Content ./build.props -raw)
-		$buildObject = New-Object PSObject -Property $buildProps | Select-Object versionMajor, versionMinor, versionRev
-		return $buildObject
+	{	
+		$commitCountInBranch = (& hg log -r "branch('$branch')" --template "{node}\n"  | Measure-Object -line ).Lines
+		return $commitCountInBranch ;
 	}
 }
 function ReadBranchName
@@ -38,142 +27,57 @@ function ReadCommitCount
 }
 
 function ReadIsLastTagCommit
+(
+    [string] $branch
+)
 {
     Try
     {
-		$lasttag = (& hg log -r "last(tag('re:bsv\d*'))" --template "{tags}\n").Trim()
-		
-		
+		$lasttag = (& hg log -r "branch('$branch') and last(tag('re:^r\d*'))" --template "{tags}\n").Trim()
+				
 		if($lasttag.Length -eq 0)
 		{
-			return "0.0.0"   
+			return "r0.0.0"   
 		}
-		return $lasttag.Substring(3,$lasttag.Length-3)
-	}Catch
+		return $lasttag.Substring(0,$lasttag.Length)
+	}
+	Catch
     {
-	   return "0.0.0"
+	   return "r0.0.0"
 	}
 }
-#function IsRepository
-#{
-#	$currentDir = Get-Location	
-#	$dirPath = "$currentDir/.hg"
-	
-#	if(!(Test-Path -Path $dirPath )){
-#		return $false
-#	}	
-#	return $true
-#}
 
-function IsRepository
+function CreateReleaseBranch
 {
-    $value = (& hg status);
+    $CurrentBranch = ReadBranchName
+	$LastTagCommit = ReadIsLastTagCommit -branch $ReadBranchName
+	$ReleaseBranch = "release/$LastTagCommit"	
+	$CommitCountInBranch = ReadCommitCountInBranch  -branch $ReleaseBranch
 	
-	if($value -eq $null){
-		return $false;
+	Write-Host "ReleaseBranch: $ReleaseBranch"
+	Write-Host "LastTagCommit: $LastTagCommit"
+	Write-Host "ReadCommitCountInBranch: $CommitCountInBranch"
+	
+	if( ($CurrentBranch -eq "develop") -And ( $CommitCountInBranch -eq  0) -And ( $LastTagCommit -ne  "r0.0.0")  )
+	{
+		hg up $LastTagCommit
+	    hg flow release start $LastTagCommit
+		hg push
 	}
-	
-    $string = ((& hg status).Trim() -split '\n')[0]
-	
-	if ( $string -contains '*abort:*') {
-		return $false;
+	elseif($CurrentBranch.StartsWith("release/") )
+	{
+		$major,$minor,$rev = $LastTagCommit.split('.')
+		if($LastTagCommit -eq  "r0.0.0" )
+		{
+		  $branch, $tag = $CurrentBranch.split('/') 
+		  $LastTagCommit =$tag 
+		  $major,$minor,$rev = $LastTagCommit.split('.')
+		}
+	    $rev = $rev/1 + 1
+		hg tag "$major.$minor.$rev"
+		hg push
 	}
-	else{
-		return $true;
-	}
-    
+
 }
 
-function CreateVersion
-(
-    [string] $major,
-    [string] $minor,
-    [string] $rev,
-    [string] $branch,
-    [int] $commits,
-    [bool] $local = $true,
-	[string] $istagged
-)
-{
-    $version = [string]::Concat($major, ".", $minor, ".", $rev)
-    $prerelease = $null
-
-    $branch = $branch.Replace('/', '-')
-
-    if ($branch -ne "default")
-    {
-        if ($local)
-        {
-            $prerelease = $branch
-        }
-        else
-        {
-            $prerelease = "$($branch)-$($commits)"
-        }
-    }
-
-    if ($prerelease -ne $null) 
-    {
-        $semVer = [string]::Concat($version, "-", $prerelease)
-    }
-    else
-    {
-        $semVer = $version
-    }
-
-    return @{
-        Version = $version
-        SemanticVersion = $semVer
-        PreRelease = $prerelease
-		IsTagged = $istagged 
-    }
-}
-
-function WriteVersion
-(
-    [string] $version,
-    [string] $semanticVersion,
-    [string] $prerelease,
-	[string] $isTagged
-)
-{
-    Set-Content ./version.props "version=$($version)`nsemanticVersion=$($semanticVersion) `nistagged=$($isTagged) `nprerelease=$($prerelease)"
-}
-
-function ResolveVersion
-(
-    [bool] $local = $true
-)
-{
-    $parts = ReadBuildProps
-
-    if (!$branch)
-    {
-        $branch = ReadBranchName
-    }    
-			
-    $count = ReadCommitCount
-	$tag = ReadIsLastTagCommit
-	
-	Write-Host "ReadIsLastTagCommit"
-	Write-Host $tag
-    Write-Host "ReadIsLastTagCommit"
-	
-    $version = CreateVersion -major $parts.versionMajor -minor $parts.versionMinor -rev $parts.versionRev -branch $branch -commits $count -local $local -istagged $tag
-
-	Write-Host $version.Version
-	Write-Host $version.SemanticVersion
-	Write-Host $version.PreRelease
-	Write-Host $version.IsTagged
-	
-    WriteVersion -version $version.Version -semanticVersion $version.SemanticVersion -prerelease $version.PreRelease -isTagged $version.IsTagged
-}
-
-$out = $null
-if ([bool]::TryParse($local, [ref]$out)) {
-    # parsed to a boolean
-    Write-Host "Value: $out"
-	ResolveVersion -local $out
-} else {
-    Write-Host "Input is not boolean: $a"
-}
+CreateReleaseBranch
