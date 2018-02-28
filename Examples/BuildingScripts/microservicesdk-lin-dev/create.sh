@@ -51,6 +51,16 @@ cd $projectName
 curl -Lsfo build.sh https://cakebuild.net/download/bootstrapper/linux
 chmod +x build.sh
 
+mkdir tools
+cd tools
+packagescakedir='packages.config'
+touch "$packagescakedir"
+cakePackages='<?xml version="1.0" encoding="utf-8"?>
+<packages>
+    <package id="Cake" version="0.25.0" />
+</packages>'
+echo "$cakePackages" >> "$packagescakedir"
+cd ..
 
 sed -i 's/\[ProjectName\]/'"$webApiProject"'/g' $cakeBuildOutput
 sed -i 's/DockerApp.dll/'"$webApiProject.dll"'/g' $dockerfileOutput
@@ -63,9 +73,6 @@ mkdir src
 destdir="images/multi/cumulocity.json"
 echo $destdir
 touch "$destdir"
-
-cumulocityJson='{ "apiVersion":"1",
-                "version":"1.0.0" }'
 
 cumulocityJson='{
   "apiVersion": "1",
@@ -80,7 +87,6 @@ cumulocityJson='{
     "memory": "2Gi"
   }
 }'
-
 #echo "$cumulocityJson" >> $destdir
 
 if [ -f "$destdir" ]

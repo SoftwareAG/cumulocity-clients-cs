@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cake.Hg</name>
+    </assembly>
+    <members>
+        <member name="T:Cake.Hg.HgAliases">
+            <summary>
+            Contains functionality for working with Mercurial.
+            <code>
+                #addin Cake.Hg
+            </code>
+            </summary>
+        </member>
+        <member name="M:Cake.Hg.HgAliases.HgCommit(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath,System.String)">
+            <summary>
+            Create mercurial commit.
+            </summary>
+            <example>
+            <code>
+                HgCommit("./", "Initial commit");
+            </code>
+            </example>
+            <param name="context">Cake context</param>
+            <param name="repositoryPath">Path to repository</param>
+            <param name="message">Commit message</param>
+        </member>
+        <member name="M:Cake.Hg.HgAliases.Hg(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath)">
+            <summary>
+            Return mercurial repository. 
+            </summary>
+            <example>
+            <code>
+                var repo = Hg("./");
+            </code>
+            </example>
+            <param name="context">Cake context</param>
+            <param name="repositoryPath">Path to repository</param>
+            <returns>Mercurial repository</returns>
+        </member>
+        <member name="M:Cake.Hg.HgAliases.HgDiff(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath,Mercurial.RevSpec)">
+            <summary>
+            Get diff of repository.
+            </summary>
+            <example>
+            <code>
+                var diff = HgDiff("./", "6b0f32157b9045a9495821db1927348250076e6b:e40ce466124109a074af6dc582c1d54db3e9cd01");
+            </code>
+            </example>
+            <param name="context">Cake context</param>
+            <param name="repositoryPath">Path to repository</param>
+            <param name="revisions">Revision or revision range to view a diff</param>
+        </member>
+        <member name="M:Cake.Hg.HgAliases.HgInit(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath)">
+            <summary>
+            Init mercurial repository. 
+            </summary>
+            <example>
+            <code>
+                HgInit("./");
+            </code>
+            </example>
+            <param name="context">Cake context</param>
+            <param name="repositoryPath">Path to repository</param>
+        </member>
+        <member name="M:Cake.Hg.HgAliases.HgMerge(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath,System.String,System.String)">
+            <summary>
+            Perform merge of two branches
+            </summary>
+            <example>
+            <code>
+                var diff = HgMerge("./", "rc", "dev");
+            </code>
+            </example>
+            <param name="context">Cake context</param>
+            <param name="repositoryPath">Path to repository</param>
+            <param name="sourceBranch">Name of source branch</param>
+            <param name="destinationBranch">Name of destination branch (Can be ommited to merge into current branch)</param>
+            <returns>MergeResult.Success if merge was successfull, MergeResult.UnresolvedFiles if merge conflict has occured</returns>
+        </member>
+        <member name="M:Cake.Hg.HgAliases.HgPush(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath)">
+            <summary>
+            Push local changes to remote repository. 
+            </summary>
+            <example>
+            <code>
+                HgPush("./");
+            </code>
+            </example>
+            <param name="context">Cake context</param>
+            <param name="repositoryPath">Path to repository</param>
+        </member>
+        <member name="M:Cake.Hg.HgAliases.HgPush(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath,Cake.Hg.HgPushSettings)">
+            <summary>
+            Push local changes to remote repository. 
+            </summary>
+            <example>
+            <code>
+                HgPush("./", new HgPushSettings
+                {
+                    User = "user",
+                    Password = "password",
+                    Url = "https://bitbucket.org/mycompany/myrepository
+                });
+            </code>
+            </example>
+            <param name="context">Cake context</param>
+            <param name="repositoryPath">Path to repository</param>
+            <param name="settings">Push settings</param>
+        </member>
+        <member name="M:Cake.Hg.HgAliases.HgTag(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath,System.String)">
+            <summary>
+            Apply a symbolic identifier for a changeset [tag]. 
+            </summary>
+            <example>
+            <code>
+                HgTag("./", "0.0.1");
+            </code>
+            </example>
+            <param name="context">Cake context</param>
+            <param name="repositoryPath">Path to repository</param>
+            <param name="tagName">Tag name</param>
+        </member>
+        <member name="M:Cake.Hg.HgAliases.HgTags(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath)">
+            <summary>
+            Get list of current tags. 
+            </summary>
+            <example>
+            <code>
+                var tags = HgTags("./");
+            
+                foreach (var tag in tags)
+                {
+                    Information("Name: {0}, Revision: {1}", tag.Name, tag.RevisionNumber);
+                }
+            </code>
+            </example>
+            <param name="context">Cake context</param>
+            <param name="repositoryPath">Path to repository</param>
+        </member>
+        <member name="M:Cake.Hg.HgAliases.HgTip(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath)">
+            <summary>
+            Get the tip revision.
+            </summary>
+            <example>
+            <code>
+                var changeset = HgTip("./");
+            
+                Information("[{0}] - {1} by {2} ({3})",
+                    changeset.Branch,
+                    changeset.Hash,
+                    changeset.AuthorName,
+                    changeset.AuthorEmailAddress);
+            </code>
+            </example>
+            <param name="context">Cake context</param>
+            <param name="repositoryPath">Path to repository</param>
+            <returns>Returns information about current tip revision</returns>
+        </member>
+        <member name="T:Cake.Hg.HgExtensions">
+            <summary>
+            Common Mercurial.NET extension methods
+            </summary>
+        </member>
+        <member name="M:Cake.Hg.HgExtensions.Changeset(Mercurial.Repository,Mercurial.RevSpec)">
+            <summary>
+            Retrieve first changeset by revision
+            </summary>
+            <param name="repository">Mercurial repository</param>
+            <param name="revision">Revision</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cake.Hg.HgExtensions.Parent(Mercurial.Repository,Mercurial.Changeset)">
+            <summary>
+            Retrieve first parent of changeset.
+            </summary>
+            <param name="repository">Mercurial repository</param>
+            <param name="changeset">Changeset</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cake.Hg.HgExtensions.Parent(Mercurial.Repository,Mercurial.RevSpec)">
+            <summary>
+            Retrieve first parent of revision.
+            </summary>
+            <param name="repository">Mercurial repository</param>
+            <param name="revision">Revision</param>
+            <returns></returns>
+        </member>
+        <member name="T:Cake.Hg.HgPushSettings">
+            <summary>
+            Settings used by <see cref="M:Cake.Hg.HgAliases.HgPush(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath,Cake.Hg.HgPushSettings)"/> 
+            </summary>
+        </member>
+        <member name="P:Cake.Hg.HgPushSettings.User">
+            <summary>
+            Username to authenticate with.
+            </summary>
+        </member>
+        <member name="P:Cake.Hg.HgPushSettings.Password">
+            <summary>
+            Password to authenticate with.
+            </summary>
+        </member>
+        <member name="P:Cake.Hg.HgPushSettings.Url">
+            <summary>
+            Url to remote repository
+            </summary>
+        </member>
+        <member name="M:Cake.Hg.HgPushSettings.GetAuthUrl">
+            <summary>
+            Returns url to remote repository like 'https://user:password@bitbucket.org'
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Cake.Hg.NamespaceDoc">
+            <summary>
+            This namespace contains Cake aliases.
+            </summary>
+        </member>
+    </members>
+</doc>

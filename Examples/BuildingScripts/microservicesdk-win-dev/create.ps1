@@ -55,6 +55,18 @@ Invoke-WebRequest https://cakebuild.net/download/bootstrapper/windows -OutFile b
 
 dotnet new sln --name "$ProjectName" 
 
+
+mkdir tools
+cd tools
+$packagescakedir='packages.config'
+New-Item "$packagescakedir" -type file
+$cakePackages='<?xml version="1.0" encoding="utf-8"?>
+<packages>
+    <package id="Cake" version="0.25.0" />
+</packages>'
+Add-Content $packagescakedir $cakePackages
+cd ..
+
 #####################
 ######Source#########
 #####################
