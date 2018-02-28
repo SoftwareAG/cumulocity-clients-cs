@@ -110,10 +110,10 @@ Task("CreateRelease")
 
 Task("PublishRelease")
 //.WithCriteria(isCreatedRelease == true)
-.IsDependentOn("CreateRelease")
+//.IsDependentOn("CreateRelease")
 .Does(() => {
 	Information("PublishRelease");
-	
+	version = "9.1.0";
 	Zip("./microservicesdk-win-dev", "microservicesdk-win-dev-"+ version+".zip");
 	Zip("./microservicesdk-lin-dev", "microservicesdk-lin-dev-"+ version+".zip");
 });
