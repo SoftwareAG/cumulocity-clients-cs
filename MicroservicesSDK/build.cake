@@ -155,7 +155,7 @@ Task("Package")
 	.Does(() => { 
 	        
 			var buildSettings = new DotNetCoreMSBuildSettings();
-			buildSettings.SetVersion(version);
+			//buildSettings.SetVersion(version);
 	  
         	var packSettings = new DotNetCorePackSettings  
        		{             OutputDirectory = outputDir,
