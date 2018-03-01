@@ -89,21 +89,29 @@ Task("Build")
     }
 });
 
- 
- Task("Test")
-	.IsDependentOn("Clean")
-	.IsDependentOn("Build")
+
+Task("Test")
+.IsDependentOn("Clean")
+.IsDependentOn("Restore")
+.IsDependentOn("Build")
 	.ContinueOnError()
 	.Does(() =>
 	{
-		var tests = GetFiles("./test/*.NetStandard/*.csproj");
+	    //Workaround Fix Asset file project.assets.json error not found in dotnet core
+		var projects = GetFiles("./test/*.NetStandard/*.csproj");
+		foreach (var project in projects)
+		{
+		   Information(project.FullPath);
+		   DotNetCoreRestore(project.FullPath);
+		}
+		var tests = GetFiles("./test/MQTT.Client.NetStandard/*.csproj");
 		
 		foreach(var test in tests)
 		{
 			var projectFolder = System.IO.Path.GetDirectoryName(test.FullPath);
 			try
 			{
-			    Information("Solution Directory: {0}", solutionDir);
+			    Information("Solution Directory: {0} {1}", solutionDir,test.FullPath);
 				DotNetCoreTest(test.FullPath, new DotNetCoreTestSettings
 				{
 					ArgumentCustomization = args => args.Append("-l \"trx;LogFileName=Result.xml\""),
