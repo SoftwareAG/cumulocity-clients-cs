@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,7 +16,12 @@ namespace Nordpool.API.Utils
 {
     public class NordpoolTask : IScheduledTask
     {
+        //One time per min => http://cron.schlitt.info
         public string Schedule => "* */1 * * *";
+
+        public string Host => "http://localhost:80";
+        public string Auth = "username:password1234";
+
         private const string nordpoolValues = "nordpool_values";
 
         public static string NordpoolValues => nordpoolValues;
@@ -26,7 +32,6 @@ namespace Nordpool.API.Utils
 
         public NordpoolTask(IMemoryCache cache, IApplicationService service, MessageHub hub)
         {
-
         }
 
         public Task ExecuteAsync(CancellationToken cancellationToken)
@@ -48,18 +53,21 @@ namespace Nordpool.API.Utils
 
                     string price = ExtractCurrentPrice(dynJson);
                     List<string> devices = new List<string>();
-                    CreateMeasurment(price,devices);
+                    CreateMeasurment(price, devices);
                 }
             }
 
-                return Task.FromResult<object>(null);
+            return Task.FromResult<object>(null);
         }
 
         private void CreateMeasurment(string price, List<string> devices)
         {
-            var measurementTime = DateTime.UtcNow.ToString(("yyyy-MM-ddTHH:mm:ss.fff+02:00"), System.Globalization.CultureInfo.InvariantCulture);
-
-            string jsonBody = @"{
+            if ((devices != null) && (!devices.Any()))
+            {
+                var measurementTime = DateTime.UtcNow.ToString(("yyyy-MM-ddTHH:mm:ss.fff+02:00"), System.Globalization.CultureInfo.InvariantCulture);
+                foreach (var source in devices)
+                {
+                    string jsonBody = @"{
                         'energy': {
                             'cost': {
                                 'value': " + price + @",
@@ -67,11 +75,44 @@ namespace Nordpool.API.Utils
                                 },
                     'time':" + measurementTime + @",
                     'source': {
-                                    'id': source },
+                                    'id': " + source + @" },
                     'type': 'energyCost'
                   }";
 
-            //Here: Send Post
+                    SendPost(jsonBody);
+                }
+            }
+        }
+
+        private void SendPost(string jsonBody)
+        {
+            HttpResponseMessage response = null;
+            try
+            {
+                var byteArray = Encoding.ASCII.GetBytes(Auth);
+
+                using (var client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+
+                    response = client.PostAsync(
+                                        Host + "/measurement/measurements",
+                                        new StringContent(jsonBody, Encoding.UTF8, "application/json")
+                                        ).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("OK");
+                    }
+                    else
+                    {
+                        Console.WriteLine("NOK");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ERROR");
+            }
         }
 
         private static string ExtractCurrentPrice(dynamic dynJson)
@@ -80,7 +121,6 @@ namespace Nordpool.API.Utils
             {
                 var startTime = Convert.ToDateTime(item.StartTime);
                 var endTime = Convert.ToDateTime(item.EndTime);
-
 
                 var v1 = TimeSpan.Compare(startTime.TimeOfDay, DateTime.Now.TimeOfDay) <= 0;
                 var v2 = TimeSpan.Compare(DateTime.Now.TimeOfDay, endTime.TimeOfDay) <= 0;
