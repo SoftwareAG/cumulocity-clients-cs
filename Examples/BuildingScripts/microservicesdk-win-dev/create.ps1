@@ -100,8 +100,13 @@ $currentDir = Get-Location
 $filePath = "$currentDir/$WebApiProject/$WebApiProject.csproj"
 
 [Xml]$xdoc = Get-Content -Path $filePath -Raw
+#RestoreSources
 $newNode = $xdoc.CreateElement("RestoreSources")
 $newNode.InnerText = "`$(RestoreSources);../nugets;https://api.nuget.org/v3/index.json"
+$xdoc.SelectSingleNode("//PropertyGroup[1]").appendChild($newNode)
+#PublishWithAspNetCoreTargetManifest
+$newNode = $xdoc.CreateElement("PublishWithAspNetCoreTargetManifest")
+$newNode.InnerText = "false"
 $xdoc.SelectSingleNode("//PropertyGroup[1]").appendChild($newNode)
 
 $xdoc.Save($filePath)
@@ -119,16 +124,24 @@ $start_time = Get-Date
 Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.1.0.nupkg -OutFile Cumulocity.AspNetCore.Authentication.Basic.9.1.0.nupkg
 Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.1.0.nupkg -OutFile Cumulocity.SDK.Microservices.9.1.0.nupkg
 
-cd..
-cd $WebApiProject 
-$currentDir = Get-Location 
-$nugetsFiles = Get-ChildItem $currentDir  -Filter *.nupkg 
+$nugetsFiles = Get-ChildItem $currentDir  -Filter *.nupkg  
 
-foreach ($file in $nugetsFiles )
-{
-   $package = $file.Name -replace ".{12}$"
-   dotnet add package "$package"
-}
+cd.. 
+cd $WebApiProject  
+
+$currentDir = Get-Location  
+
+  
+
+foreach ($file in $nugetsFiles ) 
+
+{ 
+
+   $package = $file.Name -replace ".{12}$" 
+
+   dotnet add package "$package" 
+
+} 
 
 $csProgram="
   
