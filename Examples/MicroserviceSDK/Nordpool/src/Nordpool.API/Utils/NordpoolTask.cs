@@ -1,10 +1,13 @@
 ﻿using Cumulocity.SDK.Microservices.Services;
+using Cumulocity.SDK.Microservices.Settings;
 using Cumulocity.SDK.Microservices.Utils.Scheduling;
 using Easy.MessageHub;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -19,8 +22,10 @@ namespace Nordpool.API.Utils
         //One time per min => http://cron.schlitt.info
         public string Schedule => "* */1 * * *";
 
-        public string Host => "http://localhost:80";
-        public string Auth = "username:password1234";
+        public static List<string> devices = new List<string>();
+
+        public string Host { get; set; }
+        public string Auth { get; set; } // "username:password1234";
 
         private const string nordpoolValues = "nordpool_values";
 
@@ -30,30 +35,36 @@ namespace Nordpool.API.Utils
         public IApplicationService Service { get; }
         public MessageHub Hub { get; }
 
-        public NordpoolTask(IMemoryCache cache, IApplicationService service, MessageHub hub)
+        private readonly IHostingEnvironment _hostingEnvironment;
+
+        public NordpoolTask(IHostingEnvironment hostingEnvironment, IMemoryCache cache, IApplicationService service, MessageHub hub, Platform platform)
         {
+            _hostingEnvironment = hostingEnvironment;
+            Host = @"" + platform.BASEURL;
+            Auth = "management/piotr:piotr3333";
         }
 
         public Task ExecuteAsync(CancellationToken cancellationToken)
         {
-            using (var client = new System.Net.Http.HttpClient())
+            if ((devices != null) && (devices.Any()))
             {
-                // HTTP POST
-                client.BaseAddress = new Uri("http://www.nordpoolspot.com");
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetAsync("/api/marketdata/page/35?currency=,,EUR,EUR").Result;
-                string res = "";
-
-                using (HttpContent content = response.Content)
+                using (var client = new System.Net.Http.HttpClient())
                 {
-                    Task<string> result = content.ReadAsStringAsync();
-                    res = result.Result;
+                    // HTTP POST
+                    client.BaseAddress = new Uri("http://www.nordpoolspot.com");
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var response = client.GetAsync("/api/marketdata/page/35?currency=,,EUR,EUR").Result;
+                    string res = "";
 
-                    dynamic dynJson = JsonConvert.DeserializeObject(res);
+                    using (HttpContent content = response.Content)
+                    {
+                        Task<string> result = content.ReadAsStringAsync();
+                        res = result.Result;
+                        dynamic dynJson = JsonConvert.DeserializeObject(res);
 
-                    string price = ExtractCurrentPrice(dynJson);
-                    List<string> devices = new List<string>();
-                    CreateMeasurment(price, devices);
+                        string price = ExtractCurrentPrice(dynJson);
+                        CreateMeasurment(price, devices);
+                    }
                 }
             }
 
@@ -62,56 +73,40 @@ namespace Nordpool.API.Utils
 
         private void CreateMeasurment(string price, List<string> devices)
         {
-            if ((devices != null) && (!devices.Any()))
+            var measurementTime = DateTime.UtcNow.ToString(("yyyy-MM-ddTHH:mm:ss.fff+02:00"), System.Globalization.CultureInfo.InvariantCulture);
+            foreach (var source in devices)
             {
-                var measurementTime = DateTime.UtcNow.ToString(("yyyy-MM-ddTHH:mm:ss.fff+02:00"), System.Globalization.CultureInfo.InvariantCulture);
-                foreach (var source in devices)
-                {
-                    string jsonBody = @"{
-                        'energy': {
-                            'cost': {
-                                'value': " + price + @",
-                        'unit': 'EUR' }
+                string jsonBody = @"{
+                                ""c8y_energyCost"": {
+                                    ""cost"": {
+                                        ""value"": " + price + @",
+                                        ""unit"":""EUR""
+                                    }
                                 },
-                    'time':" + measurementTime + @",
-                    'source': {
-                                    'id': " + source + @" },
-                    'type': 'energyCost'
-                  }";
+                                ""time"": """ + measurementTime + @""",
+                                ""source"": {
+                                    ""id"":""" + source + @"""
+                                },
+                                ""type"":""c8y_energyCost""
+                            } ";
 
-                    SendPost(jsonBody);
-                }
+                SendPost(jsonBody);
             }
         }
 
         private void SendPost(string jsonBody)
         {
-            HttpResponseMessage response = null;
-            try
-            {
-                var byteArray = Encoding.ASCII.GetBytes(Auth);
+            var byteArray = Encoding.ASCII.GetBytes(Auth);
 
-                using (var client = new HttpClient())
+            using (var client = new HttpClient())
+            {
+                StringContent content = AddHeaders(jsonBody, client);
+
+                HttpResponseMessage response = client.PostAsync("measurement/measurements", content).Result;
+                if (response.IsSuccessStatusCode)
                 {
-                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-
-                    response = client.PostAsync(
-                                        Host + "/measurement/measurements",
-                                        new StringContent(jsonBody, Encoding.UTF8, "application/json")
-                                        ).Result;
-                    if (response.IsSuccessStatusCode)
-                    {
-                        Console.WriteLine("OK");
-                    }
-                    else
-                    {
-                        Console.WriteLine("NOK");
-                    }
+                    Console.WriteLine("OK");
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("ERROR");
             }
         }
 
@@ -119,8 +114,8 @@ namespace Nordpool.API.Utils
         {
             foreach (var item in dynJson.data.Rows)
             {
-                var startTime = Convert.ToDateTime(item.StartTime);
-                var endTime = Convert.ToDateTime(item.EndTime);
+                var startTime = DateTime.ParseExact(item.StartTime.ToString(), "dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                var endTime = DateTime.ParseExact(item.EndTime.ToString(), "dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
                 var v1 = TimeSpan.Compare(startTime.TimeOfDay, DateTime.Now.TimeOfDay) <= 0;
                 var v2 = TimeSpan.Compare(DateTime.Now.TimeOfDay, endTime.TimeOfDay) <= 0;
@@ -140,6 +135,25 @@ namespace Nordpool.API.Utils
             }
 
             return null;
+        }
+
+        private StringContent AddHeaders(string jsonData, HttpClient client)
+        {
+            var authenticationHeaderValue = new AuthenticationHeaderValue(
+                "Basic",
+                Convert.ToBase64String(
+                    System.Text.ASCIIEncoding.ASCII.GetBytes(Auth)
+                ));
+
+            client.Timeout = new TimeSpan(0, 0, 30);
+            client.BaseAddress = new Uri(Host);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Authorization = authenticationHeaderValue;
+
+            StringContent content = new StringContent(jsonData);
+            content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+            return content;
         }
     }
 }
