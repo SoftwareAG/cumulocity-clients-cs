@@ -34,7 +34,7 @@ namespace Cumulocity.SDK.Microservices.Services
         {
             List<Subscription> result = new List<Subscription>();
             var url = GetCurrentApplicationSubscriptionsUrl();
-            var authCred = GetAuthCredentialsBase64(_platform.BOOTSTRAP_TENANT, _platform.BOOTSTRAP_USERNAME, _platform.BOOTSTRAP_PASSWORD);
+            var authCred = GetAuthCredentialsBase64(_platform.BOOTSTRAP_TENANT, _platform.BOOTSTRAP_USER, _platform.BOOTSTRAP_PASSWORD);
 
             var client = new System.Net.Http.HttpClient();
             client.Timeout = TimeSpan.FromSeconds(requestTimeout);

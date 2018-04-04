@@ -1,15 +1,15 @@
-﻿using System;
-using System.Security.Claims;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
+﻿using Cumulocity.AspNetCore.Authentication.Basic.Events;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
-using Cumulocity.AspNetCore.Authentication.Basic.Events;
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
 
 namespace Cumulocity.AspNetCore.Authentication.Basic
 {
@@ -77,11 +77,11 @@ namespace Cumulocity.AspNetCore.Authentication.Basic
 
                 Logger.LogInformation("Successfully validated credentials for {userid}.", userpass.userid);
 
-               List<Claim> Claims = new List<Claim>();
-               Claims.Add(new Claim(ClaimTypes.Name, userpass.userid, ClaimValueTypes.String, ClaimsIssuer));
-               Claims.Add(new Claim("UserName", authResult.User, ClaimValueTypes.String, ClaimsIssuer));
-               Claims.Add(new Claim("UserPassword", authResult.Password, ClaimValueTypes.String, ClaimsIssuer));
-                Claims.Add(new Claim("UserTenant", authResult.Tenant, ClaimValueTypes.String, ClaimsIssuer));
+                List<Claim> Claims = new List<Claim>();
+                Claims.Add(new Claim(ClaimTypes.Name, userpass.userid, ClaimValueTypes.String, ClaimsIssuer));
+                Claims.Add(new Claim("UserName", userpass.userid.Split("/")[1], ClaimValueTypes.String, ClaimsIssuer));
+                Claims.Add(new Claim("UserPassword", userpass.password, ClaimValueTypes.String, ClaimsIssuer));
+                Claims.Add(new Claim("UserTenant", userpass.userid.Split("/")[0], ClaimValueTypes.String, ClaimsIssuer));
                 Claims.AddRange(authResult.Claims);
 
                 var principal = new ClaimsPrincipal(new ClaimsIdentity(Claims.ToArray(), Scheme.Name));
