@@ -131,14 +131,6 @@ using System.Net;
 
         public static IWebHost BuildWebHost(string[] args) =>
                 WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
-                .ConfigureLogging((hostingContext, logging) =>
-                {
-                    logging.AddConfiguration(hostingContext.Configuration.GetSection(\"Logging\"));
-                    logging.AddConsole();
-                    logging.AddDebug();
-                })
-                .UseStartup<Startup>()
                 .UseKestrel(options =>
                 {
                     var env = Environment.GetEnvironmentVariable(\"ASPNETCORE_ENVIRONMENT\");
@@ -151,9 +143,16 @@ using System.Net;
                     }
                     else
                     {
-                        options.Listen(IPAddress.Parse(\"0.0.0.0\"), 1);
+                        options.Listen(IPAddress.Parse(\"0.0.0.0\"), portNumber);
                     }
                 })
+                .ConfigureLogging((hostingContext, logging) =>
+                {
+                    logging.AddConfiguration(hostingContext.Configuration.GetSection(\"Logging\"));
+                    logging.AddConsole();
+                    logging.AddDebug();
+                })
+                .UseStartup<Startup>()
                 .Build();
     }
 }"

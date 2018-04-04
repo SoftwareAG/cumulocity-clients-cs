@@ -2,7 +2,7 @@ FROM microsoft/dotnet:2.0-runtime
 WORKDIR /app
 COPY ./publish/Web ./
 
-ENV SERVER_PORT 4700
+#ENV SERVER_PORT 4700
 #ENV C8Y_BASEURL "http://baseurl"
 #ENV C8Y_BOOTSTRAP_TENANT "tenant"
 #ENV C8Y_BOOTSTRAP_USERNAME "username"
