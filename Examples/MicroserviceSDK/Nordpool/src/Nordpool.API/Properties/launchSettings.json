@@ -22,6 +22,22 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:19147/"
+    },
+    "Project (Staging)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "C8Y_MICROSERIVCE_ISOLATION": "PER_TENANT",
+        "C8Y_BASEURL": "http://management.staging7.c8y.io",
+        "C8Y_BASEURL_MQTT": "",
+        "C8Y_TENANT": "",
+        "C8Y_PASSWORD": "",
+        "C8Y_USERNAME": "",
+        "SERVER_PORT": "47000",
+        "ASPNETCORE_ENVIRONMENT": "Staging",
+        "C8Y_BOOTSTRAP_TENANT": "management",
+        "C8Y_BOOTSTRAP_USERNAME": "servicebootstrap_cs-combain",
+        "C8Y_BOOTSTRAP_PASSWORD": "qoGzAMCoXF"
+      }
     }
   }
 }

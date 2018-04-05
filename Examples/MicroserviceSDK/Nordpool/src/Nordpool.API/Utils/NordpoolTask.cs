@@ -3,10 +3,12 @@ using Cumulocity.SDK.Microservices.Settings;
 using Cumulocity.SDK.Microservices.Utils.Scheduling;
 using Easy.MessageHub;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -14,6 +16,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Cumulocity.SDK.Microservices.Model;
+using Cumulocity.SDK.Microservices.Utils.Extenions;
 
 namespace Nordpool.API.Utils
 {
@@ -23,25 +27,21 @@ namespace Nordpool.API.Utils
         public string Schedule => "* */1 * * *";
 
         public static List<string> devices = new List<string>();
-
         public string Host { get; set; }
-        public string Auth { get; set; } // "username:password1234";
+        public string Auth { get; set; }
 
         private const string nordpoolValues = "nordpool_values";
-
         public static string NordpoolValues => nordpoolValues;
-
         public IMemoryCache Cache { get; }
-        public IApplicationService Service { get; }
-        public MessageHub Hub { get; }
+        public Platform Platform { get; }
+        public Guid SubscriptionToken { get; }
 
-        private readonly IHostingEnvironment _hostingEnvironment;
-
-        public NordpoolTask(IHostingEnvironment hostingEnvironment, IMemoryCache cache, IApplicationService service, MessageHub hub, Platform platform)
+        public NordpoolTask(IMemoryCache cache, IApplicationService service, MessageHub hub, Platform platform)
         {
-            _hostingEnvironment = hostingEnvironment;
+            SubscriptionToken = hub.Subscribe<List<ChangedSubscription>>(OnChangedSubscription);
+            Cache = cache;
+            Platform = platform;
             Host = @"" + platform.BASEURL;
-            Auth = "management/piotr:piotr3333";
         }
 
         public Task ExecuteAsync(CancellationToken cancellationToken)
@@ -53,16 +53,16 @@ namespace Nordpool.API.Utils
                     // HTTP POST
                     client.BaseAddress = new Uri("http://www.nordpoolspot.com");
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
                     var response = client.GetAsync("/api/marketdata/page/35?currency=,,EUR,EUR").Result;
-                    string res = "";
 
                     using (HttpContent content = response.Content)
                     {
                         Task<string> result = content.ReadAsStringAsync();
-                        res = result.Result;
-                        dynamic dynJson = JsonConvert.DeserializeObject(res);
+                        dynamic dynJson = JsonConvert.DeserializeObject(result.Result);
 
                         string price = ExtractCurrentPrice(dynJson);
+  
                         CreateMeasurment(price, devices);
                     }
                 }
@@ -73,10 +73,13 @@ namespace Nordpool.API.Utils
 
         private void CreateMeasurment(string price, List<string> devices)
         {
-            var measurementTime = DateTime.UtcNow.ToString(("yyyy-MM-ddTHH:mm:ss.fff+02:00"), System.Globalization.CultureInfo.InvariantCulture);
-            foreach (var source in devices)
+            try
             {
-                string jsonBody = @"{
+                var measurementTime = DateTime.UtcNow.ToString(("yyyy-MM-ddTHH:mm:ss.fff+02:00"), System.Globalization.CultureInfo.InvariantCulture);
+
+                foreach (var source in devices)
+                {
+                    string jsonBody = @"{
                                 ""c8y_energyCost"": {
                                     ""cost"": {
                                         ""value"": " + price + @",
@@ -90,7 +93,11 @@ namespace Nordpool.API.Utils
                                 ""type"":""c8y_energyCost""
                             } ";
 
-                SendPost(jsonBody);
+                    SendPost(jsonBody);
+                }
+            }
+            catch (Exception ex)
+            {
             }
         }
 
@@ -98,52 +105,72 @@ namespace Nordpool.API.Utils
         {
             var byteArray = Encoding.ASCII.GetBytes(Auth);
 
-            using (var client = new HttpClient())
+            var subs = Cache.Get<List<Subscription>>("current_app_subscriptions");
+
+            if (subs != null)
             {
-                StringContent content = AddHeaders(jsonBody, client);
-
-                HttpResponseMessage response = client.PostAsync("measurement/measurements", content).Result;
-                if (response.IsSuccessStatusCode)
+                foreach (var sub in subs)
                 {
-                    Console.WriteLine("OK");
-                }
-            }
-        }
-
-        private static string ExtractCurrentPrice(dynamic dynJson)
-        {
-            foreach (var item in dynJson.data.Rows)
-            {
-                var startTime = DateTime.ParseExact(item.StartTime.ToString(), "dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                var endTime = DateTime.ParseExact(item.EndTime.ToString(), "dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-
-                var v1 = TimeSpan.Compare(startTime.TimeOfDay, DateTime.Now.TimeOfDay) <= 0;
-                var v2 = TimeSpan.Compare(DateTime.Now.TimeOfDay, endTime.TimeOfDay) <= 0;
-
-                if (v1 && v2)
-                {
-                    //Console.WriteLine($"{item.StartTime} {item.EndTime}");
-                    foreach (var col in item.Columns)
+                    using (var client = new HttpClient())
                     {
-                        if (DateTime.Now.Date == DateTime.Now.Date)
+                        StringContent content = AddHeaders(jsonBody, client, sub);
+
+                        HttpResponseMessage response = client.PostAsync("measurement/measurements", content).Result;
+
+                        if (response.IsSuccessStatusCode)
                         {
-                            string value = Convert.ToString(col.Value);
-                            return value.Replace(',', '.');
+                            Debug.WriteLine("SuccessStatusCode");
                         }
+
                     }
                 }
             }
+        }
 
+        private string ExtractCurrentPrice(dynamic dynJson)
+        {
+
+            foreach (var item in dynJson.data.Rows)
+            {
+                try
+                {
+
+                    var startTime = DateTime.ParseExact(item.StartTime.ToString(), "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                    var endTime = DateTime.ParseExact(item.EndTime.ToString(), "MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
+                    var v1 = TimeSpan.Compare(startTime.TimeOfDay, DateTime.Now.TimeOfDay) <= 0;
+                    var v2 = TimeSpan.Compare(DateTime.Now.TimeOfDay, endTime.TimeOfDay) <= 0;
+
+
+                    if (v1 && v2)
+                    {
+                        foreach (var col in item.Columns)
+                        {
+                            if (DateTime.Now.Date == DateTime.Now.Date)
+                            {
+                                string value = Convert.ToString(col.Value);
+                                return value.Replace(',', '.');
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
             return null;
         }
 
-        private StringContent AddHeaders(string jsonData, HttpClient client)
+        private StringContent AddHeaders(string jsonBody, HttpClient client, Subscription sub)
         {
-            var authenticationHeaderValue = new AuthenticationHeaderValue(
-                "Basic",
-                Convert.ToBase64String(
-                    System.Text.ASCIIEncoding.ASCII.GetBytes(Auth)
-                ));
+            string authCred = GetAuthCredentialsBase64(
+                sub.Tenant,
+                sub.Name,
+                sub.Password);
+
+            var authenticationHeaderValue =
+                 new AuthenticationHeaderValue("Basic", authCred);
 
             client.Timeout = new TimeSpan(0, 0, 30);
             client.BaseAddress = new Uri(Host);
@@ -151,9 +178,22 @@ namespace Nordpool.API.Utils
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Authorization = authenticationHeaderValue;
 
-            StringContent content = new StringContent(jsonData);
+            StringContent content = new StringContent(jsonBody);
             content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
             return content;
+        }
+
+        private static string GetAuthCredentialsBase64(string tenant, string username, string password)
+        {
+            return System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(tenant + "/" + username + ":" + password));
+        }
+
+        private void OnChangedSubscription(List<ChangedSubscription> lstChangedSubscriptions)
+        {
+            foreach (var subscription in lstChangedSubscriptions)
+            {
+                
+            }
         }
     }
 }

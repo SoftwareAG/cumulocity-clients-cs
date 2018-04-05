@@ -14,7 +14,10 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using Nordpool.API.Utils;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Nordpool.API
 {

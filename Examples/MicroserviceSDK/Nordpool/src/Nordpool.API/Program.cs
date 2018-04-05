@@ -41,7 +41,7 @@ using System.Net;
                     }
                     else
                     {
-                        options.Listen(IPAddress.Parse("0.0.0.0"), 1);
+                        options.Listen(IPAddress.Parse("0.0.0.0"), portNumber);
                     }
                 })
                 .Build();

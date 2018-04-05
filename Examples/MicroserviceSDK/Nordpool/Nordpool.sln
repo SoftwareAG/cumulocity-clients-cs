@@ -5,6 +5,13 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nordpool.API", "src\Nordpool.API\Nordpool.API.csproj", "{E2308B30-A661-4B76-B879-A7C28F9C9E79}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{7A14ECD9-7D3D-4632-87C8-2C1B591C1F5F}"
+	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
+		deploy.ps1 = deploy.ps1
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
