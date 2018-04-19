@@ -43,41 +43,87 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.AspNetCore
             if (IsHealthCheckRequest(context))
             {
                 var isAuthenticated = await context.AuthenticateAsync(BasicAuthenticationDefaults.AuthenticationScheme);
-                var timeoutTokenSource = new CancellationTokenSource(_timeout);
-                var result = await _service.CheckHealthAsync(timeoutTokenSource.Token);
-                var status = result.Status;
+	            var timeoutTokenSource = new CancellationTokenSource(_timeout);
+	            var hcResultRootObject = new RootObject();
 
-                var hcResultRootObject = new RootObject() { status = result.Status.ToString(), details = new Dictionary<string, Health>() };
+				if (!isAuthenticated.Succeeded)
+	            {
+					//await context.ChallengeAsync(BasicAuthenticationDefaults.AuthenticationScheme);
 
-                if (isAuthenticated.Succeeded)
-                {
-                    foreach (var res in result.Results)
-                    {
-                        var newItem = new Health()
-                        {
-                            status = res.Value.Status.ToString()
-                        };
+		            var result2 = await CompositeHealthCheckResult(timeoutTokenSource);
+		            var status2 = result2.Status;
 
-                        if (res.Value.Data.Count > 0)
-                        {
-                            newItem.details = res.Value.Data.ToDictionary(v => v.Key, v => v.Value);
-                        }
-                        else
-                        {
-                            newItem.details = new Dictionary<string, object>();
-                        }
+					if (status2 != CheckStatus.Healthy)
+			            context.Response.StatusCode = 503;
 
-                        hcResultRootObject.details.Add(res.Key, newItem);
-                    }
-                }
+				}
+	            else
+	            {
+		            await _next.Invoke(context);
+
+		            var result1 = await CompositeHealthCheckResult(timeoutTokenSource);
+		            var status1 = result1.Status;
+
+		            hcResultRootObject = new RootObject() { status = result1.Status.ToString(), details = new Dictionary<string, Health>() };
 
 
-                if (status != CheckStatus.Healthy)
-                    context.Response.StatusCode = 503;
+		            foreach (var res in result1.Results)
+		            {
+			            var newItem = new Health()
+			            {
+				            status = res.Value.Status.ToString()
+			            };
+
+			            if (res.Value.Data.Count > 0)
+			            {
+				            newItem.details = res.Value.Data.ToDictionary(v => v.Key, v => v.Value);
+			            }
+			            else
+			            {
+				            newItem.details = new Dictionary<string, object>();
+			            }
+
+			            hcResultRootObject.details.Add(res.Key, newItem);
+		            }
+
+
+				}
+
+				
+     //           var result = await CompositeHealthCheckResult(timeoutTokenSource);
+     //           var status = result.Status;
+
+     //           var hcResultRootObject = new RootObject() { status = result.Status.ToString(), details = new Dictionary<string, Health>() };
+
+     //           if (isAuthenticated.Succeeded)
+     //           {
+
+					//foreach (var res in result.Results)
+     //               {
+     //                   var newItem = new Health()
+     //                   {
+     //                       status = res.Value.Status.ToString()
+     //                   };
+
+     //                   if (res.Value.Data.Count > 0)
+     //                   {
+     //                       newItem.details = res.Value.Data.ToDictionary(v => v.Key, v => v.Value);
+     //                   }
+     //                   else
+     //                   {
+     //                       newItem.details = new Dictionary<string, object>();
+     //                   }
+
+     //                   hcResultRootObject.details.Add(res.Key, newItem);
+     //               }
+     //           }
+
+
+     //           if (status != CheckStatus.Healthy)
+     //               context.Response.StatusCode = 503;
 
                 context.Response.Headers.Add("content-type", "application/json");
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(hcResultRootObject));
-                //await context.Response.WriteAsync(JsonConvert.SerializeObject(new { status = status.ToString() }));
                 return;
             }
             else
@@ -86,7 +132,13 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.AspNetCore
             }
         }
 
-        private bool IsHealthCheckRequest(HttpContext context)
+	    private async Task<CompositeHealthCheckResult> CompositeHealthCheckResult(CancellationTokenSource timeoutTokenSource)
+	    {
+		    var result = await _service.CheckHealthAsync(timeoutTokenSource.Token);
+		    return result;
+	    }
+
+	    private bool IsHealthCheckRequest(HttpContext context)
         {
             if (_port.HasValue)
             {

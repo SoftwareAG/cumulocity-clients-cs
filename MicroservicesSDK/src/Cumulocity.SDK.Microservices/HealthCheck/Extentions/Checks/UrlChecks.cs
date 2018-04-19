@@ -10,9 +10,17 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
 {
     public static partial class HealthCheckBuilderExtensions
     {
-        // Default URL check
+	    public static HealthCheckBuilder AddPlatformCheck(this HealthCheckBuilder builder)
+	    {
+		    Guard.ArgumentNotNull(nameof(builder), builder);
 
-        public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url)
+		    string url = "{C8Y_BASEURL}/tenant/health";
+
+			return AddUrlCheck(builder, url, builder.DefaultCacheDuration);
+	    }
+		// Default URL check
+
+		public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url)
         {
             Guard.ArgumentNotNull(nameof(builder), builder);
 

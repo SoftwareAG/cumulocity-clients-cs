@@ -41,24 +41,20 @@ namespace Cumulocity.SDK.Microservices.BasicAuthentication
         private async Task<BasicAuthenticationResult> GetBasicAuthenticationResultAsync(string username, string authCred)
         {
             Subscription requiredSubscription;
-            var currentUser = await
-            _cache.GetOrCreateAsync(username + "_claims", entry =>
+            var currentUser = await _cache.GetOrCreateAsync(username + "_claims", entry =>
             {
-                entry.SlidingExpiration = TimeSpan.FromSeconds(600);
+                entry.SlidingExpiration = TimeSpan.FromSeconds(60);
                 return _service.GetCurrentUser(authCred);
             });
 
-            var cacheSubscriptions = await
-                _cache.GetOrCreateAsync("current_app_subscriptions", entry =>
-                {
-                    return _service.GetCurrentApplicationSubscriptions();
-                });
+	        var cacheSubscriptions = await
+		        _cache.GetOrCreateAsync("current_app_subscriptions", entry => _service.GetCurrentApplicationSubscriptions());
 
             if (!String.IsNullOrEmpty(username.Split("/")[0]))
             {
-                requiredSubscription = cacheSubscriptions.Where(s => s.Tenant.Equals(username.Split("/")[0])).FirstOrDefault();
+                requiredSubscription = cacheSubscriptions.FirstOrDefault(s => s.Tenant.Equals(username.Split("/")[0]));
 
-                if (requiredSubscription != null && requiredSubscription.Name != null && requiredSubscription.Password != null)
+                if (requiredSubscription?.Name != null && requiredSubscription.Password != null)
                 {
                     currentUser.User = requiredSubscription.Name;
                     currentUser.Password = requiredSubscription.Password;

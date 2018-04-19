@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Cumulocity.SDK.Microservices.HealthCheck.Internal;
+using Cumulocity.SDK.Microservices.Settings;
 
 namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
 {
@@ -20,7 +21,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
                 [string.Empty] = _currentGroup
             };
 
-            DefaultCacheDuration = TimeSpan.FromMinutes(5);
+            DefaultCacheDuration = TimeSpan.FromMinutes(1);
         }
 
         /// <summary>

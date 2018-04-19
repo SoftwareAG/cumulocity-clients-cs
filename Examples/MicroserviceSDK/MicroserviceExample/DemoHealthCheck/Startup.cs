@@ -35,18 +35,19 @@ namespace DemoHealthCheck
             services.AddSingleton<IApplicationService, ApplicationService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            //
-            services.AddHealthChecks(checks =>
-            {
-                checks.AddCheck("long-running", async cancellationToken =>
-                {
-                    await Task.Delay(1000, cancellationToken);
-                    return HealthCheckResult.Healthy("I ran too long");
-                });
-            });
+			//
+			services.AddHealthChecks(checks =>
+			{
+				checks.AddUrlCheck(@"https://management.staging7.c8y.io/tenant/health");
+				checks.AddCheck("long-running", async cancellationToken =>
+				{
+					await Task.Delay(1000, cancellationToken);
+					return HealthCheckResult.Healthy("I ran too long");
+				});
+			});
 
-            //MVC
-            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+			//MVC
+			services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
             services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
         }
 

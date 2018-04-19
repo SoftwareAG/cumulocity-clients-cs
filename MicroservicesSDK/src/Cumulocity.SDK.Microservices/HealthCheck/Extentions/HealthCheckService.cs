@@ -6,31 +6,48 @@ using System.Threading;
 using System.Threading.Tasks;
 using Cumulocity.SDK.Microservices.HealthCheck.Internal;
 using System.Linq;
+using System.Timers;
+using Cumulocity.SDK.Microservices.Settings;
+using Cumulocity.SDK.Microservices.Utils.Extenions;
+using Microsoft.AspNetCore.Http;
 
 namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
 {
     public class HealthCheckService : IHealthCheckService
     {
-        private readonly HealthCheckBuilder _builder;
+		private readonly HealthCheckBuilder _builder;
         private readonly IReadOnlyList<HealthCheckGroup> _groups;
         private readonly HealthCheckGroup _root;
         private readonly IServiceProvider _serviceProvider;
         private readonly IServiceScopeFactory _serviceScopeFactory;
+	    private readonly System.Timers.Timer _timer;
+	    private readonly TimeSpan _interval;
 
-        public HealthCheckService(HealthCheckBuilder builder, IServiceProvider serviceProvider, IServiceScopeFactory serviceScopeFactory)
+	    private IHttpContextAccessor _httpContextAccessor;
+	    private Platform _platform;
+
+
+		public HealthCheckService(HealthCheckBuilder builder, IServiceProvider serviceProvider, IServiceScopeFactory serviceScopeFactory, IHttpContextAccessor httpContextAccessor, TimeSpan interval = default(TimeSpan))
         {
             _builder = builder;
             _groups = GetGroups().Where(group => group.GroupName != string.Empty).ToList();
             _root = GetGroup(string.Empty);
             _serviceProvider = serviceProvider;
             _serviceScopeFactory = serviceScopeFactory;
+			_timer = new System.Timers.Timer();
+	        _interval = interval == default(TimeSpan) ? TimeSpan.FromSeconds(100) : interval;
+	        _platform = (Platform)serviceProvider.GetRequiredService(typeof(Platform));
+	        _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<CompositeHealthCheckResult> CheckHealthAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             using (var scope = GetServiceScope())
             {
-                var scopeServiceProvider = scope.ServiceProvider;
+	            var isin = _httpContextAccessor.HttpContext.User.IsInContext();
+	            var un =_httpContextAccessor.HttpContext.User.UserName();
+
+	            var scopeServiceProvider = scope.ServiceProvider;
                 var groupTasks = _groups.Select(group => new { Group = group, Task = RunGroupAsync(scopeServiceProvider, group, cancellationToken) }).ToList();
                 var result = await RunGroupAsync(scopeServiceProvider, _root, cancellationToken).ConfigureAwait(false);
 
@@ -41,11 +58,35 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
                     result.Add($"Group({groupTask.Group.GroupName})", groupTask.Task.Result);
                 }
 
+	            StartTimer();
                 return result;
             }
         }
 
-        public IReadOnlyList<CachedHealthCheck> GetAllChecks()
+	    private void StartTimer()
+	    {
+		    if (_timer.Enabled == false)
+		    {
+			    _timer.Elapsed += new ElapsedEventHandler(OnTimedEventAsync);
+			    _timer.Interval = _interval.TotalMilliseconds;
+			    _timer.Enabled = true;
+		    }
+	    }
+
+	    private async  void OnTimedEventAsync(object sender, ElapsedEventArgs e)
+		{
+			var timeoutTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+
+			using (var scope = GetServiceScope())
+			{
+				var scopeServiceProvider = scope.ServiceProvider;
+				var groupTasks = _groups.Select(group => new { Group = group, Task = RunGroupAsync(scopeServiceProvider, group, timeoutTokenSource.Token) }).ToList();
+				var result = await RunGroupAsync(scopeServiceProvider, _root, timeoutTokenSource.Token).ConfigureAwait(false);
+				var completed = await Task.WhenAll(groupTasks.Select(x => x.Task));
+			}
+		}
+
+		public IReadOnlyList<CachedHealthCheck> GetAllChecks()
             => _builder.ChecksByName.Values.ToList().AsReadOnly();
 
         public CachedHealthCheck GetCheck(string checkName)
