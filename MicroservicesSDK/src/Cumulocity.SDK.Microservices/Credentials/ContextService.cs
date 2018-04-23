@@ -23,7 +23,7 @@ namespace Cumulocity.SDK.Microservices.Credentials
 
 		public ICredentials GetCredentials()
 		{
-			if (_contextAccessor.HttpContext.User.IsInContext())
+			if (_contextAccessor.HttpContext != null && _contextAccessor.HttpContext.User.IsInContext())
 			{
 				return new MicroserviceCredentialsBuilder()
 					.WithTenant(_contextAccessor.HttpContext.User.UserTenant())

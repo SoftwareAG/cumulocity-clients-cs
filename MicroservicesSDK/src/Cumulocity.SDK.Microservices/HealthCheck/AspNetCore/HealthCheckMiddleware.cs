@@ -62,16 +62,17 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.AspNetCore
 		            await _next.Invoke(context);
 
 		            var result1 = await CompositeHealthCheckResult(timeoutTokenSource);
-		            var status1 = result1.Status;
-
-		            hcResultRootObject = new RootObject() { status = result1.Status.ToString(), details = new Dictionary<string, Health>() };
+		            
+		            hcResultRootObject = new RootObject()
+			            { status = result1.Status.ToHealthyStatus().ToString(),
+				          details = new Dictionary<string, Health>() };
 
 
 		            foreach (var res in result1.Results)
 		            {
 			            var newItem = new Health()
 			            {
-				            status = res.Value.Status.ToString()
+				            status = res.Value.Status.ToHealthyStatus().ToString()
 			            };
 
 			            if (res.Value.Data.Count > 0)
@@ -89,39 +90,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.AspNetCore
 
 				}
 
-				
-     //           var result = await CompositeHealthCheckResult(timeoutTokenSource);
-     //           var status = result.Status;
-
-     //           var hcResultRootObject = new RootObject() { status = result.Status.ToString(), details = new Dictionary<string, Health>() };
-
-     //           if (isAuthenticated.Succeeded)
-     //           {
-
-					//foreach (var res in result.Results)
-     //               {
-     //                   var newItem = new Health()
-     //                   {
-     //                       status = res.Value.Status.ToString()
-     //                   };
-
-     //                   if (res.Value.Data.Count > 0)
-     //                   {
-     //                       newItem.details = res.Value.Data.ToDictionary(v => v.Key, v => v.Value);
-     //                   }
-     //                   else
-     //                   {
-     //                       newItem.details = new Dictionary<string, object>();
-     //                   }
-
-     //                   hcResultRootObject.details.Add(res.Key, newItem);
-     //               }
-     //           }
-
-
-     //           if (status != CheckStatus.Healthy)
-     //               context.Response.StatusCode = 503;
-
+		
                 context.Response.Headers.Add("content-type", "application/json");
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(hcResultRootObject));
                 return;

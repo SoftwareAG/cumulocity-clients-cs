@@ -11,4 +11,23 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
         Healthy,
         Warning
     }
+	public enum HealthyStatus
+	{
+		UP,
+		DOWN
+	}
+
+	public static class CheckStatusExtensions
+	{
+		public static HealthyStatus ToHealthyStatus(this CheckStatus value)
+		{
+			switch (value)
+			{
+				case CheckStatus.Healthy:
+					return HealthyStatus.UP;
+				default:
+					return HealthyStatus.DOWN;
+			}
+		}
+	}
 }

@@ -43,11 +43,11 @@ namespace DemoHealthCheck
 			services.AddHealthChecks(checks =>
 			{
 				checks.AddPlatformCheck();
-				checks.AddCheck("long-running", async cancellationToken =>
-				{
-					await Task.Delay(1000, cancellationToken);
-					return HealthCheckResult.Healthy("I ran too long");
-				});
+				//checks.AddCheck("long-running", async cancellationToken =>
+				//{
+				//	await Task.Delay(1000, cancellationToken);
+				//	return HealthCheckResult.Healthy("I ran too long");
+				//});
 			});
 
 			//MVC

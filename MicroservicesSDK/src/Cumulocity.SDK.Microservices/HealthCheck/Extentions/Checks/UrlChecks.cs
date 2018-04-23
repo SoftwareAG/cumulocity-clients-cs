@@ -20,7 +20,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
 			var baseurl = builder.MicroserviceContext.GetBaseUrl();
 			string url = $"{baseurl}/tenant/health";
 
-			return AddUrlCheck(builder, url, authCred, builder.DefaultCacheDuration);
+			return AddPlatformUrlCheck(builder, url, authCred, builder.DefaultCacheDuration);
 	    }
 
 	    private static string GetAuthCredentialsBase64(ICredentials credentials)
@@ -50,8 +50,8 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
             => AddUrlCheck(builder, url, response => UrlChecker.DefaultUrlCheck(response), cacheDuration);
 
 
-	    public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url, string auth, TimeSpan cacheDuration)
-		    => AddUrlCheck(builder, url,auth, response => UrlChecker.DefaultUrlCheck(response), cacheDuration);
+	    public static HealthCheckBuilder AddPlatformUrlCheck(this HealthCheckBuilder builder, string url, string auth, TimeSpan cacheDuration)
+		    => AddPlatformUrlCheck(builder, url,auth, response => UrlChecker.DefaultUrlCheck(response), cacheDuration);
 
 		// Func returning IHealthCheckResult
 
@@ -111,7 +111,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
             return builder;
         }
 
-	    public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url,string auth,
+	    public static HealthCheckBuilder AddPlatformUrlCheck(this HealthCheckBuilder builder, string url,string auth,
 		    Func<HttpResponseMessage, ValueTask<IHealthCheckResult>> checkFunc,
 		    TimeSpan cacheDuration)
 	    {
@@ -121,7 +121,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
 			Guard.ArgumentNotNull(nameof(checkFunc), checkFunc);
 
 		    var urlCheck = new UrlChecker(checkFunc, url, auth);
-		    builder.AddCheck($"UrlCheck({url})", () => urlCheck.CheckWithBasicAuthAsync(), cacheDuration);
+		    builder.AddCheck($"platform", () => urlCheck.CheckWithBasicAuthAsync(), cacheDuration);
 		    return builder;
 	    }
 	}

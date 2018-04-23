@@ -32,12 +32,14 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
             {
                 var serviceScopeFactory = serviceProvider.GetService<IServiceScopeFactory>();
 				var httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
-	            var platform = (Platform)serviceProvider.GetRequiredService(typeof(Platform));
-	            builder.WithContextService(new ContextService(httpContextAccessor, platform));
 				return new HealthCheckService(builder, serviceProvider, serviceScopeFactory, httpContextAccessor);
             });
 
-            checks(builder);
+	        var provider = services.BuildServiceProvider();
+	        var httpContext = provider.GetService<IHttpContextAccessor>();
+	        var platformObj = (Platform)provider.GetRequiredService(typeof(Platform));
+	        builder.WithContextService(new ContextService(httpContext, platformObj));
+			checks(builder);
             return services;
         }
 
@@ -58,13 +60,15 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
 		    {
 			    var serviceScopeFactory = serviceProvider.GetService<IServiceScopeFactory>();
 			    var httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
-			    var platform = (Platform)serviceProvider.GetRequiredService(typeof(Platform));
-				builder.WithContextService(new ContextService(httpContextAccessor, platform));
 				return new HealthCheckService(builder, serviceProvider, serviceScopeFactory, httpContextAccessor);
 		    });
 
+		    var provider = services.BuildServiceProvider();
+		    var httpContext = provider.GetService<IHttpContextAccessor>();
+		    var platformObj = (Platform)provider.GetRequiredService(typeof(Platform));
+		    builder.WithContextService(new ContextService(httpContext, platformObj));
 
-		    checks(builder);
+			checks(builder);
 		    return services;
 	    }
 	}

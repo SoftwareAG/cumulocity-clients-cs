@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Cumulocity.SDK.Microservices.HealthCheck.Internal;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Timers;
 using Cumulocity.SDK.Microservices.Settings;
 using Cumulocity.SDK.Microservices.Utils.Extenions;
@@ -22,6 +23,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
         private readonly IServiceScopeFactory _serviceScopeFactory;
 	    private readonly System.Timers.Timer _timer;
 	    private readonly TimeSpan _interval;
+		private const int intInterval = 10;
 
 	    private IHttpContextAccessor _httpContextAccessor;
 
@@ -33,9 +35,10 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
             _serviceProvider = serviceProvider;
             _serviceScopeFactory = serviceScopeFactory;
 			_timer = new System.Timers.Timer();
-	        _interval = interval == default(TimeSpan) ? TimeSpan.FromSeconds(100) : interval;
-	        //_httpContextAccessor = httpContextAccessor;
-        }
+	        _interval = interval == default(TimeSpan) ? TimeSpan.FromSeconds(intInterval) : interval;
+
+			StartTimer();
+		}
 
         public async Task<CompositeHealthCheckResult> CheckHealthAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -51,8 +54,6 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
                 {
                     result.Add($"Group({groupTask.Group.GroupName})", groupTask.Task.Result);
                 }
-
-	            StartTimer();
                 return result;
             }
         }

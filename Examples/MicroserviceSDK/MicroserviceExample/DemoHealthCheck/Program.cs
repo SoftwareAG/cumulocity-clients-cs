@@ -43,7 +43,7 @@ namespace DemoHealthCheck
                         options.Listen(IPAddress.Parse("0.0.0.0"), portNumber);
                     }
                 })
-                .UseHealthChecks("/health", TimeSpan.FromSeconds(3))     // Or to host on a separate port: .UseHealthChecks(port)
+                .UseHealthChecks("/health", TimeSpan.FromSeconds(5))     // Or to host on a separate port: .UseHealthChecks(port)
                 .Build();
     }
 }
