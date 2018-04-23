@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
+using Cumulocity.SDK.Microservices.Credentials;
 using Cumulocity.SDK.Microservices.HealthCheck.Internal;
+using Cumulocity.SDK.Microservices.Settings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,12 +21,19 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
 
             var builder = new HealthCheckBuilder();
 
-	    
+			services.AddSingleton<IContextService, ContextService>(serviceProvider =>
+			{
+				var httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
+				var platform = (Platform)serviceProvider.GetRequiredService(typeof(Platform));
+				return new ContextService(httpContextAccessor, platform);
+			});
 
 			services.AddSingleton<IHealthCheckService, HealthCheckService>(serviceProvider =>
             {
                 var serviceScopeFactory = serviceProvider.GetService<IServiceScopeFactory>();
-	            var httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
+				var httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
+	            var platform = (Platform)serviceProvider.GetRequiredService(typeof(Platform));
+	            builder.WithContextService(new ContextService(httpContextAccessor, platform));
 				return new HealthCheckService(builder, serviceProvider, serviceScopeFactory, httpContextAccessor);
             });
 
@@ -37,12 +47,22 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
 
 		    var builder = new HealthCheckBuilder();
 
-		    services.AddSingleton<IHealthCheckService, HealthCheckService>(serviceProvider =>
+			services.AddSingleton<IContextService, ContextService>(serviceProvider =>
+		    {
+			    var httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
+			    var platform = (Platform) serviceProvider.GetRequiredService(typeof(Platform));
+				return new ContextService(httpContextAccessor, platform);
+		    });
+
+			services.AddSingleton<IHealthCheckService, HealthCheckService>(serviceProvider =>
 		    {
 			    var serviceScopeFactory = serviceProvider.GetService<IServiceScopeFactory>();
 			    var httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
+			    var platform = (Platform)serviceProvider.GetRequiredService(typeof(Platform));
+				builder.WithContextService(new ContextService(httpContextAccessor, platform));
 				return new HealthCheckService(builder, serviceProvider, serviceScopeFactory, httpContextAccessor);
 		    });
+
 
 		    checks(builder);
 		    return services;

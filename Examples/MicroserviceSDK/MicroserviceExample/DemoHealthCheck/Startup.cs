@@ -19,17 +19,21 @@ namespace DemoHealthCheck
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+	    ILogger _logger;
+	    public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
+	    {
+		    Configuration = configuration;
+		    _logger = loggerFactory.CreateLogger<Startup>();
+	    }
 
-        public IConfiguration Configuration { get; }
+		public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMemoryCache();
+	        _logger.LogDebug($"Total Services Initially: {services.Count}");
+
+			services.AddMemoryCache();
             services.AddCumulocityAuthentication(Configuration);
             services.AddPlatform(Configuration);
             services.AddSingleton<IApplicationService, ApplicationService>();
@@ -38,7 +42,7 @@ namespace DemoHealthCheck
 			//
 			services.AddHealthChecks(checks =>
 			{
-				checks.AddUrlCheck(@"https://management.staging7.c8y.io/tenant/health");
+				checks.AddPlatformCheck();
 				checks.AddCheck("long-running", async cancellationToken =>
 				{
 					await Task.Delay(1000, cancellationToken);

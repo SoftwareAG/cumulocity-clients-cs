@@ -17,16 +17,16 @@ namespace Cumulocity.SDK.Microservices.Services
 {
     public class ApplicationService : IApplicationService
     {
-        private readonly ILogger _logger;
-        private readonly Platform _platform;
+		protected ILogger Logger { get; }
+		private readonly Platform _platform;
         private const double requestTimeout = 2.0;
 
         public IHttpContextAccessor HttpContextAccessor { get; }
 
-        public ApplicationService(ILogger<ApplicationService> logger, Platform platform, IHttpContextAccessor httpContextAccessor)
+        public ApplicationService(ILoggerFactory logger, Platform platform, IHttpContextAccessor httpContextAccessor)
         {
-            this._logger = logger;
-            this._platform = platform;
+			Logger  = logger.CreateLogger<ApplicationService>();
+			this._platform = platform;
             HttpContextAccessor = httpContextAccessor;
         }
 
@@ -76,8 +76,13 @@ namespace Cumulocity.SDK.Microservices.Services
             var client = new System.Net.Http.HttpClient();
             client.Timeout = TimeSpan.FromSeconds(2.0);
 
-            var response = await client.SendAsync(request);
-            if (response.IsSuccessStatusCode)
+	        Logger.LogInformation("GetCurrentUser url: {BASEURL} {url} {authCred}.", _platform.BASEURL , url , authCred);
+
+			var response = await client.SendAsync(request);
+
+	        Logger.LogInformation("GetCurrentUser response: {StatusCode}.", response.StatusCode);
+
+			if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
                 UserRoles user = JsonConvert.DeserializeObject<UserRoles>(content, new UserRolesConverter());

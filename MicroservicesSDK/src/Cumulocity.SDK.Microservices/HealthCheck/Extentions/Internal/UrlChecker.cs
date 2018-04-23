@@ -12,8 +12,9 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Internal
     {
         private readonly Func<HttpResponseMessage, ValueTask<IHealthCheckResult>> _checkFunc;
         private readonly string _url;
+	    private readonly string _auth;
 
-        public UrlChecker(Func<HttpResponseMessage, ValueTask<IHealthCheckResult>> checkFunc, string url)
+	    public UrlChecker(Func<HttpResponseMessage, ValueTask<IHealthCheckResult>> checkFunc, string url)
         {
             Guard.ArgumentNotNull(nameof(checkFunc), checkFunc);
             Guard.ArgumentNotNullOrEmpty(nameof(url), url);
@@ -22,7 +23,18 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Internal
             _url = url;
         }
 
-        public CheckStatus PartiallyHealthyStatus { get; set; } = CheckStatus.Warning;
+	    public UrlChecker(Func<HttpResponseMessage, ValueTask<IHealthCheckResult>> checkFunc, string url, string auth)
+	    {
+		    Guard.ArgumentNotNull(nameof(checkFunc), checkFunc);
+		    Guard.ArgumentNotNullOrEmpty(nameof(url), url);
+		    Guard.ArgumentNotNullOrEmpty(nameof(auth), auth);
+
+			_checkFunc = checkFunc;
+		    _url = url;
+		    _auth = auth;
+	    }
+
+		public CheckStatus PartiallyHealthyStatus { get; set; } = CheckStatus.Warning;
 
         public async Task<IHealthCheckResult> CheckAsync()
         {
@@ -41,14 +53,40 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Internal
             }
         }
 
-        private HttpClient CreateHttpClient()
+	    public async Task<IHealthCheckResult> CheckWithBasicAuthAsync()
+	    {
+		    using (var httpClient = CreateHttpClient())
+		    {
+			    try
+			    {
+				    var request = new HttpRequestMessage
+				    {
+					    Method = HttpMethod.Get,
+					    RequestUri = new Uri(_url)
+				    };
+
+				    request.Headers.Authorization =
+					    new AuthenticationHeaderValue("Basic", _auth);
+
+					var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+				    return await _checkFunc(response);
+			    }
+			    catch (Exception ex)
+			    {
+				    var data = new Dictionary<string, object> { { "url", _url } };
+				    return HealthCheckResult.Unhealthy($"Exception during check: {ex.GetType().FullName}", data);
+			    }
+		    }
+	    }
+
+		private HttpClient CreateHttpClient()
         {
             var httpClient = GetHttpClient();
             httpClient.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue { NoCache = true };
             return httpClient;
         }
 
-        public static async ValueTask<IHealthCheckResult> DefaultUrlCheck(HttpResponseMessage response)
+		public static async ValueTask<IHealthCheckResult> DefaultUrlCheck(HttpResponseMessage response)
         {
             var status = response.IsSuccessStatusCode ? CheckStatus.Healthy : CheckStatus.Unhealthy;
             var data = new Dictionary<string, object>

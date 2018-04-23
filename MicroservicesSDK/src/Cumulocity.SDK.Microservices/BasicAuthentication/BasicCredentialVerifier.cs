@@ -7,6 +7,7 @@ using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Cumulocity.SDK.Microservices.BasicAuthentication
 {
@@ -16,10 +17,11 @@ namespace Cumulocity.SDK.Microservices.BasicAuthentication
         private readonly IMemoryCache _cache;
         private readonly IApplicationService _service;
         private readonly HttpContext _context;
-
-        public BasicCredentialVerifier(Platform platform, IMemoryCache cache, IApplicationService service, IHttpContextAccessor httpContextAccessor)
+	    protected ILogger Logger { get; }
+		public BasicCredentialVerifier(ILoggerFactory logger, Platform platform, IMemoryCache cache, IApplicationService service, IHttpContextAccessor httpContextAccessor)
         {
-            this._platform = platform;
+	        Logger = logger.CreateLogger<BasicCredentialVerifier>();
+			this._platform = platform;
             this._cache = cache;
             this._service = service;
             this._context = httpContextAccessor.HttpContext;
@@ -40,7 +42,9 @@ namespace Cumulocity.SDK.Microservices.BasicAuthentication
 
         private async Task<BasicAuthenticationResult> GetBasicAuthenticationResultAsync(string username, string authCred)
         {
-            Subscription requiredSubscription;
+	        Logger.LogInformation("GetBasicAuthenticationResult username: {username} {authCred}.", username, authCred);
+
+			Subscription requiredSubscription;
             var currentUser = await _cache.GetOrCreateAsync(username + "_claims", entry =>
             {
                 entry.SlidingExpiration = TimeSpan.FromSeconds(60);

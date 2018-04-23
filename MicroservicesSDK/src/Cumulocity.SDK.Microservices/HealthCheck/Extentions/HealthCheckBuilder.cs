@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Cumulocity.SDK.Microservices.Credentials;
 using Cumulocity.SDK.Microservices.HealthCheck.Internal;
 using Cumulocity.SDK.Microservices.Settings;
 
@@ -11,10 +12,12 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
         private readonly Dictionary<string, CachedHealthCheck> _checksByName;
         private readonly HealthCheckGroup _currentGroup;
         private readonly Dictionary<string, HealthCheckGroup> _groups;
+	    public IContextService MicroserviceContext { get; private set; }
 
-        public HealthCheckBuilder()
+
+	    public HealthCheckBuilder()
         {
-            _checksByName = new Dictionary<string, CachedHealthCheck>(StringComparer.OrdinalIgnoreCase);
+			_checksByName = new Dictionary<string, CachedHealthCheck>(StringComparer.OrdinalIgnoreCase);
             _currentGroup = new HealthCheckGroup(string.Empty, CheckStatus.Unhealthy);
             _groups = new Dictionary<string, HealthCheckGroup>(StringComparer.OrdinalIgnoreCase)
             {
@@ -131,5 +134,12 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
 
             return this;
         }
-    }
+
+	    public HealthCheckBuilder WithContextService(IContextService contextService)
+	    {
+		    MicroserviceContext = contextService;
+
+		    return this;
+	    }
+	}
 }

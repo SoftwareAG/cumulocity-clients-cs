@@ -24,29 +24,23 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions
 	    private readonly TimeSpan _interval;
 
 	    private IHttpContextAccessor _httpContextAccessor;
-	    private Platform _platform;
-
 
 		public HealthCheckService(HealthCheckBuilder builder, IServiceProvider serviceProvider, IServiceScopeFactory serviceScopeFactory, IHttpContextAccessor httpContextAccessor, TimeSpan interval = default(TimeSpan))
         {
-            _builder = builder;
+            _builder = builder; 
             _groups = GetGroups().Where(group => group.GroupName != string.Empty).ToList();
             _root = GetGroup(string.Empty);
             _serviceProvider = serviceProvider;
             _serviceScopeFactory = serviceScopeFactory;
 			_timer = new System.Timers.Timer();
 	        _interval = interval == default(TimeSpan) ? TimeSpan.FromSeconds(100) : interval;
-	        _platform = (Platform)serviceProvider.GetRequiredService(typeof(Platform));
-	        _httpContextAccessor = httpContextAccessor;
+	        //_httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<CompositeHealthCheckResult> CheckHealthAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             using (var scope = GetServiceScope())
             {
-	            var isin = _httpContextAccessor.HttpContext.User.IsInContext();
-	            var un =_httpContextAccessor.HttpContext.User.UserName();
-
 	            var scopeServiceProvider = scope.ServiceProvider;
                 var groupTasks = _groups.Select(group => new { Group = group, Task = RunGroupAsync(scopeServiceProvider, group, cancellationToken) }).ToList();
                 var result = await RunGroupAsync(scopeServiceProvider, _root, cancellationToken).ConfigureAwait(false);
