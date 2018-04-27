@@ -1,4 +1,67 @@
-﻿function Invoke-MultipartFormDataUpload
+﻿Param(    
+    [alias("t")]
+    [parameter(Mandatory = $false)] [string]$tenant,
+
+    [alias("u")]
+    [parameter(Mandatory = $false)] [string]$username,
+
+    [alias("p")]
+    [parameter(Mandatory = $false)] [string]$password,
+
+    [alias("i")]
+    [parameter(Mandatory = $false)] [string]$appid,
+
+    [alias("f")]
+    [parameter(Mandatory = $false)] [string]$file
+)
+
+function Get-IniFile 
+{  
+    param(  
+        [parameter(Mandatory = $true)] [string] $filePath  
+    )  
+
+    $anonymous = "NoSection"
+
+    $ini = @{}  
+    switch -regex -file $filePath  
+    {  
+        "^\[(.+)\]$" # Section  
+        {  
+            $section = $matches[1]  
+            $ini[$section] = @{}  
+            $CommentCount = 0  
+        }  
+
+        "^(;.*)$" # Comment  
+        {  
+            if (!($section))  
+            {  
+                $section = $anonymous  
+                $ini[$section] = @{}  
+            }  
+            $value = $matches[1]  
+            $CommentCount = $CommentCount + 1  
+            $name = "Comment" + $CommentCount  
+            $ini[$section][$name] = $value  
+        }   
+
+        "(.+?)\s*=\s*(.*)" # Key  
+        {  
+            if (!($section))  
+            {  
+                $section = $anonymous  
+                $ini[$section] = @{}  
+            }  
+            $name,$value = $matches[1..2]  
+            $ini[$section][$name] = $value  
+        }  
+    }  
+
+    return $ini  
+}  
+
+function Invoke-MultipartFormDataUpload
 {
     PARAM
     (
@@ -69,36 +132,150 @@ Content-Type: {2}
     END { }
 }
 
-try {
+if (!$file -and !$tenant -and !$username -and !$password -and !$appid) { 
+#1. Just call deploy.ps1
+#a. The script looks for a “settings.ini” in the same directory. If found, uses the credentials and tenant URL from that file
+#b. If settings.ini is not found, an error is shown 
+    
+    Write-Host "case 1"
 
-	$username ='tenant/user'
-	$password ='pass'
-	$site ="url"
-	$id = "1"
-	
-	$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
-	
-	$uri = "http://$($site)/application/applications/$($id)/binaries"
-	 
-    $filePath = Resolve-Path -Path ".\images\multi\image.zip"
-    
-    Write-Output $base64AuthInfo;
-    Write-Output $filePath;
-	
-    Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
-    
-	Write-Host "I'm done!"
-	
-	} catch {
-    # Dig into the exception to get the Response details.
-    # Note that value__ is not a typo.
-    Write-Host "StatusCode:"  $_.Exception.Message
-	
-     Write-Host "Response:" $_.Exception.Response 
-     $result = $_.Exception.Response.GetResponseStream()
-     $reader = New-Object System.IO.StreamReader($result)
-     $reader.BaseStream.Position = 0
-     $reader.DiscardBufferedData()
-      $responseBody = $reader.ReadToEnd();
-   	 Write-Host "ResponseBody:"  $responseBody
+    $file = "settings.ini"
+
+    $settingsIni = Get-IniFile .\$file
+
+    $username = $settingsIni.deploy.username
+    $password = $settingsIni.deploy.password
+    $tenant = $settingsIni.deploy.tenant
+    $id = $settingsIni.deploy.id
+
+    Write-Host $username
+    Write-Host $password
+    Write-Host $tenant
+    Write-Host $appid
+
+    	try {
+		
+		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))		
+		$uri = "http://$($site)/application/applications/$($id)/binaries"		 
+		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
+		
+		Write-Output $base64AuthInfo;
+		Write-Output $filePath;
+		
+		#Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
+		
+		Write-Host "I'm done!"
+		
+		} 
+        catch {
+		    # Dig into the exception to get the Response details.
+		    # Note that value__ is not a typo.
+		    Write-Host "StatusCode:"  $_.Exception.Message
+		
+		     Write-Host "Response:" $_.Exception.Response 
+		     $result = $_.Exception.Response.GetResponseStream()
+		     $reader = New-Object System.IO.StreamReader($result)
+		     $reader.BaseStream.Position = 0
+		     $reader.DiscardBufferedData()
+		      $responseBody = $reader.ReadToEnd();
+		     Write-Host "ResponseBody:"  $responseBody
+	   }
 }
+ElseIf($file -and !$tenant -and !$username -and !$password -and !$appid)
+{
+    Write-Host "case 2"
+
+    $settingsIni = Get-IniFile .\$file
+
+    $username = $settingsIni.deploy.username
+    $password = $settingsIni.deploy.password
+    $tenant = $settingsIni.deploy.tenant
+    $id = $settingsIni.deploy.id
+
+    Write-Host $username
+    Write-Host $password
+    Write-Host $tenant
+    Write-Host $appid
+
+        try {
+		
+		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))		
+		$uri = "http://$($site)/application/applications/$($id)/binaries"		 
+		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
+		
+		Write-Output $base64AuthInfo;
+		Write-Output $filePath;
+		
+		#Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
+		
+		Write-Host "I'm done!"
+		
+		} 
+        catch {
+		    # Dig into the exception to get the Response details.
+		    # Note that value__ is not a typo.
+		    Write-Host "StatusCode:"  $_.Exception.Message
+		
+		     Write-Host "Response:" $_.Exception.Response 
+		     $result = $_.Exception.Response.GetResponseStream()
+		     $reader = New-Object System.IO.StreamReader($result)
+		     $reader.BaseStream.Position = 0
+		     $reader.DiscardBufferedData()
+		      $responseBody = $reader.ReadToEnd();
+		     Write-Host "ResponseBody:"  $responseBody
+	   }
+}
+ElseIf($file -and ($tenant -or $username -or $password -or $appid))
+{
+    Write-Host "case 3"
+
+    $settingsIni = Get-IniFile .\$file
+
+    if(!$tenant){
+        $tenant = $settingsIni.deploy.tenant
+    }
+    if(!$username){
+        $username = $settingsIni.deploy.username
+    }
+    if(!$password){
+        $password = $settingsIni.deploy.password
+    }
+    if(!$appid){
+        $appid = $settingsIni.deploy.appid
+    }
+
+       try {
+		
+		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))		
+		$uri = "http://$($site)/application/applications/$($id)/binaries"		 
+		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
+		
+		Write-Output $base64AuthInfo;
+		Write-Output $filePath;
+		
+		#Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
+		
+		Write-Host "I'm done!"
+		
+		} 
+        catch {
+		    # Dig into the exception to get the Response details.
+		    # Note that value__ is not a typo.
+		    Write-Host "StatusCode:"  $_.Exception.Message
+		
+		     Write-Host "Response:" $_.Exception.Response 
+		     $result = $_.Exception.Response.GetResponseStream()
+		     $reader = New-Object System.IO.StreamReader($result)
+		     $reader.BaseStream.Position = 0
+		     $reader.DiscardBufferedData()
+		      $responseBody = $reader.ReadToEnd();
+		     Write-Host "ResponseBody:"  $responseBody
+	   }
+}
+Else
+{
+    $File_Path_Error = [string]"The file path is not valid"
+    Write-Error $File_Path_Error
+}
+
+
