@@ -9,7 +9,7 @@
     [parameter(Mandatory = $false)] [string]$password,
 
     [alias("i")]
-    [parameter(Mandatory = $false)] [string]$appid,
+    [parameter(Mandatory = $false)] [string]$appname,
 
     [alias("f")]
     [parameter(Mandatory = $false)] [string]$file
@@ -132,31 +132,68 @@ Content-Type: {2}
     END { }
 }
 
-if (!$file -and !$tenant -and !$username -and !$password -and !$appid) { 
+if (!$file -and !$tenant -and !$username -and !$password -and !$appname) { 
 #1. Just call deploy.ps1
 #a. The script looks for a “settings.ini” in the same directory. If found, uses the credentials and tenant URL from that file
 #b. If settings.ini is not found, an error is shown 
     
     Write-Host "case 1"
-
-    $file = "settings.ini"
-
-    $settingsIni = Get-IniFile .\$file
-
+	
+	$file = "settings.ini"
+	$isLocalFile = $true
+	
+	if (Test-Path $file) { 
+		$isLocalFile = $true;
+	}else{
+	
+	    $isLocalFile = $false
+		$appdata = Get-Childitem env:APPDATA | %{ $_.Value }
+		$file = "$appdata\c8y\$file"
+		
+		if (-not(Test-Path $file)) { 
+			throw [System.IO.FileNotFoundException] "$file not found."
+		}
+	}
+	
+	if(-not($isLocalFile))
+	{
+		$settingsIni = Get-IniFile $file
+	}else{
+	    $settingsIni = Get-IniFile .\$file
+	}
+	
     $username = $settingsIni.deploy.username
     $password = $settingsIni.deploy.password
     $tenant = $settingsIni.deploy.tenant
-    $id = $settingsIni.deploy.id
-
+    $appname = $settingsIni.deploy.appname
+	
     Write-Host $username
     Write-Host $password
     Write-Host $tenant
-    Write-Host $appid
+    Write-Host $appname
 
-    	try {
-		
-		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))		
-		$uri = "http://$($site)/application/applications/$($id)/binaries"		 
+    	try 
+		{
+		$appid = 0
+		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
+
+		$requestAppName = 'http://$($site)/application/applicationsByName/$($appname)'
+		$responseAppNameJson =Invoke-WebRequest $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} | ConvertFrom-Json 
+
+		if($responseJson)
+		{
+		 $app = $backtoJson.applications | where {$_.name -eq $appname } 
+		 if($app)
+		 {
+			$appid = $app.id
+		 }
+		}
+
+		if($appid -eq 0){
+			throw "Application does not exist."
+		}
+
+		$uri = "http://$($site)/application/applications/$($appid)/binaries"		 
 		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
 		
 		Write-Output $base64AuthInfo;
@@ -181,16 +218,39 @@ if (!$file -and !$tenant -and !$username -and !$password -and !$appid) {
 		     Write-Host "ResponseBody:"  $responseBody
 	   }
 }
-ElseIf($file -and !$tenant -and !$username -and !$password -and !$appid)
+ElseIf($file -and !$tenant -and !$username -and !$password -and !$appname)
 {
     Write-Host "case 2"
+	
+	$isLocalFile = $true
+	
+	if (Test-Path $file) { 
+		$isLocalFile = $true;
+	}else{
+	
+	    $isLocalFile = $false
+		$appdata = Get-Childitem env:APPDATA | %{ $_.Value }
+		$file = "$appdata\c8y\$file"
+		
+		if (-not(Test-Path $file)) { 
+			throw [System.IO.FileNotFoundException] "$file not found."
+		}
+	}
+	
+	if(-not($isLocalFile))
+	{
+		$settingsIni = Get-IniFile $file
+	}else{
+	    $settingsIni = Get-IniFile .\$file
+	}
+	
 
     $settingsIni = Get-IniFile .\$file
 
     $username = $settingsIni.deploy.username
     $password = $settingsIni.deploy.password
     $tenant = $settingsIni.deploy.tenant
-    $id = $settingsIni.deploy.id
+    $appname = $settingsIni.deploy.appname
 
     Write-Host $username
     Write-Host $password
@@ -199,8 +259,25 @@ ElseIf($file -and !$tenant -and !$username -and !$password -and !$appid)
 
         try {
 		
-		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))		
-		$uri = "http://$($site)/application/applications/$($id)/binaries"		 
+		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
+
+		$requestAppName = 'http://$($site)/application/applicationsByName/$($appname)'
+		$responseAppNameJson =Invoke-WebRequest $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} | ConvertFrom-Json 
+
+		if($responseJson)
+		{
+		 $app = $backtoJson.applications | where {$_.name -eq $appname } 
+		 if($app)
+		 {
+			$appid = $app.id
+		 }
+		}
+
+		if($appid -eq 0){
+			throw "Application does not exist."
+		}
+
+		$uri = "http://$($site)/application/applications/$($appid)/binaries"		 
 		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
 		
 		Write-Output $base64AuthInfo;
@@ -221,13 +298,34 @@ ElseIf($file -and !$tenant -and !$username -and !$password -and !$appid)
 		     $reader = New-Object System.IO.StreamReader($result)
 		     $reader.BaseStream.Position = 0
 		     $reader.DiscardBufferedData()
-		      $responseBody = $reader.ReadToEnd();
+		     $responseBody = $reader.ReadToEnd();
 		     Write-Host "ResponseBody:"  $responseBody
 	   }
 }
-ElseIf($file -and ($tenant -or $username -or $password -or $appid))
+ElseIf($file -and ($tenant -or $username -or $password -or $appname))
 {
     Write-Host "case 3"
+	
+	if (Test-Path $file) { 
+		$isLocalFile = $true;
+	}else{
+	
+	    $isLocalFile = $false
+		$appdata = Get-Childitem env:APPDATA | %{ $_.Value }
+		$file = "$appdata\c8y\$file"
+		
+		if (-not(Test-Path $file)) { 
+			throw [System.IO.FileNotFoundException] "$file not found."
+		}
+	}
+	
+	if(-not($isLocalFile))
+	{
+		$settingsIni = Get-IniFile $file
+	}else{
+	    $settingsIni = Get-IniFile .\$file
+	}
+	
 
     $settingsIni = Get-IniFile .\$file
 
@@ -240,14 +338,31 @@ ElseIf($file -and ($tenant -or $username -or $password -or $appid))
     if(!$password){
         $password = $settingsIni.deploy.password
     }
-    if(!$appid){
-        $appid = $settingsIni.deploy.appid
+    if(!$appname){
+        $appname = $settingsIni.deploy.$appname
     }
 
        try {
 		
-		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))		
-		$uri = "http://$($site)/application/applications/$($id)/binaries"		 
+		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
+		#
+		$requestAppName = 'http://$($site)/application/applicationsByName/$($appname)'
+		$responseAppNameJson =Invoke-WebRequest $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} | ConvertFrom-Json 
+
+		if($responseJson)
+		{
+		 $app = $backtoJson.applications | where {$_.name -eq $appname } 
+		 if($app)
+		 {
+			$appid = $app.id
+		 }
+		}
+
+		if($appid -eq 0){
+			throw "Application does not exist."
+		}
+		#		
+		$uri = "http://$($site)/application/applications/$($appid)/binaries"		 
 		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
 		
 		Write-Output $base64AuthInfo;

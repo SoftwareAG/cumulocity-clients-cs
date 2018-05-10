@@ -5,11 +5,35 @@ for i in "$@"; do
         -t|--tenant) TENANT="$2"; shift ;;
         -u|--username) USERNAME="$2"; shift ;;
         -p|--password) PASSWORD="$2"; shift ;;
-        -i|--appid) APPID="$2"; shift ;; # Added parameter
+        -n|--appname) APPNAME="$2"; shift ;; # Added parameter
         -f|--file) FILE="$2"; shift ;;
     esac
     shift
 done
+
+function jsonGet {
+  python -c 'import json,sys
+o=json.load(sys.stdin)
+k="'$1'"
+if k != "":
+  for a in k.split("."):
+    if isinstance(o, dict):
+      o=o[a] if a in o else ""
+    elif isinstance(o, list):
+      if a == "length":
+        o=str(len(o))
+      elif a == "join":
+        o=",".join(o)
+      else:
+        o=o[int(a)]
+    else:
+      o=""
+if isinstance(o, str) or isinstance(o, unicode):
+  print o
+else:
+  print json.dumps(o)
+'
+}
 
 cfg.parser () {
     fixed_file=$(cat $1 | sed 's/ = /=/g')  # fix ' = ' to be '='
@@ -50,54 +74,142 @@ function abspath() {
 
 credb64=""
 header="Basic "
-url="http://management.staging.c8y.io/application/applications/1/binaries"
+url="http://tenant/application/applications/0/binaries"
 cred="tenant/username:password"
 dir="/images/multi/image.zip"
 
 
 
-if [ -z "$TENANT" ] && [ -z "$USERNAME" ] && [ -z "$PASSWORD" ] && [ -z "$APPID" ] && [ -z "$FILE" ];
+if [ -z "$TENANT" ] && [ -z "$USERNAME" ] && [ -z "$PASSWORD" ] && [ -z "$APPNAME" ] && [ -z "$FILE" ];
 then
     echo "All is null."
 	
 	filePath=$(abspath settings.ini)
+	
+	if [ -z $filePath ]; then
+         pathHomeSettings="$HOME/.c8y/settings.ini"
+         filePath=$(abspath $pathHomeSettings)
+         if [ -z $filePath ]; then
+			echo "The file not found." 1>&2
+			exit 64
+         fi
+	else
+			 echo $filePath
+	fi
+	
+
 	cfg.parser $filePath
 	cfg.section.deploy
 
 	echo "$tenant"
 	echo "$username"
 	echo "$password"
-	echo "$appid"
+	echo "$appname"
 	
-	cred="$username\$password"
+	cred="$username\$password"	
+	appid=0
+	
+	elements=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.length)
+	if !([ -z $elements ]) && ([ $elements -gt 0 ]) then
+        for value in $elements
+        do
+
+        selectedapp=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).name)
+
+        if [ "$selectedapp" == "$appname" ]; then
+           appid=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).id)
+
+          break
+        fi
+
+        done
+	fi	
+	
+	if [ "$appid" -eq 0 ]; then
+		echo "Error! The app not found" 1>&2
+		exit 64
+	fi	
+
 	url="http://$tenant/application/applications/$appid/binaries"
 	
-elif !([ -z "$FILE" ]) && ([ -z "$TENANT" ] && [ -z "$USERNAME" ] && [ -z "$PASSWORD" ] && [ -z "$APPID" ]); then
+elif !([ -z "$FILE" ]) && ([ -z "$TENANT" ] && [ -z "$USERNAME" ] && [ -z "$PASSWORD" ] && [ -z "$APPNAME" ]); then
     
 	echo "File not null, other is null."
 	
 	filePath=$(abspath $FILE)
+	
+	if [ -z $filePath ]; then
+         pathHomeSettings="$HOME/.c8y/$FILE"
+         filePath=$(abspath $pathHomeSettings)
+         if [ -z $filePath ]; then
+			echo "The file not found." 1>&2
+			exit 64
+         fi
+	else
+			 echo $filePath
+	fi
+	
+	
+	
 	cfg.parser $filePath
 	cfg.section.deploy
 
 	echo "$tenant"
 	echo "$username"
 	echo "$password"
-	echo "$appid"
+	echo "$appname"
 	
 	cred="$username\$password"
+	
+	appid=0
+	
+	elements=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.length)
+	if !([ -z $elements ]) && ([ $elements -gt 0 ]) then
+        for value in $elements
+        do
+
+        selectedapp=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).name)
+
+        if [ "$selectedapp" == "$appname" ]; then
+           appid=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).id)
+
+          break
+        fi
+
+        done
+	fi	
+	
+	if [ "$appid" -eq 0 ]; then
+		echo "Error! The app not found" 1>&2
+		exit 64
+	fi	
+
+	
+	
 	url="http://$tenant/application/applications/$appid/binaries"
 	
-elif !([ -z "$FILE" ]) && ( !([ -z "$TENANT" ]) || !([ -z "$USERNAME" ]) || !([ -z "$PASSWORD" ]) || !([ -z "$APPID" ])  ); then
+elif !([ -z "$FILE" ]) && ( !([ -z "$TENANT" ]) || !([ -z "$USERNAME" ]) || !([ -z "$PASSWORD" ]) || !([ -z "$APPNAME" ])  ); then
     
 	filePath=$(abspath $FILE)
+	
+	if [ -z $filePath ]; then
+         pathHomeSettings="$HOME/.c8y/$FILE"
+         filePath=$(abspath $pathHomeSettings)
+         if [ -z $filePath ]; then
+			echo "The file not found." 1>&2
+			exit 64
+         fi
+	else
+			 echo $filePath
+	fi
+	
 	cfg.parser $filePath
 	cfg.section.deploy
 
 	echo "$tenant"
 	echo "$username"
 	echo "$password"
-	echo "$appid"
+	echo "$appname"
 	
 	if  !([ -z "$TENANT" ]);
 	then
@@ -114,12 +226,37 @@ elif !([ -z "$FILE" ]) && ( !([ -z "$TENANT" ]) || !([ -z "$USERNAME" ]) || !([ 
 	   $password=$PASSWORD
 	fi
 	
-	if  !([ -z "$APPID" ]);
+	if  !([ -z "$APPNAME" ]);
 	then
-	   $appid=$APPID
+	   $appname=$APPNAME
 	fi
 	
 	cred="$username\$password"
+	
+		appid=0
+	
+	elements=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.length)
+	if !([ -z $elements ]) && ([ $elements -gt 0 ]) then
+        for value in $elements
+        do
+
+        selectedapp=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).name)
+
+        if [ "$selectedapp" == "$appname" ]; then
+           appid=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).id)
+
+          break
+        fi
+
+        done
+	fi	
+	
+	if [ "$appid" -eq 0 ]; then
+		echo "Error! The app not found" 1>&2
+		exit 64
+	fi	
+
+	
 	url="http://$tenant/application/applications/$appid/binaries"
 else 
    echo "A"
