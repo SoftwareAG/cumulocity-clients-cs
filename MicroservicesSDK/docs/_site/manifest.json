@@ -1,0 +1,740 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/pnow/Documents/Hg/ClientsCS/MicroservicesSDK/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationDefaults.html",
+          "hash": "1tlFgIOEjVZNWvGU5/XfIA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationEvents.html",
+          "hash": "zZEEvjXMLT4iafnMb1vjPQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationExtensions.html",
+          "hash": "/GHEMHzuOqxdaN7QyvmaVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.html",
+          "hash": "yVAMdPx+ENElQHCJDrG4sQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationOptions.html",
+          "hash": "AYINnl0c0C19zE5/e+hfzQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationResult.html",
+          "hash": "i5KG1ymuIM2tvO2Eu/wmjA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationFailedContext.html",
+          "hash": "2OqDibp4FMlOvzt15MqEqg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.Events.AuthenticationSucceededContext.html",
+          "hash": "Z3/73Df8Zsjk6/UA35IgiA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.Events.BasicAuthenticationChallengeContext.html",
+          "hash": "5yh6tiffOCHYq3uEXjMruA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.Events.html",
+          "hash": "CukyQfaOUF0IgpxhGJwQuA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.FuncBasicCredentialVerifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.FuncBasicCredentialVerifier.html",
+          "hash": "wSWc+OPz23eOSF7N8T3EGA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.IBasicCredentialVerifier.html",
+          "hash": "hm5TZZQiqVRS5P1wUlmQaA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.AspNetCore.Authentication.Basic.html",
+          "hash": "UF/cZRyQ9YL46RmQeSZpAQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.BasicAuthentication.BasicAuthenticationMiddleware.html",
+          "hash": "sa3tY3uAbgbYJixCWNQrcw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.html",
+          "hash": "f4KqdUOuZqqVu4c/YNztYw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.BasicAuthentication.RequestResponseLoggingMiddlewareExtensions.html",
+          "hash": "gSI0etqgxTukPTibTLwOWg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.BasicAuthentication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.BasicAuthentication.html",
+          "hash": "rBZdMeSFWt/nYxcXkAPb/w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Configure.AddCumulocityAuthenticationExtensions.html",
+          "hash": "NgZSleWXfWokgb+Y3yMk1Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Configure.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Configure.html",
+          "hash": "CCesQjVAcbJw0IAcPgf6bA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Model.ChangedSubscription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Model.ChangedSubscription.html",
+          "hash": "N/SqAAEFqI6jn9+nS5iMbA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Model.CurrentApplicationSubscription.html",
+          "hash": "iSJMkx2pIE1S8u+I3/NCgw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Model.Role.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Model.Role.html",
+          "hash": "57yUEUQxz8sXZq+ZiH1HPw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Model.Subscription.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Model.Subscription.html",
+          "hash": "bUII2g5M2/KjVrE+D95ClQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Model.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Model.User.html",
+          "hash": "zb+33DsD9SZdUFVVo7F9qw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Model.UserRoles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Model.UserRoles.html",
+          "hash": "TxlpjMl5rGM9hDqsyF+5uw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Model.UserRolesConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Model.UserRolesConverter.html",
+          "hash": "3ScLKcPXi5G1xn7uli6W2g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Model.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Model.html",
+          "hash": "uOMQhT4rPvUFGgtgEi8LvA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Services.ApplicationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Services.ApplicationService.html",
+          "hash": "lcyzSiDJmVVWH+Jp7akzgg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Services.IApplicationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Services.IApplicationService.html",
+          "hash": "DQd4BMBnmjOk55cvW/GYYg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Services.html",
+          "hash": "Jw9njkeCh9LMRynn1nHy1Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Settings.Platform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Settings.Platform.html",
+          "hash": "DzZDgisQRx9H0ZwDCRNJiw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Settings.PlatformExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Settings.PlatformExtensions.html",
+          "hash": "xoGxIZwbn8pZAZCC4iBpeQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Settings.PlatformSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Settings.PlatformSettings.html",
+          "hash": "Ah+Ve1wrDKZoslZdNtQbfw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Settings.html",
+          "hash": "uPNPfTdZADDn9Y5aVxP4aA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.CrontabField.html",
+          "hash": "8dva/bhu1hZD8eyZoFyFgg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldAccumulator.html",
+          "hash": "4aVNy8Gbgp7ZqTLLuZA75A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldImpl.html",
+          "hash": "wHb6r3lMZMPDkYMZoAvH6A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.CrontabFieldKind.html",
+          "hash": "dgxw0ypFEOsxcDENQ7ycAg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.CrontabSchedule.html",
+          "hash": "kW0bg2Fkb+qETMBJWVbgvQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Crone.html",
+          "hash": "f9pkpEoeq0JXSL3+nEqHPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Extenions.CurrentPrincipal.html",
+          "hash": "NpeGXamBx72SGovvCVpgKw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Extenions.GenericPrincipalExtensions.html",
+          "hash": "J0VMl7CrTi2sAhRclrxBGg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Extenions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Extenions.html",
+          "hash": "aRctzCAVf65rXI5+qMYm+A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.HostedService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.HostedService.html",
+          "hash": "ayoRJ9l5EXruWFxKe5vJZA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduled.CurrentApplicationSubscriptionsTask.html",
+          "hash": "5YYJAMoevbrxhoDRrjAkJg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduled.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduled.html",
+          "hash": "gRiGlqg51Hh/XNc4WRYw2Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduling.IScheduledTask.html",
+          "hash": "HMzaVT3DCsSfzL5O/OorxQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerExtensions.html",
+          "hash": "TIRj+MjJqTa8d1RnXhxZPQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduling.SchedulerHostedService.html",
+          "hash": "jdjMDfX//2JQ2k3hBSMQmg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduling.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.Scheduling.html",
+          "hash": "zcRCnKSaQJBCj76AhxQhlg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.TimedLogger-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.TimedLogger-1.html",
+          "hash": "SUPflFZpQL9Xsrc5RyMjUg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Cumulocity.SDK.Microservices.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Cumulocity.SDK.Microservices.Utils.html",
+          "hash": "kMdwFPlY3DTAcTIa8Bn0mg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "EYGVhxrn1sJaJ5X+9SOMDw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "fYzxZqC+0m8voVrejVdZbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "UUpcgQf25mcX27Ke+SCmPQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "xVlQaX7Tk85omoiWv3O+Ag=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "lGrGiMrueDwru0zc8g943Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "ob7LqWp4kTNLz+9W4omdTw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
