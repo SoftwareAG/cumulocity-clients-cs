@@ -3,6 +3,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using Cumulocity.SDK.Microservices.BasicAuthentication;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,11 +19,14 @@ using Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks;
 using Cumulocity.SDK.Microservices.Services;
 using Cumulocity.SDK.Microservices.Settings;
 using Cumulocity.SDK.Microservices.Utils;
+using Moq;
 
 namespace Cumulocity.SDK.Microservices.IntegrationTest
 {
 	internal static class TestBed
 	{
+		public static Mock<IApplicationService> ApplicationServiceMock { get; private set; }
+
 		public static void SetBasic(this HttpClient client, string username, string password)
 		{
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
@@ -36,23 +40,13 @@ namespace Cumulocity.SDK.Microservices.IntegrationTest
 
 		public static TestServer CreateServer(Action<AuthenticationBuilder> builderAction)
 		{
+			ApplicationServiceMock = new Mock<IApplicationService>();
+
 			var builder = new WebHostBuilder()
 			   .Configure(app =>
 				{
 					app.UseAuthentication();
-					app.Use(async (context, next) =>
-					{
-						if (context.Request.Path == new PathString("/"))
-						{
-							var result = await context.AuthenticateAsync(BasicAuthenticationDefaults.AuthenticationScheme);
-							if (!result.Succeeded)
-								await context.ChallengeAsync(BasicAuthenticationDefaults.AuthenticationScheme);
-						}
-						else
-						{
-							await next();
-						}
-					});
+					app.UseBasicAuthentication(); 
 				})
 				.ConfigureServices((builderContext, services) =>
 				{
@@ -60,14 +54,13 @@ namespace Cumulocity.SDK.Microservices.IntegrationTest
 					services.AddCumulocityAuthentication(builderContext.Configuration);
 					services.AddPlatform(builderContext.Configuration);
 					services.AddSingleton<IApplicationService, ApplicationService>();
-					services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+					//services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 					services.AddHealthChecks(checks =>
 					{
-						//1
 						checks.AddPlatformCheck();
-		
 					});
+
 					services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
 					builderAction(services.AddAuthentication(BasicAuthenticationDefaults.AuthenticationScheme));
 				});

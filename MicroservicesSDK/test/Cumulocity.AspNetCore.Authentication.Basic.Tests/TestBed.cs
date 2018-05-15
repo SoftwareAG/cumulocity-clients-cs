@@ -35,7 +35,7 @@ namespace Cumulocity.AspNetCore.Authentication.Basic.Tests
 
         public static TestServer CreateServer(Action<AuthenticationBuilder> builderAction)
         {
-            var builder = new WebHostBuilder()
+			var builder = new WebHostBuilder()
                 .Configure(app =>
                 {
                     app.UseAuthentication();

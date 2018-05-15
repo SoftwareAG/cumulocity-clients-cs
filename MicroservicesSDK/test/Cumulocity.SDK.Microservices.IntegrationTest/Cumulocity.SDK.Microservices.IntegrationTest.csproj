@@ -7,14 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="1.1.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0-preview-20180221-13" />
+    <Compile Remove="Scenarios\BasicAuthenticationTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Alba.AspNetCore2" Version="1.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.0.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
+    <PackageReference Include="Moq" Version="4.8.2" />
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Examples\MicroserviceSDK\MicroserviceExample\DemoWebApi\DemoWebApi.csproj" />
     <ProjectReference Include="..\..\src\Cumulocity.AspNetCore.Authentication.Basic\Cumulocity.AspNetCore.Authentication.Basic.csproj" />
     <ProjectReference Include="..\..\src\Cumulocity.SDK.Microservices\Cumulocity.SDK.Microservices.csproj" />
   </ItemGroup>
