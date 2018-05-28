@@ -5,7 +5,7 @@ for i in "$@"; do
         -t|--tenant) TENANT="$2"; shift ;;
         -u|--username) USERNAME="$2"; shift ;;
         -p|--password) PASSWORD="$2"; shift ;;
-        -n|--appname) APPNAME="$2"; shift ;; # Added parameter
+        -an|--appname) APPNAME="$2"; shift ;; # Added parameter
         -f|--file) FILE="$2"; shift ;;
     esac
     shift

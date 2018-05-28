@@ -53,8 +53,6 @@ namespace Cumulocity.SDK.Microservices.IntegrationTest
 					services.AddMemoryCache();
 					services.AddCumulocityAuthentication(builderContext.Configuration);
 					services.AddPlatform(builderContext.Configuration);
-					services.AddSingleton<IApplicationService, ApplicationService>();
-					//services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 					services.AddHealthChecks(checks =>
 					{

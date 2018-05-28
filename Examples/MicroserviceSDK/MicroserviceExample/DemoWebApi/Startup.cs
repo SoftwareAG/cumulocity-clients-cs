@@ -1,4 +1,5 @@
-﻿using Cumulocity.SDK.Microservices.BasicAuthentication;
+﻿using System.Diagnostics;
+using Cumulocity.SDK.Microservices.BasicAuthentication;
 using Cumulocity.SDK.Microservices.Configure;
 using Cumulocity.SDK.Microservices.HealthCheck.Extentions;
 using Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using System.Threading.Tasks;
+using Cumulocity.SDK.Microservices.Utils.Scheduling;
 
 namespace DemoWebApi
 {
@@ -39,6 +41,14 @@ namespace DemoWebApi
 			services.AddPlatform(Configuration);
 			services.AddSingleton<IApplicationService, ApplicationService>();
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+			// Add scheduled tasks & scheduler
+			services.AddSingleton<IScheduledTask, TimerTask>();
+			services.AddScheduler((sender, args) =>
+			{
+				Debug.Write(args.Exception.Message);
+				args.SetObserved();
+			});
 
 			//MVC
 			services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());

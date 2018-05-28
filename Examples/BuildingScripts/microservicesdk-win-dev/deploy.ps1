@@ -8,7 +8,7 @@
     [alias("p")]
     [parameter(Mandatory = $false)] [string]$password,
 
-    [alias("i")]
+    [alias("an")]
     [parameter(Mandatory = $false)] [string]$appname,
 
     [alias("f")]
