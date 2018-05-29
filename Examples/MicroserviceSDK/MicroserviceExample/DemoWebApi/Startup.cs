@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
 using Cumulocity.SDK.Microservices.BasicAuthentication;
 using Cumulocity.SDK.Microservices.Configure;
-using Cumulocity.SDK.Microservices.HealthCheck.Extentions;
-using Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks;
 using Cumulocity.SDK.Microservices.Services;
 using Cumulocity.SDK.Microservices.Settings;
 using Cumulocity.SDK.Microservices.Utils;
@@ -16,7 +14,6 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using System.Threading.Tasks;
 using Cumulocity.SDK.Microservices.Utils.Scheduling;
-using DemoWebApi.Helpers;
 
 namespace DemoWebApi
 {
@@ -61,6 +58,8 @@ namespace DemoWebApi
 			app.UseAuthentication();
 			app.UseBasicAuthentication();
 			app.UseMvcWithDefaultRoute();
+
+
 		}
 	}
 }
