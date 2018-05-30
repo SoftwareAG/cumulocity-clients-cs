@@ -15,147 +15,152 @@ using System.Threading.Tasks;
 
 namespace Cumulocity.SDK.Microservices.Services
 {
-    public class ApplicationService : IApplicationService
-    {
-        private readonly ILogger _logger;
-        private readonly Platform _platform;
-        private const double requestTimeout = 2.0;
+	public class ApplicationService : IApplicationService
+	{
+		protected ILogger Logger { get; }
+		private readonly Platform _platform;
+		private const double requestTimeout = 2.0;
 
-        public IHttpContextAccessor HttpContextAccessor { get; }
+		public IHttpContextAccessor HttpContextAccessor { get; }
 
-        public ApplicationService(ILogger<ApplicationService> logger, Platform platform, IHttpContextAccessor httpContextAccessor)
-        {
-            this._logger = logger;
-            this._platform = platform;
-            HttpContextAccessor = httpContextAccessor;
-        }
+		public ApplicationService(ILoggerFactory logger, Platform platform, IHttpContextAccessor httpContextAccessor)
+		{
+			Logger = logger.CreateLogger<ApplicationService>();
+			this._platform = platform;
+			HttpContextAccessor = httpContextAccessor;
+		}
 
-        public async Task<List<Subscription>> GetCurrentApplicationSubscriptions()
-        {
-            List<Subscription> result = new List<Subscription>();
-            var url = GetCurrentApplicationSubscriptionsUrl();
-            var authCred = GetAuthCredentialsBase64(_platform.BOOTSTRAP_TENANT, _platform.BOOTSTRAP_USER, _platform.BOOTSTRAP_PASSWORD);
+		public async Task<List<Subscription>> GetCurrentApplicationSubscriptions()
+		{
+			List<Subscription> result = new List<Subscription>();
+			var url = GetCurrentApplicationSubscriptionsUrl();
+			var authCred = GetAuthCredentialsBase64(_platform.BOOTSTRAP_TENANT, _platform.BOOTSTRAP_USER, _platform.BOOTSTRAP_PASSWORD);
 
-            var client = new System.Net.Http.HttpClient();
-            client.Timeout = TimeSpan.FromSeconds(requestTimeout);
+			var client = new System.Net.Http.HttpClient();
+			client.Timeout = TimeSpan.FromSeconds(requestTimeout);
 
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri(_platform.BASEURL + "/" + url)
-            };
+			var request = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri(_platform.BASEURL + "/" + url)
+			};
 
-            request.Headers.Authorization =
-                  new AuthenticationHeaderValue("Basic", authCred);
+			request.Headers.Authorization =
+				  new AuthenticationHeaderValue("Basic", authCred);
 
-            var subscriptions = await client.SendAsync(request);
+			var subscriptions = await client.SendAsync(request);
 
-            if (subscriptions.IsSuccessStatusCode)
-            {
-                var jsonContent = await subscriptions.Content.ReadAsStringAsync();
+			if (subscriptions.IsSuccessStatusCode)
+			{
+				var jsonContent = await subscriptions.Content.ReadAsStringAsync();
 
-                result = JsonConvert.DeserializeObject<CurrentApplicationSubscription>(jsonContent).Users;
-            }
-            return result;
-        }
+				result = JsonConvert.DeserializeObject<CurrentApplicationSubscription>(jsonContent).Users;
+			}
+			return result;
+		}
 
-        public async Task<BasicAuthenticationResult> GetCurrentUser(string authCred)
-        {
-            var url = GetUrlCurrentUser();
+		public async Task<BasicAuthenticationResult> GetCurrentUser(string authCred)
+		{
+			var url = GetUrlCurrentUser();
 
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri(_platform.BASEURL + url)
-            };
+			var request = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri(_platform.BASEURL + url)
+			};
 
-            if (!string.IsNullOrEmpty(authCred))
-                request.Headers.Authorization =
-                  new AuthenticationHeaderValue("Basic", authCred);
+			if (!string.IsNullOrEmpty(authCred))
+				request.Headers.Authorization =
+				  new AuthenticationHeaderValue("Basic", authCred);
 
-            var client = new System.Net.Http.HttpClient();
-            client.Timeout = TimeSpan.FromSeconds(2.0);
+			var client = new System.Net.Http.HttpClient();
+			client.Timeout = TimeSpan.FromSeconds(2.0);
 
-            var response = await client.SendAsync(request);
-            if (response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                UserRoles user = JsonConvert.DeserializeObject<UserRoles>(content, new UserRolesConverter());
-                var claims = new List<Claim>();
+			Logger.LogInformation("GetCurrentUser url: {BASEURL} {url} {authCred}.", _platform.BASEURL, url, authCred);
 
-                foreach (var role in user.Lists)
-                {
-                    claims.Add(new Claim(ClaimTypes.Role, role.Name, ClaimValueTypes.String, "Basic"));
-                }
+			var response = await client.SendAsync(request);
 
-                return new BasicAuthenticationResult() { IsAuthenticated = true, Claims = claims };
-            }
-            return new BasicAuthenticationResult() { IsAuthenticated = false };
-        }
+			Logger.LogInformation("GetCurrentUser response: {StatusCode}.", response.StatusCode);
 
-        public async Task<IList<User>> GetUsers()
-        {
-            IList<User> result = new List<User>();
+			if (response.IsSuccessStatusCode)
+			{
+				var content = await response.Content.ReadAsStringAsync();
+				UserRoles user = JsonConvert.DeserializeObject<UserRoles>(content, new UserRolesConverter());
+				var claims = new List<Claim>();
 
-            string authCred = GetAuthCredentialsBase64(HttpContextAccessor.HttpContext.User.UserTenant(),
-                                                       HttpContextAccessor.HttpContext.User.UserName(),
-                                                       HttpContextAccessor.HttpContext.User.UserPassword());
+				foreach (var role in user.Lists)
+				{
+					claims.Add(new Claim(ClaimTypes.Role, role.Name, ClaimValueTypes.String, "Basic"));
+				}
 
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri(_platform.BASEURL + "/" + GetUserUsersUrl(HttpContextAccessor.HttpContext.User.UserTenant()))
-            };
+				return new BasicAuthenticationResult() { IsAuthenticated = true, Claims = claims };
+			}
+			return new BasicAuthenticationResult() { IsAuthenticated = false };
+		}
 
-            request.Headers.Authorization =
-                  new AuthenticationHeaderValue("Basic", authCred);
+		public async Task<IList<User>> GetUsers()
+		{
+			IList<User> result = new List<User>();
 
-            var client = new System.Net.Http.HttpClient();
-            client.Timeout = TimeSpan.FromSeconds(requestTimeout);
+			string authCred = GetAuthCredentialsBase64(HttpContextAccessor.HttpContext.User.UserTenant(),
+													   HttpContextAccessor.HttpContext.User.UserName(),
+													   HttpContextAccessor.HttpContext.User.UserPassword());
 
-            var users = await client.SendAsync(request);
-            if (users.IsSuccessStatusCode)
-            {
-                var jsonUsers = await users.Content.ReadAsStringAsync();
+			var request = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri(_platform.BASEURL + "/" + GetUserUsersUrl(HttpContextAccessor.HttpContext.User.UserTenant()))
+			};
 
-                dynamic usersObjects = JsonConvert.DeserializeObject(jsonUsers);
+			request.Headers.Authorization =
+				  new AuthenticationHeaderValue("Basic", authCred);
 
-                foreach (var u in usersObjects.users)
-                {
-                    result.Add(new User { Name = u.userName, Enabled = u.enabled });
-                }
-            }
+			var client = new System.Net.Http.HttpClient();
+			client.Timeout = TimeSpan.FromSeconds(requestTimeout);
 
-            return result;
-        }
+			var users = await client.SendAsync(request);
+			if (users.IsSuccessStatusCode)
+			{
+				var jsonUsers = await users.Content.ReadAsStringAsync();
 
-        #region Privates
+				dynamic usersObjects = JsonConvert.DeserializeObject(jsonUsers);
 
-        private static string GetUrlCurrentUser()
-        {
-            return "/user/currentUser";
-        }
+				foreach (var u in usersObjects.users)
+				{
+					result.Add(new User { Name = u.userName, Enabled = u.enabled });
+				}
+			}
 
-        private static string GetTenantFromHeader(string authHeader)
-        {
-            return Encoding.UTF8.GetString(Convert.FromBase64String(authHeader.Split(' ')[1])).Split("/")[0];
-        }
+			return result;
+		}
 
-        private static string GetAuthCredentialsBase64(string tenant, string username, string password)
-        {
-            return System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(tenant + "/" + username + ":" + password));
-        }
+		#region Privates
 
-        private static string GetCurrentApplicationSubscriptionsUrl()
-        {
-            return "application/currentApplication/subscriptions";
-        }
+		private static string GetUrlCurrentUser()
+		{
+			return "/user/currentUser";
+		}
 
-        private static string GetUserUsersUrl(string tenant)
-        {
-            return $"user/{tenant}/users";
-        }
+		private static string GetTenantFromHeader(string authHeader)
+		{
+			return Encoding.UTF8.GetString(Convert.FromBase64String(authHeader.Split(' ')[1])).Split("/")[0];
+		}
 
-        #endregion Privates
-    }
+		private static string GetAuthCredentialsBase64(string tenant, string username, string password)
+		{
+			return System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(tenant + "/" + username + ":" + password));
+		}
+
+		private static string GetCurrentApplicationSubscriptionsUrl()
+		{
+			return "application/currentApplication/subscriptions";
+		}
+
+		private static string GetUserUsersUrl(string tenant)
+		{
+			return $"user/{tenant}/users";
+		}
+
+		#endregion Privates
+	}
 }

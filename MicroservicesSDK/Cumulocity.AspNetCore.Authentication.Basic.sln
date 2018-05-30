@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.SDK.Microservices", "src\Cumulocity.SDK.Microservices\Cumulocity.SDK.Microservices.csproj", "{E514A5E5-7D43-4328-A9DF-38E2A9079159}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.AspNetCore.Authentication.Basic.Tests", "test\Cumulocity.AspNetCore.Authentication.Basic.Tests\Cumulocity.AspNetCore.Authentication.Basic.Tests.csproj", "{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.SDK.Microservices.IntegrationTest", "test\Cumulocity.SDK.Microservices.IntegrationTest\Cumulocity.SDK.Microservices.IntegrationTest.csproj", "{76FC826B-AC1D-4917-A190-7AB678B06BFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoWebApi", "..\Examples\MicroserviceSDK\MicroserviceExample\DemoWebApi\DemoWebApi.csproj", "{A6ED2AFC-22D2-4730-9032-CE46419E2750}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,12 +33,21 @@ Global
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76FC826B-AC1D-4917-A190-7AB678B06BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76FC826B-AC1D-4917-A190-7AB678B06BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76FC826B-AC1D-4917-A190-7AB678B06BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76FC826B-AC1D-4917-A190-7AB678B06BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D} = {DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}
+		{76FC826B-AC1D-4917-A190-7AB678B06BFB} = {DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4485E368-5454-4927-96CD-66AEB53560EF}
