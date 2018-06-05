@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DC62A5E1-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.AspNetCore.Authentication.Basic.Tests", "test\Cumulocity.AspNetCore.Authentication.Basic.Tests\Cumulocity.AspNetCore.Authentication.Basic.Tests.csproj", "{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.SDK.Microservices.FunctionalTest", "test\Cumulocity.SDK.Microservices.FunctionalTest\Cumulocity.SDK.Microservices.FunctionalTest.csproj", "{CC6F3CCD-5B98-4C48-8C3C-1D2FA528A0A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoWebApi", "..\Examples\MicroserviceSDK\MicroserviceExample\DemoWebApi\DemoWebApi.csproj", "{0F17D036-F633-4D78-A935-A69912D25AAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +33,21 @@ Global
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC6F3CCD-5B98-4C48-8C3C-1D2FA528A0A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC6F3CCD-5B98-4C48-8C3C-1D2FA528A0A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC6F3CCD-5B98-4C48-8C3C-1D2FA528A0A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC6F3CCD-5B98-4C48-8C3C-1D2FA528A0A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F17D036-F633-4D78-A935-A69912D25AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F17D036-F633-4D78-A935-A69912D25AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F17D036-F633-4D78-A935-A69912D25AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F17D036-F633-4D78-A935-A69912D25AAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D} = {DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}
+		{CC6F3CCD-5B98-4C48-8C3C-1D2FA528A0A6} = {DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4485E368-5454-4927-96CD-66AEB53560EF}
