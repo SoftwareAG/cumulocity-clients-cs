@@ -88,15 +88,24 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest.Scenarios
 		public HttpClient Client { get; }
 
 		[Fact]
-		public async Task ApplicationServiceTest_GetCurrentApplicationSubscriptionsAsync()
+		public async Task ApplicationService_GetCurrentApplicationSubscriptionsAsync()
 		{
 			var response = await AppServiceClient.GetSubscription();
 
 			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+			Assert.Single(response.Result);
 		}
 
 		[Fact]
-		public async Task ApplicationServiceTest_GetCurrentUser()
+		public async Task ApplicationService_NotAuthentication_GetCurrentApplicationSubscriptionsAsync()
+		{
+			var response = await AppServiceClient.GetSubscription(false);
+
+			Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+		}
+
+		[Fact]
+		public async Task ApplicationService_GetCurrentUser()
 		{
 			var response = await AppServiceClient.GetCurrentUser();
 
@@ -104,10 +113,11 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest.Scenarios
 		}
 
 		[Fact]
-		public async Task ApplicationServiceTest_GetUsers()
+		public async Task ApplicationService_GetUsers()
 		{
 			var response = await AppServiceClient.GetUser();
 			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+			Assert.Single(response.Result);
 		}
 	}
 }

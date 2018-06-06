@@ -19,9 +19,9 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest
 			this._httpClient = httpClient;
 		}
 
-		public async Task<ApiResponse<List<Subscription>>> GetSubscription()
+		public async Task<ApiResponse<List<Subscription>>> GetSubscription(bool isAuth = true)
 		{
-			var subscriptions = await GetAsync<List<Subscription>>("/api/data/subscriptions");
+			var subscriptions = await GetAsync<List<Subscription>>("/api/data/subscriptions", isAuth);
 			return subscriptions;
 		}
 
@@ -39,14 +39,21 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest
 
 		//IList<User> users
 
-		private async Task<ApiResponse<T>> GetAsync<T>(string path)
+		private async Task<ApiResponse<T>> GetAsync<T>(string path, bool auth=true)
 		{
-			_httpClient.DefaultRequestHeaders.Authorization =
-				new AuthenticationHeaderValue(
-					"Basic",
-					Convert.ToBase64String(
-						System.Text.ASCIIEncoding.ASCII.GetBytes(
-							string.Format("{0}:{1}", "tenant/username", "password"))));
+			if (auth)
+			{
+				_httpClient.DefaultRequestHeaders.Authorization =
+					new AuthenticationHeaderValue(
+						"Basic",
+						Convert.ToBase64String(
+							System.Text.ASCIIEncoding.ASCII.GetBytes(
+								string.Format("{0}:{1}", "tenant/username", "password"))));
+			}
+			else
+			{
+				_httpClient.DefaultRequestHeaders.Authorization = null;
+			}
 
 			var response = await _httpClient.GetAsync(path);
 			var value = await response.Content.ReadAsStringAsync();
