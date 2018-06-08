@@ -60,6 +60,7 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest.Scenarios
 					Tenant = "UserTenant",
 					Password = "UserPass",
 					User = "UserName",
+				  
 					Claims = new List<Claim>()
 			};
 
@@ -94,6 +95,9 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest.Scenarios
 
 			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 			Assert.Single(response.Result);
+			Assert.Equal("UserName", response.Result.First().Name);
+			Assert.Equal("UserPass", response.Result.First().Password);
+			Assert.Equal("UserTenant", response.Result.First().Tenant);
 		}
 
 		[Fact]
@@ -110,6 +114,10 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest.Scenarios
 			var response = await AppServiceClient.GetCurrentUser();
 
 			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+			Assert.Equal("UserName", response.Result.User);
+			Assert.True(response.Result.IsAuthenticated);
+			Assert.Equal("UserTenant", response.Result.Tenant);
+			Assert.Equal("UserPass", response.Result.Password);
 		}
 
 		[Fact]
@@ -118,6 +126,7 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest.Scenarios
 			var response = await AppServiceClient.GetUser();
 			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 			Assert.Single(response.Result);
+			Assert.Equal("UserName",response.Result.First().Name);
 		}
 	}
 }

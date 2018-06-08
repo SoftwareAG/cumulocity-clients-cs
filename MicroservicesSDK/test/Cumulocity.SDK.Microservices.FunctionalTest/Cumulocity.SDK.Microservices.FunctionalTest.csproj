@@ -17,6 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="TestData\settings.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Examples\MicroserviceSDK\MicroserviceExample\DemoWebApi\DemoWebApi.csproj" />
   </ItemGroup>
 

@@ -181,3 +181,26 @@ Examples/BuildingScripts/microservicesdk-win-dev/version.props
 ^MicroservicesSDK/tools$
 ^MQTT/tools$
 
+DeviceSDK/MQTT/.vs/Cumulocity.MQTT/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/DesignTimeBuild/.dtbcache
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/sqlite3/storage.ide
+Examples/MicroserviceSDK/Nordpool/images/multi/image.tar
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/db.lock
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/storage.ide-shm
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/storage.ide-wal
+Examples/MicroserviceSDK/MicroserviceExample/.vs/config/applicationhost.config
+Examples/MicroserviceSDK/Nordpool/images/multi/image.zip
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/sqlite3/storage.ide
+Examples/MicroserviceSDK/Nordpool/tools/Cake/System.Security.Cryptography.Primitives.dll
+Examples/MicroserviceSDK/Nordpool/tools/Addins/Cake.Docker.0.9.1/Cake.Docker.0.9.1.nupkg
+Examples/MicroserviceSDK/Nordpool/tools/Addins/Cake.Docker.0.9.1/cake.docker.nuspec
+Examples/MicroserviceSDK/Nordpool/tools/Addins/Cake.Docker.0.9.1/lib/netstandard2.0/Cake.Docker.xml
+Examples/MicroserviceSDK/Nordpool/tools/Addins/Cake.Docker.0.9.1/lib/netstandard2.0/Cake.Docker.dll
+Examples/MicroserviceSDK/Nordpool/tools/Cake/Autofac.dll
+Examples/MicroserviceSDK/Nordpool/tools/Cake/Cake.Common.xml
+Examples/MqttSDK/.vs/MqttDemo/v15/Server/sqlite3/db.lock
+Examples/MqttSDK/.vs/MqttDemo/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/Nordpool/tools/Cake
+MicroservicesSDK/.vs
+MicroservicesSDK/test-results

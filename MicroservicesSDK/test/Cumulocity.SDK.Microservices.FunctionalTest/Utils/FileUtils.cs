@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Cumulocity.SDK.Microservices.FunctionalTest.Utils
 {
@@ -19,21 +21,58 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest.Utils
 
 		public static Credentials GetCredentials()
 		{
-			var importPath = GetImportPath();
 			Credentials creds = new Credentials();
+			string userName;
+			string hash ;
+			string path = @"Properties\launchSettings.json";
+			
+				           if (File.Exists(path))
+				           {
+				               using (var file = File.OpenText(path))
+					               {
+									var reader = new JsonTextReader(file);
+									var jObject = JObject.Load(reader);
+					
+									var variables = jObject
+						                      .GetValue("profiles")
+						                      //select a proper profile here
+						                       .SelectMany(profiles => profiles.Children())
+						                       .SelectMany(profile => profile.Children<JProperty>())
+						                       .Where(prop => prop.Name == "environmentVariables")
+						                       .SelectMany(prop => prop.Value.Children<JProperty>())
+						                       .ToList();
+					
+						                   foreach (var variable in variables)
+						                   {
+							                   if (Environment.GetEnvironmentVariable(variable.Name) == null)
+													Environment.SetEnvironmentVariable(variable.Name, variable.Value.ToString());
+						                   }
+					               }
 
-			using (var reader = new StreamReader(importPath + @"\creds.txt"))
-			{
-				var userName = reader.ReadLine();
-				var hash = reader.ReadLine();
+					           userName = Environment.GetEnvironmentVariable("TEST_FUNCTIONAL_USERNAME");
+					           hash = Environment.GetEnvironmentVariable("TEST_FUNCTIONAL_HASH");
 
-				if (String.IsNullOrEmpty(userName) || String.IsNullOrEmpty(userName.Split(':')[1]) || String.IsNullOrEmpty(hash) || String.IsNullOrEmpty(hash.Split(':')[1]))
-					throw new ArgumentNullException("Credentials are null.");
-				creds.UserName = userName.Split(':')[1];
-				creds.Hash = hash.Split(':')[1];
-			}
+							   CreateCreds(userName, hash, creds);
+				           }
+				           else
+				           {
+								var importPath = GetImportPath();
+								JObject settings = JObject.Parse(File.ReadAllText(importPath + @"\settings.txt"));
+								userName = (string)settings["credentials"]["userName"];
+								hash = (string)settings["credentials"]["hash"];
+
+					           CreateCreds(userName, hash, creds);
+						}
 
 			return creds;
+		}
+
+		private static void CreateCreds(string userName, string hash, Credentials creds)
+		{
+			if (String.IsNullOrEmpty(userName) || String.IsNullOrEmpty(hash))
+				throw new ArgumentNullException("Credentials are null.");
+			creds.UserName = userName;
+			creds.Hash = hash;
 		}
 	}
 }

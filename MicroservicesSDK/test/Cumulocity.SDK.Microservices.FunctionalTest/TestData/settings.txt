@@ -1,0 +1,6 @@
+﻿{
+  "credentials": {
+	  "userName": management/piotr,
+	  "hash": bWFuYWdlbWVudC9waW90cjpwaW90cjMzMzM=
+	}
+}

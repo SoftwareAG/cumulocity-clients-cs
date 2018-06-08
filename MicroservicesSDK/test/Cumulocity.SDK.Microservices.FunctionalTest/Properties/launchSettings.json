@@ -1,9 +1,6 @@
 {
   "profiles": {
-    "Cumulocity.SDK.Microservices.IntegrationTest": {
-      "commandName": "Project"
-    },
-    "LiveIntegration": {
+    "FunctionalTest": {
       "commandName": "Project",
       "environmentVariables": {
         "C8Y_MICROSERIVCE_ISOLATION": "PER_TENANT",
@@ -16,7 +13,9 @@
         "ASPNETCORE_ENVIRONMENT": "Staging",
         "C8Y_BOOTSTRAP_TENANT": "management",
         "C8Y_BOOTSTRAP_USERNAME": "servicebootstrap_cs-combain",
-        "C8Y_BOOTSTRAP_PASSWORD": "qoGzAMCoXF"
+        "C8Y_BOOTSTRAP_PASSWORD": "qoGzAMCoXF",
+        "TEST_FUNCTIONAL_USERNAME": "management/piotr",
+        "TEST_FUNCTIONAL_HASH": "bWFuYWdlbWVudC9waW90cjpwaW90cjMzMzM="
       }
     }
   }
