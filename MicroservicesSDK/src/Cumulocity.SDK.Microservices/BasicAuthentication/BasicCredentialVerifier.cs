@@ -35,9 +35,8 @@ namespace Cumulocity.SDK.Microservices.BasicAuthentication
 		private async Task<BasicAuthenticationResult> GetCurrentUserAsync(string username, string password)
 		{
 			var authCred = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(username + ":" + password));
-			BasicAuthenticationResult cacheEntry2 = await GetBasicAuthenticationResultAsync(username, authCred);
-
-			return cacheEntry2;
+			BasicAuthenticationResult cacheEntry = await GetBasicAuthenticationResultAsync(username, authCred);
+			return cacheEntry;
 		}
 
 		private async Task<BasicAuthenticationResult> GetBasicAuthenticationResultAsync(string username, string authCred)
