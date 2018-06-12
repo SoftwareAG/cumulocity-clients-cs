@@ -25,7 +25,7 @@ Task("CreateReleaseBranch").Does(()=> {
 
 		if(canCreate){
 			buildCsProjects();
-			bumpVersionProjects(Version.Release,lastTagCommit.Remove(0,1));
+			bumpVersionProjects(Version.Release,lastTagCommit);
 			packProject();			
 			deploy();
 			createReleaseBranch("release/r" + lastTagCommit); 
@@ -44,7 +44,8 @@ Task("CreateReleaseBranchAndDeploy").Does(()=> {
 
 		if(canCreateVersion){
 			buildCsProjects();
-			bumpVersionProjects(Version.Release,lastTagCommit.Remove(0,1));
+			bumpVersionProjects(Version.Release,lastTagCommit);
+			readBuildVersionProps();	
 			packProject();
 			deploy();
 			createReleaseBranch("release/r" + lastTagCommit); 
@@ -219,6 +220,7 @@ void bumpVersionProjects(Version version,string fixVersion)
        if(fixVersion.Length > 4){
 		   command = command + " -fixVersion " + fixVersion; 
 	   }
+	   Information("bumpVersionProjects: {0}", command);
 	
  		var settings = new ProcessSettings
 		{

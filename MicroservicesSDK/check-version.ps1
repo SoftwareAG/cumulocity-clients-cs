@@ -24,9 +24,9 @@ function ReadIsLastTagCommit
 		
 		if($lasttag.Length -eq 0)
 		{
-			return "r0.0.0"   
+			return "r0.0.0"    
 		}
-		return $lasttag.Substring(1,$lasttag.Length-1)
+		return $lasttag.Substring(10,$lasttag.Length-10)
 	}Catch
     {
 	   return "r0.0.0"
