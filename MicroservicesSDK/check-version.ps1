@@ -19,7 +19,7 @@ function ReadIsLastTagCommit
 {
     Try
     {
-		$lasttag = (& hg log -r "last(tag('re:r\d*'))" --template "{tags}\n").Trim()
+		$lasttag = (& hg log -r "last(tag('re:prerelease\d*'))" --template "{tags}\n").Trim()
 		
 		
 		if($lasttag.Length -eq 0)

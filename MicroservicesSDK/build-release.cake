@@ -60,7 +60,7 @@ Task("CreateReleaseBranchAndDeploy").Does(()=> {
 				readBuildVersionProps();	
 				packProject();
 				deploy();
-				createHotFixInRelease("release/r" + buildVersion);
+				createHotFixInRelease("r" + buildVersion);
 				System.Console.WriteLine(buildVersion);
 				cleanDirectories();
 			}
@@ -144,7 +144,7 @@ bool canCreateRelease()
 		System.Console.WriteLine(lastTagCommit);
 		System.Console.WriteLine(readCommitCountInReleaseBranch);
 		
-		if(currentBranch.Equals(defaultBranchName) && !lastTagCommit.Equals("0.0.0") && readCommitCountInReleaseBranch.Equals("0") )
+		if(currentBranch.Equals(defaultBranchName) && !lastTagCommit.Equals("r0.0.0") && readCommitCountInReleaseBranch.Equals("0") )
 		{
 			System.Console.WriteLine("Yes, you can create a release branch.");
 			return true;
