@@ -27,7 +27,7 @@ Task("CreateReleaseBranch").Does(()=> {
 			buildCsProjects();
 			bumpVersionProjects(Version.Release,lastTagCommit.Remove(0,1));
 			packProject();			
-			//Deploy
+			deploy();
 			createReleaseBranch("release/r" + lastTagCommit); 
 			cleanDirectories();		
 		}else{
@@ -46,7 +46,7 @@ Task("CreateReleaseBranchAndDeploy").Does(()=> {
 			buildCsProjects();
 			bumpVersionProjects(Version.Release,lastTagCommit.Remove(0,1));
 			packProject();
-			//Deploy
+			deploy();
 			createReleaseBranch("release/r" + lastTagCommit); 
 			cleanDirectories();
 		}else
@@ -59,7 +59,7 @@ Task("CreateReleaseBranchAndDeploy").Does(()=> {
 				bumpVersionProjects(Version.Hotfix, string.Empty);
 				readBuildVersionProps();	
 				packProject();
-				//Deploy
+				deploy();
 				createHotFixInRelease("release/r" + buildVersion);
 				System.Console.WriteLine(buildVersion);
 				cleanDirectories();
@@ -274,6 +274,18 @@ void cleanDirectories(){
 	{
 		DeleteFile("./buildVersion.props");
 	}
+}
+void deploy()
+{
+	Information("The deployment was started!");
+  
+    var command = "deploy.sh";
+	
+	var settings = new ProcessSettings
+	{
+	   Arguments = new ProcessArgumentBuilder().Append(command)
+	};
+	StartProcess("bash", settings);
 }
 void packProject()
 {

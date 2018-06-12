@@ -10,5 +10,5 @@ if($version)
     hg add
     hg commit -m "prepare hotfix $version"
     hg tag "$version"
-	#git push
+	hg push -f
 }
