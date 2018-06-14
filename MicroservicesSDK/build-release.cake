@@ -16,25 +16,6 @@ string defaultBranchName="default";  //#default #develop
 string releaseBranchName="release";
 string buildVersion;
 
-Task("CreateReleaseBranch").Does(()=> {
-		checkGitVersion();
-		readVersionProps();
-
-		var canCreate = 
-		canCreateRelease();	
-
-		if(canCreate){
-			buildCsProjects();
-			bumpVersionProjects(Version.Release,lastTagCommit);
-			packProject();			
-			deploy();
-			createReleaseBranch("release/r" + lastTagCommit); 
-			cleanDirectories();		
-		}else{
-			Console.WriteLine("nomanm, can not create a branch.");
-		}
-});
-
 Task("CreateReleaseBranchAndDeploy").Does(()=> {
 		checkGitVersion();
 		readVersionProps();
@@ -43,9 +24,10 @@ Task("CreateReleaseBranchAndDeploy").Does(()=> {
 		canCreateRelease();
 
 		if(canCreateVersion){
+		    checkNumberCommitsAfterLastTag();
 			buildCsProjects();
 			bumpVersionProjects(Version.Release,lastTagCommit);
-			readBuildVersionProps();	
+			readBuildVersionProps();
 			packProject();
 			deploy();
 			createReleaseBranch("release/r" + lastTagCommit); 
@@ -82,7 +64,14 @@ Task("CreateNextDevelopIteration").Does(()=> {
 });
 
 
-
+void checkNumberCommitsAfterLastTag()
+{	
+ 	var settings = new ProcessSettings
+	{
+		Arguments = new ProcessArgumentBuilder().Append("check-commits.ps1 -tag " + LastTagCommit)
+	};
+	StartProcess("pwsh", settings);	
+}
 void checkGitVersion(){
  		var settings = new ProcessSettings
 		{
@@ -188,15 +177,6 @@ void buildCsProjects(){
 		}
 }
 
-void buildScriptProject(){
-
-		var command = "build-scripts.sh";
- 		var settings = new ProcessSettings
-		{
-		   Arguments = new ProcessArgumentBuilder().Append(command)
-		};
-		StartProcess("sh", settings);
-}
 
 void bumpVersionProjects(Version version,string fixVersion)
 {
@@ -276,7 +256,13 @@ void cleanDirectories(){
 	{
 		DeleteFile("./buildVersion.props");
 	}
+	
+	if(FileExists("commits.props"))
+	{
+		DeleteFile("./commits.props");
+	}
 }
+
 void deploy()
 {
 	Information("The deployment was started!");
