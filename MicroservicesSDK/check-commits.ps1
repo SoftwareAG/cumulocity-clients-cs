@@ -21,7 +21,7 @@ Try
    [int]$commits = $lines-2
 
       if($commits -gt 0){
-            #hg up "prerelease$tag"           
+            hg up "prerelease$tag"           
        }else{
             
        }
