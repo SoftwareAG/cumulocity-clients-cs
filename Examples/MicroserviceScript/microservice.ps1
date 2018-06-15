@@ -1,3 +1,19 @@
+<#
+.SYNOPSIS
+    Script to increment project versions for beta, minor releases and hotfixes.
+
+.DESCRIPTION
+    Cumulocity provides you with an utility tool for easy microservice packaging, deployment and subscription. The script requires running docker.
+    https://docs.adamos.com/guides/reference/microservice-package/
+
+.PARAMETER mode 
+    Specify 'beta', 'release' or 'hotfix'
+
+.EXAMPLE 
+    microservice.ps1 pack deploy subscribe -n hello-world -d {url} -u {username} -p {password} -te {tenant}
+
+#>
+
 $global:WORK_DIR=$(pwd)
 $global:IMAGE_NAME=""
 $global:TAG_NAME="latest"
@@ -39,11 +55,11 @@ function execute
 	if("$PACK".equals("0"))
 	{
 		echo "[INFO] Start packaging"
-		#verifyPackPrerequisits
-		#clearTarget
-		#buildImage
-		#exportImage
-		#zipFile
+		verifyPackPrerequisits
+		clearTarget
+		buildImage
+		exportImage
+		zipFile
 		Write-Output "[INFO] End packaging"
 	}
 	if( "$DEPLOY".Equals("0"))
@@ -161,6 +177,42 @@ function printHelp() {
 	Write-Output "	-id  | --applicationId	# Applicaiton used for subscription purposes. Required only for solemn subscribe execution"
 }
 
+function  verifyPackPrerequisits() {
+	Write-Output  "[INFO] Check input"
+	result=0
+	verifyParamSet "$IMAGE_NAME" "name"
+	#isPresent $(find -maxdepth 1 -name "docker" | wc -l) "[ERROR] Stopped: missing docker directory in work directory: $WORK_DIR"
+	#isPresent $(find docker -maxdepth 1 -name "Dockerfile" | wc -l) "[ERROR] Stopped: missing dockerfile in work directory: $WORK_DIR"
+	#isPresent $(find -maxdepth 1 -name "cumulocity.json" | wc -l) "[ERROR] Stopped: missing cumulocity.json in work directory: $WORK_DIR"
+
+	#if [ "$result" == "1" ]
+	#then
+	#	echo "[WARNING] Pack skiped"
+	#	exit 1
+	#fi
+}
+
+function isPresent() {
+    Write-Output "[INFO] Check input"
+    #
+}
+
+function clearTarget(){
+	Write-Output "[INFO] Clear target files"
+    #
+}
+
+function buildImage(){
+    #
+}
+
+function  exportImage(){
+    #
+}
+
+function zipFile(){
+   #
+}
 $deployResult=0
 function verifyDeployPrerequisits() {
 
@@ -194,6 +246,89 @@ function verifyParamSet()
 	}	
 }
 
+function push(){
+
+    $Credentials = "${$DEPLOY_USER}:${$DEPLOY_PASSWORD}"
+	$Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)
+    $authorization =[Convert]::ToBase64String($Bytes)
+	
+	$APPLICATION_ID=$(getApplicationId)
+
+	if( "x$APPLICATION_ID".Equals("x"))
+	{
+		Write-Output "[INFO] Application with name $APPLICATION_NAME not found, add new application"
+		createApplication $authorization
+		$APPLICATION_ID=$(getApplicationId)
+
+		if("x$APPLICATION_ID".Equals("x"))
+		{
+			Write-Output  "[ERROR] Could not create application"
+			EXIT 1
+		}
+	}
+	Write-Output "[INFO] Application name: $APPLICATION_NAME id: $APPLICATION_ID"
+	
+	uploadFile	
+}
+
+function getApplicationId(){
+
+    $Result = Invoke-RestMethod -Uri "$DEPLOY_ADDRESS/application/applicationsByName/$APPLICATION_NAME" -Headers @{Authorization=("Basic {0}" -f $authorization)} -ErrorVariable RestError -ErrorAction "SilentlyContinue"
+
+    if ($RestError)
+    {
+        $HttpStatusCode = $RestError.ErrorRecord.Exception.Response.StatusCode.value__
+        $HttpStatusDescription = $RestError.ErrorRecord.Exception.Response.StatusDescription
+    
+        Write-Output "[ERROR] Error while connecting to platform"
+        Write-Output "Http Status Code: $($HttpStatusCode) `nHttp Status Description: $($HttpStatusDescription)"
+        Exit        
+    }
+    else
+    {
+        Write-Output  Result.applications.id
+    }
+}
+
+function  createApplication() {
+[CmdletBinding()]
+    Param(
+        [string]$authorization
+    )
+
+	$body="{
+			""name"": ""$APPLICATION_NAME"",
+			""type"": ""MICROSERVICE"",
+			""key"":  ""$APPLICATION_NAME-microservice-key""
+		    }";
+
+    $Result = Invoke-RestMethod -Method Post -Uri  "$DEPLOY_ADDRESS/application/applications" -Headers @{Authorization=("Basic {0}" -f $authorization)} -ErrorVariable RestError -ErrorAction "SilentlyContinue"
+}
+
+
+function deploy() {
+	verifyDeployPrerequisits
+	push
+}
+
+function uploadFile(){
+
+	Write-Output "[INFO] Upload file $WORK_DIR/$ZIP_NAME"
+
+	#resp=$(curl -F "data=@$WORK_DIR/$ZIP_NAME" -H "Authorization: $authorization" "$DEPLOY_ADDRESS/application/applications/$APPLICATION_ID/binaries")
+	
+    #if [ "x$(echo $resp | jq -r .error)" != "xnull" ] && [ "x$(echo $resp | jq -r .error)" != "x" ]
+	#then		
+	#	echo "[WARNING] error durning upload"
+	#	echo "$(echo $resp | jq -r .message)"
+	#fi
+	#if [ "x$(echo $resp | jq -r .error)" == "x" ]
+	#then		
+	#	echo "[INFO] File uploaded"
+	#fi
+}
+
+
 function subscribe (){
     verifySubscribePrerequisits
     
@@ -203,27 +338,22 @@ function subscribe (){
 
 	
 	Write-Output "[INFO] Tenant $DEPLOY_TENANT subscription to application $APPLICATION_NAME with id $APPLICATION_ID"
-	#body="{\"application\":{\"id\": \"$APPLICATION_ID\"}}"
-	#resp=$(curl -X POST -s -d "$body"  -H "Authorization: $authorization" -H "Content-type: application/json" "$DEPLOY_ADDRESS/tenant/tenants/$DEPLOY_TENANT/applications")
-	#if [ "x$(echo $resp | jq -r .error)" != "xnull" ] && [ "x$(echo $resp | jq -r .error)" != "x" ]
-	#then		
-	#	echo "[WARNING] error subscribing tenant to application "
-	#	echo "$(echo $resp | jq -r .message)"
-	#fi
-	#if [ "x$(echo $resp | jq -r .error)" == "x" ]
-	#then		
-	#	echo "[INFO] Tenant $DEPLOY_TENANT subscribed to application $APPLICATION_NAME"
-    #fi
+    $body="{""application"":{""id"": ""$APPLICATION_ID""}}"
 
-    try 
+
+    $Result = Invoke-RestMethod -Method Post -Uri "$DEPLOY_ADDRESS/tenant/tenants/$DEPLOY_TENANT/applications" -Headers @{Authorization=("Basic {0}" -f $authorization)} -Body $body -ContentType "application/json" -ErrorVariable RestError -ErrorAction "SilentlyContinue"
+            
+    if ($RestError)
     {
-        Invoke-RestMethod -Method Post -Uri "$DEPLOY_ADDRESS/tenant/tenants/$DEPLOY_TENANT/applications" -Header "Authorization: $authorization" -Body $body -ContentType "application/json"
-    } catch {
-        # Dig into the exception to get the Response details.
-        # Note that value__ is not a typo.
-        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__ 
-        Write-Host "StatusDescription:" $_.Exception.Response.StatusDescription
+        $HttpStatusCode = $RestError.ErrorRecord.Exception.Response.StatusCode.value__
+        $HttpStatusDescription = $RestError.ErrorRecord.Exception.Response.StatusDescription
+    
+        Write-Output "[WARNING] error subscribing tenant to application "
+        Write-Output "Http Status Code: $($HttpStatusCode) `nHttp Status Description: $($HttpStatusDescription)"
+    }else{
+        Write-Output "[INFO] Tenant $DEPLOY_TENANT subscribed to application $APPLICATION_NAME"
     }
+
 }
 
 function  verifySubscribePrerequisits(){
