@@ -12,7 +12,7 @@ string currentBranch;
 string lastTagCommit;
 string releaseBranch;
 string readCommitCountInReleaseBranch;
-string defaultBranchName="default";  //#default #develop
+string defaultBranchName="develop";  //#default #develop
 string releaseBranchName="release";
 string buildVersion;
 
@@ -28,8 +28,8 @@ Task("CreateReleaseBranchAndDeploy").Does(()=> {
 			buildCsProjects();
 			bumpVersionProjects(Version.Release,lastTagCommit);
 			readBuildVersionProps();
-			packProject();
-			deploy();
+			packCsProject();
+			deployCsProject();
 			createReleaseBranch("release/r" + lastTagCommit); 
 			cleanDirectories();
 		}else
@@ -41,8 +41,8 @@ Task("CreateReleaseBranchAndDeploy").Does(()=> {
 				buildCsProjects();
 				bumpVersionProjects(Version.Hotfix, string.Empty);
 				readBuildVersionProps();	
-				packProject();
-				deploy();
+				packCsProject();
+				deployCsProject();
 				createHotFixInRelease("r" + buildVersion);
 				System.Console.WriteLine(buildVersion);
 				cleanDirectories();
@@ -59,7 +59,7 @@ Task("CreateNextDevelopIteration").Does(()=> {
 		if(canCreate){
 			buildCsProjects();
 			bumpVersionProjects(Version.Hotfix, string.Empty);
-			packProject();		
+			packCsProject();		
 		}
 });
 
@@ -263,7 +263,7 @@ void cleanDirectories(){
 	}
 }
 
-void deploy()
+void deployCsProject()
 {
 	Information("The deployment was started!");
   
@@ -275,7 +275,7 @@ void deploy()
 	};
 	StartProcess("bash", settings);
 }
-void packProject()
+void packCsProject()
 {
 	var path =  "./publish/";
 	if (DirectoryExists("./publish/"))
