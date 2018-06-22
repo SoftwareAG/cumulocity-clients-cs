@@ -99,10 +99,6 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Internal
             var status = response.IsSuccessStatusCode ? CheckStatus.Healthy : CheckStatus.Unhealthy;
             var data = new Dictionary<string, object>
             {
-                //{ "url", response.RequestMessage.RequestUri.ToString() },
-                //{ "status", (int)response.StatusCode },
-                //{ "reason", response.ReasonPhrase },
-                //{ "body", await response.Content?.ReadAsStringAsync() }
             };
 
 			string jsonString = response.Content.ReadAsStringAsync()
@@ -273,7 +269,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Internal
 
 	public class PlatformHealthIndicatorProperties
 	{
-		public string Path { get; } = "/user/currentUser"; 
+		public string Path { get; } = "/user/currentUser";
 
 		public bool DetailsEnabled { get; } = true;
 		public DetailsProperties Details { get; } 

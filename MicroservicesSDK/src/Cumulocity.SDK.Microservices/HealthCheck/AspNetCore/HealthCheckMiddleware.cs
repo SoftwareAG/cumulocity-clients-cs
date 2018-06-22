@@ -52,6 +52,12 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.AspNetCore
 
 					if (status2 != CheckStatus.Healthy)
 						context.Response.StatusCode = 503;
+
+					hcResultRootObject = new RootObject()
+					{
+						status = result2.Status.ToHealthyStatus().ToString(),
+						details = new Dictionary<string, Health>()
+					};
 				}
 				else
 				{
@@ -82,6 +88,15 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.AspNetCore
 						}
 
 						hcResultRootObject.details.Add(res.Key, newItem);
+					}
+
+					if (result1.Status != CheckStatus.Healthy)
+					{
+						context.Response.StatusCode = 503;
+					}
+					else
+					{
+						context.Response.StatusCode = 200;
 					}
 				}
 
