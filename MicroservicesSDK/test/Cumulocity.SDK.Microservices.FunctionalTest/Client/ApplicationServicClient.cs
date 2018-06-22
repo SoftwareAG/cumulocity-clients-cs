@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Cumulocity.AspNetCore.Authentication.Basic;
 using Cumulocity.SDK.Microservices.FunctionalTest.Client;
+using Cumulocity.SDK.Microservices.FunctionalTest.Utils;
 using Cumulocity.SDK.Microservices.Model;
 using Newtonsoft.Json;
 
@@ -13,7 +14,13 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest
 	public class ApplicationServicClient
 	{
 		private HttpClient _httpClient;
+		private Credentials _creds;
 
+		public ApplicationServicClient(HttpClient httpClient,Credentials creds)
+		{
+			this._httpClient = httpClient;
+			this._creds = creds;
+		}
 		public ApplicationServicClient(HttpClient httpClient)
 		{
 			this._httpClient = httpClient;
@@ -43,12 +50,25 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest
 		{
 			if (auth)
 			{
-				_httpClient.DefaultRequestHeaders.Authorization =
-					new AuthenticationHeaderValue(
-						"Basic",
-						Convert.ToBase64String(
-							System.Text.ASCIIEncoding.ASCII.GetBytes(
-								string.Format("{0}:{1}", "tenant/username", "password"))));
+				string user = "tenant/username";
+				string pass = "password";
+
+				if (_creds != null)
+				{
+					_httpClient.DefaultRequestHeaders.Authorization =
+						new AuthenticationHeaderValue(
+							"Basic",_creds.Hash);
+				}
+				else
+				{
+					_httpClient.DefaultRequestHeaders.Authorization =
+						new AuthenticationHeaderValue(
+							"Basic",
+							Convert.ToBase64String(
+								System.Text.ASCIIEncoding.ASCII.GetBytes(
+									string.Format("{0}:{1}", user, pass))));
+				}
+
 			}
 			else
 			{

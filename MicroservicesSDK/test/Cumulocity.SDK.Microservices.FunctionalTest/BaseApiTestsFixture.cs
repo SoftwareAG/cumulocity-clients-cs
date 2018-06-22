@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using Cumulocity.AspNetCore.Authentication.Basic;
 using Cumulocity.SDK.Microservices.FunctionalTest.Mocks;
+using Cumulocity.SDK.Microservices.FunctionalTest.Utils;
 using Cumulocity.SDK.Microservices.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
@@ -48,4 +49,41 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest
 		}
 	}
 
+
+	public class TestFixtureLive<TStartup> : IDisposable where TStartup : class
+	{
+		public readonly TestServer Server;
+
+		public readonly ApplicationServicClient AppServiceClient;
+
+		public TestFixtureLive()
+		{
+			var creds = FileUtils.GetCredentials();
+			var builder = new WebHostBuilder()
+				.ConfigureAppConfiguration((builderContext, config) =>
+				{
+					IHostingEnvironment env = builderContext.HostingEnvironment;
+					config
+						//.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+						.AddEnvironmentVariables();
+				})
+				.UseStartup<TStartup>()
+				.ConfigureServices(services =>
+				{
+					services.AddMemoryCache();
+
+				});
+
+			Server = new TestServer(builder);
+			var httpClient = Server.CreateClient();
+			AppServiceClient = new ApplicationServicClient(httpClient, creds);
+
+		}
+
+
+		public void Dispose()
+		{
+			Server.Dispose();
+		}
+	}
 }
