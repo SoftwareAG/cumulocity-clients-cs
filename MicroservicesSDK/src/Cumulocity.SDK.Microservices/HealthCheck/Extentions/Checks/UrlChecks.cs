@@ -11,49 +11,48 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
 {
     public static partial class HealthCheckBuilderExtensions
     {
-	    public static HealthCheckBuilder AddPlatformCheck(this HealthCheckBuilder builder)
-	    {
-			Guard.ArgumentNotNull(nameof(builder), builder);
-		    Guard.ArgumentNotNull(nameof(builder.MicroserviceContext), builder.MicroserviceContext);
+        public static HealthCheckBuilder AddPlatformCheck(this HealthCheckBuilder builder)
+        {
+            Guard.ArgumentNotNull(nameof(builder), builder);
+            Guard.ArgumentNotNull(nameof(builder.MicroserviceContext), builder.MicroserviceContext);
 
-			string authCred = GetAuthCredentialsBase64(builder.MicroserviceContext.GetCredentials());
-			var baseurl = builder.MicroserviceContext.GetBaseUrl();
-			return AddPlatformUrlCheck(builder, baseurl, authCred, builder.DefaultCacheDuration);
-	    }
+            string authCred = GetAuthCredentialsBase64(builder.MicroserviceContext.GetCredentials());
+            var baseurl = builder.MicroserviceContext.GetBaseUrl();
+            return AddPlatformUrlCheck(builder, baseurl, authCred, builder.DefaultCacheDuration);
+        }
 
-	    private static string GetAuthCredentialsBase64(ICredentials credentials)
-	    {
-		    if (credentials == null)
-			    throw new ArgumentNullException(nameof(credentials));
+        private static string GetAuthCredentialsBase64(ICredentials credentials)
+        {
+            if (credentials == null)
+                throw new ArgumentNullException(nameof(credentials));
 
-		    return System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(credentials.Tenant + "/" + credentials.Username+ ":" + credentials.Password));
-	    }
-	    // Default URL check
+            return System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(credentials.Tenant + "/" + credentials.Username + ":" + credentials.Password));
+        }
+        // Default URL check
 
-		public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url)
+        public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url)
         {
             Guard.ArgumentNotNull(nameof(builder), builder);
 
             return AddUrlCheck(builder, url, builder.DefaultCacheDuration);
         }
 
-	    public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url, string auth)
-	    {
-		    Guard.ArgumentNotNull(nameof(builder), builder);
+        public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url, string auth)
+        {
+            Guard.ArgumentNotNull(nameof(builder), builder);
 
-		    return AddUrlCheck(builder, url, builder.DefaultCacheDuration);
-	    }
+            return AddUrlCheck(builder, url, builder.DefaultCacheDuration);
+        }
 
-		public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url, TimeSpan cacheDuration)
+        public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url, TimeSpan cacheDuration)
             => AddUrlCheck(builder, url, response => UrlChecker.DefaultUrlCheck(response), cacheDuration);
 
+        public static HealthCheckBuilder AddPlatformUrlCheck(this HealthCheckBuilder builder, string url, string auth, TimeSpan cacheDuration)
+            => AddPlatformUrlCheck(builder, url, auth, response => UrlCheckerWithDetails.DefaultUrlCheck(response), cacheDuration);
 
-	    public static HealthCheckBuilder AddPlatformUrlCheck(this HealthCheckBuilder builder, string url, string auth, TimeSpan cacheDuration)
-		    => AddPlatformUrlCheck(builder, url, auth, response => UrlCheckerWithDetails.DefaultUrlCheck(response), cacheDuration);
+        // Func returning IHealthCheckResult
 
-		// Func returning IHealthCheckResult
-
-		public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url, Func<HttpResponseMessage, IHealthCheckResult> checkFunc)
+        public static HealthCheckBuilder AddUrlCheck(this HealthCheckBuilder builder, string url, Func<HttpResponseMessage, IHealthCheckResult> checkFunc)
         {
             Guard.ArgumentNotNull(nameof(builder), builder);
 
@@ -109,19 +108,18 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
             return builder;
         }
 
+        public static HealthCheckBuilder AddPlatformUrlCheck(this HealthCheckBuilder builder, string url, string auth,
+            Func<HttpResponseMessage, ValueTask<IHealthCheckResult>> checkFunc,
+            TimeSpan cacheDuration)
+        {
+            Guard.ArgumentNotNull(nameof(builder), builder);
+            Guard.ArgumentNotNullOrEmpty(nameof(url), url);
+            Guard.ArgumentNotNullOrEmpty(nameof(auth), auth);
+            Guard.ArgumentNotNull(nameof(checkFunc), checkFunc);
 
-		public static HealthCheckBuilder AddPlatformUrlCheck(this HealthCheckBuilder builder, string url,string auth,
-		    Func<HttpResponseMessage, ValueTask<IHealthCheckResult>> checkFunc,
-		    TimeSpan cacheDuration)
-	    {
-		    Guard.ArgumentNotNull(nameof(builder), builder);
-		    Guard.ArgumentNotNullOrEmpty(nameof(url), url);
-		    Guard.ArgumentNotNullOrEmpty(nameof(auth), auth);
-			Guard.ArgumentNotNull(nameof(checkFunc), checkFunc);
-
-		    var urlCheck = new UrlCheckerWithDetails(checkFunc, url, auth);//Musiałby mieć obiekt <<url>>
-		    builder.AddCheck($"platform", () => urlCheck.CheckWithBasicAuthAsync(), cacheDuration);
-		    return builder;
-	    }
-	}
+            var urlCheck = new UrlCheckerWithDetails(checkFunc, url, auth);
+            builder.AddCheck($"platform", () => urlCheck.CheckWithBasicAuthAsync(), cacheDuration);
+            return builder;
+        }
+    }
 }

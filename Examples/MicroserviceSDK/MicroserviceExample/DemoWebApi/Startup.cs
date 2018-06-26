@@ -16,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using System.Threading.Tasks;
 using Cumulocity.SDK.Microservices.Utils.Scheduling;
+using DemoWebApi.Helpers;
 
 namespace DemoWebApi
 {
