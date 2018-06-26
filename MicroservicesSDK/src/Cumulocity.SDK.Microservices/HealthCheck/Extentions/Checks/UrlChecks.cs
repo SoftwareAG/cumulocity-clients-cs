@@ -18,9 +18,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
 
 			string authCred = GetAuthCredentialsBase64(builder.MicroserviceContext.GetCredentials());
 			var baseurl = builder.MicroserviceContext.GetBaseUrl();
-			string url = $"{baseurl}/tenant/health";
-
-			return AddPlatformUrlCheck(builder, url, authCred, builder.DefaultCacheDuration);
+			return AddPlatformUrlCheck(builder, baseurl, authCred, builder.DefaultCacheDuration);
 	    }
 
 	    private static string GetAuthCredentialsBase64(ICredentials credentials)
@@ -51,7 +49,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
 
 
 	    public static HealthCheckBuilder AddPlatformUrlCheck(this HealthCheckBuilder builder, string url, string auth, TimeSpan cacheDuration)
-		    => AddPlatformUrlCheck(builder, url,auth, response => UrlChecker.DefaultUrlCheck(response), cacheDuration);
+		    => AddPlatformUrlCheck(builder, url, auth, response => UrlCheckerWithDetails.DefaultUrlCheck(response), cacheDuration);
 
 		// Func returning IHealthCheckResult
 
@@ -111,7 +109,8 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
             return builder;
         }
 
-	    public static HealthCheckBuilder AddPlatformUrlCheck(this HealthCheckBuilder builder, string url,string auth,
+
+		public static HealthCheckBuilder AddPlatformUrlCheck(this HealthCheckBuilder builder, string url,string auth,
 		    Func<HttpResponseMessage, ValueTask<IHealthCheckResult>> checkFunc,
 		    TimeSpan cacheDuration)
 	    {
@@ -120,7 +119,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks
 		    Guard.ArgumentNotNullOrEmpty(nameof(auth), auth);
 			Guard.ArgumentNotNull(nameof(checkFunc), checkFunc);
 
-		    var urlCheck = new UrlChecker(checkFunc, url, auth);
+		    var urlCheck = new UrlCheckerWithDetails(checkFunc, url, auth);//Musiałby mieć obiekt <<url>>
 		    builder.AddCheck($"platform", () => urlCheck.CheckWithBasicAuthAsync(), cacheDuration);
 		    return builder;
 	    }

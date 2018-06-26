@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Cumulocity.SDK.Microservices.Settings;
+﻿using Cumulocity.SDK.Microservices.Settings;
 using Cumulocity.SDK.Microservices.Utils.Extenions;
 using Microsoft.AspNetCore.Http;
 

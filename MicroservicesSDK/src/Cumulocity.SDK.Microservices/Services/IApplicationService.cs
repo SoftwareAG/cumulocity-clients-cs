@@ -11,7 +11,6 @@ namespace Cumulocity.SDK.Microservices.Services
     {
         Task<IList<User>> GetUsers();
         Task<List<Subscription>> GetCurrentApplicationSubscriptions();
-
         Task<BasicAuthenticationResult> GetCurrentUser(string authCred);
     }
 }

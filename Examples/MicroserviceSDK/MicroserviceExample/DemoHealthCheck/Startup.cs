@@ -39,15 +39,17 @@ namespace DemoHealthCheck
             services.AddSingleton<IApplicationService, ApplicationService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-			//
 			services.AddHealthChecks(checks =>
 			{
+				//1
 				checks.AddPlatformCheck();
-				//checks.AddCheck("long-running", async cancellationToken =>
-				//{
-				//	await Task.Delay(1000, cancellationToken);
-				//	return HealthCheckResult.Healthy("I ran too long");
-				//});
+				//2.
+				checks.AddCheck("long-running", async cancellationToken =>
+				{
+					await Task.Delay(1000, cancellationToken);
+					return HealthCheckResult.Healthy("I ran too long");
+				});
+				//3.
 			});
 
 			//MVC

@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DC62A5E1-C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.AspNetCore.Authentication.Basic.Tests", "test\Cumulocity.AspNetCore.Authentication.Basic.Tests\Cumulocity.AspNetCore.Authentication.Basic.Tests.csproj", "{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.SDK.Microservices.IntegrationTest", "test\Cumulocity.SDK.Microservices.IntegrationTest\Cumulocity.SDK.Microservices.IntegrationTest.csproj", "{76FC826B-AC1D-4917-A190-7AB678B06BFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.SDK.Microservices.IntegrationTest", "test\Cumulocity.SDK.Microservices.IntegrationTest\Cumulocity.SDK.Microservices.IntegrationTest.csproj", "{E83AC4DF-EDD5-4FF8-8B3B-0B86BA8E3ACE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoWebApi", "..\Examples\MicroserviceSDK\MicroserviceExample\DemoWebApi\DemoWebApi.csproj", "{A6ED2AFC-22D2-4730-9032-CE46419E2750}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoWebApi", "..\Examples\MicroserviceSDK\MicroserviceExample\DemoWebApi\DemoWebApi.csproj", "{5A256EFB-1F07-4332-8BC8-0493FE6B42E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,21 +33,21 @@ Global
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76FC826B-AC1D-4917-A190-7AB678B06BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76FC826B-AC1D-4917-A190-7AB678B06BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76FC826B-AC1D-4917-A190-7AB678B06BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76FC826B-AC1D-4917-A190-7AB678B06BFB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E83AC4DF-EDD5-4FF8-8B3B-0B86BA8E3ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E83AC4DF-EDD5-4FF8-8B3B-0B86BA8E3ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E83AC4DF-EDD5-4FF8-8B3B-0B86BA8E3ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E83AC4DF-EDD5-4FF8-8B3B-0B86BA8E3ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A256EFB-1F07-4332-8BC8-0493FE6B42E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A256EFB-1F07-4332-8BC8-0493FE6B42E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A256EFB-1F07-4332-8BC8-0493FE6B42E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A256EFB-1F07-4332-8BC8-0493FE6B42E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D} = {DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}
-		{76FC826B-AC1D-4917-A190-7AB678B06BFB} = {DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}
+		{E83AC4DF-EDD5-4FF8-8B3B-0B86BA8E3ACE} = {DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4485E368-5454-4927-96CD-66AEB53560EF}
