@@ -68,6 +68,15 @@ Task("Clean")
 			{
 				CleanDirectory(testResultDir);
 			}
+			
+		var tests = GetFiles("./test/**/*.csproj");
+		
+		foreach(var test in tests)
+		{
+			var projectFolder = System.IO.Path.GetDirectoryName(test.FullPath);
+			Information("CleanDirectory {0}", System.IO.Path.Combine(projectFolder, "TestResults"));
+			CleanDirectory(System.IO.Path.Combine(projectFolder, "TestResults"));
+		}
 	});
 
 Task("Restore")
@@ -124,12 +133,18 @@ Task("Build")
 		foreach(var test in tests)
 		{
 			var projectFolder = System.IO.Path.GetDirectoryName(test.FullPath);
+			var projectName = System.IO.Path.GetFileName(System.IO.Path.GetDirectoryName(test.FullPath));
+		
+			
 			try
 			{
 			    Information("Solution Directory: {0}", solutionDir);
+				
+				var resultFile = "ResultTest_"+projectName+".xml";
+				
 				DotNetCoreTest(test.FullPath, new DotNetCoreTestSettings
 				{
-					ArgumentCustomization = args => args.Append("-l \"trx;LogFileName=Result.xml\""),
+					ArgumentCustomization = args => args.Append("-l \"trx;LogFileName="+resultFile+"\""),
 					WorkingDirectory = projectFolder
 				});
 			}
@@ -140,10 +155,15 @@ Task("Build")
 			}
 		}
 
-		// Copy test result files.
-		var tmpTestResultFiles = GetFiles("./**/Result.xml");
-		CopyFiles(tmpTestResultFiles, testResultDir);
-		XmlTransform("./tools/MsUnit.xslt", testResultDir +"/Result.xml", testResultDir +"/JUnit.Result.xml");	
+		var tmpTestResultFiles = GetFiles("./**/ResultTest_*");
+		CopyFiles(tmpTestResultFiles, testResultDir);		
+		var resultTests = GetFiles("./test-results/ResultTest_*");
+		
+		foreach(var resultFile in resultTests)
+		{
+			Information("The file name in a dict: {0} {1}",resultFile,System.IO.Path.GetFileName(resultFile.FullPath));
+			XmlTransform("./tools/MsUnit.xslt", resultFile , testResultDir +"/JUnit_" + System.IO.Path.GetFileName(resultFile.FullPath));	 
+		}
 	});
 
 Task("Package")   
