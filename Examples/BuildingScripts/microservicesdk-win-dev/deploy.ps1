@@ -61,6 +61,15 @@ function Get-IniFile
     return $ini  
 }  
 
+Function getResponseAppNameJson($username,$pass,$site,$appname) {
+
+		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$pass)))
+		$requestAppName = "http://$site/application/applicationsByName/$appname"
+		$responseAppNameJson =Invoke-WebRequest $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -ErrorAction SilentlyContinue | ConvertFrom-Json
+        
+
+      return $responseAppNameJson
+}
 function Invoke-MultipartFormDataUpload
 {
     PARAM
@@ -175,10 +184,8 @@ if (!$file -and !$tenant -and !$username -and !$password -and !$appname) {
     	try 
 		{
 		$appid = 0
-		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
-
-		$requestAppName = 'http://$($site)/application/applicationsByName/$($appname)'
-		$responseAppNameJson =Invoke-WebRequest $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} | ConvertFrom-Json 
+		$responseJson = ""
+		$responseJson = getResponseAppNameJson $username $password $site $appname
 
 		if($responseJson)
 		{
@@ -199,7 +206,7 @@ if (!$file -and !$tenant -and !$username -and !$password -and !$appname) {
 		Write-Output $base64AuthInfo;
 		Write-Output $filePath;
 		
-		#Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
+		Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
 		
 		Write-Host "I'm done!"
 		
@@ -259,11 +266,9 @@ ElseIf($file -and !$tenant -and !$username -and !$password -and !$appname)
 
         try {
 		
-		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
-
-		$requestAppName = 'http://$($site)/application/applicationsByName/$($appname)'
-		$responseAppNameJson =Invoke-WebRequest $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} | ConvertFrom-Json 
-
+			$responseJson = ""
+			$responseJson = getResponseAppNameJson $username $password $site $appname
+	
 		if($responseJson)
 		{
 		 $app = $backtoJson.applications | where {$_.name -eq $appname } 
@@ -283,7 +288,7 @@ ElseIf($file -and !$tenant -and !$username -and !$password -and !$appname)
 		Write-Output $base64AuthInfo;
 		Write-Output $filePath;
 		
-		#Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
+		Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
 		
 		Write-Host "I'm done!"
 		
@@ -344,10 +349,8 @@ ElseIf($file -and ($tenant -or $username -or $password -or $appname))
 
        try {
 		
-		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
-		#
-		$requestAppName = 'http://$($site)/application/applicationsByName/$($appname)'
-		$responseAppNameJson =Invoke-WebRequest $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} | ConvertFrom-Json 
+		$responseJson = ""
+		$responseJson = getResponseAppNameJson $username $password $site $appname
 
 		if($responseJson)
 		{
@@ -368,7 +371,7 @@ ElseIf($file -and ($tenant -or $username -or $password -or $appname))
 		Write-Output $base64AuthInfo;
 		Write-Output $filePath;
 		
-		#Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
+		Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
 		
 		Write-Host "I'm done!"
 		

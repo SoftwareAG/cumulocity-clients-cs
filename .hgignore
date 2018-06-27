@@ -181,3 +181,9 @@ Examples/BuildingScripts/microservicesdk-win-dev/version.props
 ^MicroservicesSDK/tools$
 ^MQTT/tools$
 
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/DesignTimeBuild/.dtbcache
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/db.lock
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/storage.ide-shm
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/storage.ide-wal
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/sqlite3/storage.ide
