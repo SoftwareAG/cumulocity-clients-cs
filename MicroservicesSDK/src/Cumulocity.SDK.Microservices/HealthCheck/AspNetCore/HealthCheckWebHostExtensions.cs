@@ -17,20 +17,25 @@ namespace Microsoft.AspNetCore.Hosting
         {
             var healthChecks = webHost.Services.GetService(typeof(IHealthCheckService)) as IHealthCheckService;
 
-            var loops = 0;
-            do
-            {
-                var checkResult = healthChecks.CheckHealthAsync().Result;
-                if (checkResult.Status == CheckStatus.Healthy)
-                {
-                    webHost.Run();
-                    break;
-                }
+	        var currentTime = DateTime.Now;
+	        var currentEndTime = currentTime.Add(timeout);
 
-                System.Threading.Thread.Sleep(1000);
-                loops++;
+			var loops = 0;
+			do
+			{
+				var checkResult = healthChecks.CheckHealthAsync().Result;
+				if (checkResult.Status == CheckStatus.Healthy)
+				{
+					webHost.Run();
+					break;
+				}
 
-            } while (loops < timeout.TotalSeconds);
-        }
-    }
+				System.Threading.Thread.Sleep(100);
+				loops++;
+				currentTime = DateTime.Now;
+
+			} while (currentEndTime < currentTime);
+
+		}
+	}
 }
