@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cumulocity.SDK.Microservices.Model;
 using Cumulocity.SDK.Microservices.Settings;
+using DemoWebApi.Helpers;
 using Easy.MessageHub;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -57,18 +58,18 @@ namespace DemoWebApi.Controllers
 		    return new string[] {"otherpermission1", "otherpermission2"};
 	    }
 
-	 //   [HttpGet("scheduledtask")]
-		//public IEnumerable<int> CheckTimer()
-	 //   {
-		//    for (int i = 0; i < 2; ++i)
-		//    {
-		//	    Task.WaitAll(Task.Delay(1000));
-		//    }
+		[HttpGet("scheduledtask")]
+		public IEnumerable<int> CheckTimer()
+		{
+			for (int i = 0; i < 2; ++i)
+			{
+				Task.WaitAll(Task.Delay(1000));
+			}
 
-		//    return new int[] { TimerCounter.Counter };
-		//}
+			return new int[] { TimerCounter.Counter };
+		}
 
-	    [HttpGet("platform")]
+		[HttpGet("platform")]
 		[ProducesResponseType(200, Type = typeof(Platform))]
 	    [ProducesResponseType(404)]
 	    public IActionResult GetPlatform()
