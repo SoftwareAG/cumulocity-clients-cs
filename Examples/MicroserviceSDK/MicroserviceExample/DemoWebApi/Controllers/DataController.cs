@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Cumulocity.AspNetCore.Authentication.Basic;
 using Cumulocity.SDK.Microservices.Model;
-using Cumulocity.SDK.Microservices.Services;
 using Cumulocity.SDK.Microservices.Settings;
-using DemoWebApi.Helpers;
 using Easy.MessageHub;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,14 +17,12 @@ namespace DemoWebApi.Controllers
 	    private Guid SubscriptionToken { get; }
 		public IMemoryCache Cache { get; }
 		public Platform PlatformSettings { get; }
-	    public IApplicationService Service { get; }
 
-	    public DataController(IMemoryCache cache, Platform platform, MessageHub hub, IApplicationService service)
+		public DataController(IMemoryCache cache, Platform platform, MessageHub hub)
 		{
 			SubscriptionToken = hub.Subscribe<List<ChangedSubscription>>(OnChangedSubscription);
 			Cache = cache;
 			PlatformSettings = platform;
-			Service = service;
 		}
 
 	    // GET api/data
@@ -46,20 +41,6 @@ namespace DemoWebApi.Controllers
 		    return subs;
 	    }
 
-		// GET api/data/currentuser
-		[HttpGet("currentuser")]
-	    public async Task<BasicAuthenticationResult> GetCurrentUser()
-		{
-			return await Service.GetCurrentUser("authCred");
-	    }
-
-		// GET api/data/user
-		[HttpGet("user")]
-	    public async Task<IList<User>> GetUser()
-		{
-			return await Service.GetUsers();
-		}
-
 		// GET api/data/permissions
 		[HttpGet("permissions")]
 		[Authorize(Roles = "ROLE_APPLICATION_MANAGEMENT_READ")]
@@ -76,16 +57,16 @@ namespace DemoWebApi.Controllers
 		    return new string[] {"otherpermission1", "otherpermission2"};
 	    }
 
-	    [HttpGet("scheduledtask")]
-		public IEnumerable<int> CheckTimer()
-	    {
-		    for (int i = 0; i < 2; ++i)
-		    {
-			    Task.WaitAll(Task.Delay(1000));
-		    }
+	 //   [HttpGet("scheduledtask")]
+		//public IEnumerable<int> CheckTimer()
+	 //   {
+		//    for (int i = 0; i < 2; ++i)
+		//    {
+		//	    Task.WaitAll(Task.Delay(1000));
+		//    }
 
-		    return new int[] { TimerCounter.Counter };
-		}
+		//    return new int[] { TimerCounter.Counter };
+		//}
 
 	    [HttpGet("platform")]
 		[ProducesResponseType(200, Type = typeof(Platform))]

@@ -40,12 +40,14 @@ namespace Cumulocity.SDK.Microservices.Utils.Extenions
             if (user.Identity.IsAuthenticated)
             {
                 ClaimsIdentity claimsIdentity = user.Identity as ClaimsIdentity;
-                foreach (var claim in claimsIdentity.Claims)
-                {
-                    if (claim.Type == "UserPassword")
-                        return claim.Value;
-                }
-                return "";
+	            if (claimsIdentity != null)
+		            foreach (var claim in claimsIdentity.Claims)
+		            {
+			            if (claim.Type == "UserPassword")
+				            return claim.Value;
+		            }
+
+	            return "";
             }
             else
                 return "";
@@ -56,15 +58,49 @@ namespace Cumulocity.SDK.Microservices.Utils.Extenions
             if (user.Identity.IsAuthenticated)
             {
                 ClaimsIdentity claimsIdentity = user.Identity as ClaimsIdentity;
-                foreach (var claim in claimsIdentity.Claims)
-                {
-                    if (claim.Type == "UserTenant")
-                        return claim.Value;
-                }
-                return "";
+	            if (claimsIdentity != null)
+		            foreach (var claim in claimsIdentity.Claims)
+		            {
+			            if (claim.Type == "UserTenant")
+				            return claim.Value;
+		            }
+
+	            return "";
             }
             else
                 return "";
         }
-    }
+
+	    public static bool IsInContext(this IPrincipal user)
+	    {
+		    
+
+			if (user.Identity.IsAuthenticated)
+		    {
+			    var userName = String.Empty;
+			    var userPassword = String.Empty;
+				var userTenant = String.Empty;
+
+				ClaimsIdentity claimsIdentity = user.Identity as ClaimsIdentity;
+			    if (claimsIdentity != null)
+				    foreach (var claim in claimsIdentity.Claims)
+				    {
+					    if (claim.Type == "UserTenant")
+						    userName = claim.Value;
+					    if (claim.Type == "UserTenant")
+						    userPassword = claim.Value;
+					    if (claim.Type == "UserTenant")
+						    userTenant = claim.Value;
+				    }
+
+			    return !String.IsNullOrEmpty(userName) &&
+			           !String.IsNullOrEmpty(userPassword) &&
+			           !String.IsNullOrEmpty(userTenant);
+		    }
+			return false;
+
+	    }
+
+
+	}
 }

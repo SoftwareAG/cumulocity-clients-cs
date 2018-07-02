@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using Cumulocity.SDK.Microservices.BasicAuthentication;
 using Cumulocity.SDK.Microservices.Configure;
+using Cumulocity.SDK.Microservices.HealthCheck.Extentions;
+using Cumulocity.SDK.Microservices.HealthCheck.Extentions.Checks;
 using Cumulocity.SDK.Microservices.Services;
 using Cumulocity.SDK.Microservices.Settings;
 using Cumulocity.SDK.Microservices.Utils;
@@ -14,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using System.Threading.Tasks;
 using Cumulocity.SDK.Microservices.Utils.Scheduling;
+using DemoWebApi.Helpers;
 
 namespace DemoWebApi
 {
@@ -35,8 +38,9 @@ namespace DemoWebApi
 			_logger.LogDebug($"Total Services Initially: {services.Count}");
 
 			services.AddMemoryCache();
+			services.AddCumulocityAuthentication(Configuration);
 			services.AddPlatform(Configuration);
-			ConfigureServicesLayer(services);
+			services.AddSingleton<IApplicationService, ApplicationService>();
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 			// Add scheduled tasks & scheduler
@@ -50,12 +54,6 @@ namespace DemoWebApi
 			//MVC
 			services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 			//services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
-		}
-
-		public virtual void ConfigureServicesLayer(IServiceCollection services)
-		{
-			services.AddCumulocityAuthentication(Configuration);
-			services.AddSingleton<IApplicationService, ApplicationService>();
 		}
 
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
