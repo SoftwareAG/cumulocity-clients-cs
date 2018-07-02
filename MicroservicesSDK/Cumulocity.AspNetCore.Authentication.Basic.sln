@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.SDK.Microservice
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoWebApi", "..\Examples\MicroserviceSDK\MicroserviceExample\DemoWebApi\DemoWebApi.csproj", "{A6ED2AFC-22D2-4730-9032-CE46419E2750}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.SDK.Microservices.FunctionalTest", "test\Cumulocity.SDK.Microservices.FunctionalTest\Cumulocity.SDK.Microservices.FunctionalTest.csproj", "{6A4671CB-F4BA-4E52-9341-0EBE843AC99B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,10 +41,6 @@ Global
 		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6ED2AFC-22D2-4730-9032-CE46419E2750}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A4671CB-F4BA-4E52-9341-0EBE843AC99B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A4671CB-F4BA-4E52-9341-0EBE843AC99B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A4671CB-F4BA-4E52-9341-0EBE843AC99B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A4671CB-F4BA-4E52-9341-0EBE843AC99B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,7 +48,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{26FE9FB6-DA08-4EDA-A41E-F684DF73319D} = {DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}
 		{76FC826B-AC1D-4917-A190-7AB678B06BFB} = {DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}
-		{6A4671CB-F4BA-4E52-9341-0EBE843AC99B} = {DC62A5E1-CC94-4D05-B3F5-4EEC0525D3FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4485E368-5454-4927-96CD-66AEB53560EF}
