@@ -61,7 +61,7 @@ function Get-IniFile
     return $ini  
 }  
 
-Function getResponseAppNameJson($username,$pass,$site,$appname) {
+function getResponseAppNameJson($username,$pass,$site,$appname) {
 
 		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$pass)))
 		$requestAppName = "http://$site/application/applicationsByName/$appname"
@@ -70,6 +70,26 @@ Function getResponseAppNameJson($username,$pass,$site,$appname) {
 
       return $responseAppNameJson
 }
+
+function getAppId($response) {
+
+	$appid = 0
+
+	if($response)
+	{
+	 $app = $response.applications | where {$_.name -eq $appname } 
+	 if($app)
+	 {
+		$appid = $app.id
+	 }
+	}
+
+	if($appid -eq 0){
+		throw "Application does not exist."
+	}
+return $appid;
+}
+
 function Invoke-MultipartFormDataUpload
 {
     PARAM
@@ -177,7 +197,6 @@ if (!$file -and !$tenant -and !$username -and !$password -and !$appname) {
     $appname = $settingsIni.deploy.appname
 	
     Write-Host $username
-    Write-Host $password
     Write-Host $tenant
     Write-Host $appname
 
@@ -186,25 +205,10 @@ if (!$file -and !$tenant -and !$username -and !$password -and !$appname) {
 		$appid = 0
 		$responseJson = ""
 		$responseJson = getResponseAppNameJson $username $password $site $appname
-
-		if($responseJson)
-		{
-		 $app = $backtoJson.applications | where {$_.name -eq $appname } 
-		 if($app)
-		 {
-			$appid = $app.id
-		 }
-		}
-
-		if($appid -eq 0){
-			throw "Application does not exist."
-		}
+		$appid = getAppId $responseJson
 
 		$uri = "http://$($site)/application/applications/$($appid)/binaries"		 
 		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
-		
-		Write-Output $base64AuthInfo;
-		Write-Output $filePath;
 		
 		Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
 		
@@ -260,35 +264,19 @@ ElseIf($file -and !$tenant -and !$username -and !$password -and !$appname)
     $appname = $settingsIni.deploy.appname
 
     Write-Host $username
-    Write-Host $password
     Write-Host $tenant
     Write-Host $appid
 
         try {
-		
+			$appid = 0
 			$responseJson = ""
 			$responseJson = getResponseAppNameJson $username $password $site $appname
-	
-		if($responseJson)
-		{
-		 $app = $backtoJson.applications | where {$_.name -eq $appname } 
-		 if($app)
-		 {
-			$appid = $app.id
-		 }
-		}
+			$appid = getAppId $responseJson
+			
+			$uri = "http://$($site)/application/applications/$($appid)/binaries"		 
+			$filePath = Resolve-Path -Path ".\images\multi\image.zip"
 
-		if($appid -eq 0){
-			throw "Application does not exist."
-		}
-
-		$uri = "http://$($site)/application/applications/$($appid)/binaries"		 
-		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
-		
-		Write-Output $base64AuthInfo;
-		Write-Output $filePath;
-		
-		Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
+			Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
 		
 		Write-Host "I'm done!"
 		
@@ -348,19 +336,11 @@ ElseIf($file -and ($tenant -or $username -or $password -or $appname))
     }
 
        try {
-		
+		$appid = 0
 		$responseJson = ""
 		$responseJson = getResponseAppNameJson $username $password $site $appname
-
-		if($responseJson)
-		{
-		 $app = $backtoJson.applications | where {$_.name -eq $appname } 
-		 if($app)
-		 {
-			$appid = $app.id
-		 }
-		}
-
+		$appid = getAppId $responseJson
+		
 		if($appid -eq 0){
 			throw "Application does not exist."
 		}
