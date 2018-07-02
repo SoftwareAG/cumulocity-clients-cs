@@ -23,7 +23,7 @@ namespace DemoWebApi
 
 		public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
 		{
-			Configuration = configuration;
+			Configuration = configuration; 
 			_logger = loggerFactory.CreateLogger<Startup>();
 		}
 
