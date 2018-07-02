@@ -20,7 +20,6 @@ namespace Microsoft.AspNetCore.Hosting
 	        var currentTime = DateTime.Now;
 	        var currentEndTime = currentTime.Add(timeout);
 
-			var loops = 0;
 			do
 			{
 				var checkResult = healthChecks.CheckHealthAsync().Result;
@@ -31,7 +30,6 @@ namespace Microsoft.AspNetCore.Hosting
 				}
 
 				System.Threading.Thread.Sleep(100);
-				loops++;
 				currentTime = DateTime.Now;
 
 			} while (currentEndTime < currentTime);
