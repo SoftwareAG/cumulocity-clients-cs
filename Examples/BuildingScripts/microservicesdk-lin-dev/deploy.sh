@@ -2,7 +2,7 @@
 
 for i in "$@"; do
     case $1 in
-        -t|--tenant) TENANT="$2"; shift ;;
+        -url|--url) URL="$2"; shift ;;
         -u|--username) USERNAME="$2"; shift ;;
         -p|--password) PASSWORD="$2"; shift ;;
         -an|--appname) APPNAME="$2"; shift ;; # Added parameter
@@ -53,6 +53,32 @@ cfg.parser () {
     eval "$(echo "${ini[*]}")"               # eval the result
 }
 
+function geturl() {
+    
+	elements=$(curl --user $cred  -s http://$url/application/applicationsByName/$appname | jsonGet  applications.length)
+	if !([ -z $elements ]) && ([ $elements -gt 0 ]) then
+        for value in $elements
+        do
+
+        selectedapp=$(curl --user $cred  -s http://$url/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).name)
+
+        if [ "$selectedapp" == "$appname" ]; then
+           appid=$(curl --user $cred  -s http://$url/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).id)
+
+          break
+        fi
+
+        done
+	fi	
+	
+	if [ "$appid" -eq 0 ]; then
+		echo "Error! The app not found" 1>&2
+		exit 64
+	fi	
+
+	url="http://$url/application/applications/$appid/binaries"
+}
+
 function abspath() {
     # generate absolute path from relative path
     # $1     : relative filename
@@ -74,13 +100,13 @@ function abspath() {
 
 credb64=""
 header="Basic "
-url="http://tenant/application/applications/0/binaries"
-cred="tenant/username:password"
+url="http://URL/application/applications/0/binaries"
+cred="username:password"
 dir="/images/multi/image.zip"
 
 
 
-if [ -z "$TENANT" ] && [ -z "$USERNAME" ] && [ -z "$PASSWORD" ] && [ -z "$APPNAME" ] && [ -z "$FILE" ];
+if [ -z "$URL" ] && [ -z "$USERNAME" ] && [ -z "$PASSWORD" ] && [ -z "$APPNAME" ] && [ -z "$FILE" ];
 then
     echo "All is null."
 	
@@ -101,38 +127,16 @@ then
 	cfg.parser $filePath
 	cfg.section.deploy
 
-	echo "$tenant"
+	echo "$url"
 	echo "$username"
-	echo "$password"
 	echo "$appname"
 	
-	cred="$username\$password"	
+	cred="$username:$password"	
 	appid=0
 	
-	elements=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.length)
-	if !([ -z $elements ]) && ([ $elements -gt 0 ]) then
-        for value in $elements
-        do
-
-        selectedapp=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).name)
-
-        if [ "$selectedapp" == "$appname" ]; then
-           appid=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).id)
-
-          break
-        fi
-
-        done
-	fi	
+	geturl
 	
-	if [ "$appid" -eq 0 ]; then
-		echo "Error! The app not found" 1>&2
-		exit 64
-	fi	
-
-	url="http://$tenant/application/applications/$appid/binaries"
-	
-elif !([ -z "$FILE" ]) && ([ -z "$TENANT" ] && [ -z "$USERNAME" ] && [ -z "$PASSWORD" ] && [ -z "$APPNAME" ]); then
+elif !([ -z "$FILE" ]) && ([ -z "$URL" ] && [ -z "$USERNAME" ] && [ -z "$PASSWORD" ] && [ -z "$APPNAME" ]); then
     
 	echo "File not null, other is null."
 	
@@ -154,41 +158,17 @@ elif !([ -z "$FILE" ]) && ([ -z "$TENANT" ] && [ -z "$USERNAME" ] && [ -z "$PASS
 	cfg.parser $filePath
 	cfg.section.deploy
 
-	echo "$tenant"
+	echo "$url"
 	echo "$username"
-	echo "$password"
 	echo "$appname"
 	
-	cred="$username\$password"
+	cred="$username:$password"
 	
 	appid=0
 	
-	elements=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.length)
-	if !([ -z $elements ]) && ([ $elements -gt 0 ]) then
-        for value in $elements
-        do
-
-        selectedapp=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).name)
-
-        if [ "$selectedapp" == "$appname" ]; then
-           appid=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).id)
-
-          break
-        fi
-
-        done
-	fi	
+	geturl
 	
-	if [ "$appid" -eq 0 ]; then
-		echo "Error! The app not found" 1>&2
-		exit 64
-	fi	
-
-	
-	
-	url="http://$tenant/application/applications/$appid/binaries"
-	
-elif !([ -z "$FILE" ]) && ( !([ -z "$TENANT" ]) || !([ -z "$USERNAME" ]) || !([ -z "$PASSWORD" ]) || !([ -z "$APPNAME" ])  ); then
+elif !([ -z "$FILE" ]) && ( !([ -z "$URL" ]) || !([ -z "$USERNAME" ]) || !([ -z "$PASSWORD" ]) || !([ -z "$APPNAME" ])  ); then
     
 	filePath=$(abspath $FILE)
 	
@@ -206,60 +186,38 @@ elif !([ -z "$FILE" ]) && ( !([ -z "$TENANT" ]) || !([ -z "$USERNAME" ]) || !([ 
 	cfg.parser $filePath
 	cfg.section.deploy
 
-	echo "$tenant"
-	echo "$username"
-	echo "$password"
-	echo "$appname"
 	
-	if  !([ -z "$TENANT" ]);
+	if  !([ -z "$URL" ]);
 	then
-	   $tenant=$TENANT
+	   url=$URL
 	fi
 	
 	if  !([ -z "$USERNAME" ]);
 	then
-	   $username=$USERNAME
+	   username=$USERNAME
 	fi
 	
 	if  !([ -z "$PASSWORD" ]);
 	then
-	   $password=$PASSWORD
+	   password=$PASSWORD
 	fi
 	
 	if  !([ -z "$APPNAME" ]);
 	then
-	   $appname=$APPNAME
+	   appname=$APPNAME
 	fi
 	
-	cred="$username\$password"
+	echo $username
+	echo "$username"
+	echo "$appname"
 	
-		appid=0
+	cred="$username:$password"	
+	appid=0
 	
-	elements=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.length)
-	if !([ -z $elements ]) && ([ $elements -gt 0 ]) then
-        for value in $elements
-        do
-
-        selectedapp=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).name)
-
-        if [ "$selectedapp" == "$appname" ]; then
-           appid=$(curl --user $cred  -s http://$tenant/application/applicationsByName/$appname | jsonGet  applications.$((value-1)).id)
-
-          break
-        fi
-
-        done
-	fi	
+	geturl
 	
-	if [ "$appid" -eq 0 ]; then
-		echo "Error! The app not found" 1>&2
-		exit 64
-	fi	
-
-	
-	url="http://$tenant/application/applications/$appid/binaries"
 else 
-   echo "A"
+   echo "..."
 fi
 
 

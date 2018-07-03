@@ -1,6 +1,6 @@
 ﻿Param(    
-    [alias("t")]
-    [parameter(Mandatory = $false)] [string]$tenant,
+    [alias("s")]
+    [parameter(Mandatory = $false)] [string]$url,
 
     [alias("u")]
     [parameter(Mandatory = $false)] [string]$username,
@@ -161,7 +161,7 @@ Content-Type: {2}
     END { }
 }
 
-if (!$file -and !$tenant -and !$username -and !$password -and !$appname) { 
+if (!$file -and !$url -and !$username -and !$password -and !$appname) { 
 #1. Just call deploy.ps1
 #a. The script looks for a “settings.ini” in the same directory. If found, uses the credentials and tenant URL from that file
 #b. If settings.ini is not found, an error is shown 
@@ -193,21 +193,21 @@ if (!$file -and !$tenant -and !$username -and !$password -and !$appname) {
 	
     $username = $settingsIni.deploy.username
     $password = $settingsIni.deploy.password
-    $tenant = $settingsIni.deploy.tenant
+    $url = $settingsIni.deploy.url
     $appname = $settingsIni.deploy.appname
 	
     Write-Host $username
-    Write-Host $tenant
+    Write-Host $url
     Write-Host $appname
 
     	try 
 		{
 		$appid = 0
 		$responseJson = ""
-		$responseJson = getResponseAppNameJson $username $password $site $appname
+		$responseJson = getResponseAppNameJson $username $password $url $appname
 		$appid = getAppId $responseJson
 
-		$uri = "http://$($site)/application/applications/$($appid)/binaries"		 
+		$uri = "http://$($url)/application/applications/$($appid)/binaries"		 
 		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
 		
 		Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
@@ -229,7 +229,7 @@ if (!$file -and !$tenant -and !$username -and !$password -and !$appname) {
 		     Write-Host "ResponseBody:"  $responseBody
 	   }
 }
-ElseIf($file -and !$tenant -and !$username -and !$password -and !$appname)
+ElseIf($file -and !$url -and !$username -and !$password -and !$appname)
 {
     Write-Host "case 2"
 	
@@ -260,20 +260,20 @@ ElseIf($file -and !$tenant -and !$username -and !$password -and !$appname)
 
     $username = $settingsIni.deploy.username
     $password = $settingsIni.deploy.password
-    $tenant = $settingsIni.deploy.tenant
+    $url = $settingsIni.deploy.url
     $appname = $settingsIni.deploy.appname
 
     Write-Host $username
-    Write-Host $tenant
+    Write-Host $url
     Write-Host $appid
 
         try {
 			$appid = 0
 			$responseJson = ""
-			$responseJson = getResponseAppNameJson $username $password $site $appname
+			$responseJson = getResponseAppNameJson $username $password $url $appname
 			$appid = getAppId $responseJson
 			
-			$uri = "http://$($site)/application/applications/$($appid)/binaries"		 
+			$uri = "http://$($url)/application/applications/$($appid)/binaries"		 
 			$filePath = Resolve-Path -Path ".\images\multi\image.zip"
 
 			Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
@@ -295,7 +295,7 @@ ElseIf($file -and !$tenant -and !$username -and !$password -and !$appname)
 		     Write-Host "ResponseBody:"  $responseBody
 	   }
 }
-ElseIf($file -and ($tenant -or $username -or $password -or $appname))
+ElseIf($file -and ($url -or $username -or $password -or $appname))
 {
     Write-Host "case 3"
 	
@@ -322,8 +322,8 @@ ElseIf($file -and ($tenant -or $username -or $password -or $appname))
 
     $settingsIni = Get-IniFile .\$file
 
-    if(!$tenant){
-        $tenant = $settingsIni.deploy.tenant
+    if(!$url){
+        $url = $settingsIni.deploy.url
     }
     if(!$username){
         $username = $settingsIni.deploy.username
@@ -332,20 +332,20 @@ ElseIf($file -and ($tenant -or $username -or $password -or $appname))
         $password = $settingsIni.deploy.password
     }
     if(!$appname){
-        $appname = $settingsIni.deploy.$appname
+        $appname = $settingsIni.deploy.appname
     }
 
        try {
 		$appid = 0
 		$responseJson = ""
-		$responseJson = getResponseAppNameJson $username $password $site $appname
+		$responseJson = getResponseAppNameJson $username $password $url $appname
 		$appid = getAppId $responseJson
 		
 		if($appid -eq 0){
 			throw "Application does not exist."
 		}
 		#		
-		$uri = "http://$($site)/application/applications/$($appid)/binaries"		 
+		$uri = "http://$($url)/application/applications/$($appid)/binaries"		 
 		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
 		
 		Write-Output $base64AuthInfo;
