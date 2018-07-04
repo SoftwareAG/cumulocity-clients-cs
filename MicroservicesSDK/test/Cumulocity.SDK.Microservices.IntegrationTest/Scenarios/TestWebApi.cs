@@ -1,10 +1,12 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using DemoWebApi;
 using Microsoft.AspNetCore.Builder;
@@ -17,113 +19,108 @@ using Xunit;
 using System.Text;
 using Baseline;
 using Baseline.Reflection;
+using Cumulocity.AspNetCore.Authentication.Basic;
+using Cumulocity.SDK.Microservices.IntegrationTest.Client;
+using Cumulocity.SDK.Microservices.IntegrationTest.Mocks;
 using Cumulocity.SDK.Microservices.IntegrationTest.Utils;
+using Cumulocity.SDK.Microservices.Model;
+using Cumulocity.SDK.Microservices.Services;
+using Moq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Cumulocity.SDK.Microservices.IntegrationTest.Scenarios
 {
-	public class TestWebApi
+	public class ApplicationServiceTest : IClassFixture<TestFixture<StartupMock>>
 	{
-		TestServer _server;
-		HttpClient _client;
-
-
-		public TestWebApi()
+		public ApplicationServiceTest(TestFixture<StartupMock> fixture)
 		{
-			Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Test");
-			Environment.SetEnvironmentVariable("C8Y_MICROSERIVCE_ISOLATION", "PER_TENANT");
-			Environment.SetEnvironmentVariable("C8Y_BASEURL", "http://management.staging7.c8y.io");
-			Environment.SetEnvironmentVariable("C8Y_BASEURL_MQTT", "");
-			Environment.SetEnvironmentVariable("C8Y_TENANT", "");
-			Environment.SetEnvironmentVariable("C8Y_PASSWORD", "");
-			Environment.SetEnvironmentVariable("C8Y_USERNAME", "");
-			Environment.SetEnvironmentVariable("SERVER_PORT", "47000");
-			Environment.SetEnvironmentVariable("C8Y_BOOTSTRAP_TENANT", "management");
-			Environment.SetEnvironmentVariable("C8Y_BOOTSTRAP_USER", "servicebootstrap_cs-combain");
-			Environment.SetEnvironmentVariable("C8Y_BOOTSTRAP_PASSWORD", "dpsK5Q5Emm");
+			AppServiceClient = fixture.AppServiceClient;
+			ApplicationServiceMock = fixture.ApplicationServiceMock;
 
-			var hostBuilder = new WebHostBuilder()
-				.CaptureStartupErrors(true)
-				.ConfigureAppConfiguration((builderContext, config) =>
+			var subscriptions = new List<Subscription>
+			{
+				new Subscription
 				{
-					IHostingEnvironment env = builderContext.HostingEnvironment;
-					config
-						//.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-						.AddEnvironmentVariables();
-				})
-				.UseStartup<Startup>();
-				
+					Name = "UserName",
+					Password = "UserPass",
+					Tenant = "UserTenant"
+				}
+			};
 
-			_server = new TestServer(hostBuilder);
+			BasicAuthenticationResult basicAuthenticationResult = new BasicAuthenticationResult()
+			{
+				IsAuthenticated = true,
+				Tenant = "UserTenant",
+				Password = "UserPass",
+				User = "UserName",
 
-			var credentials = FileUtils.GetCredentials();
-			_client = _server.CreateClient();
-			_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials.Hash);
-			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+				Claims = new List<Claim>()
+			};
+
+			IList<User> users = new List<User>
+			{
+				new User
+				{
+					Name = "UserName",
+				}
+			};
+
+			ApplicationServiceMock.Setup(x => x.GetCurrentApplicationSubscriptions())
+								  .Returns(Task.FromResult(subscriptions));
+
+			ApplicationServiceMock.Setup(x => x.GetCurrentUser(It.IsAny<string>()))
+								  .Returns(Task.FromResult(basicAuthenticationResult));
+
+			ApplicationServiceMock.Setup(x => x.GetUsers())
+				.Returns(Task.FromResult(users));
+		}
+
+		public ApplicationServicClient AppServiceClient { get; set; }
+
+		public Mock<IApplicationService> ApplicationServiceMock { get; set; }
+
+		public HttpClient Client { get; }
+
+		[Fact]
+		public async Task ApplicationService_GetCurrentApplicationSubscriptionsAsync()
+		{
+			var response = await AppServiceClient.GetSubscription();
+
+			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+			Assert.Single(response.Result);
+			Assert.Equal("UserName", response.Result.First().Name);
+			Assert.Equal("UserPass", response.Result.First().Password);
+			Assert.Equal("UserTenant", response.Result.First().Tenant);
 		}
 
 		[Fact]
-		public async Task asserting_authentication_with_basic_authentication()
+		public async Task ApplicationService_NotAuthentication_GetCurrentApplicationSubscriptionsAsync()
 		{
-			var response = await _client.GetAsync("/api/values");
-			response.EnsureSuccessStatusCode();
+			var response = await AppServiceClient.GetSubscription(false);
+
+			Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
 		}
 
 		[Fact]
-		public async Task asserting_api_data_get_subscription()
+		public async Task ApplicationService_GetCurrentUser()
 		{
-			var response = await _client.GetAsync("/api/data/subscriptions");
-			response.EnsureSuccessStatusCode();
-			string responseBody = await response.Content.ReadAsStringAsync();
-			dynamic json = JsonConvert.DeserializeObject(responseBody, typeof(object));
-			Assert.NotEqual(0, json.Count);
+			var response = await AppServiceClient.GetCurrentUser();
+
+			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+			Assert.Equal("UserName", response.Result.User);
+			Assert.True(response.Result.IsAuthenticated);
+			Assert.Equal("UserTenant", response.Result.Tenant);
+			Assert.Equal("UserPass", response.Result.Password);
 		}
 
 		[Fact]
-		public async Task asserting_api_data_role_based_authorization()
+		public async Task ApplicationService_GetUsers()
 		{
-			var response = await _client.GetAsync("/api/data/permissions");
-			response.EnsureSuccessStatusCode();
+			var response = await AppServiceClient.GetUser();
+			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+			Assert.Single(response.Result);
+			Assert.Equal("UserName", response.Result.First().Name);
 		}
-
-		[Fact]
-		public async Task asserting_api_data_role_based_authorization_fake_permission()
-		{
-			var response = await _client.GetAsync("/api/data/otherpermission");
-			HttpStatusCode code = response.StatusCode;
-
-			Assert.Equal(HttpStatusCode.Forbidden, code);
-		}
-
-		[Fact]
-		public async Task asserting_api_data_scheduled_task()
-		{
-			var response = await _client.GetAsync("/api/data/scheduledtask");
-			response.EnsureSuccessStatusCode();
-			string responseBody = await response.Content.ReadAsStringAsync();
-
-			JArray counter = JArray.Parse(responseBody);
-			var item = (int)counter.First();
-			Assert.NotEqual(0, item);
-		}
-
-		[Fact]
-		public async Task asserting_api_data_platform()
-		{
-			var response = await _client.GetAsync("/api/data/platform");
-			response.EnsureSuccessStatusCode();
-			string responseBody = await response.Content.ReadAsStringAsync();
-			var platform = JsonConvert.DeserializeObject<dynamic>(responseBody);
-			var i1 = Environment.GetEnvironmentVariable("C8Y_BOOTSTRAP_TENANT");
-			var i2 = (string)platform.TENANT;
-
-			Assert.Equal(Environment.GetEnvironmentVariable("C8Y_BASEURL"), (string)platform.BASEURL);
-			Assert.Equal(Environment.GetEnvironmentVariable("C8Y_BOOTSTRAP_TENANT"), (string)platform.BOOTSTRAP_TENANT);
-			Assert.Equal(Environment.GetEnvironmentVariable("C8Y_BOOTSTRAP_USER"), (string)platform.BOOTSTRAP_USER);
-			Assert.Equal(Environment.GetEnvironmentVariable("C8Y_BOOTSTRAP_PASSWORD"), (string)platform.BOOTSTRAP_PASSWORD);
-			Assert.Equal(Environment.GetEnvironmentVariable("SERVER_PORT"), (string)platform.SERVER_PORT);
-		}
-
-	}	
+	}
 }

@@ -26,8 +26,4 @@
     <ProjectReference Include="..\..\src\Cumulocity.SDK.Microservices\Cumulocity.SDK.Microservices.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Client\" />
-  </ItemGroup>
-
 </Project>
