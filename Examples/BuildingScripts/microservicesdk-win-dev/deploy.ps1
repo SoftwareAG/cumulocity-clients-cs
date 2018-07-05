@@ -15,20 +15,17 @@
     [parameter(Mandatory = $false)] [string]$file
 )
 
-function Select-Value
-{
+function Select-Value {
   param
   (
     [Parameter(Mandatory=$true, ValueFromPipeline=$true, HelpMessage="Data to process")]
     $InputObject
   )
-  process
-  {
+  process {
      $InputObject.Value 
   }
 }
-function Get-IniFile 
-{  
+function Get-IniFile {  
     param(  
         [parameter(Mandatory = $true)] [string] $filePath  
     )  
@@ -36,19 +33,15 @@ function Get-IniFile
     $anonymous = "NoSection"
 
     $ini = @{}  
-    switch -regex -file $filePath  
-    {  
-        "^\[(.+)\]$" # Section  
-        {  
+    switch -regex -file $filePath {  
+        "^\[(.+)\]$" # Section   {  
             $section = $matches[1]  
             $ini[$section] = @{}  
             $CommentCount = 0  
         }  
 
-        "^(;.*)$" # Comment  
-        {  
-            if (!($section))  
-            {  
+        "^(;.*)$" # Comment   {  
+            if (!($section)) {  
                 $section = $anonymous  
                 $ini[$section] = @{}  
             }  
@@ -58,10 +51,8 @@ function Get-IniFile
             $ini[$section][$name] = $value  
         }   
 
-        "(.+?)\s*=\s*(.*)" # Key  
-        {  
-            if (!($section))  
-            {  
+        "(.+?)\s*=\s*(.*)" # Key   {  
+            if (!($section)) {  
                 $section = $anonymous  
                 $ini[$section] = @{}  
             }  
@@ -73,18 +64,15 @@ function Get-IniFile
     return $ini  
 }  
 
-function getResponseAppNameJson([Parameter(Mandatory=$true)]$username,[Parameter(Mandatory=$true)]$pass,[Parameter(Mandatory=$true)]$site,[Parameter(Mandatory=$true)]$appname) 
-{
+function getResponseAppNameJson([Parameter(Mandatory=$true)]$username,[Parameter(Mandatory=$true)]$pass,[Parameter(Mandatory=$true)]$site,[Parameter(Mandatory=$true)]$appname) {
     $aid = 0
     $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$pass)))
     $requestAppName = "http://$site/application/applicationsByName/$appname"
     $responseAppNameJson =Invoke-WebRequest -Uri $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -ErrorAction SilentlyContinue | ConvertFrom-Json            
 
-    if($responseAppNameJson)
-    {
+    if($responseAppNameJson) {
      $app = (($responseAppNameJson).applications  | Where-Object {$_.name -eq $appname})
-     if($app)
-     {
+     if($app) {
       $aid = $app.id
      }
     }
@@ -93,8 +81,7 @@ function getResponseAppNameJson([Parameter(Mandatory=$true)]$username,[Parameter
     }
     return $aid
 }
-function Invoke-DataUpdate
-{
+function Invoke-DataUpdate {
   [CmdletBinding()]
   param
   (
@@ -121,8 +108,7 @@ function Invoke-DataUpdate
   Write-Host "I'm done!"
 }
 
-function Invoke-MultipartFormDataUpload
-{
+function Invoke-MultipartFormDataUpload {
     PARAM
     (
         [string][parameter(Mandatory = $true)][ValidateNotNullOrEmpty()]$InFile,
@@ -130,34 +116,28 @@ function Invoke-MultipartFormDataUpload
         [Uri][parameter(Mandatory = $true)][ValidateNotNullOrEmpty()]$Uri,
         [string] [parameter(Mandatory = $true)] $Header
     )
-    BEGIN
-    {
-        if (-not (Test-Path $InFile))
-        {
+    BEGIN {
+        if (-not (Test-Path $InFile)) {
             $errorMessage = ("File {0} missing or unable to read." -f $InFile)
             $exception =  New-Object System.Exception $errorMessage
             $errorRecord = New-Object System.Management.Automation.ErrorRecord $exception, 'MultipartFormDataUpload', ([Management.Automation.ErrorCategory]::InvalidArgument), $InFile
             $PSCmdlet.ThrowTerminatingError($errorRecord)
         }
 
-        if (-not $ContentType)
-        {
+        if (-not $ContentType) {
             Add-Type -AssemblyName System.Web
 
             $mimeType = [Web.MimeMapping]::GetMimeMapping($InFile)
             
-            if ($mimeType)
-            {
+            if ($mimeType) {
                 $ContentType = $mimeType
             }
-            else
-            {
+            else {
                 $ContentType = "application/octet-stream"
             }
         }
     }
-    PROCESS
-    {
+    PROCESS {
     $fileName = Split-Path $InFile -leaf
     $boundary = [guid]::NewGuid().ToString()
 		
@@ -176,24 +156,21 @@ Content-Type: {2}
 
         $body = $template -f $boundary, $fileName, $ContentType, $enc.GetString($fileBin)
 
-      try
-      {
+      try {
         return Invoke-WebRequest -Uri $Uri `
                      -Method Post `
                      -ContentType "multipart/form-data; boundary=$boundary" `
                      -Body $body `
                      -Headers @{Authorization=("Basic {0}" -f $Header)}
       }
-      catch 
-      {
+      catch {
         $PSCmdlet.ThrowTerminatingError($_)
       }
     }
     END { }
 }
 
-function Write-ErrorMsg($exp) 
-{
+function Write-ErrorMsg($exp) {
   Write-Host "StatusCode:"  $exp.Message 
   #Write-Host "Response:" $exp.Response 
   #$result = $exp.Response.GetResponseStream()
@@ -215,7 +192,8 @@ if (!$file -and !$url -and !$username -and !$password -and !$appname) {
 	
   if (Test-Path $file) { 
     $isLocalFile = $true;
-  }else{
+  }
+else{
 	
       $isLocalFile = $false
     $appdata = Get-Childitem env:APPDATA | Select-Value
@@ -226,10 +204,10 @@ if (!$file -and !$url -and !$username -and !$password -and !$appname) {
     }
   }
 	
-  if(-not($isLocalFile))
-  {
+  if(-not($isLocalFile)) {
     $settingsIni = Get-IniFile $file
-  }else{
+  }
+else{
     $settingsIni = Get-IniFile .\$file
   }
 	
@@ -251,8 +229,7 @@ if (!$file -and !$url -and !$username -and !$password -and !$appname) {
       Write-ErrorMsg $_.Exception
     }
 }
-ElseIf($file -and !$url -and !$username -and !$password -and !$appname)
-{
+ElseIf($file -and !$url -and !$username -and !$password -and !$appname) {
 	
   $isLocalFile = $true
 	
@@ -270,10 +247,10 @@ ElseIf($file -and !$url -and !$username -and !$password -and !$appname)
     }
   }
 	
-  if(-not($isLocalFile))
-  {
+  if(-not($isLocalFile)) {
     $settingsIni = Get-IniFile $file
-  }else{
+  }
+else{
       $settingsIni = Get-IniFile .\$file
   }
 	
@@ -298,12 +275,12 @@ ElseIf($file -and !$url -and !$username -and !$password -and !$appname)
       Write-ErrorMsg $_.Exception
      }
 }
-ElseIf($file -and ($url -or $username -or $password -or $appname))
-{
+ElseIf($file -and ($url -or $username -or $password -or $appname)) {
 	
   if (Test-Path $file) { 
     $isLocalFile = $true
-  }else{
+  }
+else{
 	
     $isLocalFile = $false
     $appdata = Get-Childitem env:APPDATA | Select-Value
@@ -314,10 +291,10 @@ ElseIf($file -and ($url -or $username -or $password -or $appname))
     }
   }
 	
-  if(-not($isLocalFile))
-  {
+  if(-not($isLocalFile)) {
     $settingsIni = Get-IniFile $file
-  }else{
+  }
+else{
       $settingsIni = Get-IniFile .\$file
   }
 	
@@ -344,15 +321,13 @@ ElseIf($file -and ($url -or $username -or $password -or $appname))
       Invoke-DataUpdate $appid $responseJson
 		
     } 
-    catch [System.Management.Automation.RuntimeException]
-        {
+    catch [System.Management.Automation.RuntimeException] {
           # get error record
           [Management.Automation.ErrorRecord]$e = $_
            Write-ErrorMsg $e.Exception
         }
 }
-Else
-{
+Else {
     $File_Path_Error = [string]"The file path is not valid"
     Write-Error $File_Path_Error
 }
