@@ -1,18 +1,18 @@
 ﻿Param(    
     [alias("s")]
-    [parameter(Mandatory = $true)] [string]$url,
+    [parameter(Mandatory = $false)] [string]$url,
 
     [alias("u")]
-    [parameter(Mandatory = $true)] [string]$username,
+    [parameter(Mandatory = $false)] [string]$username,
 
     [alias("p")]
-    [parameter(Mandatory = $true)] [string]$password,
+    [parameter(Mandatory = $false)] [string]$password,
 
     [alias("an")]
-    [parameter(Mandatory = $true)] [string]$appname,
+    [parameter(Mandatory = $false)] [string]$appname,
 
     [alias("f")]
-    [parameter(Mandatory = $true)] [string]$file
+    [parameter(Mandatory = $false)] [string]$file
 )
 
 function Select-Value
@@ -73,48 +73,25 @@ function Get-IniFile
     return $ini  
 }  
 
-function getResponseAppNameJson([Parameter(Mandatory=$true)]$username,[Parameter(Mandatory=$true)]$pass,[Parameter(Mandatory=$true)]$site,[Parameter(Mandatory=$true)]$appname) {
-
+function getResponseAppNameJson([Parameter(Mandatory=$true)]$username,[Parameter(Mandatory=$true)]$pass,[Parameter(Mandatory=$true)]$site,[Parameter(Mandatory=$true)]$appname) 
+{
+    $aid = 0
     $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$pass)))
     $requestAppName = "http://$site/application/applicationsByName/$appname"
-    $responseAppNameJson =Invoke-WebRequest -Uri $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -ErrorAction SilentlyContinue | ConvertFrom-Json
-        
+    $responseAppNameJson =Invoke-WebRequest -Uri $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -ErrorAction SilentlyContinue | ConvertFrom-Json            
 
-      return $responseAppNameJson
-}
-function Where-AppName
-{
-  param
-  (
-    [Object]
-    [Parameter(Mandatory=$true, ValueFromPipeline=$true, HelpMessage="Data to filter")]
-    $InputObject
-  )
-  process
-  {
-    if ($InputObject.name -eq $appname)
+    if($responseAppNameJson)
     {
-      $InputObject
+     $app = (($responseAppNameJson).applications  | Where-Object {$_.name -eq $appname})
+     if($app)
+     {
+      $aid = $app.id
+     }
     }
-  }
-}
-function getAppId([Parameter(Mandatory=$true)]$response) {
-
-
-  $appid = 0
-
-  if($response)
-  {
-    $app = $response.applications | Where-AppName 
-    if($app)
-    {
-      $appid = $app.id
+    if($aid-eq 0){
+      throw "Application does not exist."
     }
-  }
-
-  if($appid -eq 0){
-    throw "Application does not exist."
-  }
+    return $aid
 }
 function Invoke-DataUpdate
 {
@@ -130,21 +107,15 @@ function Invoke-DataUpdate
     $responseJson = ""
   )
   
+  $id = getResponseAppNameJson $username $password $url $appname
   
-  
-  $responseJson = getResponseAppNameJson $username $password $url $appname
-  $appid = getAppId $responseJson
-  
-  if($appid -eq 0){
+  if($id -eq 0){
     throw "Application does not exist."
   }
   #		
-  $uri = "http://$($url)/application/applications/$($appid)/binaries"		 
+  $uri = "http://$($url)/application/applications/$($id)/binaries"		 
   $filePath = Resolve-Path -Path ".\images\multi\image.zip"
-  
-  Write-Output $base64AuthInfo
-  Write-Output $filePath
-  
+ 
   Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
   
   Write-Host "I'm done!"
@@ -221,19 +192,16 @@ Content-Type: {2}
     END { }
 }
 
-function Write-ErrorMsg
+function Write-ErrorMsg($exp) 
 {
-  # Dig into the exception to get the Response details.
-  # Note that value__ is not a typo.
-  Write-Host "StatusCode:"  $_.Exception.Message
-  
-  Write-Host "Response:" $_.Exception.Response 
-  $result = $_.Exception.Response.GetResponseStream()
-  $reader = New-Object System.IO.StreamReader($result)
-  $reader.BaseStream.Position = 0
-  $reader.DiscardBufferedData()
-  $responseBody = $reader.ReadToEnd();
-  Write-Host "ResponseBody:"  $responseBody
+  Write-Host "StatusCode:"  $exp.Message 
+  #Write-Host "Response:" $exp.Response 
+  #$result = $exp.Response.GetResponseStream()
+  #$reader = New-Object System.IO.StreamReader($result)
+  #$reader.BaseStream.Position = 0
+  #$reader.DiscardBufferedData()
+  #$responseBody = $reader.ReadToEnd()
+  #Write-Host "ResponseBody:"  $responseBody
 }
 
 if (!$file -and !$url -and !$username -and !$password -and !$appname) { 
@@ -280,7 +248,7 @@ if (!$file -and !$url -and !$username -and !$password -and !$appname) {
       Invoke-DataUpdate $appid $responseJson		
     } 
     catch {
-      Write-ErrorMsg
+      Write-ErrorMsg $_.Exception
     }
 }
 ElseIf($file -and !$url -and !$username -and !$password -and !$appname)
@@ -289,10 +257,11 @@ ElseIf($file -and !$url -and !$username -and !$password -and !$appname)
   $isLocalFile = $true
 	
   if (Test-Path $file) { 
-    $isLocalFile = $true;
-  }else{
+    $isLocalFile = $true
+  }
+  else{
 	
-      $isLocalFile = $false
+    $isLocalFile = $false
     $appdata = Get-Childitem env:APPDATA | Select-Value
     $file = "$appdata\c8y\$file"
 		
@@ -326,17 +295,17 @@ ElseIf($file -and !$url -and !$username -and !$password -and !$appname)
       Invoke-DataUpdate $appid $responseJson
     } 
     catch {
-      Write-ErrorMsg
+      Write-ErrorMsg $_.Exception
      }
 }
 ElseIf($file -and ($url -or $username -or $password -or $appname))
 {
 	
   if (Test-Path $file) { 
-    $isLocalFile = $true;
+    $isLocalFile = $true
   }else{
 	
-      $isLocalFile = $false
+    $isLocalFile = $false
     $appdata = Get-Childitem env:APPDATA | Select-Value
     $file = "$appdata\c8y\$file"
 		
@@ -375,9 +344,12 @@ ElseIf($file -and ($url -or $username -or $password -or $appname))
       Invoke-DataUpdate $appid $responseJson
 		
     } 
-    catch {
-      Write-ErrorMsg
-     }
+    catch [System.Management.Automation.RuntimeException]
+        {
+          # get error record
+          [Management.Automation.ErrorRecord]$e = $_
+           Write-ErrorMsg $e.Exception
+        }
 }
 Else
 {
