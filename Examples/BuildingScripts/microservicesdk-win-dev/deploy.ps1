@@ -1,20 +1,32 @@
 ﻿Param(    
     [alias("s")]
-    [parameter(Mandatory = $false)] [string]$url,
+    [parameter(Mandatory = $true)] [string]$url,
 
     [alias("u")]
-    [parameter(Mandatory = $false)] [string]$username,
+    [parameter(Mandatory = $true)] [string]$username,
 
     [alias("p")]
-    [parameter(Mandatory = $false)] [string]$password,
+    [parameter(Mandatory = $true)] [string]$password,
 
     [alias("an")]
-    [parameter(Mandatory = $false)] [string]$appname,
+    [parameter(Mandatory = $true)] [string]$appname,
 
     [alias("f")]
-    [parameter(Mandatory = $false)] [string]$file
+    [parameter(Mandatory = $true)] [string]$file
 )
 
+function Select-Value
+{
+  param
+  (
+    [Parameter(Mandatory=$true, ValueFromPipeline=$true, HelpMessage="Data to process")]
+    $InputObject
+  )
+  process
+  {
+     $InputObject.Value 
+  }
+}
 function Get-IniFile 
 {  
     param(  
@@ -61,33 +73,81 @@ function Get-IniFile
     return $ini  
 }  
 
-function getResponseAppNameJson($username,$pass,$site,$appname) {
+function getResponseAppNameJson([Parameter(Mandatory=$true)]$username,[Parameter(Mandatory=$true)]$pass,[Parameter(Mandatory=$true)]$site,[Parameter(Mandatory=$true)]$appname) {
 
-		$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$pass)))
-		$requestAppName = "http://$site/application/applicationsByName/$appname"
-		$responseAppNameJson =Invoke-WebRequest $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -ErrorAction SilentlyContinue | ConvertFrom-Json
+    $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$pass)))
+    $requestAppName = "http://$site/application/applicationsByName/$appname"
+    $responseAppNameJson =Invoke-WebRequest -Uri $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -ErrorAction SilentlyContinue | ConvertFrom-Json
         
 
       return $responseAppNameJson
 }
+function Where-AppName
+{
+  param
+  (
+    [Object]
+    [Parameter(Mandatory=$true, ValueFromPipeline=$true, HelpMessage="Data to filter")]
+    $InputObject
+  )
+  process
+  {
+    if ($InputObject.name -eq $appname)
+    {
+      $InputObject
+    }
+  }
+}
+function getAppId([Parameter(Mandatory=$true)]$response) {
 
-function getAppId($response) {
 
-	$appid = 0
+  $appid = 0
 
-	if($response)
-	{
-	 $app = $response.applications | where {$_.name -eq $appname } 
-	 if($app)
-	 {
-		$appid = $app.id
-	 }
-	}
+  if($response)
+  {
+    $app = $response.applications | Where-AppName 
+    if($app)
+    {
+      $appid = $app.id
+    }
+  }
 
-	if($appid -eq 0){
-		throw "Application does not exist."
-	}
-return $appid;
+  if($appid -eq 0){
+    throw "Application does not exist."
+  }
+}
+function Invoke-DataUpdate
+{
+  [CmdletBinding()]
+  param
+  (
+    [Parameter(Mandatory=$false, Position=0)]
+    [System.Int32]
+    $appid = 0,
+    
+    [Parameter(Mandatory=$false, Position=1)]
+    [System.String]
+    $responseJson = ""
+  )
+  
+  
+  
+  $responseJson = getResponseAppNameJson $username $password $url $appname
+  $appid = getAppId $responseJson
+  
+  if($appid -eq 0){
+    throw "Application does not exist."
+  }
+  #		
+  $uri = "http://$($url)/application/applications/$($appid)/binaries"		 
+  $filePath = Resolve-Path -Path ".\images\multi\image.zip"
+  
+  Write-Output $base64AuthInfo
+  Write-Output $filePath
+  
+  Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
+  
+  Write-Host "I'm done!"
 }
 
 function Invoke-MultipartFormDataUpload
@@ -95,7 +155,7 @@ function Invoke-MultipartFormDataUpload
     PARAM
     (
         [string][parameter(Mandatory = $true)][ValidateNotNullOrEmpty()]$InFile,
-        [string]$ContentType,
+        [Parameter(Mandatory=$true)][string]$ContentType,
         [Uri][parameter(Mandatory = $true)][ValidateNotNullOrEmpty()]$Uri,
         [string] [parameter(Mandatory = $true)] $Header
     )
@@ -105,15 +165,15 @@ function Invoke-MultipartFormDataUpload
         {
             $errorMessage = ("File {0} missing or unable to read." -f $InFile)
             $exception =  New-Object System.Exception $errorMessage
-			$errorRecord = New-Object System.Management.Automation.ErrorRecord $exception, 'MultipartFormDataUpload', ([System.Management.Automation.ErrorCategory]::InvalidArgument), $InFile
-			$PSCmdlet.ThrowTerminatingError($errorRecord)
+            $errorRecord = New-Object System.Management.Automation.ErrorRecord $exception, 'MultipartFormDataUpload', ([Management.Automation.ErrorCategory]::InvalidArgument), $InFile
+            $PSCmdlet.ThrowTerminatingError($errorRecord)
         }
 
         if (-not $ContentType)
         {
             Add-Type -AssemblyName System.Web
 
-            $mimeType = [System.Web.MimeMapping]::GetMimeMapping($InFile)
+            $mimeType = [Web.MimeMapping]::GetMimeMapping($InFile)
             
             if ($mimeType)
             {
@@ -127,13 +187,13 @@ function Invoke-MultipartFormDataUpload
     }
     PROCESS
     {
-		$fileName = Split-Path $InFile -leaf
-		$boundary = [guid]::NewGuid().ToString()
+    $fileName = Split-Path $InFile -leaf
+    $boundary = [guid]::NewGuid().ToString()
 		
-    	$fileBin = [System.IO.File]::ReadAllBytes($InFile)
-	    $enc = [System.Text.Encoding]::GetEncoding("iso-8859-1")
+      $fileBin = [IO.File]::ReadAllBytes($InFile)
+      $enc = [Text.Encoding]::GetEncoding("iso-8859-1")
 
-	    $template = @'
+      $template = @'
 --{0}
 Content-Disposition: form-data; name="fileData"; filename="{1}"
 Content-Type: {2}
@@ -145,51 +205,65 @@ Content-Type: {2}
 
         $body = $template -f $boundary, $fileName, $ContentType, $enc.GetString($fileBin)
 
-		try
-		{
-			return Invoke-WebRequest -Uri $Uri `
-									 -Method Post `
-									 -ContentType "multipart/form-data; boundary=$boundary" `
-									 -Body $body `
-									 -Headers @{Authorization=("Basic {0}" -f $Header)}
-		}
-		catch [Exception]
-		{
-			$PSCmdlet.ThrowTerminatingError($_)
-		}
+      try
+      {
+        return Invoke-WebRequest -Uri $Uri `
+                     -Method Post `
+                     -ContentType "multipart/form-data; boundary=$boundary" `
+                     -Body $body `
+                     -Headers @{Authorization=("Basic {0}" -f $Header)}
+      }
+      catch 
+      {
+        $PSCmdlet.ThrowTerminatingError($_)
+      }
     }
     END { }
 }
 
+function Write-ErrorMsg
+{
+  # Dig into the exception to get the Response details.
+  # Note that value__ is not a typo.
+  Write-Host "StatusCode:"  $_.Exception.Message
+  
+  Write-Host "Response:" $_.Exception.Response 
+  $result = $_.Exception.Response.GetResponseStream()
+  $reader = New-Object System.IO.StreamReader($result)
+  $reader.BaseStream.Position = 0
+  $reader.DiscardBufferedData()
+  $responseBody = $reader.ReadToEnd();
+  Write-Host "ResponseBody:"  $responseBody
+}
+
 if (!$file -and !$url -and !$username -and !$password -and !$appname) { 
-#1. Just call deploy.ps1
-#a. The script looks for a “settings.ini” in the same directory. If found, uses the credentials and tenant URL from that file
-#b. If settings.ini is not found, an error is shown 
+  #1. Just call deploy.ps1
+  #a. The script looks for a "settings.ini" in the same directory. If found, uses the credentials and tenant URL from that file
+  #b. If settings.ini is not found, an error is shown 
     
-    Write-Host "case 1"
 	
-	$file = "settings.ini"
-	$isLocalFile = $true
+  $file = "settings.ini"
+  $isLocalFile = $true
 	
-	if (Test-Path $file) { 
-		$isLocalFile = $true;
-	}else{
+  if (Test-Path $file) { 
+    $isLocalFile = $true;
+  }else{
 	
-	    $isLocalFile = $false
-		$appdata = Get-Childitem env:APPDATA | %{ $_.Value }
-		$file = "$appdata\c8y\$file"
+      $isLocalFile = $false
+    $appdata = Get-Childitem env:APPDATA | Select-Value
+    $file = "$appdata\c8y\$file"
 		
-		if (-not(Test-Path $file)) { 
-			throw [System.IO.FileNotFoundException] "$file not found."
-		}
-	}
+    if (-not(Test-Path $file)) { 
+      throw [IO.FileNotFoundException] "$file not found."
+    }
+  }
 	
-	if(-not($isLocalFile))
-	{
-		$settingsIni = Get-IniFile $file
-	}else{
-	    $settingsIni = Get-IniFile .\$file
-	}
+  if(-not($isLocalFile))
+  {
+    $settingsIni = Get-IniFile $file
+  }else{
+    $settingsIni = Get-IniFile .\$file
+  }
 	
     $username = $settingsIni.deploy.username
     $password = $settingsIni.deploy.password
@@ -200,62 +274,40 @@ if (!$file -and !$url -and !$username -and !$password -and !$appname) {
     Write-Host $url
     Write-Host $appname
 
-    	try 
-		{
-		$appid = 0
-		$responseJson = ""
-		$responseJson = getResponseAppNameJson $username $password $url $appname
-		$appid = getAppId $responseJson
-
-		$uri = "http://$($url)/application/applications/$($appid)/binaries"		 
-		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
-		
-		Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
-		
-		Write-Host "I'm done!"
-		
-		} 
-        catch {
-		    # Dig into the exception to get the Response details.
-		    # Note that value__ is not a typo.
-		    Write-Host "StatusCode:"  $_.Exception.Message
-		
-		     Write-Host "Response:" $_.Exception.Response 
-		     $result = $_.Exception.Response.GetResponseStream()
-		     $reader = New-Object System.IO.StreamReader($result)
-		     $reader.BaseStream.Position = 0
-		     $reader.DiscardBufferedData()
-		      $responseBody = $reader.ReadToEnd();
-		     Write-Host "ResponseBody:"  $responseBody
-	   }
+    try {    
+      $appid = 0
+      $responseJson = ""
+      Invoke-DataUpdate $appid $responseJson		
+    } 
+    catch {
+      Write-ErrorMsg
+    }
 }
 ElseIf($file -and !$url -and !$username -and !$password -and !$appname)
 {
-    Write-Host "case 2"
 	
-	$isLocalFile = $true
+  $isLocalFile = $true
 	
-	if (Test-Path $file) { 
-		$isLocalFile = $true;
-	}else{
+  if (Test-Path $file) { 
+    $isLocalFile = $true;
+  }else{
 	
-	    $isLocalFile = $false
-		$appdata = Get-Childitem env:APPDATA | %{ $_.Value }
-		$file = "$appdata\c8y\$file"
+      $isLocalFile = $false
+    $appdata = Get-Childitem env:APPDATA | Select-Value
+    $file = "$appdata\c8y\$file"
 		
-		if (-not(Test-Path $file)) { 
-			throw [System.IO.FileNotFoundException] "$file not found."
-		}
-	}
+    if (-not(Test-Path $file)) { 
+      throw [IO.FileNotFoundException] "$file not found."
+    }
+  }
 	
-	if(-not($isLocalFile))
-	{
-		$settingsIni = Get-IniFile $file
-	}else{
-	    $settingsIni = Get-IniFile .\$file
-	}
+  if(-not($isLocalFile))
+  {
+    $settingsIni = Get-IniFile $file
+  }else{
+      $settingsIni = Get-IniFile .\$file
+  }
 	
-
     $settingsIni = Get-IniFile .\$file
 
     $username = $settingsIni.deploy.username
@@ -267,57 +319,38 @@ ElseIf($file -and !$url -and !$username -and !$password -and !$appname)
     Write-Host $url
     Write-Host $appid
 
-        try {
-			$appid = 0
-			$responseJson = ""
-			$responseJson = getResponseAppNameJson $username $password $url $appname
-			$appid = getAppId $responseJson
-			
-			$uri = "http://$($url)/application/applications/$($appid)/binaries"		 
-			$filePath = Resolve-Path -Path ".\images\multi\image.zip"
-
-			Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
-		
-		Write-Host "I'm done!"
-		
-		} 
-        catch {
-		    # Dig into the exception to get the Response details.
-		    # Note that value__ is not a typo.
-		    Write-Host "StatusCode:"  $_.Exception.Message
-		
-		     Write-Host "Response:" $_.Exception.Response 
-		     $result = $_.Exception.Response.GetResponseStream()
-		     $reader = New-Object System.IO.StreamReader($result)
-		     $reader.BaseStream.Position = 0
-		     $reader.DiscardBufferedData()
-		     $responseBody = $reader.ReadToEnd();
-		     Write-Host "ResponseBody:"  $responseBody
-	   }
+    try {
+    
+      $appid = 0
+      $responseJson = ""
+      Invoke-DataUpdate $appid $responseJson
+    } 
+    catch {
+      Write-ErrorMsg
+     }
 }
 ElseIf($file -and ($url -or $username -or $password -or $appname))
 {
-    Write-Host "case 3"
 	
-	if (Test-Path $file) { 
-		$isLocalFile = $true;
-	}else{
+  if (Test-Path $file) { 
+    $isLocalFile = $true;
+  }else{
 	
-	    $isLocalFile = $false
-		$appdata = Get-Childitem env:APPDATA | %{ $_.Value }
-		$file = "$appdata\c8y\$file"
+      $isLocalFile = $false
+    $appdata = Get-Childitem env:APPDATA | Select-Value
+    $file = "$appdata\c8y\$file"
 		
-		if (-not(Test-Path $file)) { 
-			throw [System.IO.FileNotFoundException] "$file not found."
-		}
-	}
+    if (-not(Test-Path $file)) { 
+      throw [IO.FileNotFoundException] "$file not found."
+    }
+  }
 	
-	if(-not($isLocalFile))
-	{
-		$settingsIni = Get-IniFile $file
-	}else{
-	    $settingsIni = Get-IniFile .\$file
-	}
+  if(-not($isLocalFile))
+  {
+    $settingsIni = Get-IniFile $file
+  }else{
+      $settingsIni = Get-IniFile .\$file
+  }
 	
 
     $settingsIni = Get-IniFile .\$file
@@ -335,40 +368,16 @@ ElseIf($file -and ($url -or $username -or $password -or $appname))
         $appname = $settingsIni.deploy.appname
     }
 
-       try {
-		$appid = 0
-		$responseJson = ""
-		$responseJson = getResponseAppNameJson $username $password $url $appname
-		$appid = getAppId $responseJson
+    try {
+    
+      $appid = 0
+      $responseJson = ""
+      Invoke-DataUpdate $appid $responseJson
 		
-		if($appid -eq 0){
-			throw "Application does not exist."
-		}
-		#		
-		$uri = "http://$($url)/application/applications/$($appid)/binaries"		 
-		$filePath = Resolve-Path -Path ".\images\multi\image.zip"
-		
-		Write-Output $base64AuthInfo;
-		Write-Output $filePath;
-		
-		Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
-		
-		Write-Host "I'm done!"
-		
-		} 
-        catch {
-		    # Dig into the exception to get the Response details.
-		    # Note that value__ is not a typo.
-		    Write-Host "StatusCode:"  $_.Exception.Message
-		
-		     Write-Host "Response:" $_.Exception.Response 
-		     $result = $_.Exception.Response.GetResponseStream()
-		     $reader = New-Object System.IO.StreamReader($result)
-		     $reader.BaseStream.Position = 0
-		     $reader.DiscardBufferedData()
-		      $responseBody = $reader.ReadToEnd();
-		     Write-Host "ResponseBody:"  $responseBody
-	   }
+    } 
+    catch {
+      Write-ErrorMsg
+     }
 }
 Else
 {
