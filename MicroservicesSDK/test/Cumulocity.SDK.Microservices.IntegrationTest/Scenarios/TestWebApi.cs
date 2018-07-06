@@ -38,6 +38,8 @@ namespace Cumulocity.SDK.Microservices.IntegrationTest.Scenarios
 			AppServiceClient = fixture.AppServiceClient;
 			ApplicationServiceMock = fixture.ApplicationServiceMock;
 
+			#region @Given
+
 			var subscriptions = new List<Subscription>
 			{
 				new Subscription
@@ -67,13 +69,15 @@ namespace Cumulocity.SDK.Microservices.IntegrationTest.Scenarios
 			};
 
 			ApplicationServiceMock.Setup(x => x.GetCurrentApplicationSubscriptions())
-								  .Returns(Task.FromResult(subscriptions));
+				.Returns(Task.FromResult(subscriptions));
 
 			ApplicationServiceMock.Setup(x => x.GetCurrentUser(It.IsAny<string>()))
-								  .Returns(Task.FromResult(basicAuthenticationResult));
+				.Returns(Task.FromResult(basicAuthenticationResult));
 
 			ApplicationServiceMock.Setup(x => x.GetUsers())
 				.Returns(Task.FromResult(users));
+
+			#endregion @Given
 		}
 
 		public ApplicationServicClient AppServiceClient { get; set; }
@@ -85,8 +89,11 @@ namespace Cumulocity.SDK.Microservices.IntegrationTest.Scenarios
 		[Fact]
 		public async Task ApplicationService_GetCurrentApplicationSubscriptionsAsync()
 		{
+			//@Given
+			AppServiceClient.IsAuthHeaderRequired = true;
+			//@When
 			var response = await AppServiceClient.GetSubscription();
-
+			//@Then
 			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 			Assert.Single(response.Result);
 			Assert.Equal("UserName", response.Result.First().Name);
@@ -97,16 +104,22 @@ namespace Cumulocity.SDK.Microservices.IntegrationTest.Scenarios
 		[Fact]
 		public async Task ApplicationService_NotAuthentication_GetCurrentApplicationSubscriptionsAsync()
 		{
+			//@Given
+			AppServiceClient.IsAuthHeaderRequired = false;
+			//@When
 			var response = await AppServiceClient.GetSubscription(false);
-
+			//@Then
 			Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
 		}
 
 		[Fact]
 		public async Task ApplicationService_GetCurrentUser()
 		{
+			//@Given
+			AppServiceClient.IsAuthHeaderRequired = true;
+			//@When
 			var response = await AppServiceClient.GetCurrentUser();
-
+			//@Then
 			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 			Assert.Equal("UserName", response.Result.User);
 			Assert.True(response.Result.IsAuthenticated);
@@ -117,7 +130,11 @@ namespace Cumulocity.SDK.Microservices.IntegrationTest.Scenarios
 		[Fact]
 		public async Task ApplicationService_GetUsers()
 		{
+			//@Given
+			AppServiceClient.IsAuthHeaderRequired = true;
+			//@When
 			var response = await AppServiceClient.GetUser();
+			//@Then
 			Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 			Assert.Single(response.Result);
 			Assert.Equal("UserName", response.Result.First().Name);
