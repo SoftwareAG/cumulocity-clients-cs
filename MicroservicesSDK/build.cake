@@ -120,8 +120,7 @@ Task("Build")
 		}
     }
 });
-
- 
+	
  Task("Test")
 	.IsDependentOn("Clean")
 	.IsDependentOn("Build")
@@ -134,8 +133,8 @@ Task("Build")
 		{
 			var projectFolder = System.IO.Path.GetDirectoryName(test.FullPath);
 			var projectName = System.IO.Path.GetFileName(System.IO.Path.GetDirectoryName(test.FullPath));
-		
-			
+			DotNetCoreRestore(test.FullPath);
+					
 			try
 			{
 			    Information("Solution Directory: {0}", solutionDir);
