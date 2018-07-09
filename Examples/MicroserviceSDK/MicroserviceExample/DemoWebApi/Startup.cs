@@ -35,9 +35,8 @@ namespace DemoWebApi
 			_logger.LogDebug($"Total Services Initially: {services.Count}");
 
 			services.AddMemoryCache();
-			services.AddCumulocityAuthentication(Configuration);
 			services.AddPlatform(Configuration);
-			services.AddSingleton<IApplicationService, ApplicationService>();
+			ConfigureServicesLayer(services);
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 			// Add scheduled tasks & scheduler
@@ -52,7 +51,11 @@ namespace DemoWebApi
 			services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 			//services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
 		}
-
+		public virtual void ConfigureServicesLayer(IServiceCollection services)
+		{
+			services.AddCumulocityAuthentication(Configuration);
+			services.AddSingleton<IApplicationService, ApplicationService>();
+		}
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 		{
 			app.UseAuthentication();

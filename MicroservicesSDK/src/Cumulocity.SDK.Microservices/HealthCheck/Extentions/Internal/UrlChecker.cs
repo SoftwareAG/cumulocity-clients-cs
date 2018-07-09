@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -221,19 +222,14 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.Extentions.Internal
 			httpClient.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue { NoCache = true };
 			return httpClient;
 		}
-
 		public static async ValueTask<IHealthCheckResult> DefaultUrlCheck(HttpResponseMessage response)
 		{
 			var status = response.IsSuccessStatusCode ? CheckStatus.Healthy : CheckStatus.Unhealthy;
 			var data = new Dictionary<string, object>
 			{
-				//{ "url", response.RequestMessage.RequestUri.ToString() },
-				//{ "status", (int)response.StatusCode },
-				//{ "reason", response.ReasonPhrase },
-				//{ "body", await response.Content?.ReadAsStringAsync() }
 			};
 
-			string jsonString = response.Content.ReadAsStringAsync()
+			string jsonString = response.Content?.ReadAsStringAsync()
 				.Result
 				.Replace("\\", "")
 				.Trim(new char[1] { '"' });
