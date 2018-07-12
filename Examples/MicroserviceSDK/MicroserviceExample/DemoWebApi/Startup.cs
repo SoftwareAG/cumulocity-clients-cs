@@ -56,7 +56,11 @@ namespace DemoWebApi
 			services.AddCumulocityAuthentication(Configuration);
 			services.AddSingleton<IApplicationService, ApplicationService>();
 		}
-
+		public virtual void ConfigureServicesLayer(IServiceCollection services)
+		{
+			services.AddCumulocityAuthentication(Configuration);
+			services.AddSingleton<IApplicationService, ApplicationService>();
+		}
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 		{
 			app.UseAuthentication();

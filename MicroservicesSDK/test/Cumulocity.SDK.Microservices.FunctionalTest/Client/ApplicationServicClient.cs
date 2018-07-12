@@ -14,9 +14,9 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest
 	public class ApplicationServicClient
 	{
 		private HttpClient _httpClient;
-		private Credentials _creds;
+		private Utils.Credentials _creds;
 
-		public ApplicationServicClient(HttpClient httpClient,Credentials creds)
+		public ApplicationServicClient(HttpClient httpClient,Utils.Credentials creds)
 		{
 			this._httpClient = httpClient;
 			this._creds = creds;

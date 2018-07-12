@@ -40,22 +40,22 @@ namespace Cumulocity.AspNetCore.Authentication.Basic.Tests
             Assert.Equal("Basic realm=\"\"", response.Headers.WwwAuthenticate.Single().ToString());
         }
 
-        [Fact]
-        public async Task ValidCredentialsAuthorize()
-        {
-            const string username = "management/admin";
-            const string password = "Pyi1bo1r";
-            //var client = TestBed.GetClient(builder => builder.AddBasicAuthentication(
-            //    userPass => Task.FromResult(new BasicAuthenticationResult() { IsAuthenticated = (userPass.username == username && userPass.password == password) })));
+        //[Fact]
+        //public async Task ValidCredentialsAuthorize()
+        //{
+        //    const string username = "management/admin";
+        //    const string password = "Pyi1bo1r";
+        //    //var client = TestBed.GetClient(builder => builder.AddBasicAuthentication(
+        //    //    userPass => Task.FromResult(new BasicAuthenticationResult() { IsAuthenticated = (userPass.username == username && userPass.password == password) })));
 
-            var client = TestBed.GetClient(builder => builder.AddBasicAuthentication<BasicCredentialVerifier>());
-            client.SetBasic(username, password);
-            var response = await client.GetAsync("/");
+        //    var client = TestBed.GetClient(builder => builder.AddBasicAuthentication<BasicCredentialVerifier>());
+        //    client.SetBasic(username, password);
+        //    var response = await client.GetAsync("/");
 
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(string.Empty, await response.Content.ReadAsStringAsync());
-            Assert.False(response.Headers.WwwAuthenticate.Any());
-        }
+        //    Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        //    Assert.Equal(string.Empty, await response.Content.ReadAsStringAsync());
+        //    Assert.False(response.Headers.WwwAuthenticate.Any());
+        //}
 
 
         internal class BasicCredentialVerifier : IBasicCredentialVerifier
