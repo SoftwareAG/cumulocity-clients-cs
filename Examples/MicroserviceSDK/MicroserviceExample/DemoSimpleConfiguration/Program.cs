@@ -4,13 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Cumulocity.SDK.Microservices.Configure;
 
-namespace DemoWebApi
+
+namespace DemoSimpleConfiguration
 {
 	public class Program
 	{
@@ -23,25 +24,15 @@ namespace DemoWebApi
 			WebHost.CreateDefaultBuilder(args)
 				.UseKestrel(options =>
 				{
-					var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 					var port = Environment.GetEnvironmentVariable("SERVER_PORT");
-
-					int portNumber = 8080;
-
-					if (Int32.TryParse(port, out portNumber))
-					{
-						options.Listen(IPAddress.Parse("0.0.0.0"), portNumber);
-					}
-					else
-					{
-						options.Listen(IPAddress.Parse("0.0.0.0"), 8080);
-					}
+					options.Listen(IPAddress.Parse("0.0.0.0"), Int32.TryParse(port, out var portNumber) ? portNumber : 8080);
 				})
 				.ConfigureLogging((hostingContext, logging) =>
 				{
 					logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
 					logging.AddConsole().SetMinimumLevel(LogLevel.Information);
 				})
+				.UseMicroserviceApplication()
 				.UseStartup<Startup>()
 				.Build();
 	}
