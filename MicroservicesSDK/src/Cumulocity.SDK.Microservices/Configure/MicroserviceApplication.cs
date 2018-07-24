@@ -19,11 +19,14 @@ namespace Cumulocity.SDK.Microservices.Configure
 {
 	public static class MicroserviceApplicationExtensions
 	{
-		public static IWebHostBuilder UseMicroserviceApplication(this IWebHostBuilder builder)
+		public static IWebHostBuilder UseMicroserviceApplication(this IWebHostBuilder builder, bool isHealthCheck=true)
 		{
-			builder.UseHealthChecks("/health", TimeSpan.FromSeconds(5));
-		
-			builder.ConfigureServices((builderContext, services) =>
+		    if (isHealthCheck)
+		    {
+		        builder.UseHealthChecks("/health", TimeSpan.FromSeconds(5));
+		    }
+
+		    builder.ConfigureServices((builderContext, services) =>
 			{
 				services.AddMemoryCache();
 				services.AddCumulocityAuthentication(builderContext.Configuration);
@@ -32,12 +35,12 @@ namespace Cumulocity.SDK.Microservices.Configure
 				services.AddSingleton<IApplicationService, ApplicationService>();
 				services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-				services.AddHealthChecks(checks =>
-				{
-					checks.AddPlatformCheck();
-				});
+			    if (isHealthCheck)
+			    {
+			        services.AddHealthChecks(checks => { checks.AddPlatformCheck(); });
+			    }
 
-				services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
+			    services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
 				services.AddSingleton<IStartupFilter, ConfigureSecurityFilter>();
 			});
 
