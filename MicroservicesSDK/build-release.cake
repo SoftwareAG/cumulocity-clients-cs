@@ -68,7 +68,7 @@ void checkNumberCommitsAfterLastTag()
 {	
  	var settings = new ProcessSettings
 	{
-		Arguments = new ProcessArgumentBuilder().Append("check-commits.ps1 -tag " + LastTagCommit)
+		Arguments = new ProcessArgumentBuilder().Append("check-commits.ps1 -tag " + lastTagCommit)
 	};
 	StartProcess("pwsh", settings);	
 }
