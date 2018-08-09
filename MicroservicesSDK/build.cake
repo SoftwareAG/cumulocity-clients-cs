@@ -270,7 +270,7 @@ Task("Coverage")
                 {
                     // Required to keep instrumentation added by MiniCover
                     NoBuild = true,
-                    Configuration = configuration
+                    Configuration = "Debug"
                 });
             }
         },
