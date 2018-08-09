@@ -1,3 +1,4 @@
+#addin "Cake.MiniCover"
 #addin "Cake.Putty"
 #addin "Cake.DocFx"
 #tool "docfx.console"
@@ -6,7 +7,7 @@
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
- 
+SetMiniCoverToolsProject("./minicover/minicover.csproj"); 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
   
@@ -257,6 +258,29 @@ Task("CreateRelease")
    
 });
 
+Task("Coverage")
+    .IsDependentOn("Build")
+    .Does(() => 
+{
+    MiniCover(tool =>
+        {
+            foreach(var project in GetFiles("./test/**/*.csproj"))
+            {
+                tool.DotNetCoreTest(project.FullPath, new DotNetCoreTestSettings()
+                {
+                    // Required to keep instrumentation added by MiniCover
+                    NoBuild = true,
+                    Configuration = configuration
+                });
+            }
+        },
+        new MiniCoverSettings()
+            .WithAssembliesMatching("./test/**/*.dll")
+            .WithSourcesMatching("./src/**/*.cs")
+            .GenerateReport(ReportType.CONSOLE | ReportType.XML)
+    );
+});
+
 
 //Task("Deploy")
 //    .IsDependentOn("Package")
@@ -284,7 +308,7 @@ Task("CreateRelease")
 //////////////////////////////////////////////////////////////////////
  
 Task("Default")
-    .IsDependentOn("Package");
+    .IsDependentOn("Coverage");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
