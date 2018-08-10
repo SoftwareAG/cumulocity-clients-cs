@@ -13,10 +13,10 @@ namespace Cumulocity.SDK.Microservices.IntegrationTest.Client
 	public class ApplicationServicClient
 	{
 		private HttpClient _httpClient;
-		private Credentials _creds;
+		private Utils.Credentials _creds;
 		public bool IsAuthHeaderRequired { get; set; }
 
-		public ApplicationServicClient(HttpClient httpClient, Credentials creds)
+		public ApplicationServicClient(HttpClient httpClient, Utils.Credentials creds)
 		{
 			this._httpClient = httpClient;
 			this._creds = creds;
