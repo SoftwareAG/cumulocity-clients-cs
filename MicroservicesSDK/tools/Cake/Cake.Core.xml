@@ -4,61 +4,6 @@
         <name>Cake.Core</name>
     </assembly>
     <members>
-        <member name="T:Cake.Core.ActionTask">
-            <summary>
-            A task that executes a specified delegate.
-            </summary>
-        </member>
-        <member name="P:Cake.Core.ActionTask.Actions">
-            <summary>
-            Gets the task's actions.
-            </summary>
-            <value>The task's actions.</value>
-        </member>
-        <member name="P:Cake.Core.ActionTask.DelayedActions">
-            <summary>
-            Gets the task's actions that are run at execution time to additionally populate <see cref="P:Cake.Core.ActionTask.Actions"/>.
-            </summary>
-            <value>The task's delayed actions actions.</value>
-        </member>
-        <member name="P:Cake.Core.ActionTask.DeferExceptions">
-            <summary>
-            Gets a value indicating whether gets the task's state if it will defer exceptions until the end of the task.
-            </summary>
-            <value>The task's defer exceptions state.</value>
-        </member>
-        <member name="M:Cake.Core.ActionTask.#ctor(System.String)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Cake.Core.ActionTask"/> class.
-            </summary>
-            <param name="name">The name of the task.</param>
-        </member>
-        <member name="M:Cake.Core.ActionTask.AddAction(System.Func{Cake.Core.ICakeContext,System.Threading.Tasks.Task})">
-            <summary>
-            Adds an action to the task.
-            </summary>
-            <param name="action">The action.</param>
-        </member>
-        <member name="M:Cake.Core.ActionTask.AddDelayedAction(System.Action)">
-            <summary>
-            Adds a delayed action to the task.
-            This method will be executed the first time the task is executed.
-            </summary>
-            <param name="action">The action.</param>
-        </member>
-        <member name="M:Cake.Core.ActionTask.SetDeferExceptions(System.Boolean)">
-            <summary>
-            Wait until all actions have executed to report failure.
-            </summary>
-            <param name="value">The value.</param>
-        </member>
-        <member name="M:Cake.Core.ActionTask.Execute(Cake.Core.ICakeContext)">
-            <summary>
-            Executes the task using the specified context.
-            </summary>
-            <param name="context">The context.</param>
-            <returns>Returned Task</returns>
-        </member>
         <member name="T:Cake.Core.Annotations.CakeAliasAttribute">
             <summary>
             An attribute used to mark script aliases.
@@ -203,7 +148,7 @@
             Implementation of <see cref="T:Cake.Core.ICakeContext"/>.
             </summary>
         </member>
-        <member name="M:Cake.Core.CakeContext.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IGlobber,Cake.Core.Diagnostics.ICakeLog,Cake.Core.ICakeArguments,Cake.Core.IO.IProcessRunner,Cake.Core.IO.IRegistry,Cake.Core.Tooling.IToolLocator)">
+        <member name="M:Cake.Core.CakeContext.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IGlobber,Cake.Core.Diagnostics.ICakeLog,Cake.Core.ICakeArguments,Cake.Core.IO.IProcessRunner,Cake.Core.IO.IRegistry,Cake.Core.Tooling.IToolLocator,Cake.Core.ICakeDataService)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Core.CakeContext"/> class.
             </summary>
@@ -215,6 +160,7 @@
             <param name="processRunner">The process runner.</param>
             <param name="registry">The registry.</param>
             <param name="tools">The tool locator.</param>
+            <param name="data">The data service.</param>
         </member>
         <member name="P:Cake.Core.CakeContext.FileSystem">
             <summary>
@@ -279,6 +225,11 @@
             <value>
             The tool locator.
             </value>
+        </member>
+        <member name="P:Cake.Core.CakeContext.Data">
+            <summary>
+            Gets the data context resolver.
+            </summary>
         </member>
         <member name="T:Cake.Core.CakeContextAdapter">
             <summary>
@@ -355,6 +306,11 @@
             The tool locator.
             </value>
         </member>
+        <member name="P:Cake.Core.CakeContextAdapter.Data">
+            <summary>
+            Gets the data context resolver.
+            </summary>
+        </member>
         <member name="T:Cake.Core.CakeEngine">
             <summary>
             The Cake execution engine.
@@ -366,32 +322,56 @@
             </summary>
             <value>The registered tasks.</value>
         </member>
-        <member name="M:Cake.Core.CakeEngine.#ctor(Cake.Core.Diagnostics.ICakeLog)">
+        <member name="E:Cake.Core.CakeEngine.Setup">
+            <summary>
+            Raised during setup before any tasks are run.
+            </summary>
+        </member>
+        <member name="E:Cake.Core.CakeEngine.Teardown">
+            <summary>
+            Raised during teardown after all other tasks have been run.
+            </summary>
+        </member>
+        <member name="E:Cake.Core.CakeEngine.TaskSetup">
+            <summary>
+            Raised before each task is run.
+            </summary>
+        </member>
+        <member name="E:Cake.Core.CakeEngine.TaskTeardown">
+            <summary>
+            Raised after each task has been run.
+            </summary>
+        </member>
+        <member name="M:Cake.Core.CakeEngine.#ctor(Cake.Core.ICakeDataService,Cake.Core.Diagnostics.ICakeLog)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Core.CakeEngine"/> class.
             </summary>
+            <param name="data">The data service.</param>
             <param name="log">The log.</param>
         </member>
         <member name="M:Cake.Core.CakeEngine.RegisterTask(System.String)">
             <summary>
-            Creates and registers a new <see cref="T:Cake.Core.ActionTask"/>.
+            Creates and registers a new Cake task.
             </summary>
             <param name="name">The name of the task.</param>
             <returns>
-            A <see cref="T:Cake.Core.CakeTaskBuilder`1"/> used to configure the task.
+            A <see cref="T:Cake.Core.CakeTaskBuilder"/> used to configure the task.
             </returns>
         </member>
-        <member name="M:Cake.Core.CakeEngine.RegisterSetupAction(System.Action{Cake.Core.ICakeContext})">
+        <member name="M:Cake.Core.CakeEngine.RegisterSetupAction(System.Action{Cake.Core.ISetupContext})">
             <summary>
             Allows registration of an action that's executed before any tasks are run.
             If setup fails, no tasks will be executed but teardown will be performed.
             </summary>
             <param name="action">The action to be executed.</param>
         </member>
-        <member name="E:Cake.Core.CakeEngine.Setup">
+        <member name="M:Cake.Core.CakeEngine.RegisterSetupAction``1(System.Func{Cake.Core.ISetupContext,``0})">
             <summary>
-            Raised during setup before any tasks are run.
+            Allows registration of an action that's executed before any tasks are run.
+            If setup fails, no tasks will be executed but teardown will be performed.
             </summary>
+            <typeparam name="TData">The data type.</typeparam>
+            <param name="action">The action to be executed.</param>
         </member>
         <member name="M:Cake.Core.CakeEngine.RegisterTeardownAction(System.Action{Cake.Core.ITeardownContext})">
             <summary>
@@ -400,10 +380,43 @@
             </summary>
             <param name="action">The action to be executed.</param>
         </member>
-        <member name="E:Cake.Core.CakeEngine.Teardown">
+        <member name="M:Cake.Core.CakeEngine.RegisterTeardownAction``1(System.Action{Cake.Core.ITeardownContext,``0})">
             <summary>
-            Raised during teardown after all other tasks have been run.
+            Allows registration of an action that's executed after all other tasks have been run.
+            If a setup action or a task fails with or without recovery, the specified teardown action will still be executed.
             </summary>
+            <typeparam name="TData">The data type.</typeparam>
+            <param name="action">The action to be executed.</param>
+        </member>
+        <member name="M:Cake.Core.CakeEngine.RegisterTaskSetupAction(System.Action{Cake.Core.ITaskSetupContext})">
+            <summary>
+            Allows registration of an action that's executed before each task is run.
+            If the task setup fails, the task will not be executed but the task's teardown will be performed.
+            </summary>
+            <param name="action">The action to be executed.</param>
+        </member>
+        <member name="M:Cake.Core.CakeEngine.RegisterTaskSetupAction``1(System.Action{Cake.Core.ITaskSetupContext,``0})">
+            <summary>
+            Allows registration of an action that's executed before each task is run.
+            If the task setup fails, the task will not be executed but the task's teardown will be performed.
+            </summary>
+            <typeparam name="TData">The data type.</typeparam>
+            <param name="action">The action to be executed.</param>
+        </member>
+        <member name="M:Cake.Core.CakeEngine.RegisterTaskTeardownAction(System.Action{Cake.Core.ITaskTeardownContext})">
+            <summary>
+            Allows registration of an action that's executed after each task has been run.
+            If a task setup action or a task fails with or without recovery, the specified task teardown action will still be executed.
+            </summary>
+            <param name="action">The action to be executed.</param>
+        </member>
+        <member name="M:Cake.Core.CakeEngine.RegisterTaskTeardownAction``1(System.Action{Cake.Core.ITaskTeardownContext,``0})">
+            <summary>
+            Allows registration of an action that's executed after each task has been run.
+            If a task setup action or a task fails with or without recovery, the specified task teardown action will still be executed.
+            </summary>
+            <typeparam name="TData">The data type.</typeparam>
+            <param name="action">The action to be executed.</param>
         </member>
         <member name="M:Cake.Core.CakeEngine.RunTargetAsync(Cake.Core.ICakeContext,Cake.Core.IExecutionStrategy,System.String)">
             <summary>
@@ -413,30 +426,6 @@
             <param name="strategy">The execution strategy.</param>
             <param name="target">The target to run.</param>
             <returns>The resulting report.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeEngine.RegisterTaskSetupAction(System.Action{Cake.Core.ITaskSetupContext})">
-            <summary>
-            Allows registration of an action that's executed before each task is run.
-            If the task setup fails, the task will not be executed but the task's teardown will be performed.
-            </summary>
-            <param name="action">The action to be executed.</param>
-        </member>
-        <member name="E:Cake.Core.CakeEngine.TaskSetup">
-            <summary>
-            Raised before each task is run.
-            </summary>
-        </member>
-        <member name="M:Cake.Core.CakeEngine.RegisterTaskTeardownAction(System.Action{Cake.Core.ITaskTeardownContext})">
-            <summary>
-            Allows registration of an action that's executed after each task has been run.
-            If a task setup action or a task fails with or without recovery, the specified task teardown action will still be executed.
-            </summary>
-            <param name="action">The action to be executed.</param>
-        </member>
-        <member name="E:Cake.Core.CakeEngine.TaskTeardown">
-            <summary>
-            Raised after each task has been run.
-            </summary>
         </member>
         <member name="T:Cake.Core.CakeEnvironment">
             <summary>
@@ -523,12 +512,6 @@
             The application root path.
             </returns>
         </member>
-        <member name="M:Cake.Core.CakeEnvironment.GetTargetFramework">
-            <summary>
-            Gets the target .Net framework version that the current AppDomain is targeting.
-            </summary>
-            <returns>The target framework.</returns>
-        </member>
         <member name="T:Cake.Core.CakeException">
             <summary>
             Represent errors that occur during script execution.
@@ -608,6 +591,14 @@
             <param name="task">The task.</param>
             <param name="span">The span.</param>
         </member>
+        <member name="M:Cake.Core.CakeReport.Add(System.String,Cake.Core.CakeReportEntryCategory,System.TimeSpan)">
+            <summary>
+            Adds a task result to the report with a specific category.
+            </summary>
+            <param name="task">The task.</param>
+            <param name="category">The category.</param>
+            <param name="span">The span.</param>
+        </member>
         <member name="M:Cake.Core.CakeReport.AddSkipped(System.String)">
             <summary>
             Adds a skipped task result to the report.
@@ -621,11 +612,12 @@
             <param name="task">The task.</param>
             <param name="span">The span.</param>
         </member>
-        <member name="M:Cake.Core.CakeReport.Add(System.String,System.TimeSpan,Cake.Core.CakeTaskExecutionStatus)">
+        <member name="M:Cake.Core.CakeReport.Add(System.String,Cake.Core.CakeReportEntryCategory,System.TimeSpan,Cake.Core.CakeTaskExecutionStatus)">
             <summary>
             Adds a task result to the report.
             </summary>
             <param name="task">The task.</param>
+            <param name="category">The category.</param>
             <param name="span">The span.</param>
             <param name="executionStatus">The execution status.</param>
         </member>
@@ -656,6 +648,12 @@
             </summary>
             <value>The name.</value>
         </member>
+        <member name="P:Cake.Core.CakeReportEntry.Category">
+            <summary>
+            Gets the task category.
+            </summary>
+            <value>The category.</value>
+        </member>
         <member name="P:Cake.Core.CakeReportEntry.Duration">
             <summary>
             Gets the duration the task ran for.
@@ -668,20 +666,42 @@
             </summary>
             <value>The execution status.</value>
         </member>
-        <member name="M:Cake.Core.CakeReportEntry.#ctor(System.String,System.TimeSpan)">
+        <member name="M:Cake.Core.CakeReportEntry.#ctor(System.String,Cake.Core.CakeReportEntryCategory,System.TimeSpan)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Core.CakeReportEntry"/> class.
             </summary>
             <param name="taskName">The name of the task.</param>
+            <param name="category">The task category.</param>
             <param name="duration">The duration.</param>
         </member>
-        <member name="M:Cake.Core.CakeReportEntry.#ctor(System.String,System.TimeSpan,Cake.Core.CakeTaskExecutionStatus)">
+        <member name="M:Cake.Core.CakeReportEntry.#ctor(System.String,Cake.Core.CakeReportEntryCategory,System.TimeSpan,Cake.Core.CakeTaskExecutionStatus)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Core.CakeReportEntry"/> class.
             </summary>
             <param name="taskName">The name of the task.</param>
+            <param name="category">The task category.</param>
             <param name="duration">The duration.</param>
             <param name="executionStatus">The execution status.</param>
+        </member>
+        <member name="T:Cake.Core.CakeReportEntryCategory">
+            <summary>
+            Represents a Cake report entry category.
+            </summary>
+        </member>
+        <member name="F:Cake.Core.CakeReportEntryCategory.Task">
+            <summary>
+            Represents a normal task.
+            </summary>
+        </member>
+        <member name="F:Cake.Core.CakeReportEntryCategory.Setup">
+            <summary>
+            Represent a setup task.
+            </summary>
+        </member>
+        <member name="F:Cake.Core.CakeReportEntryCategory.Teardown">
+            <summary>
+            Represent a teardown task.
+            </summary>
         </member>
         <member name="T:Cake.Core.CakeReportPrinter">
             <summary>
@@ -706,10 +726,16 @@
             Represents the runtime that Cake is running in.
             </summary>
         </member>
-        <member name="P:Cake.Core.CakeRuntime.TargetFramework">
+        <member name="P:Cake.Core.CakeRuntime.BuiltFramework">
             <summary>
-            Gets the target .NET framework version that the current AppDomain is targeting.
+            Gets the build-time .NET framework version that is being used.
             </summary>
+        </member>
+        <member name="P:Cake.Core.CakeRuntime.Runtime">
+            <summary>
+            Gets the current executing .NET Runtime.
+            </summary>
+            <returns>The target framework.</returns>
         </member>
         <member name="P:Cake.Core.CakeRuntime.CakeVersion">
             <summary>
@@ -766,69 +792,43 @@
         </member>
         <member name="P:Cake.Core.CakeTask.ErrorHandler">
             <summary>
-            Gets the error handler.
+            Gets or sets the error handler.
             </summary>
             <value>The error handler.</value>
         </member>
         <member name="P:Cake.Core.CakeTask.ErrorReporter">
             <summary>
-            Gets the error reporter.
+            Gets or sets the error reporter.
             </summary>
         </member>
         <member name="P:Cake.Core.CakeTask.FinallyHandler">
             <summary>
-            Gets the finally handler.
+            Gets or sets the finally handler.
             </summary>
+        </member>
+        <member name="P:Cake.Core.CakeTask.Actions">
+            <summary>
+            Gets the task's actions.
+            </summary>
+            <value>The task's actions.</value>
+        </member>
+        <member name="P:Cake.Core.CakeTask.DelayedActions">
+            <summary>
+            Gets the task's actions that are run at execution time to additionally populate <see cref="P:Cake.Core.CakeTask.Actions"/>.
+            </summary>
+            <value>The task's delayed actions actions.</value>
+        </member>
+        <member name="P:Cake.Core.CakeTask.DeferExceptions">
+            <summary>
+            Gets or sets a value indicating whether gets the task's state if it will defer exceptions until the end of the task.
+            </summary>
+            <value>The task's defer exceptions state.</value>
         </member>
         <member name="M:Cake.Core.CakeTask.#ctor(System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Core.CakeTask"/> class.
             </summary>
             <param name="name">The name of the task.</param>
-        </member>
-        <member name="M:Cake.Core.CakeTask.AddDependency(System.String,System.Boolean)">
-            <summary>
-            Adds a dependency to the task.
-            </summary>
-            <param name="name">The name of the dependency.</param>
-            <param name="required">Whether or not the dependency is required.</param>
-        </member>
-        <member name="M:Cake.Core.CakeTask.AddReverseDependency(System.String,System.Boolean)">
-            <summary>
-            Makes this task a dependency of some other task.
-            </summary>
-            <param name="name">The name of the task that this task want to be a dependency of.</param>
-            <param name="required">Whether or not the dependency is required.</param>
-        </member>
-        <member name="M:Cake.Core.CakeTask.AddCriteria(System.Func{Cake.Core.ICakeContext,System.Boolean})">
-            <summary>
-            Adds a criteria to the task that is invoked when the task is invoked.
-            </summary>
-            <param name="criteria">The criteria.</param>
-        </member>
-        <member name="M:Cake.Core.CakeTask.SetErrorHandler(System.Action{System.Exception})">
-            <summary>
-            Sets the error handler for the task.
-            The error handler is invoked when an exception is thrown from the task.
-            </summary>
-            <param name="errorHandler">The error handler.</param>
-        </member>
-        <member name="M:Cake.Core.CakeTask.SetErrorReporter(System.Action{System.Exception})">
-            <summary>
-            Sets the error reporter for the task.
-            The error reporter is invoked when an exception is thrown from the task.
-            This action is invoked before the error handler, but gives no opportunity to recover from the error.
-            </summary>
-            <param name="errorReporter">The error reporter.</param>
-            <exception cref="T:System.ArgumentNullException"><paramref name="errorReporter"/> is <c>null</c>.</exception>
-            <exception cref="T:Cake.Core.CakeException">There can only be one error reporter per task.</exception>
-        </member>
-        <member name="M:Cake.Core.CakeTask.SetFinallyHandler(System.Action)">
-            <summary>
-            Sets the finally handler for the task.
-            The finally handler is always invoked when a task have finished running.
-            </summary>
-            <param name="finallyHandler">The finally handler.</param>
         </member>
         <member name="M:Cake.Core.CakeTask.Execute(Cake.Core.ICakeContext)">
             <summary>
@@ -837,219 +837,355 @@
             <param name="context">The context.</param>
             <returns>Returned Task</returns>
         </member>
-        <member name="T:Cake.Core.CakeTaskBuilder`1">
-            <summary>
-            Allows configuration to be performed for a registered <see cref="T:Cake.Core.CakeTask"/>.
-            </summary>
-            <typeparam name="T">The task type.</typeparam>
-        </member>
-        <member name="P:Cake.Core.CakeTaskBuilder`1.Task">
-            <summary>
-            Gets the task being configured.
-            </summary>
-            <value>The task being configured.</value>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilder`1.#ctor(`0)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Cake.Core.CakeTaskBuilder`1"/> class.
-            </summary>
-            <param name="task">The task.</param>
-        </member>
         <member name="T:Cake.Core.CakeTaskBuilderExtensions">
             <summary>
-            Contains extension methods for <see cref="T:Cake.Core.CakeTaskBuilder`1"/>.
+            Contains extension methods for <see cref="T:Cake.Core.CakeTaskBuilder"/>.
             </summary>
         </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.IsDependentOn``1(Cake.Core.CakeTaskBuilder{``0},System.String)">
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria(Cake.Core.CakeTaskBuilder,System.Boolean)">
+            <summary>
+            Adds a criteria that has to be fulfilled for the task to run.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="criteria">The criteria.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria(Cake.Core.CakeTaskBuilder,System.Boolean,System.String)">
+            <summary>
+            Adds a criteria that has to be fulfilled for the task to run.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="criteria">The criteria.</param>
+            <param name="message">The message to display if the task was skipped due to the provided criteria.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria(Cake.Core.CakeTaskBuilder,System.Func{System.Boolean})">
+            <summary>
+            Adds a criteria that has to be fulfilled for the task to run.
+            The criteria is evaluated when traversal of the graph occurs.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="criteria">The criteria.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria(Cake.Core.CakeTaskBuilder,System.Func{System.Boolean},System.String)">
+            <summary>
+            Adds a criteria that has to be fulfilled for the task to run.
+            The criteria is evaluated when traversal of the graph occurs.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="criteria">The criteria.</param>
+            <param name="message">The message to display if the task was skipped due to the provided criteria.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria(Cake.Core.CakeTaskBuilder,System.Func{Cake.Core.ICakeContext,System.Boolean})">
+            <summary>
+            Adds a criteria that has to be fulfilled for the task to run.
+            The criteria is evaluated when traversal of the graph occurs.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="criteria">The criteria.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria(Cake.Core.CakeTaskBuilder,System.Func{Cake.Core.ICakeContext,System.Boolean},System.String)">
+            <summary>
+            Adds a criteria that has to be fulfilled for the task to run.
+            The criteria is evaluated when traversal of the graph occurs.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="criteria">The criteria.</param>
+            <param name="message">The message to display if the task was skipped due to the provided criteria.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria``1(Cake.Core.CakeTaskBuilder,System.Func{Cake.Core.ICakeContext,``0,System.Boolean})">
+            <summary>
+            Adds a criteria that has to be fulfilled for the task to run.
+            The criteria is evaluated when traversal of the graph occurs.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="criteria">The criteria.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria``1(Cake.Core.CakeTaskBuilder,System.Func{Cake.Core.ICakeContext,``0,System.Boolean},System.String)">
+            <summary>
+            Adds a criteria that has to be fulfilled for the task to run.
+            The criteria is evaluated when traversal of the graph occurs.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="criteria">The criteria.</param>
+            <param name="message">The message to display if the task was skipped due to the provided criteria.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.IsDependentOn(Cake.Core.CakeTaskBuilder,System.String)">
             <summary>
             Creates a dependency between two tasks.
             </summary>
-            <typeparam name="T">The task type.</typeparam>
             <param name="builder">The task builder.</param>
             <param name="name">The name of the dependent task.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.IsDependentOn``2(Cake.Core.CakeTaskBuilder{``0},Cake.Core.CakeTaskBuilder{``1})">
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.IsDependentOn(Cake.Core.CakeTaskBuilder,Cake.Core.CakeTaskBuilder)">
             <summary>
             Creates a dependency between two tasks.
             </summary>
-            <typeparam name="T">The task type.</typeparam>
-            <typeparam name="TOther">The task type that this task depends on.</typeparam>
             <param name="builder">The task builder.</param>
             <param name="other">The name of the dependent task.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.IsDependeeOf``1(Cake.Core.CakeTaskBuilder{``0},System.String)">
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.IsDependeeOf(Cake.Core.CakeTaskBuilder,System.String)">
             <summary>
             Makes the task a dependency of another task.
             </summary>
-            <typeparam name="T">The task type.</typeparam>
             <param name="builder">The task builder.</param>
             <param name="name">The name of the task the current task will be a dependency of.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria``1(Cake.Core.CakeTaskBuilder{``0},System.Boolean)">
-            <summary>
-            Adds a criteria that has to be fulfilled for the task to run.
-            </summary>
-            <typeparam name="T">The task type.</typeparam>
-            <param name="builder">The task builder.</param>
-            <param name="criteria">The criteria.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria``1(Cake.Core.CakeTaskBuilder{``0},System.Func{System.Boolean})">
-            <summary>
-            Adds a criteria that has to be fulfilled for the task to run.
-            The criteria is evaluated when traversal of the graph occurs.
-            </summary>
-            <typeparam name="T">The task type.</typeparam>
-            <param name="builder">The task builder.</param>
-            <param name="criteria">The criteria.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.WithCriteria``1(Cake.Core.CakeTaskBuilder{``0},System.Func{Cake.Core.ICakeContext,System.Boolean})">
-            <summary>
-            Adds a criteria that has to be fulfilled for the task to run.
-            The criteria is evaluated when traversal of the graph occurs.
-            </summary>
-            <typeparam name="T">The task type.</typeparam>
-            <param name="builder">The task builder.</param>
-            <param name="criteria">The criteria.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does(Cake.Core.CakeTaskBuilder{Cake.Core.ActionTask},System.Action)">
-            <summary>
-            Adds an action to be executed when the task is invoked.
-            </summary>
-            <param name="builder">The task builder.</param>
-            <param name="action">The action.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does(Cake.Core.CakeTaskBuilder{Cake.Core.ActionTask},System.Func{System.Threading.Tasks.Task})">
-            <summary>
-            Adds an action to be executed when the task is invoked.
-            </summary>
-            <param name="builder">The task builder.</param>
-            <param name="action">The action.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does(Cake.Core.CakeTaskBuilder{Cake.Core.ActionTask},System.Action{Cake.Core.ICakeContext})">
-            <summary>
-            Adds an action to be executed when the task is invoked.
-            </summary>
-            <param name="builder">The task builder.</param>
-            <param name="action">The action.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does(Cake.Core.CakeTaskBuilder{Cake.Core.ActionTask},System.Func{Cake.Core.ICakeContext,System.Threading.Tasks.Task})">
-            <summary>
-            Adds an action to be executed when the task is invoked.
-            </summary>
-            <param name="builder">The task builder.</param>
-            <param name="action">The action.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder{Cake.Core.ActionTask},System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
-            <summary>
-            Adds an action to be executed foreach item in the list.
-            </summary>
-            <typeparam name="TItem">The item type.</typeparam>
-            <param name="builder">The task builder.</param>
-            <param name="items">The items.</param>
-            <param name="action">The action.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder{Cake.Core.ActionTask},System.Collections.Generic.IEnumerable{``0},System.Action{``0,Cake.Core.ICakeContext})">
-            <summary>
-            Adds an action to be executed foreach item in the list.
-            </summary>
-            <typeparam name="TItem">The item type.</typeparam>
-            <param name="builder">The task builder.</param>
-            <param name="items">The items.</param>
-            <param name="action">The action.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder{Cake.Core.ActionTask},System.Func{System.Collections.Generic.IEnumerable{``0}},System.Action{``0})">
-            <summary>
-            Adds an action to be executed foreach item returned by the items function.
-            This method will be executed the first time the task is executed.
-            </summary>
-            <typeparam name="TItem">The item type.</typeparam>
-            <param name="builder">The task builder.</param>
-            <param name="itemsFunc">The items.</param>
-            <param name="action">The action.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder{Cake.Core.ActionTask},System.Func{System.Collections.Generic.IEnumerable{``0}},System.Action{``0,Cake.Core.ICakeContext})">
-            <summary>
-            Adds an action to be executed foreach item returned by the items function.
-            This method will be executed the first time the task is executed.
-            </summary>
-            <typeparam name="TItem">The item type.</typeparam>
-            <param name="builder">The task builder.</param>
-            <param name="itemsFunc">The items.</param>
-            <param name="action">The action.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DeferOnError(Cake.Core.CakeTaskBuilder{Cake.Core.ActionTask})">
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DeferOnError(Cake.Core.CakeTaskBuilder)">
             <summary>
             Defers all exceptions until after all actions for this task have completed
             </summary>
             <param name="builder">The task builder.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Description``1(Cake.Core.CakeTaskBuilder{``0},System.String)">
-            <summary>
-            Adds a description to the task.
-            </summary>
-            <typeparam name="T">The task type.</typeparam>
-            <param name="builder">The task builder.</param>
-            <param name="description">The description.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
-        </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.ContinueOnError(Cake.Core.CakeTaskBuilder{Cake.Core.ActionTask})">
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.ContinueOnError(Cake.Core.CakeTaskBuilder)">
             <summary>
             Adds an indication to the task that a thrown exception will not halt the script execution.
             </summary>
             <param name="builder">The task builder.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError``1(Cake.Core.CakeTaskBuilder{``0},System.Action)">
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError(Cake.Core.CakeTaskBuilder,System.Action)">
             <summary>
             Adds an error handler to be executed if an exception occurs in the task.
             </summary>
-            <typeparam name="T">The task type.</typeparam>
             <param name="builder">The builder.</param>
             <param name="errorHandler">The error handler.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError``1(Cake.Core.CakeTaskBuilder{``0},System.Action{System.Exception})">
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.OnError(Cake.Core.CakeTaskBuilder,System.Action{System.Exception})">
             <summary>
             Adds an error handler to be executed if an exception occurs in the task.
             </summary>
-            <typeparam name="T">The task type.</typeparam>
             <param name="builder">The builder.</param>
             <param name="errorHandler">The error handler.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Finally``1(Cake.Core.CakeTaskBuilder{``0},System.Action)">
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Finally(Cake.Core.CakeTaskBuilder,System.Action)">
             <summary>
             Adds a finally handler to be executed after the task have finished executing.
             </summary>
-            <typeparam name="T">The task type.</typeparam>
             <param name="builder">The builder.</param>
             <param name="finallyHandler">The finally handler.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
         </member>
-        <member name="M:Cake.Core.CakeTaskBuilderExtensions.ReportError``1(Cake.Core.CakeTaskBuilder{``0},System.Action{System.Exception})">
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.ReportError(Cake.Core.CakeTaskBuilder,System.Action{System.Exception})">
             <summary>
             Adds an error reporter for the task to be executed when an exception is thrown from the task.
             This action is invoked before the error handler, but gives no opportunity to recover from the error.
             </summary>
-            <typeparam name="T">The task type.</typeparam>
             <param name="builder">The builder.</param>
             <param name="errorReporter">The finally handler.</param>
-            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder`1"/> instance so that multiple calls can be chained.</returns>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does(Cake.Core.CakeTaskBuilder,System.Action)">
+            <summary>
+            Adds an action to be executed when the task is invoked.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does``1(Cake.Core.CakeTaskBuilder,System.Action{``0})">
+            <summary>
+            Adds an action to be executed when the task is invoked.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does(Cake.Core.CakeTaskBuilder,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Adds an action to be executed when the task is invoked.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="func">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does(Cake.Core.CakeTaskBuilder,System.Action{Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed when the task is invoked.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does(Cake.Core.CakeTaskBuilder,System.Func{Cake.Core.ICakeContext,System.Threading.Tasks.Task})">
+            <summary>
+            Adds an action to be executed when the task is invoked.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="func">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does``1(Cake.Core.CakeTaskBuilder,System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+            Adds an action to be executed when the task is invoked.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="func">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does``1(Cake.Core.CakeTaskBuilder,System.Action{Cake.Core.ICakeContext,``0})">
+            <summary>
+            Adds an action to be executed when the task is invoked.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Does``1(Cake.Core.CakeTaskBuilder,System.Func{Cake.Core.ICakeContext,``0,System.Threading.Tasks.Task})">
+            <summary>
+            Adds an action to be executed when the task is invoked.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="func">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder,System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Adds an action to be executed foreach item in the list.
+            </summary>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="items">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Collections.Generic.IEnumerable{``1},System.Action{``0,``1})">
+            <summary>
+            Adds an action to be executed foreach item in the list.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="items">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Collections.Generic.IEnumerable{``1},System.Action{``0,``1,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed foreach item in the list.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="items">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder,System.Collections.Generic.IEnumerable{``0},System.Action{``0,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed foreach item in the list.
+            </summary>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="items">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder,System.Func{System.Collections.Generic.IEnumerable{``0}},System.Action{``0})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{System.Collections.Generic.IEnumerable{``1}},System.Action{``0,``1})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``2(Cake.Core.CakeTaskBuilder,System.Func{System.Collections.Generic.IEnumerable{``1}},System.Action{``0,``1,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TData">The type of the data context.</typeparam>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.DoesForEach``1(Cake.Core.CakeTaskBuilder,System.Func{System.Collections.Generic.IEnumerable{``0}},System.Action{``0,Cake.Core.ICakeContext})">
+            <summary>
+            Adds an action to be executed foreach item returned by the items function.
+            This method will be executed the first time the task is executed.
+            </summary>
+            <typeparam name="TItem">The item type.</typeparam>
+            <param name="builder">The task builder.</param>
+            <param name="itemsFunc">The items.</param>
+            <param name="action">The action.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Core.CakeTaskBuilderExtensions.Description(Cake.Core.CakeTaskBuilder,System.String)">
+            <summary>
+            Adds a description to the task.
+            </summary>
+            <param name="builder">The task builder.</param>
+            <param name="description">The description.</param>
+            <returns>The same <see cref="T:Cake.Core.CakeTaskBuilder"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:Cake.Core.CakeTaskBuilder">
+            <summary>
+            Allows configuration to be performed for a registered <see cref="T:Cake.Core.CakeTask"/>.
+            </summary>
+        </member>
+        <member name="P:Cake.Core.CakeTaskBuilder.Task">
+            <summary>
+            Gets a read-only representation of the task being configured.
+            </summary>
+        </member>
+        <member name="T:Cake.Core.CakeTaskCriteria">
+            <summary>
+            Represents a Cake task criteria.
+            </summary>
+        </member>
+        <member name="P:Cake.Core.CakeTaskCriteria.Predicate">
+            <summary>
+            Gets the criteria's predicate.
+            </summary>
+            <value>The criteria's predicate.</value>
+        </member>
+        <member name="P:Cake.Core.CakeTaskCriteria.Message">
+            <summary>
+            Gets the criteria's message.
+            </summary>
+            <value>The criteria's message.</value>
+        </member>
+        <member name="M:Cake.Core.CakeTaskCriteria.#ctor(System.Func{Cake.Core.ICakeContext,System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Core.CakeTaskCriteria"/> class.
+            </summary>
+            <param name="predicate">The criteria's predicate.</param>
+            <param name="message">The criteria's message if skipped.</param>
         </member>
         <member name="T:Cake.Core.CakeTaskDependency">
             <summary>
@@ -1092,18 +1228,6 @@
             <summary>
             The task was skipped.
             </summary>
-        </member>
-        <member name="T:Cake.Core.CakeTaskExtensions">
-            <summary>
-            Contains extension methods for <see cref="T:Cake.Core.CakeTask"/>.
-            </summary>
-        </member>
-        <member name="M:Cake.Core.CakeTaskExtensions.AddCriteria(Cake.Core.CakeTask,System.Func{System.Boolean})">
-            <summary>
-            Adds a criteria to the task that is invoked when the task is invoked.
-            </summary>
-            <param name="task">The task.</param>
-            <param name="criteria">The criteria.</param>
         </member>
         <member name="T:Cake.Core.Composition.ICakeContainerRegistrar">
             <summary>
@@ -1251,7 +1375,7 @@
             </summary>
             <param name="log">The log.</param>
         </member>
-        <member name="M:Cake.Core.DefaultExecutionStrategy.PerformSetup(System.Action{Cake.Core.ICakeContext},Cake.Core.ICakeContext)">
+        <member name="M:Cake.Core.DefaultExecutionStrategy.PerformSetup(System.Action{Cake.Core.ISetupContext},Cake.Core.ISetupContext)">
             <summary>
             Performs the setup.
             </summary>
@@ -1273,11 +1397,12 @@
             <param name="context">The context.</param>
             <returns>Returned Task</returns>
         </member>
-        <member name="M:Cake.Core.DefaultExecutionStrategy.Skip(Cake.Core.CakeTask)">
+        <member name="M:Cake.Core.DefaultExecutionStrategy.Skip(Cake.Core.CakeTask,Cake.Core.CakeTaskCriteria)">
             <summary>
             Skips the specified task.
             </summary>
             <param name="task">The task to skip.</param>
+            <param name="criteria">The criteria that caused the task to be skipped.</param>
         </member>
         <member name="M:Cake.Core.DefaultExecutionStrategy.ReportErrors(System.Action{System.Exception},System.Exception)">
             <summary>
@@ -2539,6 +2664,35 @@
             </summary>
             <value>The tool locator.</value>
         </member>
+        <member name="P:Cake.Core.ICakeContext.Data">
+            <summary>
+            Gets the data context resolver.
+            </summary>
+        </member>
+        <member name="T:Cake.Core.ICakeDataResolver">
+            <summary>
+            Represents a data context resolver.
+            </summary>
+        </member>
+        <member name="M:Cake.Core.ICakeDataResolver.Get``1">
+            <summary>
+            Gets the data of the specified type.
+            </summary>
+            <typeparam name="TData">The data type.</typeparam>
+            <returns>The value of the data.</returns>
+        </member>
+        <member name="T:Cake.Core.ICakeDataService">
+            <summary>
+            Represents a data context service.
+            </summary>
+        </member>
+        <member name="M:Cake.Core.ICakeDataService.Add``1(``0)">
+            <summary>
+            Adds the data of the specified type.
+            </summary>
+            <typeparam name="TData">The data type.</typeparam>
+            <param name="value">The value of the data.</param>
+        </member>
         <member name="T:Cake.Core.ICakeEngine">
             <summary>
             Represents the Cake engine.
@@ -2550,24 +2704,47 @@
             </summary>
             <value>The registered tasks.</value>
         </member>
+        <member name="E:Cake.Core.ICakeEngine.Setup">
+            <summary>
+            Raised during setup before any tasks are run.
+            </summary>
+        </member>
+        <member name="E:Cake.Core.ICakeEngine.Teardown">
+            <summary>
+            Raised during teardown after all other tasks have been run.
+            </summary>
+        </member>
+        <member name="E:Cake.Core.ICakeEngine.TaskSetup">
+            <summary>
+            Raised before each task is run.
+            </summary>
+        </member>
+        <member name="E:Cake.Core.ICakeEngine.TaskTeardown">
+            <summary>
+            Raised after each task has been run.
+            </summary>
+        </member>
         <member name="M:Cake.Core.ICakeEngine.RegisterTask(System.String)">
             <summary>
             Registers a new task.
             </summary>
             <param name="name">The name of the task.</param>
-            <returns>A <see cref="T:Cake.Core.CakeTaskBuilder`1"/>.</returns>
+            <returns>A <see cref="T:Cake.Core.CakeTaskBuilder"/>.</returns>
         </member>
-        <member name="M:Cake.Core.ICakeEngine.RegisterSetupAction(System.Action{Cake.Core.ICakeContext})">
+        <member name="M:Cake.Core.ICakeEngine.RegisterSetupAction(System.Action{Cake.Core.ISetupContext})">
             <summary>
             Allows registration of an action that's executed before any tasks are run.
             If setup fails, no tasks will be executed but teardown will be performed.
             </summary>
             <param name="action">The action to be executed.</param>
         </member>
-        <member name="E:Cake.Core.ICakeEngine.Setup">
+        <member name="M:Cake.Core.ICakeEngine.RegisterSetupAction``1(System.Func{Cake.Core.ISetupContext,``0})">
             <summary>
-            Raised during setup before any tasks are run.
+            Allows registration of an action that's executed before any tasks are run.
+            If setup fails, no tasks will be executed but teardown will be performed.
             </summary>
+            <typeparam name="TData">The data type.</typeparam>
+            <param name="action">The action to be executed.</param>
         </member>
         <member name="M:Cake.Core.ICakeEngine.RegisterTeardownAction(System.Action{Cake.Core.ITeardownContext})">
             <summary>
@@ -2576,10 +2753,13 @@
             </summary>
             <param name="action">The action to be executed.</param>
         </member>
-        <member name="E:Cake.Core.ICakeEngine.Teardown">
+        <member name="M:Cake.Core.ICakeEngine.RegisterTeardownAction``1(System.Action{Cake.Core.ITeardownContext,``0})">
             <summary>
-            Raised during teardown after all other tasks have been run.
+            Allows registration of an action that's executed after all other tasks have been run.
+            If a setup action or a task fails with or without recovery, the specified teardown action will still be executed.
             </summary>
+            <typeparam name="TData">The data type.</typeparam>
+            <param name="action">The action to be executed.</param>
         </member>
         <member name="M:Cake.Core.ICakeEngine.RunTargetAsync(Cake.Core.ICakeContext,Cake.Core.IExecutionStrategy,System.String)">
             <summary>
@@ -2597,10 +2777,13 @@
             </summary>
             <param name="action">The action to be executed.</param>
         </member>
-        <member name="E:Cake.Core.ICakeEngine.TaskSetup">
+        <member name="M:Cake.Core.ICakeEngine.RegisterTaskSetupAction``1(System.Action{Cake.Core.ITaskSetupContext,``0})">
             <summary>
-            Raised before each task is run.
+            Allows registration of an action that's executed before each task is run.
+            If the task setup fails, the task will not be executed but the task's teardown will be performed.
             </summary>
+            <typeparam name="TData">The data type.</typeparam>
+            <param name="action">The action to be executed.</param>
         </member>
         <member name="M:Cake.Core.ICakeEngine.RegisterTaskTeardownAction(System.Action{Cake.Core.ITaskTeardownContext})">
             <summary>
@@ -2609,10 +2792,13 @@
             </summary>
             <param name="action">The action to be executed.</param>
         </member>
-        <member name="E:Cake.Core.ICakeEngine.TaskTeardown">
+        <member name="M:Cake.Core.ICakeEngine.RegisterTaskTeardownAction``1(System.Action{Cake.Core.ITaskTeardownContext,``0})">
             <summary>
-            Raised after each task has been run.
+            Allows registration of an action that's executed after each task has been run.
+            If a task setup action or a task fails with or without recovery, the specified task teardown action will still be executed.
             </summary>
+            <typeparam name="TData">The data type.</typeparam>
+            <param name="action">The action to be executed.</param>
         </member>
         <member name="T:Cake.Core.ICakeEnvironment">
             <summary>
@@ -2681,11 +2867,18 @@
             </summary>
             <returns>The application root path.</returns>
         </member>
-        <member name="M:Cake.Core.ICakeEnvironment.GetTargetFramework">
+        <member name="T:Cake.Core.ICakeEnvironmentExtensions">
             <summary>
-            Gets the target .Net framework version that the current AppDomain is targeting.
+            Extension methods for ICakeEnvironment
             </summary>
-            <returns>The target framework.</returns>
+        </member>
+        <member name="M:Cake.Core.ICakeEnvironmentExtensions.ExpandEnvironmentVariables(Cake.Core.ICakeEnvironment,System.String)">
+            <summary>
+            Expands the environment variables in the text. Variables shoud be quoted with %.
+            </summary>
+            <param name="environment">The cake environment interface</param>
+            <param name="text">A string containing the names of zero or more environment variables.</param>
+            <returns>A string with each environment variable replaced by its value.</returns>
         </member>
         <member name="T:Cake.Core.ICakePlatform">
             <summary>
@@ -2722,9 +2915,14 @@
             Represents the runtime that Cake is running in.
             </summary>
         </member>
-        <member name="P:Cake.Core.ICakeRuntime.TargetFramework">
+        <member name="P:Cake.Core.ICakeRuntime.BuiltFramework">
             <summary>
-            Gets the target .NET framework version that the current AppDomain is targeting.
+            Gets the build-time .NET framework version that is being used.
+            </summary>
+        </member>
+        <member name="P:Cake.Core.ICakeRuntime.Runtime">
+            <summary>
+            Gets the current executing .NET Runtime.
             </summary>
             <returns>The target framework.</returns>
         </member>
@@ -2744,7 +2942,7 @@
         </member>
         <member name="T:Cake.Core.ICakeTaskInfo">
             <summary>
-            Provides descriptive properties about a cake task
+            Provides descriptive properties about a cake task.
             </summary>
         </member>
         <member name="P:Cake.Core.ICakeTaskInfo.Name">
@@ -2832,7 +3030,7 @@
             Represents a task execution strategy.
             </summary>
         </member>
-        <member name="M:Cake.Core.IExecutionStrategy.PerformSetup(System.Action{Cake.Core.ICakeContext},Cake.Core.ICakeContext)">
+        <member name="M:Cake.Core.IExecutionStrategy.PerformSetup(System.Action{Cake.Core.ISetupContext},Cake.Core.ISetupContext)">
             <summary>
             Performs the setup.
             </summary>
@@ -2854,11 +3052,12 @@
             <param name="context">The context.</param>
             <returns>Returned Task</returns>
         </member>
-        <member name="M:Cake.Core.IExecutionStrategy.Skip(Cake.Core.CakeTask)">
+        <member name="M:Cake.Core.IExecutionStrategy.Skip(Cake.Core.CakeTask,Cake.Core.CakeTaskCriteria)">
             <summary>
             Skips the specified task.
             </summary>
             <param name="task">The task to skip.</param>
+            <param name="criteria">The criteria that caused the task to be skipped.</param>
         </member>
         <member name="M:Cake.Core.IExecutionStrategy.ReportErrors(System.Action{System.Exception},System.Exception)">
             <summary>
@@ -4244,6 +4443,21 @@
             to streams and to interact with the file system.
             </summary>
         </member>
+        <member name="T:Cake.Core.ISetupContext">
+            <summary>
+            Acts as a context providing info about the overall build before its started.
+            </summary>
+        </member>
+        <member name="P:Cake.Core.ISetupContext.TargetTask">
+            <summary>
+            Gets target / initating task.
+            </summary>
+        </member>
+        <member name="P:Cake.Core.ISetupContext.TasksToExecute">
+            <summary>
+            Gets all registered tasks that are going to be executed.
+            </summary>
+        </member>
         <member name="T:Cake.Core.ITaskSetupContext">
             <summary>
             Acts as a context providing info about a <see cref="T:Cake.Core.CakeTask"/> before its invocation.
@@ -4288,12 +4502,12 @@
         </member>
         <member name="T:Cake.Core.ITeardownContext">
             <summary>
-            Acts as a context providing info about the overall build following its completion
+            Acts as a context providing info about the overall build following its completion.
             </summary>
         </member>
         <member name="P:Cake.Core.ITeardownContext.Successful">
             <summary>
-            Gets a value indicating whether this build was successful
+            Gets a value indicating whether this build was successful.
             </summary>
             <value>
             <c>true</c> if successful; otherwise <c>false</c>.
@@ -4437,6 +4651,21 @@
         <member name="F:Cake.Core.PlatformFamily.OSX">
             <summary>
             Represents the OSX platform family.
+            </summary>
+        </member>
+        <member name="T:Cake.Core.Polyfill.Runtime">
+            <summary>
+            The current Runtime Cake is executing on.
+            </summary>
+        </member>
+        <member name="F:Cake.Core.Polyfill.Runtime.Clr">
+            <summary>
+            Full Framework or Mono.
+            </summary>
+        </member>
+        <member name="F:Cake.Core.Polyfill.Runtime.CoreClr">
+            <summary>
+            .NET Core 2.
             </summary>
         </member>
         <member name="T:Cake.Core.NamespaceDoc">
@@ -4884,28 +5113,22 @@
             Registers a new task.
             </summary>
             <param name="name">The name of the task.</param>
-            <returns>A <see cref="T:Cake.Core.CakeTaskBuilder`1"/>.</returns>
+            <returns>A <see cref="T:Cake.Core.CakeTaskBuilder"/>.</returns>
         </member>
-        <member name="M:Cake.Core.Scripting.IScriptHost.Setup(System.Action)">
+        <member name="M:Cake.Core.Scripting.IScriptHost.Setup(System.Action{Cake.Core.ISetupContext})">
             <summary>
             Allows registration of an action that's executed before any tasks are run.
             If setup fails, no tasks will be executed but teardown will be performed.
             </summary>
             <param name="action">The action to be executed.</param>
         </member>
-        <member name="M:Cake.Core.Scripting.IScriptHost.Setup(System.Action{Cake.Core.ICakeContext})">
+        <member name="M:Cake.Core.Scripting.IScriptHost.Setup``1(System.Func{Cake.Core.ISetupContext,``0})">
             <summary>
             Allows registration of an action that's executed before any tasks are run.
             If setup fails, no tasks will be executed but teardown will be performed.
             </summary>
             <param name="action">The action to be executed.</param>
-        </member>
-        <member name="M:Cake.Core.Scripting.IScriptHost.Teardown(System.Action)">
-            <summary>
-            Allows registration of an action that's executed after all other tasks have been run.
-            If a setup action or a task fails with or without recovery, the specified teardown action will still be executed.
-            </summary>
-            <param name="action">The action to be executed.</param>
+            <typeparam name="TData">The data type.</typeparam>
         </member>
         <member name="M:Cake.Core.Scripting.IScriptHost.Teardown(System.Action{Cake.Core.ITeardownContext})">
             <summary>
@@ -4914,12 +5137,13 @@
             </summary>
             <param name="action">The action to be executed.</param>
         </member>
-        <member name="M:Cake.Core.Scripting.IScriptHost.TaskSetup(System.Action{Cake.Core.ICakeContext,Cake.Core.ITaskSetupContext})">
+        <member name="M:Cake.Core.Scripting.IScriptHost.Teardown``1(System.Action{Cake.Core.ITeardownContext,``0})">
             <summary>
-            Allows registration of an action that's executed before each task is run.
-            If the task setup fails, its task will not be executed but the task teardown will be performed.
+            Allows registration of an action that's executed after all other tasks have been run.
+            If a setup action or a task fails with or without recovery, the specified teardown action will still be executed.
             </summary>
             <param name="action">The action to be executed.</param>
+            <typeparam name="TData">The data type.</typeparam>
         </member>
         <member name="M:Cake.Core.Scripting.IScriptHost.TaskSetup(System.Action{Cake.Core.ITaskSetupContext})">
             <summary>
@@ -4928,11 +5152,12 @@
             </summary>
             <param name="action">The action to be executed.</param>
         </member>
-        <member name="M:Cake.Core.Scripting.IScriptHost.TaskTeardown(System.Action{Cake.Core.ICakeContext,Cake.Core.ITaskTeardownContext})">
+        <member name="M:Cake.Core.Scripting.IScriptHost.TaskSetup``1(System.Action{Cake.Core.ITaskSetupContext,``0})">
             <summary>
-            Allows registration of an action that's executed after each task has been run.
-            If a task setup action or a task fails with or without recovery, the specified task teardown action will still be executed.
+            Allows registration of an action that's executed before each task is run.
+            If the task setup fails, its task will not be executed but the task teardown will be performed.
             </summary>
+            <typeparam name="TData">The data type.</typeparam>
             <param name="action">The action to be executed.</param>
         </member>
         <member name="M:Cake.Core.Scripting.IScriptHost.TaskTeardown(System.Action{Cake.Core.ITaskTeardownContext})">
@@ -4940,6 +5165,14 @@
             Allows registration of an action that's executed after each task has been run.
             If a task setup action or a task fails with or without recovery, the specified task teardown action will still be executed.
             </summary>
+            <param name="action">The action to be executed.</param>
+        </member>
+        <member name="M:Cake.Core.Scripting.IScriptHost.TaskTeardown``1(System.Action{Cake.Core.ITaskTeardownContext,``0})">
+            <summary>
+            Allows registration of an action that's executed after each task has been run.
+            If a task setup action or a task fails with or without recovery, the specified task teardown action will still be executed.
+            </summary>
+            <typeparam name="TData">The data type.</typeparam>
             <param name="action">The action to be executed.</param>
         </member>
         <member name="M:Cake.Core.Scripting.IScriptHost.RunTarget(System.String)">
@@ -5216,16 +5449,9 @@
             Registers a new task.
             </summary>
             <param name="name">The name of the task.</param>
-            <returns>A <see cref="T:Cake.Core.CakeTaskBuilder`1"/>.</returns>
+            <returns>A <see cref="T:Cake.Core.CakeTaskBuilder"/>.</returns>
         </member>
-        <member name="M:Cake.Core.Scripting.ScriptHost.Setup(System.Action)">
-            <summary>
-            Allows registration of an action that's executed before any tasks are run.
-            If setup fails, no tasks will be executed but teardown will be performed.
-            </summary>
-            <param name="action">The action to be executed.</param>
-        </member>
-        <member name="M:Cake.Core.Scripting.ScriptHost.Setup(System.Action{Cake.Core.ICakeContext})">
+        <member name="M:Cake.Core.Scripting.ScriptHost.Setup(System.Action{Cake.Core.ISetupContext})">
             <summary>
             Allows registration of an action that's executed before any tasks are run.
             If setup fails, no tasks will be executed but teardown will be performed.
@@ -5239,12 +5465,20 @@
             </code>
             </example>
         </member>
-        <member name="M:Cake.Core.Scripting.ScriptHost.Teardown(System.Action)">
+        <member name="M:Cake.Core.Scripting.ScriptHost.Setup``1(System.Func{Cake.Core.ISetupContext,``0})">
             <summary>
-            Allows registration of an action that's executed after all other tasks have been run.
-            If a setup action or a task fails with or without recovery, the specified teardown action will still be executed.
+            Allows registration of an action that's executed before any tasks are run.
+            If setup fails, no tasks will be executed but teardown will be performed.
             </summary>
+            <typeparam name="TData">The data type.</typeparam>
             <param name="action">The action to be executed.</param>
+            <example>
+            <code>
+            Setup&lt;Foo&gt;(context => {
+              return new Foo();
+            });
+            </code>
+            </example>
         </member>
         <member name="M:Cake.Core.Scripting.ScriptHost.Teardown(System.Action{Cake.Core.ITeardownContext})">
             <summary>
@@ -5260,12 +5494,20 @@
             </code>
             </example>
         </member>
-        <member name="M:Cake.Core.Scripting.ScriptHost.TaskSetup(System.Action{Cake.Core.ICakeContext,Cake.Core.ITaskSetupContext})">
+        <member name="M:Cake.Core.Scripting.ScriptHost.Teardown``1(System.Action{Cake.Core.ITeardownContext,``0})">
             <summary>
-            Allows registration of an action that's executed before each task is run.
-            If the task setup fails, its task will not be executed but the task teardown will be performed.
+            Allows registration of an action that's executed after all other tasks have been run.
+            If a setup action or a task fails with or without recovery, the specified teardown action will still be executed.
             </summary>
+            <typeparam name="TData">The data type.</typeparam>
             <param name="action">The action to be executed.</param>
+            <example>
+            <code>
+            Teardown((context, data) => {
+              context.Log.Information("Goodbye {0}!", data.Place);
+            });
+            </code>
+            </example>
         </member>
         <member name="M:Cake.Core.Scripting.ScriptHost.TaskSetup(System.Action{Cake.Core.ITaskSetupContext})">
             <summary>
@@ -5274,11 +5516,12 @@
             </summary>
             <param name="action">The action to be executed.</param>
         </member>
-        <member name="M:Cake.Core.Scripting.ScriptHost.TaskTeardown(System.Action{Cake.Core.ICakeContext,Cake.Core.ITaskTeardownContext})">
+        <member name="M:Cake.Core.Scripting.ScriptHost.TaskSetup``1(System.Action{Cake.Core.ITaskSetupContext,``0})">
             <summary>
-            Allows registration of an action that's executed after each task has been run.
-            If a task setup action or a task fails with or without recovery, the specified task teardown action will still be executed.
+            Allows registration of an action that's executed before each task is run.
+            If the task setup fails, its task will not be executed but the task teardown will be performed.
             </summary>
+            <typeparam name="TData">The data type.</typeparam>
             <param name="action">The action to be executed.</param>
         </member>
         <member name="M:Cake.Core.Scripting.ScriptHost.TaskTeardown(System.Action{Cake.Core.ITaskTeardownContext})">
@@ -5286,6 +5529,14 @@
             Allows registration of an action that's executed after each task has been run.
             If a task setup action or a task fails with or without recovery, the specified task teardown action will still be executed.
             </summary>
+            <param name="action">The action to be executed.</param>
+        </member>
+        <member name="M:Cake.Core.Scripting.ScriptHost.TaskTeardown``1(System.Action{Cake.Core.ITaskTeardownContext,``0})">
+            <summary>
+            Allows registration of an action that's executed after each task has been run.
+            If a task setup action or a task fails with or without recovery, the specified task teardown action will still be executed.
+            </summary>
+            <typeparam name="TData">The data type.</typeparam>
             <param name="action">The action to be executed.</param>
         </member>
         <member name="M:Cake.Core.Scripting.ScriptHost.RunTarget(System.String)">
@@ -5869,6 +6120,29 @@
             </summary>
             <param name="assembly">The target assembly.</param>
         </member>
+        <member name="T:Cake.Core.SetupContext">
+            <summary>
+            Acts as a context providing info about the overall build following its completion
+            </summary>
+        </member>
+        <member name="P:Cake.Core.SetupContext.TargetTask">
+            <summary>
+            Gets target / initating task.
+            </summary>
+        </member>
+        <member name="P:Cake.Core.SetupContext.TasksToExecute">
+            <summary>
+            Gets all registered tasks that are going to be executed.
+            </summary>
+        </member>
+        <member name="M:Cake.Core.SetupContext.#ctor(Cake.Core.ICakeContext,Cake.Core.ICakeTaskInfo,System.Collections.Generic.IEnumerable{Cake.Core.ICakeTaskInfo})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Core.SetupContext"/> class.
+            </summary>
+            <param name="context">The Cake context.</param>
+            <param name="targetTask">The target / initating task.</param>
+            <param name="tasksToExecute">The tasks to execute.</param>
+        </member>
         <member name="T:Cake.Core.SetupEventArgs">
             <summary>
             Event data for the <see cref="E:Cake.Core.ICakeEngine.Setup"/> event.
@@ -5980,13 +6254,6 @@
             Acts as a context providing info about the overall build following its completion
             </summary>
         </member>
-        <member name="M:Cake.Core.TeardownContext.#ctor(Cake.Core.ICakeContext,System.Exception)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Cake.Core.TeardownContext"/> class.
-            </summary>
-            <param name="context">The Cake Context</param>
-            <param name="throwException">The exception that was thrown by the target.</param>
-        </member>
         <member name="P:Cake.Core.TeardownContext.Successful">
             <summary>
             Gets a value indicating whether this build was successful
@@ -5999,6 +6266,13 @@
             <summary>
             Gets the exception that was thrown by the target.
             </summary>
+        </member>
+        <member name="M:Cake.Core.TeardownContext.#ctor(Cake.Core.ICakeContext,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Core.TeardownContext"/> class.
+            </summary>
+            <param name="context">The Cake context.</param>
+            <param name="throwException">The exception that was thrown by the target.</param>
         </member>
         <member name="T:Cake.Core.TeardownEventArgs">
             <summary>
