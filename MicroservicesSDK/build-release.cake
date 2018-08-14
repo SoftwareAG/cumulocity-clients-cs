@@ -305,6 +305,23 @@ void packCsProject()
 	Zip("./../Examples/BuildingScripts/microservicesdk-lin-dev", "./publish/microservicesdk-lin-dev-"+ buildVersion +".zip");
 }
 
+void publishNugets()
+{
+    var nugetFiles = GetFiles(buildDir.Path.FullPath+"/**/*.nupkg");
+	var source = EnvironmentVariable("PRIVATE_FEED_SOURCE")
+    var accessToken = EnvironmentVariable("PRIVATE_FEED_ACCESSTOKEN");
+	
+    foreach(var file in nugetFiles)
+    {				
+        var settings = new DotNetCoreNuGetPushSettings()
+        {
+            Source = source,
+            ApiKey = accessToken
+        };
+        DotNetCoreNuGetPush(file.FullPath, settings);
+    }
+}
+
 Task("Default")
   .IsDependentOn("CreateReleaseBranchAndDeploy")
   .Does(() =>
