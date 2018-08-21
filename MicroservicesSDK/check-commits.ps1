@@ -18,10 +18,11 @@ New-Item $countCommitsFileName -ItemType file
 Try
 {
    $lines = (& hg log --template "{rev}\n" -r"prerelease$tag":: | measure-object -line).Lines
+   Write-Host "Lines $lines"
    [int]$commits = $lines-2
 
       if($commits -gt 0){
-            hg up "prerelease$tag"           
+            #hg up "prerelease$tag"           
        }else{
             
        }
