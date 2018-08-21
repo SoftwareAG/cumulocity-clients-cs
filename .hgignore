@@ -206,3 +206,4 @@ MicroservicesSDK/.vs
 MicroservicesSDK/test-results
 MicroservicesSDK/test/Cumulocity.SDK.Microservices.FunctionalTest/Properties
 Examples/MicroserviceSDK/Nordpool/tools/packages.config.md5sum
+MicroservicesSDK/buildVersion.props
