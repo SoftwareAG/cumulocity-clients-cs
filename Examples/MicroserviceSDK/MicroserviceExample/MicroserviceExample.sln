@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.SDK.Microservice
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoWebApi", "DemoWebApi\DemoWebApi.csproj", "{C960A87D-4293-407F-B89F-33DF0D43AACA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoHealthCheck", "DemoHealthCheck\DemoHealthCheck.csproj", "{5B473EDF-16A7-4621-BFB7-972B56850903}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoSimpleConfiguration", "DemoSimpleConfiguration\DemoSimpleConfiguration.csproj", "{95E2F776-1B16-4EE9-BFD0-8326BBA47795}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{C960A87D-4293-407F-B89F-33DF0D43AACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C960A87D-4293-407F-B89F-33DF0D43AACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C960A87D-4293-407F-B89F-33DF0D43AACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B473EDF-16A7-4621-BFB7-972B56850903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B473EDF-16A7-4621-BFB7-972B56850903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B473EDF-16A7-4621-BFB7-972B56850903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B473EDF-16A7-4621-BFB7-972B56850903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95E2F776-1B16-4EE9-BFD0-8326BBA47795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95E2F776-1B16-4EE9-BFD0-8326BBA47795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95E2F776-1B16-4EE9-BFD0-8326BBA47795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95E2F776-1B16-4EE9-BFD0-8326BBA47795}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

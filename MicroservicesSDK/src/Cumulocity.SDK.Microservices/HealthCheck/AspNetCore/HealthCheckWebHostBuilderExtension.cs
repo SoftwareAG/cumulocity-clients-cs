@@ -16,7 +16,7 @@ namespace Cumulocity.SDK.Microservices.HealthCheck.AspNetCore
         {
             Guard.ArgumentValid(port > 0 && port < 65536, nameof(port), "Port must be a value between 1 and 65535.");
             Guard.ArgumentValid(timeout > TimeSpan.Zero, nameof(timeout), "Health check timeout must be a positive time span.");
-
+			
             builder.ConfigureServices(services =>
             {
                 var existingUrl = builder.GetSetting(WebHostDefaults.ServerUrlsKey);
