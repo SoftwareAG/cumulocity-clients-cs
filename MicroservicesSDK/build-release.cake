@@ -313,12 +313,17 @@ void publishNugets()
 	
     foreach(var file in nugetFiles)
     {				
-        var settings = new DotNetCoreNuGetPushSettings()
-        {
-            Source = source,
-            ApiKey = accessToken
-        };
-        DotNetCoreNuGetPush(file.FullPath, settings);
+        //var settings = new DotNetCoreNuGetPushSettings()
+        //{
+        //    Source = source,
+        //    ApiKey = accessToken
+        //};
+		
+		// Read the settings from Nuget.Config where DefaultPushSource must be defined.
+		// ~/.config/NuGet/NuGet.Config or 
+        // ~/.nuget/NuGet/NuGet.Config (varies by OS distribution)
+		
+        DotNetCoreNuGetPush(file.FullPath);
     }
 }
 
