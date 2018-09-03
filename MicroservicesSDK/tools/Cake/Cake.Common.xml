@@ -2270,11 +2270,19 @@
             The Bamboo environment.
             </value>
         </member>
-        <member name="M:Cake.Common.Build.Bitrise.BitriseProvider.#ctor(Cake.Core.ICakeEnvironment)">
+        <member name="M:Cake.Common.Build.Bitrise.BitriseProvider.#ctor(Cake.Core.ICakeEnvironment,Cake.Core.IO.IProcessRunner)">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Common.Build.Bitrise.BitriseProvider"/> class.
             </summary>
             <param name="environment">The environment.</param>
+            <param name="processRunner">The process runner.</param>
+        </member>
+        <member name="M:Cake.Common.Build.Bitrise.BitriseProvider.SetEnvironmentString(System.String,System.String)">
+            <summary>
+            Sets and environment variable that can be used in next steps on Bitrise
+            </summary>
+            <param name="variable">The variable.</param>
+            <param name="value">The value.</param>
         </member>
         <member name="T:Cake.Common.Build.Bitrise.Data.BitriseApplicationInfo">
             <summary>
@@ -2841,6 +2849,13 @@
             <value>
             The Bitrise environment.
             </value>
+        </member>
+        <member name="M:Cake.Common.Build.Bitrise.IBitriseProvider.SetEnvironmentString(System.String,System.String)">
+            <summary>
+            Sets and environment variable that can be used in next steps on Bitrise
+            </summary>
+            <param name="variable">The variable.</param>
+            <param name="value">The value.</param>
         </member>
         <member name="T:Cake.Common.Build.BuildSystem">
             <summary>
@@ -10405,6 +10420,35 @@
             </summary>
             <value>The value for the attribute.</value>
         </member>
+        <member name="T:Cake.Common.Solution.Project.Properties.AssemblyInfoMetadataAttribute">
+            <summary>
+            Metadata Attribute class used by <see cref="T:Cake.Common.Solution.Project.Properties.AssemblyInfoSettings"/>.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Solution.Project.Properties.AssemblyInfoMetadataAttribute.Name">
+            <summary>
+            Gets the name.
+            </summary>
+            <value>The attribute name.</value>
+        </member>
+        <member name="P:Cake.Common.Solution.Project.Properties.AssemblyInfoMetadataAttribute.Key">
+            <summary>
+            Gets or sets the key for meta data.
+            </summary>
+            <value>The key for meta data</value>
+        </member>
+        <member name="P:Cake.Common.Solution.Project.Properties.AssemblyInfoMetadataAttribute.NameSpace">
+            <summary>
+            Gets the namespace.
+            </summary>
+            <value>The namespace for the meta data attribute.</value>
+        </member>
+        <member name="P:Cake.Common.Solution.Project.Properties.AssemblyInfoMetadataAttribute.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>The value for the meta data.</value>
+        </member>
         <member name="T:Cake.Common.Solution.Project.Properties.AssemblyInfoParser">
             <summary>
             The assembly info parser.
@@ -10631,6 +10675,12 @@
             </summary>
             <value>The namespace(s).</value>
         </member>
+        <member name="P:Cake.Common.Solution.Project.Properties.AssemblyInfoSettings.MetaDataAttributes">
+            <summary>
+            Gets or sets the meta data attribute(s) that should be added to the assembly info file.
+            </summary>
+            <value>The meta data.</value>
+        </member>
         <member name="T:Cake.Common.Solution.Project.Properties.AssemblyInfoSettingsExtensions">
             <summary>
             Contains functionality related to AssemblyInfo settings.
@@ -10643,6 +10693,15 @@
             <param name="settings">The settings.</param>
             <param name="name">The name of the custom attribute.</param>
             <param name="namespace">The namespace for the custom attribute.</param>
+            <param name="value">The value for the attribute.</param>
+            <returns>The same <see cref="T:Cake.Common.Solution.Project.Properties.AssemblyInfoSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Common.Solution.Project.Properties.AssemblyInfoSettingsExtensions.AddMetadataAttribute(Cake.Common.Solution.Project.Properties.AssemblyInfoSettings,System.String,System.String)">
+            <summary>
+            Adds a meta data attribute to the AssemblyInfo settings.
+            </summary>
+            <param name="settings">The settings.</param>
+            <param name="key">The key of the meta data attribute.</param>
             <param name="value">The value for the attribute.</param>
             <returns>The same <see cref="T:Cake.Common.Solution.Project.Properties.AssemblyInfoSettings"/> instance so that multiple calls can be chained.</returns>
         </member>
@@ -12192,6 +12251,18 @@
             </summary>
             <remarks>Only available MSBuild version 15 (VS2017) and newer.</remarks>
         </member>
+        <member name="P:Cake.Common.Tools.MSBuild.MSBuildSettings.Restore">
+            <summary>
+            Gets or sets a value indicating whether the Restore target should be run before any other targets.
+            This setting will pass the /restore option down to MSBuild.
+            Use this setting when working with the new csproj format.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.MSBuild.MSBuildSettings.ConsoleLoggerParameters">
+            <summary>
+            Gets the console logger parameters.
+            </summary>
+        </member>
         <member name="M:Cake.Common.Tools.MSBuild.MSBuildSettings.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Cake.Common.Tools.MSBuild.MSBuildSettings"/> class.
@@ -12338,6 +12409,21 @@
             <param name="codes">Warning codes to not treat as errors.</param>
             <returns>The same <see cref="T:Cake.Common.Tools.MSBuild.MSBuildSettings"/> instance so that multiple calls can be chained.</returns>
         </member>
+        <member name="M:Cake.Common.Tools.MSBuild.MSBuildSettingsExtensions.WithRestore(Cake.Common.Tools.MSBuild.MSBuildSettings)">
+            <summary>
+            Invoke the Restore target before any other target.
+            </summary>
+            <param name="settings">The setting</param>
+            <returns>The same <see cref="T:Cake.Common.Tools.MSBuild.MSBuildSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.MSBuild.MSBuildSettingsExtensions.WithConsoleLoggerParameter(Cake.Common.Tools.MSBuild.MSBuildSettings,System.String)">
+            <summary>
+            Adds a console logger parameter.
+            </summary>
+            <param name="settings">The settings.</param>
+            <param name="parameter">The console logger parameter.</param>
+            <returns>The same <see cref="T:Cake.Common.Tools.MSBuild.MSBuildSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
         <member name="T:Cake.Common.Tools.MSBuild.MSBuildToolVersion">
             <summary>
             Represents a MSBuild tool version.
@@ -12439,6 +12525,14 @@
             </summary>
             <param name="verbosity">The verbosity.</param>
             <returns>MSBuild verbosity string.</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.MSBuild.MSBuildVerbosityExtensions.GetMSBuildVerbosity(System.String)">
+            <summary>
+            Gets the MSBuild <see cref="T:Cake.Core.Diagnostics.Verbosity"/> from string value.
+            </summary>
+            <param name="verbosity">The verbosity string value.</param>
+            <returns>MSBuild <see cref="T:Cake.Core.Diagnostics.Verbosity"/> enumeration.</returns>
+            <remarks>Valid values are 'quiet', 'minimal', 'normal', 'detailed' and 'diagnostic'.</remarks>
         </member>
         <member name="T:Cake.Common.Tools.MSBuild.MSBuildVersion">
             <summary>
@@ -13087,12 +13181,21 @@
         </member>
         <member name="P:Cake.Common.Tools.NuGet.Push.NuGetPushSettings.Source">
             <summary>
-            Gets or sets the server URL. If not specified, nuget.org is used unless
-            DefaultPushSource config value is set in the NuGet config file.
+            Gets or sets the server URL.
+            When using NuGet pre 3.4.2, this value is optional
+            and nuget.org is used if omitted (unless DefaultPushSource
+            config value is set in the NuGet config file.
+            When using Nuget 3.4.2 (or more recent), this value is mandatory.
             Starting with NuGet 2.5, if NuGet.exe identifies a UNC/folder source,
             it will perform the file copy to the source.
             </summary>
             <value>The server URL.</value>
+            <remarks>
+            For your convenience, here is the URL for some of the most popular
+            public nuget servers:
+            - Nuget: https://nuget.org/api/v2/package
+            - MyGet: https://www.myget.org/F/&lt;your_username&gt;/api/v2/package
+            </remarks>
         </member>
         <member name="P:Cake.Common.Tools.NuGet.Push.NuGetPushSettings.ApiKey">
             <summary>
@@ -13470,6 +13573,12 @@
             This setting requires NuGet V3 or later.
             </summary>
             <value>The version of MSBuild to be used with this command.</value>
+        </member>
+        <member name="P:Cake.Common.Tools.NuGet.Update.NuGetUpdateSettings.Version">
+            <summary>
+            Gets or sets package version to be used with this command.
+            </summary>
+            <value>The package version to be used with this command.</value>
         </member>
         <member name="T:Cake.Common.Tools.NuGet.Add.NuGetAdder">
             <summary>
@@ -14957,6 +15066,16 @@
             List of parametes (key/value) which are passed to the runner.
             </value>
         </member>
+        <member name="P:Cake.Common.Tools.NUnit.NUnit3Settings.TraceLevel">
+            <summary>
+            Gets or sets the level of detail at which the runner should write to its internal trace log.
+            Corresponds to the -trace=LEVEL command line argument.
+            If <c>null</c>, no argument will be specified
+            </summary>
+            <value>
+            The trace level.
+            </value>
+        </member>
         <member name="T:Cake.Common.Tools.NUnit.NUnitAliases">
             <summary>
             <para>Contains functionality related to running <see href="https://github.com/nunit/nunit">NUnit</see> tests.</para>
@@ -15086,6 +15205,53 @@
             <summary>
                 A test domain is created - this is how NUnit worked prior to version 2.4
             </summary>
+        </member>
+        <member name="T:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel">
+            <summary>
+            Represents the level of detail at which NUnit should set internal tracing
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel.Off">
+            <summary>
+            Do not display any trace messages
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel.Error">
+            <summary>
+            Display Error messages only
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel.Warning">
+            <summary>
+            Display Warning level and higher messages
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel.Info">
+            <summary>
+            Display informational and higher messages
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel.Debug">
+            <summary>
+            Display debug messages and higher - i.e. all messages
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel.Verbose">
+            <summary>
+            Display debug messages and higher - i.e. all messages
+            </summary>
+        </member>
+        <member name="T:Cake.Common.Tools.NUnit.NUnitInternalTraceLevelExtensions">
+            <summary>
+            Contains extension methods for <see cref="T:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel"/>.
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Tools.NUnit.NUnitInternalTraceLevelExtensions.GetArgumentValue(Cake.Common.Tools.NUnit.NUnitInternalTraceLevel)">
+            <summary>
+            Gets the LEVEL value for the --trace command line argument for the given <see cref="T:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel"/>
+            </summary>
+            <param name="level">The <see cref="T:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel"/> value for which to get the <see cref="T:System.String"/> representation</param>
+            <returns>Returns the appropriate <see cref="T:System.String"/> representation for the given <see cref="T:Cake.Common.Tools.NUnit.NUnitInternalTraceLevel"/> value</returns>
         </member>
         <member name="T:Cake.Common.Tools.NUnit.NUnitProcessOption">
             <summary>
@@ -15444,6 +15610,30 @@
             Gets or sets a value indicating whether progress of the deployment will be shown.
             </summary>
         </member>
+        <member name="T:Cake.Common.Tools.OctopusDeploy.DeploymentQueryResultParser">
+            <summary>
+            Parses the Console Output of the octo.exe call when called with list-deployments
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.DeploymentQueryResultParser.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Common.Tools.OctopusDeploy.DeploymentQueryResultParser"/> class.
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.DeploymentQueryResultParser.ParseResults(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Parse the results from The Deployment Query
+            </summary>
+            <param name="output">Console Output from the Run Process</param>
+            <returns>A collection of Octopus deployments.</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.DeploymentQueryResultParser.ParseSet(System.Collections.Generic.List{System.String})">
+            <summary>
+            Parses a set of lines from the output
+            </summary>
+            <param name="lineSet">A set of lines to parse</param>
+            <returns>an OctopusDeployment or null</returns>
+        </member>
         <member name="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployAliases">
             <summary>
             <para>Contains functionality related to <see href="https://octopus.com/">Octopus Deploy</see>.</para>
@@ -15577,6 +15767,113 @@
                  });
              </code>
              </example>
+        </member>
+        <member name="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployDeploymentQuerier">
+            <summary>
+            Allows you to query your Octopus Deploy server deployment history
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployDeploymentQuerier.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IProcessRunner,Cake.Core.Tooling.IToolLocator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployDeploymentQuerier"/> class.
+            </summary>
+            <param name="fileSystem">The file system.</param>
+            <param name="environment">The environment.</param>
+            <param name="processRunner">The process runner.</param>
+            <param name="tools">The tool locator.</param>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployDeploymentQuerier.GetToolName">
+            <summary>
+            Gets the name of the tool.
+            </summary>
+            <returns>The name of the tool.</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployDeploymentQuerier.GetToolExecutableNames">
+            <summary>
+            Gets the possible names of the tool executable.
+            </summary>
+            <returns>The tool executable name.</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployDeploymentQuerier.QueryOctopusDeployments(System.String,System.String,Cake.Common.Tools.OctopusDeploy.OctopusDeploymentQuerySettings)">
+            <summary>
+            Pushes the specified packages to Octopus Deploy internal repository
+            </summary>
+            <param name="server">The Octopus server URL</param>
+            <param name="apiKey">The user's API key</param>
+            <param name="querySettings">The query</param>
+            <returns>A list of Octopus Deployments</returns>
+        </member>
+        <member name="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployment">
+            <summary>
+            An object representing a deployment in Octopus Deploy
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployment.ProjectName">
+            <summary>
+            gets or sets the Name of the Deployment's Project
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployment.Environment">
+            <summary>
+            gets or sets the Environment the project was deployed to
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployment.Channel">
+            <summary>
+            gets or sets the Deployment's channel
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployment.Created">
+            <summary>
+            gets or sets When the deployment was created
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployment.Assembled">
+            <summary>
+            gets or sets when the deployment was assembled
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployment.Version">
+            <summary>
+            gets or sets the deployed project version
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployment.PackageVersions">
+            <summary>
+            gets or sets the list of packages in the deployment
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployment.ReleaseNotesHtml">
+            <summary>
+            gets or sets the release notes for the deployment (HTML Markup)
+            </summary>
+        </member>
+        <member name="T:Cake.Common.Tools.OctopusDeploy.OctopusDeploymentQuerySettings">
+            <summary>
+            Contains settings used by <see cref="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployDeploymentQuerier.QueryOctopusDeployments(System.String,System.String,Cake.Common.Tools.OctopusDeploy.OctopusDeploymentQuerySettings)"/>.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeploymentQuerySettings.EnvironmentName">
+            <summary>
+            Gets or Sets a value that is an Octopus Environment Name to filter for.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeploymentQuerySettings.ProjectName">
+            <summary>
+            Gets or Sets a value that is an Octopus Project Name to filter for.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeploymentQuerySettings.TenantName">
+            <summary>
+            Gets or Sets a value that is an Octopus Tenamt Name to filter for.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeploymentQuerySettings.Count">
+            <summary>
+            Gets or Sets a value that indicates how many deployments to retrieve
+            in Date Descending order (most recent first)
+            Default: 1
+            </summary>
         </member>
         <member name="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployPacker">
             <summary>
@@ -19074,6 +19371,7 @@
         <member name="M:Cake.Common.Tools.Chocolatey.ChocolateyAliases.ChocolateyDownload(Cake.Core.ICakeContext,System.String)">
             <summary>
             Downloads a Chocolatey package to the current working directory.
+            Requires Chocolatey licensed edition.
             </summary>
             <param name="context">The context.</param>
             <param name="packageId">The id of the package to download.</param>
@@ -19086,6 +19384,9 @@
         <member name="M:Cake.Common.Tools.Chocolatey.ChocolateyAliases.ChocolateyDownload(Cake.Core.ICakeContext,System.String,Cake.Common.Tools.Chocolatey.Download.ChocolateyDownloadSettings)">
             <summary>
             Downloads a Chocolatey package using the specified settings.
+            Requires Chocolatey licensed edition.
+            Features requiring Chocolatey for Business or a minimum version are documented
+            in <see cref="T:Cake.Common.Tools.Chocolatey.Download.ChocolateyDownloadSettings"/>.
             </summary>
             <param name="context">The context.</param>
             <param name="packageId">The id of the package to install.</param>
@@ -19366,6 +19667,9 @@
         <member name="M:Cake.Common.Tools.Chocolatey.Download.ChocolateyDownloader.Download(System.String,Cake.Common.Tools.Chocolatey.Download.ChocolateyDownloadSettings)">
             <summary>
             Downloads Chocolatey packages using the specified package id and settings.
+            Requires Chocolatey licensed edition.
+            Features requiring Chocolatey for Business or a minimum version are documented
+            in <see cref="T:Cake.Common.Tools.Chocolatey.Download.ChocolateyDownloadSettings"/>.
             </summary>
             <param name="packageId">The source package id.</param>
             <param name="settings">The settings.</param>
@@ -21068,6 +21372,15 @@
             Gets or sets a value indicating whether to ignore project to project references and only build the root project.
             </summary>
         </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Build.DotNetCoreBuildSettings.NoRestore">
+            <summary>
+            Gets or sets a value indicating whether to not do implicit NuGet package restore.
+            This makes build faster, but requires restore to be done before build is executed.
+            </summary>
+            <remarks>
+            Requires .NET Core 2.x or newer.
+            </remarks>
+        </member>
         <member name="P:Cake.Common.Tools.DotNetCore.Build.DotNetCoreBuildSettings.MSBuildSettings">
             <summary>
             Gets or sets additional arguments to be passed to MSBuild.
@@ -21264,7 +21577,7 @@
              <code>
                  var settings = new DotNetCoreBuildSettings
                  {
-                     Framework = "netcoreapp1.0",
+                     Framework = "netcoreapp2.0",
                      Configuration = "Debug",
                      OutputDirectory = "./artifacts/"
                  };
@@ -21352,7 +21665,7 @@
              <code>
                  var settings = new DotNetCoreRunSettings
                  {
-                     Framework = "netcoreapp1.0",
+                     Framework = "netcoreapp2.0",
                      Configuration = "Release"
                  };
             
@@ -21383,7 +21696,7 @@
              <code>
                  var settings = new DotNetCorePublishSettings
                  {
-                     Framework = "netcoreapp1.0",
+                     Framework = "netcoreapp2.0",
                      Configuration = "Release",
                      OutputDirectory = "./artifacts/"
                  };
@@ -21501,7 +21814,7 @@
              <code>
                  var settings = new DotNetCoreCleanSettings
                  {
-                     Framework = "netcoreapp1.0",
+                     Framework = "netcoreapp2.0",
                      Configuration = "Debug",
                      OutputDirectory = "./artifacts/"
                  };
@@ -22310,6 +22623,33 @@
             This may also override version settings during packaging.
             </remarks>
         </member>
+        <member name="M:Cake.Common.Tools.DotNetCore.MSBuild.DotNetCoreMSBuildSettingsExtensions.SetFileVersion(Cake.Common.Tools.DotNetCore.MSBuild.DotNetCoreMSBuildSettings,System.String)">
+            <summary>
+            Sets the file version.
+            </summary>
+            <param name="settings">The settings.</param>
+            <param name="fileVersion">The file version.</param>
+            <returns>The same <see cref="T:Cake.Common.Tools.MSBuild.MSBuildSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.DotNetCore.MSBuild.DotNetCoreMSBuildSettingsExtensions.SetInformationalVersion(Cake.Common.Tools.DotNetCore.MSBuild.DotNetCoreMSBuildSettings,System.String)">
+            <summary>
+            Sets the informational version.
+            </summary>
+            <param name="settings">The settings.</param>
+            <param name="informationalVersion">The informational version.</param>
+            <returns>The same <see cref="T:Cake.Common.Tools.MSBuild.MSBuildSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.DotNetCore.MSBuild.DotNetCoreMSBuildSettingsExtensions.SuppressVersionRecommendedFormatWarning(Cake.Common.Tools.DotNetCore.MSBuild.DotNetCoreMSBuildSettings)">
+            <summary>
+            Suppress warning CS7035.
+            This is useful when using semantic versioning and either the file or informational version
+            doesn't match the recommended format.
+            The recommended format is: major.minor.build.revision where
+            each is an integer between 0 and 65534 (inclusive).
+            </summary>
+            <param name="settings">The settings.</param>
+            <returns>The same <see cref="T:Cake.Common.Tools.MSBuild.MSBuildSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
         <member name="M:Cake.Common.Tools.DotNetCore.MSBuild.DotNetCoreMSBuildSettingsExtensions.SetVersionPrefix(Cake.Common.Tools.DotNetCore.MSBuild.DotNetCoreMSBuildSettings,System.String)">
             <summary>
             Sets the version prefix.
@@ -22694,6 +23034,23 @@
             Gets or sets a value indicating whether to not build project before packing.
             </summary>
         </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Pack.DotNetCorePackSettings.NoDependencies">
+            <summary>
+            Gets or sets a value indicating whether to ignore project to project references and only build the root project.
+            </summary>
+            <remarks>
+            Requires .NET Core 2.x or newer.
+            </remarks>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Pack.DotNetCorePackSettings.NoRestore">
+            <summary>
+            Gets or sets a value indicating whether to not do implicit NuGet package restore.
+            This makes build faster, but requires restore to be done before build is executed.
+            </summary>
+            <remarks>
+            Requires .NET Core 2.x or newer.
+            </remarks>
+        </member>
         <member name="P:Cake.Common.Tools.DotNetCore.Pack.DotNetCorePackSettings.IncludeSymbols">
             <summary>
             Gets or sets a value indicating whether to generate the symbols nupkg.
@@ -22769,6 +23126,47 @@
             Gets or sets the value that defines what `*` should be replaced with in version field in project.json.
             </summary>
         </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.NoDependencies">
+            <summary>
+            Gets or sets a value indicating whether to ignore project to project references and only build the root project.
+            </summary>
+            <remarks>
+            Requires .NET Core 2.x or newer.
+            </remarks>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.NoRestore">
+            <summary>
+            Gets or sets a value indicating whether to not do implicit NuGet package restore.
+            This makes build faster, but requires restore to be done before build is executed.
+            </summary>
+            <remarks>
+            Requires .NET Core 2.x or newer.
+            </remarks>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.Force">
+            <summary>
+            Gets or sets a value indicating whether to force all dependencies to be resolved even if the last restore was successful. This is equivalent to deleting project.assets.json.
+            </summary>
+            <remarks>
+            Requires .NET Core 2.x or newer.
+            </remarks>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.SelfContained">
+            <summary>
+            Gets or sets a value indicating whether Publish the .NET Core runtime with your application so the runtime doesn't need to be installed on the target machine. Defaults to 'true' if a runtime identifier is specified.
+            </summary>
+            <remarks>
+            Requires .NET Core 2.x or newer.
+            </remarks>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.Sources">
+            <summary>
+            Gets or sets the specified NuGet package sources to use during the restore.
+            </summary>
+            <remarks>
+            Requires .NET Core 2.x or newer.
+            </remarks>
+        </member>
         <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.MSBuildSettings">
             <summary>
             Gets or sets additional arguments to be passed to MSBuild.
@@ -22841,6 +23239,14 @@
             Gets or sets a value indicating whether to ignore project to project references and restore only the root project.
             </summary>
         </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Restore.DotNetCoreRestoreSettings.Force">
+             <summary>
+             Gets or sets a value indicating whether to force all dependencies to be resolved even if the last restore was successful.
+             This is equivalent to deleting the project.assets.json file.
+            
+             Note: This flag was introduced with the .NET Core 2.x release.
+             </summary>
+        </member>
         <member name="P:Cake.Common.Tools.DotNetCore.Restore.DotNetCoreRestoreSettings.MSBuildSettings">
             <summary>
             Gets or sets additional arguments to be passed to MSBuild.
@@ -22881,6 +23287,18 @@
         <member name="P:Cake.Common.Tools.DotNetCore.Run.DotNetCoreRunSettings.Configuration">
             <summary>
             Gets or sets the configuration under which to build.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Run.DotNetCoreRunSettings.NoRestore">
+            <summary>
+            Gets or sets a value indicating whether to not do implicit NuGet package restore.
+            This makes run faster, but requires restore to be done before run is executed.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Run.DotNetCoreRunSettings.NoBuild">
+            <summary>
+            Gets or sets a value indicating whether to not do implicit build.
+            This makes run faster, but requires build to be done before run is executed.
             </summary>
         </member>
         <member name="T:Cake.Common.Tools.DotNetCore.Test.DotNetCoreTester">
@@ -22951,6 +23369,15 @@
             <summary>
             Gets or sets a value indicating whether to not build the project before testing.
             </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Test.DotNetCoreTestSettings.NoRestore">
+            <summary>
+            Gets or sets a value indicating whether to not do implicit NuGet package restore.
+            This makes build faster, but requires restore to be done before build is executed.
+            </summary>
+            <remarks>
+            Requires .NET Core 2.x or newer.
+            </remarks>
         </member>
         <member name="P:Cake.Common.Tools.DotNetCore.Test.DotNetCoreTestSettings.DiagnosticFile">
             <summary>
@@ -27631,6 +28058,7 @@
             });
                 ]]>
               </code>
+            </example>
             <example>
               <para>
               Remove an app setting from a config file.
@@ -27663,7 +28091,6 @@
             Credit to NAnt for the original example.
             http://nant.sourceforge.net/release/latest/help/tasks/xmlpoke.html
             </para>
-            </example>
         </member>
         <member name="M:Cake.Common.Xml.XmlPokeAliases.XmlPoke(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,System.String,System.String,Cake.Common.Xml.XmlPokeSettings)">
             <summary>
@@ -27729,6 +28156,7 @@
             });
                 ]]>
               </code>
+            </example>
             <example>
               <para>
               Remove an app setting from a config file.
@@ -27761,7 +28189,6 @@
             Credit to NAnt for the original example.
             http://nant.sourceforge.net/release/latest/help/tasks/xmlpoke.html
             </para>
-            </example>
         </member>
         <member name="M:Cake.Common.Xml.XmlPokeAliases.XmlPokeString(Cake.Core.ICakeContext,System.String,System.String,System.String)">
             <summary>
@@ -27825,6 +28252,7 @@
             });
                 ]]>
               </code>
+            </example>
             <example>
               <para>
               Remove an app setting from a config file.
@@ -27856,7 +28284,6 @@
             Credit to NAnt for the original example.
             http://nant.sourceforge.net/release/latest/help/tasks/xmlpoke.html
             </para>
-            </example>
         </member>
         <member name="M:Cake.Common.Xml.XmlPokeAliases.XmlPokeString(Cake.Core.ICakeContext,System.String,System.String,System.String,Cake.Common.Xml.XmlPokeSettings)">
             <summary>
@@ -27921,6 +28348,7 @@
             });
                 ]]>
               </code>
+            </example>
             <example>
               <para>
               Remove an app setting from a config file.
@@ -27952,7 +28380,6 @@
             Credit to NAnt for the original example.
             http://nant.sourceforge.net/release/latest/help/tasks/xmlpoke.html
             </para>
-            </example>
         </member>
         <member name="M:Cake.Common.Xml.XmlPokeAliases.XmlPoke(System.IO.Stream,System.IO.Stream,System.String,System.String,Cake.Common.Xml.XmlPokeSettings)">
             <summary>
