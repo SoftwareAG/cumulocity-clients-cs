@@ -10,8 +10,13 @@ pipeline {
     }
     stages {
         stage('Build') {
+		    
+			when {
+                branch 'develop'
+            }
             steps {
                 sh 'echo build'
+				sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test'
             }
         }
         stage('Deliver for development') {
