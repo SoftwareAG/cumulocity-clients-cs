@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'ms-alpine-mono-devel:0.0.1'
-            args '-v /var/lib/jenkins/.mono:/root/.mono'
+            args '-v /var/lib/jenkins/.mono:/root/.mono -e MONO_TLS_PROVIDER=legacy'
         }
     }
     environment {
