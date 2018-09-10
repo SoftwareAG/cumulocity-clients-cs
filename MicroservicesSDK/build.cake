@@ -1,4 +1,4 @@
-#addin "Cake.Putty"
+
 #addin "Cake.DocFx"
 #tool nuget:?package=docfx.console
 
