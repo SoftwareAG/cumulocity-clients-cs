@@ -1,6 +1,6 @@
 
-#addin "Cake.DocFx"
-#tool nuget:?package=docfx.console
+//#addin "Cake.DocFx"
+//#tool nuget:?package=docfx.console
 
 
 //////////////////////////////////////////////////////////////////////
@@ -25,7 +25,7 @@ var testFailed = false;
 var solutionDir = System.IO.Directory.GetCurrentDirectory();
 var testResultDir = System.IO.Path.Combine(solutionDir, "test-results");
 var artifactDir = "./artifacts";
-var docfxDir = "./docs/_site";
+//var docfxDir = "./docs/_site";
 
 
 var local = BuildSystem.IsLocalBuild;
@@ -60,10 +60,10 @@ Task("Clean")
 				//DeleteDirectory(outputDir, recursive:true);
 				CleanDirectory(outputDir);
 			}
-		if (DirectoryExists(docfxDir))
-			{
-				CleanDirectory(docfxDir);
-			}
+//		if (DirectoryExists(docfxDir))
+//			{
+//				CleanDirectory(docfxDir);
+//			}
 		if (DirectoryExists(testResultDir))
 			{
 				CleanDirectory(testResultDir);
@@ -191,7 +191,7 @@ Task("Package")
 		}
 });
 
-Task("Docs").Does(() => DocFxBuild("./docs/docfx.json"));
+//Task("Docs").Does(() => DocFxBuild("./docs/docfx.json"));
 
 Task("CreateRelease")
 .IsDependentOn("Test")
