@@ -15,8 +15,9 @@ pipeline {
                 branch 'develop'
             }
             steps {
-                sh 'echo build'
-				sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test'
+			    sh ' sudo ls /root/.nuget/packages/'
+                sh ' curl -v -I -H "Testing: Test header so you see this works" https://api.nuget.org/v3-flatcontainer/cake/0.24.0/cake.0.24.0.nupkg'
+				sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
             }
         }
         stage('Deliver for development') {
