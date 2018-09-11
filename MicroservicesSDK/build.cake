@@ -1,6 +1,5 @@
-
-#addin "Cake.DocFx"
-#tool nuget:?package=docfx.console
+#addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx&version=0.7.0"
+#tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console&version=2.38.1"
 
 
 //////////////////////////////////////////////////////////////////////
