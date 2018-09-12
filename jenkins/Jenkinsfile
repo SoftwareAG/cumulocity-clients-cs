@@ -15,29 +15,25 @@ pipeline {
                 branch 'develop'
             }
             steps {
-			    sh ' ls /root/.nuget/packages/'
-                sh ' curl -v -I -H "Testing: Test header so you see this works" https://api.nuget.org/v3-flatcontainer/cake/0.24.0/cake.0.24.0.nupkg'
 				sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
             }
-        }
-        stage('Deliver for development') {
+        } 
+		stage('Deliver for development') {
             when {
                 branch 'development'
             }
             steps {
-                sh './jenkins/scripts/deliver-for-development.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                //sh './jenkins/scripts/deliver-for-development.sh'
+                //input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                //sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('Deploy for production') {
+        stage('Release') {
             when {
-                branch 'production'
+                branch "release/*"
             }
             steps {
-                sh './jenkins/scripts/deploy-for-production.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                sh 'echo ReleaseBranch'
             }
         }	
     }
