@@ -5,6 +5,9 @@ pipeline {
             args '-v /var/lib/jenkins/.mono:/root/.mono'
         }
     }
+	parameters {
+        booleanParam(defaultValue: true, description: '', name: 'diagnosticFlag')
+    }
     environment {
         CI = 'true'
     }
@@ -15,7 +18,17 @@ pipeline {
                 branch 'develop'
             }
             steps {
-				sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
+			    
+				script {
+                    if ("${params.diagnosticFlag}" == "true") {
+						echo "diagnostic flag: ${params.diagnosticFlag}"
+						sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
+                    }else
+					{
+						echo "diagnostic flag: ${params.diagnosticFlag}"
+						sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test'
+					}
+                }
             }
         } 
 		stage('Deliver for development') {
