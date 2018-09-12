@@ -1,0 +1,46 @@
+pipeline {
+    agent {
+        docker {
+            image 'c8y-ubuntu-mono-devel:0.0.1'
+            args '-v /var/lib/jenkins/.mono:/root/.mono'
+        }
+    }
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
+		    
+			when {
+                branch 'develop'
+            }
+            steps {
+				sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
+            }
+        } 
+		stage('Deliver for development') {
+            when {
+                branch 'development'
+            }
+            steps {
+                //sh './jenkins/scripts/deliver-for-development.sh'
+                //input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                //sh './jenkins/scripts/kill.sh'
+            }
+        }
+        stage('Release') {
+            when {
+                branch "release/*"
+            }
+            steps {
+                sh 'echo ReleaseBranch'
+            }
+        }	
+    }
+	
+	post { 
+        always { 
+            cleanWs()
+        }
+    }
+}
