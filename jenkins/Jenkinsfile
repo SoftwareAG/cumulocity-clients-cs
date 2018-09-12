@@ -7,6 +7,7 @@ pipeline {
     }
 	parameters {
         booleanParam(defaultValue: true, description: '', name: 'diagnosticFlag')
+		booleanParam(defaultValue: false, description: '', name: 'CAN_RELEASE')
     }
     environment {
         CI = 'true'
@@ -20,13 +21,27 @@ pipeline {
             steps {
 			    
 				script {
-                    if ("${params.diagnosticFlag}" == "true") {
-						echo "diagnostic flag: ${params.diagnosticFlag}"
-						sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
-                    }else
-					{
-						echo "diagnostic flag: ${params.diagnosticFlag}"
-						sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test'
+				    if ("${params.CAN_RELEASE}" == "true") {
+							echo "CAN_RELEASE: ${params.CAN_RELEASE}"
+							    
+								sshagent (['jenkins-hg-key']) {
+								sh '''#!/bin/bash
+								whoami
+								chmod +x ./MicroservicesSDK/build.sh
+								cd MicroservicesSDK
+								pwd
+								./build.sh --script build-release.cake
+								'''
+					}
+					else{
+						if ("${params.diagnosticFlag}" == "true") {
+							echo "diagnostic flag: ${params.diagnosticFlag}"
+							sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
+						}else
+						{
+							echo "diagnostic flag: ${params.diagnosticFlag}"
+							sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test'
+						}
 					}
                 }
             }
@@ -44,7 +59,18 @@ pipeline {
                 branch "release/*"
             }
             steps {
-                sh 'echo ReleaseBranch'
+				script {
+                    if ("${params.diagnosticFlag}" == "true") {
+					    sh 'echo ReleaseBranch'
+						echo "diagnostic flag: ${params.diagnosticFlag}"
+						sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
+                    }else
+					{
+					    sh 'echo ReleaseBranch'
+						echo "diagnostic flag: ${params.diagnosticFlag}"
+						sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test'
+					}
+                }
             }
         }	
     }
