@@ -32,6 +32,7 @@ pipeline {
 								pwd
 								./build.sh --script build-release.cake
 								'''
+								}
 					}
 					else{
 						if ("${params.diagnosticFlag}" == "true") {
