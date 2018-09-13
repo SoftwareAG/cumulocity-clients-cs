@@ -6,7 +6,7 @@ pipeline {
         }
     }
 	parameters {
-        booleanParam(defaultValue: true, description: '', name: 'diagnosticFlag')
+        booleanParam(defaultValue: true, description: '', name: 'DIAGNOSTIC_FLAG')
 		booleanParam(defaultValue: false, description: '', name: 'CAN_RELEASE')
     }
     environment {
@@ -35,12 +35,12 @@ pipeline {
 								}
 					}
 					else{
-						if ("${params.diagnosticFlag}" == "true") {
-							echo "diagnostic flag: ${params.diagnosticFlag}"
+						if ("${params.DIAGNOSTIC_FLAG}" == "true") {
+							echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
 							sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
 						}else
 						{
-							echo "diagnostic flag: ${params.diagnosticFlag}"
+							echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
 							sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test'
 						}
 					}
@@ -61,15 +61,35 @@ pipeline {
             }
             steps {
 				script {
-                    if ("${params.diagnosticFlag}" == "true") {
-					    sh 'echo ReleaseBranch'
-						echo "diagnostic flag: ${params.diagnosticFlag}"
-						sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
+                    if ("${params.DIAGNOSTIC_FLAG}" == "true") {
+					    sh 'echo Release Branch'
+						echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
+						
+						echo "Release Branch"
+							    
+						sshagent (['jenkins-hg-key']) {
+						sh '''#!/bin/bash
+						whoami
+						chmod +x ./MicroservicesSDK/build.sh
+						cd MicroservicesSDK
+						pwd
+						./build.sh --script build-release.cake -verbosity=diagnostic
+						'''
+						}
+							
                     }else
 					{
-					    sh 'echo ReleaseBranch'
-						echo "diagnostic flag: ${params.diagnosticFlag}"
-						sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test'
+							echo "Release Branch"
+							    
+							sshagent (['jenkins-hg-key']) {
+							sh '''#!/bin/bash
+							whoami
+							chmod +x ./MicroservicesSDK/build.sh
+							cd MicroservicesSDK
+							pwd
+							./build.sh --script build-release.cake
+							'''
+							}
 					}
                 }
             }
