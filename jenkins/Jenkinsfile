@@ -61,7 +61,7 @@ pipeline {
             }
             steps {
 				script {
-                    if ("${params.DIAGNOSTIC_FLAG}" == "true") {
+                    if ("${params.DIAGNOSTIC_FLAG}" == "true" && ("${params.CAN_RELEASE}" == "true")) {
 					    sh 'echo Release Branch'
 						echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
 						
@@ -77,7 +77,7 @@ pipeline {
 						'''
 						}
 							
-                    }else
+                    }else if ("${params.CAN_RELEASE}" == "true")
 					{
 							echo "Release Branch"
 							    
