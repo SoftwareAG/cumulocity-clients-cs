@@ -26,7 +26,7 @@ function ReadIsLastTagCommit
 		{
 			return "r0.0.0"    
 		}
-		return $lasttag.Substring(10,$lasttag.Length-10)
+		return "r"+$lasttag.Substring(10,$lasttag.Length-10)
 	}Catch
     {
 	   return "r0.0.0"
