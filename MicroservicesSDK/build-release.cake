@@ -309,7 +309,7 @@ void packCsProject()
 void publishNugets()
 {
     var nugetFiles = GetFiles(buildDir.Path.FullPath+"/**/*.nupkg");
-	var source = EnvironmentVariable("PRIVATE_FEED_SOURCE")
+	var source = EnvironmentVariable("PRIVATE_FEED_SOURCE");
     var accessToken = EnvironmentVariable("PRIVATE_FEED_ACCESSTOKEN");
 	
     foreach(var file in nugetFiles)
