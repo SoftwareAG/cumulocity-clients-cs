@@ -8,6 +8,8 @@ The bumping the version number to required and next to tag it. Example:
  .\prerelease.ps1 -fixVersion "1.1.0"
 ```
 
+The script adds the tag and changes the versions.
+
 ##How to release a new version of SDK (Manually)
 
 The tagging a new release should be preceded the bumping the version to required number.
