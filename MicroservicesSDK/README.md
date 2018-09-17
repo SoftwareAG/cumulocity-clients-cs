@@ -1,5 +1,14 @@
 
-##How to release a new version of SDK
+
+##How to release a new version of SDK with scripts (Scripted)
+
+The bumping the version number to required and next to tag it. Example:
+
+```
+ .\prerelease.ps1 -fixVersion "1.1.0"
+```
+
+##How to release a new version of SDK (Manually)
 
 The tagging a new release should be preceded the bumping the version to required number.
 
@@ -19,13 +28,3 @@ The  required format of tag is "prerelease{{tag}}" where the tag is a version nu
 
 The next step is to start Jenkins' job - [Release](http://localhost:8081/view/C8Y-RELEASE/job/Docker-Cumulocity-Clients-CSharp-MicroserviceSdk-RELEASE)
 To build a new release, use the develop parameter
-
-
-
-##How to release a new version of SDK with scripts
-
-The bumping the version number to required and next to tag it. Example:
-
-```
- .\prerelease.ps1 -fixVersion "1.1.0"
-```
