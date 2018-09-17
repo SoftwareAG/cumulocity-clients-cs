@@ -27,11 +27,11 @@ Task("CreateReleaseBranchAndDeploy").Does(()=> {
 		if(canCreateVersion){
 		    checkNumberCommitsAfterLastTag();
 			buildCsProjects();
-			bumpVersionProjects(Version.Release,lastTagCommit);
+			bumpVersionProjects(Version.Release,lastTagCommit.Remove(0,1));
 			readBuildVersionProps();
 			packCsProject();
 			deployCsProject();
-			createReleaseBranch("release/r" + lastTagCommit); 
+			createReleaseBranch("release/" + lastTagCommit); 
 			cleanDirectories();
 		}else
 		{
