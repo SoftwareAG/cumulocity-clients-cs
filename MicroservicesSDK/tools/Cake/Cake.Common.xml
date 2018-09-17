@@ -7345,6 +7345,71 @@
             The error code of the warning or error.
             </value>
         </member>
+        <member name="T:Cake.Common.Build.TFBuild.Data.TFBuildPublishCodeCoverageData">
+            <summary>
+            Providers TF Build agent for publishing code coverage results
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishCodeCoverageData.CodeCoverageTool">
+            <summary>
+            Gets or Sets the tool from which code coverage results are generated.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishCodeCoverageData.SummaryFileLocation">
+            <summary>
+            Gets or Sets the path ath of the summary file containing code coverage statistics, such as line, method, and class coverage.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishCodeCoverageData.ReportDirectory">
+            <summary>
+            Gets or Sets the Path of the code coverage HTML report directory. The report directory is published for later viewing as an artifact of the build.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishCodeCoverageData.AdditionalCodeCoverageFiles">
+            <summary>
+            Gets or Sets the file paths for any additional code coverage files to be published as artifacts of the build.
+            </summary>
+        </member>
+        <member name="T:Cake.Common.Build.TFBuild.Data.TFBuildPublishTestResultsData">
+            <summary>
+             Provides TF Build agent info for publishing test results
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishTestResultsData.TestRunner">
+            <summary>
+            Gets or Sets the type test runner the results are formated in
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishTestResultsData.TestResultsFiles">
+            <summary>
+            Gets or sets the list of Test Result files to publish.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishTestResultsData.MergeTestResults">
+            <summary>
+            Gets or Sets whether to merge all Test Result Files into one run
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishTestResultsData.Platform">
+            <summary>
+            Gets or Sets the Platform for which the tests were run on
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishTestResultsData.Configuration">
+            <summary>
+            Gets or Sets the configuration for which the tests were run on
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishTestResultsData.TestRunTitle">
+            <summary>
+            Gets or Sets a name for the Test Run.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Build.TFBuild.Data.TFBuildPublishTestResultsData.PublishRunAttachments">
+            <summary>
+            Gets or Sets whether to opt in/out of publishing test run level attachments
+            </summary>
+        </member>
         <member name="T:Cake.Common.Build.TFBuild.Data.TFBuildRecordData">
             <summary>
             Provides optional data associated with a TF Build timeline record.
@@ -7541,6 +7606,21 @@
             The URI of the team foundation collection.
             </value>
         </member>
+        <member name="T:Cake.Common.Build.TFBuild.Data.TFCodeCoverageToolType">
+            <summary>
+             Provides the known values for the Code Coverage tool formats
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Build.TFBuild.Data.TFCodeCoverageToolType.JaCoCo">
+            <summary>
+            JaCoCo code coverage format
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Build.TFBuild.Data.TFCodeCoverageToolType.Cobertura">
+            <summary>
+            Cobertura code coverage format
+            </summary>
+        </member>
         <member name="T:Cake.Common.Build.TFBuild.Data.TFRepositoryType">
             <summary>
             Provides the known values for the TF Build Repository types.
@@ -7569,6 +7649,31 @@
         <member name="F:Cake.Common.Build.TFBuild.Data.TFRepositoryType.Svn">
             <summary>
             Subversion repository.
+            </summary>
+        </member>
+        <member name="T:Cake.Common.Build.TFBuild.Data.TFTestRunnerType">
+            <summary>
+            Providers known values for the TF Test Runner types
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Build.TFBuild.Data.TFTestRunnerType.JUnit">
+            <summary>
+            JUnit Test Result Format
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Build.TFBuild.Data.TFTestRunnerType.NUnit">
+            <summary>
+            NUnit (v2) Test Result Format
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Build.TFBuild.Data.TFTestRunnerType.VSTest">
+            <summary>
+            Visual Studio (MSTest) Test Result Format
+            </summary>
+        </member>
+        <member name="F:Cake.Common.Build.TFBuild.Data.TFTestRunnerType.XUnit">
+            <summary>
+            XUnit Test Result Format
             </summary>
         </member>
         <member name="T:Cake.Common.Build.TFBuild.ITFBuildCommands">
@@ -7735,6 +7840,18 @@
             Requires agent version 1.95
             </remarks>
             <param name="tag">The tag.</param>
+        </member>
+        <member name="M:Cake.Common.Build.TFBuild.ITFBuildCommands.PublishTestResults(Cake.Common.Build.TFBuild.Data.TFBuildPublishTestResultsData)">
+            <summary>
+            Publishes and uploads tests results
+            </summary>
+            <param name="data">The publish test results data</param>
+        </member>
+        <member name="M:Cake.Common.Build.TFBuild.ITFBuildCommands.PublishCodeCoverage(Cake.Common.Build.TFBuild.Data.TFBuildPublishCodeCoverageData)">
+            <summary>
+            Publishes and uploads code coverage results
+            </summary>
+            <param name="data">The code coverage data</param>
         </member>
         <member name="T:Cake.Common.Build.TFBuild.ITFBuildProvider">
             <summary>
@@ -7944,6 +8061,18 @@
             Requires agent version 1.95
             </remarks>
             <param name="tag">The tag.</param>
+        </member>
+        <member name="M:Cake.Common.Build.TFBuild.TFBuildCommands.PublishTestResults(Cake.Common.Build.TFBuild.Data.TFBuildPublishTestResultsData)">
+            <summary>
+            Publishes and uploads tests results
+            </summary>
+            <param name="data">The publish test results data</param>
+        </member>
+        <member name="M:Cake.Common.Build.TFBuild.TFBuildCommands.PublishCodeCoverage(Cake.Common.Build.TFBuild.Data.TFBuildPublishCodeCoverageData)">
+            <summary>
+            Publishes and uploads code coverage results
+            </summary>
+            <param name="data">The code coverage data</param>
         </member>
         <member name="T:Cake.Common.Build.TFBuild.TFBuildProvider">
             <summary>
@@ -8870,6 +8999,30 @@
             This namespace contain types that
             enable you to interact with build logs.
             </summary>
+        </member>
+        <member name="T:Cake.Common.DryRunAliases">
+            <summary>
+            Contains functionality related to arguments.
+            </summary>
+        </member>
+        <member name="M:Cake.Common.DryRunAliases.IsDryRun(Cake.Core.ICakeContext)">
+            <summary>
+            Determines whether or not the current script execution is a dry run.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>Whether or not the current script execution is a dry run.</returns>
+            <example>
+            <code>
+            Setup(context =>
+            {
+                if (!context.IsDryRun())
+                {
+                    // Do things that you don't want to
+                    // do when script is being dry runned.
+                }
+            });
+            </code>
+            </example>
         </member>
         <member name="T:Cake.Common.EnvironmentAliases">
             <summary>
@@ -13022,6 +13175,11 @@
             </summary>
             <value>The package tags.</value>
         </member>
+        <member name="P:Cake.Common.Tools.NuGet.Pack.NuGetPackSettings.Repository">
+            <summary>
+            Gets or sets the package repository data
+            </summary>
+        </member>
         <member name="P:Cake.Common.Tools.NuGet.Pack.NuGetPackSettings.DevelopmentDependency">
             <summary>
             Gets or sets a value indicating whether this package should be marked as a development dependency.
@@ -13095,6 +13253,31 @@
             <value>
             <c>true</c> if the output should be placed in the tool folder inside the nuget package; otherwise <c>false</c>.
             </value>
+        </member>
+        <member name="T:Cake.Common.Tools.NuGet.Pack.NuGetRepository">
+            <summary>
+            Specifies the package's source code location, allowing IDEs to download and debug the code.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.NuGet.Pack.NuGetRepository.Type">
+            <summary>
+            Gets or sets the type of repository e.g. git.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.NuGet.Pack.NuGetRepository.Url">
+            <summary>
+            Gets or sets the repository's URL.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.NuGet.Pack.NuGetRepository.Branch">
+            <summary>
+            Gets or sets the name of the branch within the repository.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.NuGet.Pack.NuGetRepository.Commit">
+            <summary>
+            Gets or sets the corresponding commit ID for the specified version of the package.
+            </summary>
         </member>
         <member name="T:Cake.Common.Tools.NuGet.Pack.NuSpecContent">
             <summary>
@@ -14796,7 +14979,7 @@
         </member>
         <member name="T:Cake.Common.Tools.NUnit.NUnit3Runner">
             <summary>
-            The NUnit unit test runner.
+            The NUnit3 unit test runner.
             </summary>
         </member>
         <member name="M:Cake.Common.Tools.NUnit.NUnit3Runner.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IProcessRunner,Cake.Core.Tooling.IToolLocator)">
@@ -14829,7 +15012,7 @@
         </member>
         <member name="M:Cake.Common.Tools.NUnit.NUnit3Runner.ProcessExitCode(System.Int32)">
             <summary>
-            Customized exit code handling.
+            Customized Nunit3 exit code handling.
             Throws <see cref="T:Cake.Core.CakeException"/> on non-zero exit code
             </summary>
             <param name="exitCode">The process exit code</param>
@@ -14902,6 +15085,16 @@
             </summary>
             <value>
             <c>true</c> if execution of the test run should terminate immediately on the first test failure or error;
+            otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cake.Common.Tools.NUnit.NUnit3Settings.SkipNonTestAssemblies">
+            <summary>
+            Gets or sets a value indicating whether execution of the test run should
+            skip any non-test assemblies specified, without error.
+            </summary>
+            <value>
+            <c>true</c> if execution of the test run should skip any non-test assemblies specified, without error;
             otherwise, <c>false</c>.
             </value>
         </member>
@@ -15060,10 +15253,10 @@
         </member>
         <member name="P:Cake.Common.Tools.NUnit.NUnit3Settings.Params">
             <summary>
-            Gets or sets the params that should be passed to the runner.
+            Gets or sets the parameters that should be passed to the runner.
             </summary>
             <value>
-            List of parametes (key/value) which are passed to the runner.
+            List of parameters (key/value) which are passed to the runner.
             </value>
         </member>
         <member name="P:Cake.Common.Tools.NUnit.NUnit3Settings.TraceLevel">
@@ -15308,7 +15501,7 @@
         </member>
         <member name="M:Cake.Common.Tools.NUnit.NUnitRunner.ProcessExitCode(System.Int32)">
             <summary>
-            Customized exit code handling.
+            Customized Nunit exit code handling.
             Throws <see cref="T:Cake.Core.CakeException"/> on non-zero exit code
             </summary>
             <param name="exitCode">The process exit code</param>
@@ -15768,6 +15961,44 @@
              </code>
              </example>
         </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployAliases.OctoPromoteRelease(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String,System.String,Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings)">
+             <summary>
+             Promotes the specified already existing release into a specified environment
+             See <see href="https://octopus.com/docs/api-and-integration/octo.exe-command-line/promoting-releases">Octopus Documentation</see> for more details.
+             </summary>
+             <param name="context">The cake context</param>
+             <param name="server">The Octopus server URL</param>
+             <param name="apiKey">The user's API key</param>
+             <param name="projectName">Name of the target project</param>
+             <param name="deployFrom">Source environment name</param>
+             <param name="deployTo">Target environment name</param>
+             <param name="settings">Deployment settings</param>
+             <example>
+             <code>
+                 // bare minimum
+                 OctoPromoteRelease("http://octopus-deploy.example", "API-XXXXXXXXXXXXXXXXXXXX", "MyGreatProject", "Testing", "Staging", new OctopusDeployPromoteReleaseSettings());
+            
+                 // All of deployment arguments
+                 OctoPromoteRelease("http://octopus-deploy.example", "API-XXXXXXXXXXXXXXXXXXXX", "MyGreatProject", "Testing", "Staging", new OctopusDeployPromoteReleaseSettings {
+                     ShowProgress = true,
+                     ForcePackageDownload = true,
+                     WaitForDeployment = true,
+                     DeploymentTimeout = TimeSpan.FromMinutes(1),
+                     CancelOnTimeout = true,
+                     DeploymentChecksLeepCycle = TimeSpan.FromMinutes(77),
+                     GuidedFailure = true,
+                     SpecificMachines = new string[] { "Machine1", "Machine2" },
+                     Force = true,
+                     SkipSteps = new[] { "Step1", "Step2" },
+                     NoRawLog = true,
+                     RawLogFile = "someFile.txt",
+                     DeployAt = new DateTime(2010, 6, 15).AddMinutes(1),
+                     Tenant = new[] { "Tenant1", "Tenant2" },
+                     TenantTags = new[] { "Tag1", "Tag2" },
+                 });
+             </code>
+             </example>
+        </member>
         <member name="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployDeploymentQuerier">
             <summary>
             Allows you to query your Octopus Deploy server deployment history
@@ -15907,6 +16138,102 @@
             </summary>
             <param name="id">The package ID.</param>
             <param name="settings">The settings.</param>
+        </member>
+        <member name="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings">
+            <summary>
+            Possible arguments to pass to Octo.exe for promoting a release. See <see href="https://octopus.com/docs/api-and-integration/octo.exe-command-line/promoting-releases">Octopus Deploy documentation</see>
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings"/> class.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.UpdateVariables">
+            <summary>
+            Gets or sets a value indicating whether overwrite the variable snapshot for the release by re-importing the variables from the project
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.ShowProgress">
+            <summary>
+            Gets or sets a value indicating whether progress of the deployment should be followed. (Sets --waitfordeployment and --norawlog to true.)
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.ForcePackageDownload">
+            <summary>
+            Gets or sets a value indicating whether to force downloading of already installed packages. Default false.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.WaitForDeployment">
+            <summary>
+            Gets or sets a value indicating whether to wait synchronously for deployment to finish.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.DeploymentTimeout">
+            <summary>
+            Gets or sets maximum time (timespan format) that the console session will wait for the deployment to finish (default 00:10:00).
+            This will not stop the deployment. Requires WaitForDeployment parameter set.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.CancelOnTimeout">
+            <summary>
+            Gets or sets a value indicating whether to cancel the deployment if the deployment timeout is reached(default false).
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.DeploymentChecksLeepCycle">
+            <summary>
+            Gets or sets how much time should elapse between deployment status checks(default 00:00:10).
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.GuidedFailure">
+            <summary>
+            Gets or sets a value indicating whether to use Guided Failure mode. If not specified, will use default setting from environment.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.SpecificMachines">
+            <summary>
+            Gets or sets list of machines names to target in the deployed environment.If not specified all machines in the environment will be considered.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.Force">
+            <summary>
+            Gets or sets a value indicating whether a project is configured to skip packages with already-installed versions, override this setting to force re-deployment (flag, default false).
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.SkipSteps">
+            <summary>
+            Gets or sets a list of steps to be skipped. Takes step names.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.NoRawLog">
+            <summary>
+            Gets or sets a value indicating whether print the raw log of failed tasks or not.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.RawLogFile">
+            <summary>
+            Gets or sets a file where to redirect the raw log of failed tasks.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.Variables">
+            <summary>
+            Gets or sets values for any prompted variables.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.DeployAt">
+            <summary>
+            Gets or sets time at which deployment should start (scheduled deployment), specified as any valid DateTimeOffset format, and assuming the time zone is the current local time zone.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.Tenant">
+            <summary>
+            Gets or sets a tenant the deployment will be performed for; specify this argument multiple times to add multiple tenants or use `*` wildcard to deploy to tenants able to deploy.
+            </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings.TenantTags">
+            <summary>
+            Gets or sets a tenant tags used to match tenants that the deployment will be performed for; specify this argument multiple times to add multiple tenant tags.
+            </summary>
         </member>
         <member name="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployPusher">
             <summary>
@@ -16108,6 +16435,43 @@
             <summary>
             Gets or sets the channel to use when getting the release to deploy.
             </summary>
+        </member>
+        <member name="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployReleasePromoter">
+            <summary>
+            The Octopus Deploy Promote Release runner. This class facilitates promoting existing releases in Octopus Deploy.
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployReleasePromoter.#ctor(Cake.Core.IO.IFileSystem,Cake.Core.ICakeEnvironment,Cake.Core.IO.IProcessRunner,Cake.Core.Tooling.IToolLocator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Cake.Common.Tools.OctopusDeploy.OctopusDeployReleasePromoter"/> class.
+            </summary>
+            <param name="fileSystem">The file system.</param>
+            <param name="environment">The environment.</param>
+            <param name="processRunner">The process runner.</param>
+            <param name="tools">The tool locator.</param>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployReleasePromoter.PromoteRelease(System.String,System.String,System.String,System.String,System.String,Cake.Common.Tools.OctopusDeploy.OctopusDeployPromoteReleaseSettings)">
+            <summary>
+            Requests a promotion of a specified release to an environment.
+            </summary>
+            <param name="server">Octopus Server URL</param>
+            <param name="apiKey">The user's API key</param>
+            <param name="projectName">Name of the target project</param>
+            <param name="deployFrom">Environment to promote from, e.g., Staging</param>
+            <param name="deployTo">Environment to promote to, e.g., Production</param>
+            <param name="settings">Settings for the deployment</param>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployReleasePromoter.GetToolName">
+            <summary>
+            Gets the name of the tool.
+            </summary>
+            <returns>The name of the tool.</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.OctopusDeploy.OctopusDeployReleasePromoter.GetToolExecutableNames">
+            <summary>
+            Gets the possible names of the tool executable.
+            </summary>
+            <returns>The tool executable name.</returns>
         </member>
         <member name="T:Cake.Common.Tools.OctopusDeploy.OctopusDeploySettings">
             <summary>
@@ -17538,7 +17902,7 @@
             In order to use the commands for this alias, include the following in your build.cake file to download and
             install from NuGet.org, or specify the ToolPath within the appropriate settings class:
             <code>
-            #tool "nuget:?package=WiX.Toolset"
+            #tool "nuget:?package=WiX"
             </code>
             </para>
             </summary>
@@ -21101,6 +21465,27 @@
             This represents the <c>/LogFile</c> option.
             </summary>
         </member>
+        <member name="P:Cake.Common.Tools.DotCover.DotCoverSettings.ConfigFile">
+            <summary>
+            Gets or sets a value that enables DotCover configuration file.
+            A configuration file is a reasonable alternative
+            to specifying all parameters in-line or having them in a batch file.
+            </summary>
+        </member>
+        <member name="T:Cake.Common.Tools.DotCover.DotCoverSettingsExtensions">
+            <summary>
+            Contains extensions for <see cref="T:Cake.Common.Tools.DotCover.DotCoverSettings"/>.
+            </summary>
+        </member>
+        <member name="M:Cake.Common.Tools.DotCover.DotCoverSettingsExtensions.WithConfigFile``1(``0,Cake.Core.IO.FilePath)">
+            <summary>
+            Adds the scope.
+            </summary>
+            <param name="settings">The settings.</param>
+            <param name="configFile">The DotCover configuration file.</param>
+            <typeparam name="T">The settings type, derived from <see cref="T:Cake.Common.Tools.DotCover.DotCoverSettings"/></typeparam>
+            <returns>The same <see cref="T:Cake.Common.Tools.DotCover.DotCoverSettings"/> instance so that multiple calls can be chained.</returns>
+        </member>
         <member name="T:Cake.Common.Tools.DotCover.DotCoverTool`1">
             <summary>
             Base class for all DotCover related tools
@@ -21131,6 +21516,13 @@
         <member name="M:Cake.Common.Tools.DotCover.DotCoverTool`1.GetArguments(Cake.Common.Tools.DotCover.DotCoverSettings)">
             <summary>
             Get arguments from global settings
+            </summary>
+            <param name="settings">The settings</param>
+            <returns>The process arguments</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.DotCover.DotCoverTool`1.GetConfigurationFileArgument(Cake.Common.Tools.DotCover.DotCoverSettings)">
+            <summary>
+            Get configuration full path from coverage settings
             </summary>
             <param name="settings">The settings</param>
             <returns>The process arguments</returns>
@@ -23125,6 +23517,15 @@
             <summary>
             Gets or sets the value that defines what `*` should be replaced with in version field in project.json.
             </summary>
+        </member>
+        <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.NoBuild">
+            <summary>
+            Gets or sets a value indicating whether to not to build the project before publishing.
+            This makes build faster, but requires build to be done before publish is executed.
+            </summary>
+            <remarks>
+            Requires .NET Core 2.1 or newer.
+            </remarks>
         </member>
         <member name="P:Cake.Common.Tools.DotNetCore.Publish.DotNetCorePublishSettings.NoDependencies">
             <summary>
@@ -25530,7 +25931,7 @@
             <example>
             <code>
             InnoSetup("./src/Cake.iss", new InnoSetupSettings {
-                OutputDir = outputDirectory
+                OutputDirectory = outputDirectory
                 });
             </code>
             </example>
@@ -27223,7 +27624,7 @@
             <param name="fileSystem">The file system.</param>
             <param name="environment">The environment.</param>
             <param name="processRunner">The process runner.</param>
-            <param name="toolLocator">The tool servce.</param>
+            <param name="toolLocator">The tool locator.</param>
         </member>
         <member name="M:Cake.Common.Tools.VSTest.VSTestRunner.Run(System.Collections.Generic.IEnumerable{Cake.Core.IO.FilePath},Cake.Common.Tools.VSTest.VSTestSettings)">
             <summary>
@@ -27638,7 +28039,7 @@
             <param name="fileSystem">The file system.</param>
             <param name="environment">The environment.</param>
             <param name="processRunner">The process runner.</param>
-            <param name="toolLocator">The tool servce.</param>
+            <param name="toolLocator">The tool locator service.</param>
         </member>
         <member name="M:Cake.Common.Tools.VSWhere.VSWhereTool`1.GetToolName">
             <summary>
@@ -27651,6 +28052,13 @@
             Gets the possible names of the tool executable.
             </summary>
             <returns>The tool executable name.</returns>
+        </member>
+        <member name="M:Cake.Common.Tools.VSWhere.VSWhereTool`1.GetAlternativeToolPaths(`0)">
+            <summary>
+            Gets alternative file paths which the tool may exist in
+            </summary>
+            <param name="settings">The settings.</param>
+            <returns>The default tool path.</returns>
         </member>
         <member name="M:Cake.Common.Tools.VSWhere.VSWhereTool`1.RunVSWhere(`0,Cake.Core.IO.ProcessArgumentBuilder)">
             <summary>

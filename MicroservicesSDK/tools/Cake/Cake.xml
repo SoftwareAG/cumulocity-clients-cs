@@ -152,17 +152,14 @@
               <c>true</c> if an error occurred during parsing; otherwise, <c>false</c>.
             </value>
         </member>
-        <member name="P:Cake.CakeOptions.Mono">
-            <summary>
-            Gets or sets a value indicating whether to use the Mono compiler or not.
-            </summary>
-            <value>
-              <c>true</c> if the mono compiler should be used; otherwise, <c>false</c>.
-            </value>
-        </member>
         <member name="P:Cake.CakeOptions.Bootstrap">
             <summary>
             Gets or sets a value indicating whether to bootstrap Cake modules.
+            </summary>
+        </member>
+        <member name="P:Cake.CakeOptions.Exclusive">
+            <summary>
+            Gets or sets a value indicating whether or not to use the target exclusively.
             </summary>
         </member>
         <member name="M:Cake.CakeOptions.#ctor">
