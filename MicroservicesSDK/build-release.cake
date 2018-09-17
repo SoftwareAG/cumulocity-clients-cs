@@ -1,6 +1,7 @@
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
+var buildDir = Directory("./publish");
 
 using Path = System.IO.Path; 
 using IO = System.IO;
