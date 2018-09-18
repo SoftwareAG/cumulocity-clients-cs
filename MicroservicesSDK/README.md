@@ -9,7 +9,7 @@ The bumping the version number to required and next to tag it. Example:
 ```
 
 The script adds the tag and changes the versions.
-The next step should be to visit Jenkins to release the next version [Release](http://localhost:8081/job/Cumulocity-Clients-CSharp-MicroserviceSdk-MULTIBRANCH/)
+The next step should be to visit Jenkins to release the next version [Release](http://localhost:8081/job/Cumulocity-Clients-CSharp-MicroserviceSdk-MULTIBRANCH/) Then select the checkbox "CAN_RELEASE" on the develop branch. 
 
 ##How to release a new version of SDK (Manually)
 
