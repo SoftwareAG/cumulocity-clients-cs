@@ -9,6 +9,7 @@ The bumping the version number to required and next to tag it. Example:
 ```
 
 The script adds the tag and changes the versions.
+The next step should be to visit Jenkins to release the next version [Release](http://localhost:8081/job/Cumulocity-Clients-CSharp-MicroserviceSdk-MULTIBRANCH/)
 
 ##How to release a new version of SDK (Manually)
 
@@ -30,3 +31,4 @@ The  required format of tag is "prerelease{{tag}}" where the tag is a version nu
 
 The next step is to start Jenkins' job - [Release](http://localhost:8081/view/C8Y-RELEASE/job/Docker-Cumulocity-Clients-CSharp-MicroserviceSdk-RELEASE)
 To build a new release, use the develop parameter
+
