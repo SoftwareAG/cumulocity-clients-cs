@@ -1,5 +1,3 @@
-
-
 ##How to release a new version of SDK with scripts (Scripted)
 
 The bumping the version number to required and next to tag it. Example:
