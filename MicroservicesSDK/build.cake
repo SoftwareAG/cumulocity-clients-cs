@@ -1,5 +1,6 @@
 #addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx&version=0.7.0"
 #tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console&version=2.38.1"
+#addin "Cake.MiniCover"
 
 
 //////////////////////////////////////////////////////////////////////
@@ -277,7 +278,28 @@ Task("CreateRelease")
 //						);
 //			}			        
 //    });
-
+Task("Coverage")
+    .IsDependentOn("Build")
+    .Does(() => 
+{
+    MiniCover(tool =>
+        {
+            foreach(var project in GetFiles("./test/**/*.csproj"))
+            {
+                tool.DotNetCoreTest(project.FullPath, new DotNetCoreTestSettings()
+                {
+                    // Required to keep instrumentation added by MiniCover
+                    NoBuild = true,
+                    Configuration = "Debug"
+                });
+            }
+        },
+        new MiniCoverSettings()
+            .WithAssembliesMatching("./test/**/*.dll")
+            .WithSourcesMatching("./src/**/*.cs")
+            .GenerateReport(ReportType.CONSOLE | ReportType.XML)
+    );
+});
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
