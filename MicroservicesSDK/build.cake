@@ -1,13 +1,12 @@
+#addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx&version=0.7.0"
+#tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console&version=2.38.1"
 #addin "Cake.MiniCover"
-#addin "Cake.Putty"
-#addin "Cake.DocFx"
-#tool "docfx.console"
 
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
-SetMiniCoverToolsProject("./minicover/minicover.csproj"); 
+ 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
   
@@ -258,6 +257,27 @@ Task("CreateRelease")
    
 });
 
+
+//Task("Deploy")
+//    .IsDependentOn("Package")
+//    .Does(() =>
+//    {
+//			var files = GetFiles("./publish/Release/*");
+//			var fileArray = files.Select(m => m.ToString()).ToArray();		
+//	        var destination = destinationIp + ":" + destinationDirectory;
+//			var projects = GetFiles("./publish/Release/*.nupkg");
+//			foreach (var project in projects)
+//			{
+//		        	    Information(project.GetFilename());
+//			   			Pscp("./publish/Release/" + project.GetFilename(), destination, new PscpSettings
+//							{
+//								SshVersion=SshVersion.V2,
+//								User=username
+//								//,KeyFileForUserAuthentication="~/.ssh/key.ppk"
+//							}
+//						);
+//			}			        
+//    });
 Task("Coverage")
     .IsDependentOn("Build")
     .Does(() => 
@@ -280,35 +300,12 @@ Task("Coverage")
             .GenerateReport(ReportType.CONSOLE | ReportType.XML)
     );
 });
-
-
-//Task("Deploy")
-//    .IsDependentOn("Package")
-//    .Does(() =>
-//    {
-//			var files = GetFiles("./publish/Release/*");
-//			var fileArray = files.Select(m => m.ToString()).ToArray();		
-//	        var destination = destinationIp + ":" + destinationDirectory;
-//			var projects = GetFiles("./publish/Release/*.nupkg");
-//			foreach (var project in projects)
-//			{
-//		        	    Information(project.GetFilename());
-//			   			Pscp("./publish/Release/" + project.GetFilename(), destination, new PscpSettings
-//							{
-//								SshVersion=SshVersion.V2,
-//								User=username
-//								//,KeyFileForUserAuthentication="~/.ssh/key.ppk"
-//							}
-//						);
-//			}			        
-//    });
-
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
  
 Task("Default")
-    .IsDependentOn("Coverage");
+    .IsDependentOn("Package");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
