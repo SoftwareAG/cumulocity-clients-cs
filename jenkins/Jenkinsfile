@@ -116,7 +116,7 @@ pipeline {
 						YUM_SRV=yum.cumulocity.com
 						YUM_DEST_DIR=/var/www/resources/cssdk/releases
 						
-                        ssh  -i ${YUM_USR_KEY} ${YUM_USR}@${YUM_SRV}
+                        ssh  -t -i ${YUM_USR_KEY} ${YUM_USR}@${YUM_SRV}
 						
 						whoami
 						
