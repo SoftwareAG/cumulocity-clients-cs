@@ -96,7 +96,30 @@ pipeline {
 					}
                 }
             }
-        }	
+        }
+
+        stage('Feature') {
+            when {
+                branch "feature/*"
+            }
+            steps {
+				script {
+					    sh 'echo Feature Branch'
+						echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
+						
+						echo "Release Branch"
+							    
+						sshagent (['jenkins-hg-key']) {
+						sh '''#!/bin/bash
+						whoami
+                        ssh hudson@yum.cumulocity.com ls
+						'''
+						}
+							
+
+                }
+            }
+        }		
     }
 	
 	post { 
