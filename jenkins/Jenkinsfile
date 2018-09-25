@@ -100,7 +100,7 @@ pipeline {
 
         stage('Feature') {
             when {
-                branch "feature/*"
+                when { branch 'feature/MTM-22641/Deploy-script' }
             }
             steps {
 				script {
