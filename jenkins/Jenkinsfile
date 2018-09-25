@@ -110,7 +110,16 @@ pipeline {
 						sshagent (['jenkins-hg-key']) {
 						sh '''#!/bin/bash
 						whoami
-                        ssh hudson@yum.cumulocity.com ls
+						
+						YUM_USR=hudson
+						YUM_USR_KEY=~/.ssh/id_rsa
+						YUM_SRV=yum.cumulocity.com
+						YUM_DEST_DIR=/var/www/resources/cssdk/releases
+						
+                        ssh  -i ${YUM_USR_KEY} ${YUM_USR}@${YUM_SRV}
+						
+						whoami
+						
 						'''
 						}
 							
