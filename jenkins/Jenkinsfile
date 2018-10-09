@@ -112,6 +112,12 @@ pipeline {
         always { 
             cleanWs()
         }
+		success{
+
+            withCredentials([usernamePassword(credentialsId: 'jenkins-confraria', passwordVariable: 'BITBUCKET_PASSWORD', usernameVariable: 'BITBUCKET_USER')]) {
+                sh "chmod +x .jenkins/scripts/status.sh && .jenkins/scripts/status.sh 'SUCCESSFUL' ${JOB_NAME} ${BUILD_TAG} "
+            }
+        }
 		failure {
             script {
                 if (env.BRANCH_NAME ==~ '(develop|release/.*)') {
