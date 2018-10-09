@@ -22,12 +22,15 @@ pipeline {
         stage('Build') {
 		    
 			when {
-                branch 'develop'
+                anyOf{
+                    branch 'develop'
+                    branch 'feature/**'
+                }
             }
             steps {
 			    
 				script {
-				    if ("${params.CAN_RELEASE}" == "true") {
+				    if ("${params.CAN_RELEASE}" == "true" && env.BRANCH_NAME == "develop") {
 							echo "CAN_RELEASE: ${params.CAN_RELEASE}"
 							    
 								sshagent (['jenkins-hg-key']) {
