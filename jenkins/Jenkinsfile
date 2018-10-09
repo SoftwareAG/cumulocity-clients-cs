@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            dir '.jenkins/build'
+            dir 'jenkins/build'
             args '-v /var/lib/jenkins/.mono:/root/.mono'
         }
     }
