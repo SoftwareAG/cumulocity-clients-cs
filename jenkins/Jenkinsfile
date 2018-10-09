@@ -1,9 +1,15 @@
 pipeline {
     agent {
         docker {
-            image 'c8y-ubuntu-mono-devel:0.0.1'
+            dir '.jenkins/build'
             args '-v /var/lib/jenkins/.mono:/root/.mono'
         }
+    }
+	triggers { pollSCM('H/5 * * * *') }
+    options{
+     buildDiscarder(logRotator(numToKeepStr: '10'))
+     timeout(time: 1, unit: 'HOURS')
+     disableConcurrentBuilds()
     }
 	parameters {
         booleanParam(defaultValue: true, description: '', name: 'DIAGNOSTIC_FLAG')
@@ -102,6 +108,17 @@ pipeline {
 	post { 
         always { 
             cleanWs()
+        }
+		failure {
+            script {
+                if (env.BRANCH_NAME ==~ '(develop|release/.*)') {
+                   chat 'AAAAvnc5o90'
+                }
+            }
+
+            withCredentials([usernamePassword(credentialsId: 'jenkins-confraria', passwordVariable: 'BITBUCKET_PASSWORD', usernameVariable: 'BITBUCKET_USER')]) {
+                sh "chmod +x .jenkins/scripts/status.sh && .jenkins/scripts/status.sh 'FAILED' ${JOB_NAME} ${BUILD_TAG} "
+            }
         }
     }
 }
