@@ -127,7 +127,7 @@ pipeline {
             }
         }
 		always { 
-            cleanWs()
+			sh 'echo cleanWs'
         }
     }
 }
