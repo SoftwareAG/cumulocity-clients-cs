@@ -109,9 +109,6 @@ pipeline {
     }
 	
 	post { 
-        always { 
-            cleanWs()
-        }
 		success{
 
             withCredentials([usernamePassword(credentialsId: 'jenkins-confraria', passwordVariable: 'BITBUCKET_PASSWORD', usernameVariable: 'BITBUCKET_USER')]) {
@@ -128,6 +125,9 @@ pipeline {
             withCredentials([usernamePassword(credentialsId: 'jenkins-confraria', passwordVariable: 'BITBUCKET_PASSWORD', usernameVariable: 'BITBUCKET_USER')]) {
                 sh "chmod +x .jenkins/scripts/status.sh && .jenkins/scripts/status.sh 'FAILED' ${JOB_NAME} ${BUILD_TAG} "
             }
+        }
+		always { 
+            cleanWs()
         }
     }
 }
