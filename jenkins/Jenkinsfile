@@ -1,9 +1,15 @@
 pipeline {
     agent {
-        docker {
-            image 'c8y-ubuntu-mono-devel:0.0.1'
+        dockerfile {
+            dir 'jenkins/build'
             args '-v /var/lib/jenkins/.mono:/root/.mono'
         }
+    }
+	triggers { pollSCM('H/5 * * * *') }
+    options{
+     buildDiscarder(logRotator(numToKeepStr: '10'))
+     timeout(time: 1, unit: 'HOURS')
+     disableConcurrentBuilds()
     }
 	parameters {
         booleanParam(defaultValue: true, description: '', name: 'DIAGNOSTIC_FLAG')
@@ -16,12 +22,15 @@ pipeline {
         stage('Build') {
 		    
 			when {
-                branch 'develop'
+                anyOf{
+                    branch 'develop'
+                    branch 'feature/**'
+                }
             }
             steps {
 			    
 				script {
-				    if ("${params.CAN_RELEASE}" == "true") {
+				    if ("${params.CAN_RELEASE}" == "true" && env.BRANCH_NAME == "develop") {
 							echo "CAN_RELEASE: ${params.CAN_RELEASE}"
 							    
 								sshagent (['jenkins-hg-key']) {
@@ -100,8 +109,25 @@ pipeline {
     }
 	
 	post { 
-        always { 
-            cleanWs()
+		success{
+
+            withCredentials([usernamePassword(credentialsId: 'jenkins-confraria', passwordVariable: 'BITBUCKET_PASSWORD', usernameVariable: 'BITBUCKET_USER')]) {
+                sh "chmod +x jenkins/scripts/status.sh && jenkins/scripts/status.sh 'SUCCESSFUL' ${JOB_NAME} ${BUILD_TAG} "
+            }
+        }
+		failure {
+            script {
+                if (env.BRANCH_NAME ==~ '(develop|release/.*)') {
+                   chat 'AAAAvnc5o90'
+                }
+            }
+
+            withCredentials([usernamePassword(credentialsId: 'jenkins-confraria', passwordVariable: 'BITBUCKET_PASSWORD', usernameVariable: 'BITBUCKET_USER')]) {
+                sh "chmod +x .jenkins/scripts/status.sh && .jenkins/scripts/status.sh 'FAILED' ${JOB_NAME} ${BUILD_TAG} "
+            }
+        }
+		always { 
+			sh 'echo cleanWs'
         }
     }
 }
