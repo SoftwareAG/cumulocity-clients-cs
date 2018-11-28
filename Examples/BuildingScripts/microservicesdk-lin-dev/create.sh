@@ -102,8 +102,8 @@ cd nugets
 
 
 
-wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.1.0.nupkg
-wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.1.0.nupkg
+wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.18.0.nupkg
+wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.18.0.nupkg
 
 cd ..
 cd $webApiProject
@@ -122,6 +122,7 @@ echo "Packages were added";
 csProgram="
 {   
 using System.Net;
+using Cumulocity.SDK.Microservices.Configure;
    public class Program
     {
         public static void Main(string[] args)
