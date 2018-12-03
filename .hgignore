@@ -207,3 +207,8 @@ MicroservicesSDK/test-results
 MicroservicesSDK/test/Cumulocity.SDK.Microservices.FunctionalTest/Properties
 Examples/MicroserviceSDK/Nordpool/tools/packages.config.md5sum
 MicroservicesSDK/buildVersion.props
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/DesignTimeBuild/.dtbcache
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/Server/sqlite3/db.lock
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/Server/sqlite3/storage.ide-shm
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/Server/sqlite3/storage.ide-wal
