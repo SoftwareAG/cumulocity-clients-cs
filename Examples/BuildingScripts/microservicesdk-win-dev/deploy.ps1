@@ -34,13 +34,13 @@ function Get-IniFile {
 
     $ini = @{}  
     switch -regex -file $filePath {  
-        "^\[(.+)\]$" # Section   {  
+        "^\[(.+)\]$"   {  
             $section = $matches[1]  
             $ini[$section] = @{}  
             $CommentCount = 0  
         }  
 
-        "^(;.*)$" # Comment   {  
+        "^(;.*)$"   {  
             if (!($section)) {  
                 $section = $anonymous  
                 $ini[$section] = @{}  
@@ -51,7 +51,7 @@ function Get-IniFile {
             $ini[$section][$name] = $value  
         }   
 
-        "(.+?)\s*=\s*(.*)" # Key   {  
+        "(.+?)\s*=\s*(.*)"  {  
             if (!($section)) {  
                 $section = $anonymous  
                 $ini[$section] = @{}  
@@ -102,7 +102,8 @@ function Invoke-DataUpdate {
   #		
   $uri = "http://$($url)/application/applications/$($id)/binaries"		 
   $filePath = Resolve-Path -Path ".\images\multi\image.zip"
- 
+  $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
+
   Invoke-MultipartFormDataUpload -InFile $filePath -Uri $uri -Header $base64AuthInfo
   
   Write-Host "I'm done!"
@@ -112,7 +113,7 @@ function Invoke-MultipartFormDataUpload {
     PARAM
     (
         [string][parameter(Mandatory = $true)][ValidateNotNullOrEmpty()]$InFile,
-        [Parameter(Mandatory=$true)][string]$ContentType,
+        [string]$ContentType,
         [Uri][parameter(Mandatory = $true)][ValidateNotNullOrEmpty()]$Uri,
         [string] [parameter(Mandatory = $true)] $Header
     )
@@ -154,8 +155,9 @@ Content-Type: {2}
 
 '@
 
-        $body = $template -f $boundary, $fileName, $ContentType, $enc.GetString($fileBin)
-
+      $body = $template -f $boundary, $fileName, $ContentType, $enc.GetString($fileBin)
+      Write-Host "Header:"  $Header
+	  
       try {
         return Invoke-WebRequest -Uri $Uri `
                      -Method Post `
