@@ -119,6 +119,54 @@ done;
 
 echo "Packages were added";
 
+csStartup="
+{   
+	using Microsoft.AspNetCore.Hosting;
+	using Microsoft.AspNetCore.Http;
+	using Microsoft.Extensions.Configuration;
+	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.DependencyInjection.Extensions;
+	using Microsoft.Extensions.Logging;
+	using Microsoft.Extensions.Options;
+	using Newtonsoft.Json.Serialization;
+
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+		// This method gets called by the runtime. Use this method to add services to the container.
+		public void ConfigureServices(IServiceCollection services)
+		{
+			services.AddMemoryCache();
+			services.AddCumulocityAuthentication(Configuration);
+			services.AddPlatform(Configuration);
+			services.AddSingleton<IApplicationService, ApplicationService>();
+			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+			//MVC
+			services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+			services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
+		}
+
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+		{
+			app.UseAuthentication();
+			app.UseBasicAuthentication();
+			app.UseMvcWithDefaultRoute();
+		}
+	}
+}"
+sed -i '/{/,$!d' "Startup.cs"
+sed -i '/{/Q' "Startup.cs"
+
+echo "$csStartup" >> "Startup.cs"
+
+echo "Startup updated";
 csProgram="
 {   
 using System.Net;

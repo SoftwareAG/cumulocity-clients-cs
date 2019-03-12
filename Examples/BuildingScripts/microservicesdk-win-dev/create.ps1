@@ -142,6 +142,58 @@ foreach ($file in $nugetsFiles )
    dotnet add package "$package" 
 
 } 
+$csStartupFile ="Startup.cs"
+
+$csStartup="
+
+	using Microsoft.AspNetCore.Hosting;
+	using Microsoft.AspNetCore.Http;
+	using Microsoft.Extensions.Configuration;
+	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.DependencyInjection.Extensions;
+	using Microsoft.Extensions.Logging;
+	using Microsoft.Extensions.Options;
+	using Newtonsoft.Json.Serialization;
+
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+		// This method gets called by the runtime. Use this method to add services to the container.
+		public void ConfigureServices(IServiceCollection services)
+		{
+			services.AddMemoryCache();
+			services.AddCumulocityAuthentication(Configuration);
+			services.AddPlatform(Configuration);
+			services.AddSingleton<IApplicationService, ApplicationService>();
+			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+			//MVC
+			services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+			services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
+		}
+
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+		{
+			app.UseAuthentication();
+			app.UseBasicAuthentication();
+			app.UseMvcWithDefaultRoute();
+		}
+	}
+}"
+
+$varStartup = (get-content  -Path  $csStartupFile) | select-string -Pattern 'namespace. *'  | Select-Object -ExpandProperty LineNumber
+$toLineNo = $varStartup[0] - 2;
+(Get-Content $csStartupFile | Select-Object -Skip $toLineNo) | Set-Content $csStartupFile
+
+$varStartup = (get-content $csStartupFile) | select-string -Pattern '{.*'  | Select-Object -ExpandProperty LineNumber
+(get-content $csStartupFile)   | select -First $varStartup[0]  | Set-Content $csStartupFile 
+Add-Content -Path $csStartupFile -Value $csStartup
 
 $csProgram="
   
