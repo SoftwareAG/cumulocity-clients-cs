@@ -111,16 +111,27 @@ restoreSources="\$(RestoreSources);../nugets;https://api.nuget.org/v3/index.json
 
 sed -i 's,<\/PropertyGroup>,<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest><RestoreSources>'"$restoreSources"'<\/RestoreSources>\n<\/PropertyGroup>,g' "$webApiProject.csproj"
 
+
 for f in ../nugets/*.nupkg;do
+
 pkg=$(basename $f);
-pkg=$(sed 's/.\{12\}$//' <<< "$pkg");
-dotnet add package $pkg;	
+
+if [[ $pkg == *"Basic"* ]]; then
+  pkg=$(echo "$pkg" | cut -d. -f-4)
+fi
+if [[ $pkg == *"SDK.Microservices"* ]]; then
+  pkg=$(echo "$pkg" | cut -d. -f-3)
+fi
+
+echo "$pkg"
+
+dotnet add package $pkg	
 done;
 
 echo "Packages were added";
 
 csStartup="
-{   
+{
 	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.AspNetCore.Http;
 	using Microsoft.Extensions.Configuration;
@@ -129,6 +140,12 @@ csStartup="
 	using Microsoft.Extensions.Logging;
 	using Microsoft.Extensions.Options;
 	using Newtonsoft.Json.Serialization;
+    using Cumulocity.SDK.Microservices.BasicAuthentication;
+    using Cumulocity.SDK.Microservices.Configure;
+    using Cumulocity.SDK.Microservices.Services;
+    using Cumulocity.SDK.Microservices.Settings;
+    using Cumulocity.SDK.Microservices.Utils;
+    using Microsoft.AspNetCore.Builder;
 
     public class Startup
     {
@@ -161,7 +178,7 @@ csStartup="
 		}
 	}
 }"
-sed -i '/{/,$!d' "Startup.cs"
+sed -i '/namespace/,$!d' "Startup.cs"
 sed -i '/{/Q' "Startup.cs"
 
 echo "$csStartup" >> "Startup.cs"
