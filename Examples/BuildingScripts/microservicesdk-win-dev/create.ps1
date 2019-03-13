@@ -121,8 +121,8 @@ $start_time = Get-Date
 ##FTP
  $target = "$currentDir/"
 
-Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.18.0.nupkg -OutFile Cumulocity.AspNetCore.Authentication.Basic.9.1.0.nupkg
-Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.18.0.nupkg -OutFile Cumulocity.SDK.Microservices.9.1.0.nupkg
+Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.18.0.nupkg -OutFile Cumulocity.AspNetCore.Authentication.Basic.9.18.0.nupkg
+Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.18.0.nupkg -OutFile Cumulocity.SDK.Microservices.9.18.0.nupkg
 
 $nugetsFiles = Get-ChildItem $currentDir  -Filter *.nupkg  
 
@@ -131,17 +131,19 @@ cd $WebApiProject
 
 $currentDir = Get-Location  
 
-  
-
 foreach ($file in $nugetsFiles ) 
-
 { 
-
-   $package = $file.Name -replace ".{12}$" 
-
+   $package = $file.Name 
+   if ($package -contains '*Authentication.Basic*') { 
+	$package =($package.Split(".",5) | Select -Index 0,1,2,3) -join "."  
+   }
+   elseif ($package -contains '*Cumulocity.SDK.Microservices*'){
+	$package =($package.Split(".",4) | Select -Index 0,1,2) -join "."  
+   }  
+   Write-Host $package
    dotnet add package "$package" 
-
 } 
+
 $csStartupFile ="Startup.cs"
 
 $csStartup="
@@ -154,6 +156,12 @@ $csStartup="
 	using Microsoft.Extensions.Logging;
 	using Microsoft.Extensions.Options;
 	using Newtonsoft.Json.Serialization;
+    using Cumulocity.SDK.Microservices.BasicAuthentication;
+    using Cumulocity.SDK.Microservices.Configure;
+    using Cumulocity.SDK.Microservices.Services;
+    using Cumulocity.SDK.Microservices.Settings;
+    using Cumulocity.SDK.Microservices.Utils;
+    using Microsoft.AspNetCore.Builder;
 
     public class Startup
     {
