@@ -134,6 +134,7 @@ bool canCreateRelease()
 		System.Console.WriteLine(currentBranch);
 		System.Console.WriteLine(lastTagCommit);
 		System.Console.WriteLine(readCommitCountInReleaseBranch);
+		System.Console.WriteLine(releaseBranch);
 		
 		if(currentBranch.Equals(defaultBranchName) && !lastTagCommit.Equals("r0.0.0") && readCommitCountInReleaseBranch.Equals("0") )
 		{
