@@ -5,7 +5,7 @@ function ReadCommitCountInBranch
 {
 
 	$commitCountInBranch = ((& hg log -b $branch --template "." ) | measure-object -line).Lines
-	Write-Host "ReadCommitCountInBranch: $commitCountInBranch"
+	Write-Host "->>Branch name: $branch, ReadCommitCountInBranch: $commitCountInBranch"
 	return $commitCountInBranch;
 }
 
