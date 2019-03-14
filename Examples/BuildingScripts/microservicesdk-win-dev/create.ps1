@@ -134,10 +134,10 @@ $currentDir = Get-Location
 foreach ($file in $nugetsFiles ) 
 { 
    $package = $file.Name 
-   if ($package -contains '*Authentication.Basic*') { 
+   if ($package -like '*Authentication.Basic*') { 
 	$package =($package.Split(".",5) | Select -Index 0,1,2,3) -join "."  
    }
-   elseif ($package -contains '*Cumulocity.SDK.Microservices*'){
+   elseif ($package -like '*Cumulocity.SDK.Microservices*'){
 	$package =($package.Split(".",4) | Select -Index 0,1,2) -join "."  
    }  
    Write-Host $package
