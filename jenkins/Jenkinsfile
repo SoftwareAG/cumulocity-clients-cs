@@ -126,8 +126,9 @@ pipeline {
                 sh "chmod +x jenkins/scripts/status.sh && jenkins/scripts/status.sh 'FAILED' ${JOB_NAME} ${BUILD_TAG} "
             }
         }
-		always { 
-			sh 'echo cleanWs'
+        cleanup {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
         }
     }
 }
