@@ -2,6 +2,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Version>9.20.0</Version>
+    <Authors>Cumulocity</Authors>
+    <PackageLicenseUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>cumulocity.com</PackageProjectUrl>
+    <PackageIconUrl>https://avatars2.githubusercontent.com/u/3456374</PackageIconUrl>
+    <Description>Microservice SDK for C# help to develop microservices on top of Cumulocity.</Description>
+    <Copyright>Copyright (C) 2019 Cumulocity GmbH</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Easy.MessageHub" Version="3.4.0" />
