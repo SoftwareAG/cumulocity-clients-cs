@@ -12,17 +12,17 @@ namespace Cumulocity.SDK.Microservices.OAuth.Handler
 {
     public class OAuthAuthenticationHandler : AuthenticationHandler<OAuthAuthenticationOptions>
     {
-        private readonly IOAuthAuthenticationService _authenticationService;
+        private readonly IOAuthCredentialVerifier _authenticationVerifier;
 
         public OAuthAuthenticationHandler(
+            IOAuthCredentialVerifier authCredentialVerifier,
             IOptionsMonitor<OAuthAuthenticationOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
-            ISystemClock clock,
-            IOAuthAuthenticationService authenticationService)
+            ISystemClock clock)
             : base(options, logger, encoder, clock)
         {
-            _authenticationService = authenticationService;
+            _authenticationVerifier = authCredentialVerifier;
         }
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -38,19 +38,24 @@ namespace Cumulocity.SDK.Microservices.OAuth.Handler
             {
                 return AuthenticateResult.NoResult();
             }
-            bool isValidUser = await _authenticationService.IsValidUserAsync(Options, Request.Headers);
+            var validUser = await _authenticationVerifier.AuthenticateAsync(Options, Request.Headers);
 
-            if (!isValidUser)
+            if (!validUser.IsAuthenticated)
             {
-
                 Logger.LogInformation("Failed to validate oAuth headers.");
                 return AuthenticateResult.Fail("Failed to validate userid/password.");
             }
             Logger.LogInformation("Successfully validated oAuth headers.");
 
 
-
-            var claims = new[] { new Claim(ClaimTypes.Name, "username") };
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, validUser.User, ClaimValueTypes.String, ClaimsIssuer),
+                new Claim("UserName", validUser.User, ClaimValueTypes.String, ClaimsIssuer),
+                new Claim("UserPassword", validUser.Password, ClaimValueTypes.String, ClaimsIssuer),
+                new Claim("UserTenant", validUser.Tenant, ClaimValueTypes.String, ClaimsIssuer)
+            };
+            claims.AddRange(validUser.Claims);
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);
             var ticket = new AuthenticationTicket(principal, Scheme.Name);
