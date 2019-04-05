@@ -30,7 +30,121 @@ IF ([string]::IsNullOrWhitespace($WebApiProject)){
 	Write-Host "The name of web api project is empty."
 	exit;
 } 
+#####################
+#######CREATE########
+#####################
+function Select-Value {
+  param
+  (
+    [Parameter(Mandatory=$true, ValueFromPipeline=$true, HelpMessage="Data to process")]
+    $InputObject
+  )
+  process {
+     $InputObject.Value
+  }
+}
+function Get-IniFile {
+    param(
+        [parameter(Mandatory = $true)] [string] $filePath
+    )
 
+    $anonymous = "NoSection"
+
+    $ini = @{}
+    switch -regex -file $filePath {
+        "^\[(.+)\]$"   {
+            $section = $matches[1]
+            $ini[$section] = @{}
+            $CommentCount = 0
+        }
+
+        "^(;.*)$"   {
+            if (!($section)) {
+                $section = $anonymous
+                $ini[$section] = @{}
+            }
+            $value = $matches[1]
+            $CommentCount = $CommentCount + 1
+            $name = "Comment" + $CommentCount
+            $ini[$section][$name] = $value
+        }
+
+        "(.+?)\s*=\s*(.*)"  {
+            if (!($section)) {
+                $section = $anonymous
+                $ini[$section] = @{}
+            }
+            $name,$value = $matches[1..2]
+            $ini[$section][$name] = $value
+        }
+    }
+
+    return $ini
+}
+
+$file = "settings.ini"
+$isLocalFile = $true
+$settingsFile = (Get-Childitem  -Include *settings.ini* -File -Recurse )  | % { $_.FullName }
+
+if (Test-Path $settingsFile) {
+    $isLocalFile = $true;
+}
+else{
+	
+    $isLocalFile = $false
+    $appdata = Get-Childitem env:APPDATA | Select-Value
+    $file = "$appdata\c8y\$file"
+		
+}
+if ( (-not(Test-Path $file)) -and (-not(Test-Path .\$file))){ 
+  #throw [IO.FileNotFoundException] "$file not found."
+}else{
+	
+	if(-not($isLocalFile)) {
+		$settingsIni = Get-IniFile $file
+	}
+	else
+	{
+		$settingsIni = Get-IniFile .\$file
+	}
+		
+	$username = $settingsIni.deploy.username
+	$password = $settingsIni.deploy.password
+	$url = $settingsIni.deploy.url
+	$appname = $settingsIni.deploy.appname
+        $base64AuthInfo =  [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
+
+	Write-Host "https://$url/application/applications"
+
+	$Result = Invoke-RestMethod -Uri "https://$url/application/applicationsByName/$appname" `
+							-Headers @{Authorization = ("Basic {0}" -f $base64AuthInfo)} `
+							-ErrorVariable RestError -ErrorAction "SilentlyContinue"
+           if ($RestError) {
+        $HttpStatusCode = $RestError.ErrorRecord.Exception.Response.StatusCode.value__
+        $HttpStatusDescription = $RestError.ErrorRecord.Exception.Response.StatusDescription
+
+        Write-Output "[ERROR] Error while connecting to platform"
+        Write-Output "Http Status Code: $($HttpStatusCode) `nHttp Status Description: $($HttpStatusDescription)"
+        Exit
+    }
+    else {
+
+        if( -not($Result.applications.id))
+            {
+                       $json = '{
+			"name": "' + (echo $appname) + '",
+			"type": "MICROSERVICE",
+			"key": "' + (echo $appname) + '-key"
+	                }'
+
+	        $headers = @{
+		        Authorization=("Basic {0}" -f $base64AuthInfo)
+	        	Accept ="application/json"
+	        }
+	        Invoke-WebRequest -Uri "https://$url/application/applications" -Headers $headers -Method Post -Body $json -ContentType "application/json"
+            }
+	}
+}
 ###########################
 ######Main Project#########
 ###########################
@@ -66,7 +180,6 @@ $cakePackages='<?xml version="1.0" encoding="utf-8"?>
 </packages>'
 Add-Content $packagescakedir $cakePackages
 cd ..
-
 #####################
 ######Source#########
 #####################
