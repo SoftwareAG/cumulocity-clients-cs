@@ -86,7 +86,7 @@ $file = "settings.ini"
 $isLocalFile = $true
 $settingsFile = (Get-Childitem  -Include *settings.ini* -File -Recurse )  | % { $_.FullName }
 
-if (Test-Path $settingsFile) {
+if (($settingsFile) -and (Test-Path $settingsFile)) {
     $isLocalFile = $true;
 }
 else{
@@ -339,7 +339,6 @@ using Cumulocity.SDK.Microservices.Configure;
 					logging.AddConfiguration(hostingContext.Configuration.GetSection(""Logging""));
 					logging.AddConsole().SetMinimumLevel(LogLevel.Information);
 				})
-				.UseMicroserviceApplication()
 				.UseStartup<Startup>()
 				.Build();
     }
