@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoWebApi", "DemoWebApi\De
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoHealthCheck", "DemoHealthCheck\DemoHealthCheck.csproj", "{5B473EDF-16A7-4621-BFB7-972B56850903}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoSimpleConfiguration", "DemoSimpleConfiguration\DemoSimpleConfiguration.csproj", "{95E2F776-1B16-4EE9-BFD0-8326BBA47795}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoSimpleConfiguration", "DemoSimpleConfiguration\DemoSimpleConfiguration.csproj", "{95E2F776-1B16-4EE9-BFD0-8326BBA47795}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoOAuth", "DemoOAuth\DemoOAuth.csproj", "{5D8B014D-C18F-48B4-871F-12691198BAFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{95E2F776-1B16-4EE9-BFD0-8326BBA47795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95E2F776-1B16-4EE9-BFD0-8326BBA47795}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95E2F776-1B16-4EE9-BFD0-8326BBA47795}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D8B014D-C18F-48B4-871F-12691198BAFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D8B014D-C18F-48B4-871F-12691198BAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D8B014D-C18F-48B4-871F-12691198BAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D8B014D-C18F-48B4-871F-12691198BAFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
