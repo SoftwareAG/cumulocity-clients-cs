@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cumulocity.SDK.Microservices.Model;
 using Cumulocity.SDK.Microservices.OAuth;
+using Newtonsoft.Json.Linq;
 
 namespace Cumulocity.SDK.Microservices.Services.OAuth
 {
@@ -23,9 +24,8 @@ namespace Cumulocity.SDK.Microservices.Services.OAuth
         private readonly Platform _platform;
         private const double requestTimeout = 2.0;
 
-        public OAuthApplicationService(ILogger logger, Platform platform, IHttpContextAccessor httpContextAccessor)
+        public OAuthApplicationService( Platform platform, IHttpContextAccessor httpContextAccessor)
         {
-            _logger = logger;
             _platform = platform;
             HttpContextAccessor = httpContextAccessor;
         }
@@ -130,8 +130,10 @@ namespace Cumulocity.SDK.Microservices.Services.OAuth
                     claims.Add(new Claim(ClaimTypes.Role, role.Name, ClaimValueTypes.String, "OAuth2Cumulocity"));
                 }
 
-                dynamic userDeserializeObject = JsonConvert.DeserializeObject(content);
-                return new OAuthAuthenticationResult() { IsAuthenticated = true, Claims = claims, User = userDeserializeObject.id };
+                JObject userDeserializeObject = JObject.Parse(content);
+                var id = userDeserializeObject.GetValue("id");
+
+                return new OAuthAuthenticationResult() { IsAuthenticated = true, Claims = claims, User = id.ToString() };
             }
             return new OAuthAuthenticationResult() { IsAuthenticated = false };
         }
