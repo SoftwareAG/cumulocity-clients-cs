@@ -5,7 +5,7 @@ pipeline {
             args '-v /var/lib/jenkins/.mono:/root/.mono'
         }
     }
-	triggers { pollSCM('H/5 * * * *') }
+	triggers { pollSCM('H 23 * * *') }
     options{
      buildDiscarder(logRotator(numToKeepStr: '10'))
      timeout(time: 1, unit: 'HOURS')
