@@ -2,6 +2,17 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Version>1004.10.0</Version>
+	<Authors>Cumulocity</Authors>
+    <Product>Cumulocity</Product>
+    <Copyright>Cumulocity</Copyright>
+    <PackageIconUrl>https://avatars2.githubusercontent.com/u/3456374</PackageIconUrl>
+    <RepositoryUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/REST-SDK/</RepositoryUrl>
+    <PackageProjectUrl>cumulocity.com</PackageProjectUrl>
+    <RepositoryType>hg</RepositoryType>
+    <Description>Microservice SDK for C# help to develop microservices on top of Cumulocity.</Description>
+    <PackageLicenseUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Easy.MessageHub" Version="3.4.0" />
@@ -16,6 +27,11 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cumulocity.AspNetCore.Authentication.Basic\Cumulocity.AspNetCore.Authentication.Basic.csproj" />
+    <ProjectReference Include="..\Cumulocity.AspNetCore.Authentication.Basic\Cumulocity.AspNetCore.Authentication.Basic.csproj" PrivateAssets="all"  />
   </ItemGroup>
+    <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+    </ItemGroup>
+  </Target>
 </Project>
