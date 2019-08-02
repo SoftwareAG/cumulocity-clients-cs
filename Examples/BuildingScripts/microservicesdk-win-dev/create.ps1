@@ -148,6 +148,16 @@ if ( (-not(Test-Path $file)) -and (-not(Test-Path .\$file))){
 ###########################
 ######Main Project#########
 ###########################
+$current_sdk = dotnet --version -outvariable variable
+$required_sdk = "2.2.100"
+
+if ([version]$current_sdk -ge  [version]$required_sdk) {
+    Write-Host "Your .NET Core SDK $current_sdk is greater than or equal required version $required_sdk."
+}
+else {
+    Write-Host "Your .NET Core SDK $current_sdk is less than $required_sdk. Add a global.json file that specifies that the project requires or install .NET Core SDK >= 2.2.100."
+    Break
+}
 
 mkdir "$ProjectName" 
 $currentDir = Get-Location
@@ -231,32 +241,13 @@ cd nugets
 $currentDir = Get-Location 
 $start_time = Get-Date
 
-##FTP
- $target = "$currentDir/"
-
-Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.20.0.nupkg -OutFile Cumulocity.AspNetCore.Authentication.Basic.9.20.0.nupkg
-Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.20.0.nupkg -OutFile Cumulocity.SDK.Microservices.9.20.0.nupkg
-
-$nugetsFiles = Get-ChildItem $currentDir  -Filter *.nupkg  
-
+##Nugets
 cd.. 
 cd $WebApiProject  
 
 $currentDir = Get-Location  
 
-foreach ($file in $nugetsFiles ) 
-{ 
-   $package = $file.Name 
-   if ($package -like '*Authentication.Basic*') { 
-	$package =($package.Split(".",5) | Select -Index 0,1,2,3) -join "."  
-   }
-   elseif ($package -like '*Cumulocity.SDK.Microservices*'){
-	$package =($package.Split(".",4) | Select -Index 0,1,2) -join "."  
-   }  
-   Write-Host $package
-   dotnet add package "$package" 
-} 
-
+dotnet add package Cumulocity.SDK.Microservices
 $csStartupFile ="Startup.cs"
 
 $csStartup="
