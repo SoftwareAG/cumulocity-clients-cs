@@ -4,10 +4,12 @@
 
 *   [Introduction](#markdown-header-introduction)
     - [General prerequisites](#markdown-header-general-prerequisites)
+    - [Source code](#markdown-header-source-code)
 *   [MQTT implementation](#markdown-header-mqtt-implementation)
-    - [](#markdown-header-)
+    - [Hello world example](#markdown-header-hello-world-mqtt-example)
+    - [Developing MQTT clients](#markdown-header-developing-mqtt-clients)
 *   [REST implementation](#markdown-header-rest-implementation)
-    - [Hello world example](#markdown-header-hello-world-example)
+    - [Hello world example](#markdown-header-hello-world-rest-example)
     - [Developing REST clients](#markdown-header-developing-rest-clients)
 
 ## Introduction
@@ -29,9 +31,21 @@ The output needs to show a version number later than "2.2.100" for the basic exa
 
 You also need to have a valid tenant, user and password in order to access Cumulocity. Refer to [Tenant ID and tenant domain](https://cumulocity.com/guides/reference/tenants/#tenant-id-and-domain) in the Reference guide to learn the difference between tenant ID and tenant domain.
 
+### Source code
+
+The source code of the MQTT and REST examples can be found in the [cumulocity-sdk-cs repository](https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/).
+
 ## MQTT implementation
 
+placeholder...
 
+### Hello world MQTT example
+
+placeholder...
+
+### Developing MQTT clients
+
+placeholder...
 
 ## REST implementation
 
@@ -40,9 +54,9 @@ These are some references for getting started with the basic technologies underl
 *   The client libraries use the Cumulocity REST interfaces as underlying communication protocol as described in [Device integration using REST](https://cumulocity.com/guides/device-sdk/rest/).
 *   All examples and libraries are open source and can be found at the [Bitbucket M2M repositories](https://bitbucket.org/m2m).
 
-### Hello world example
+### Hello world REST example
 
-The easiest starting point is the [Hello world example](REST/hello-world.md). Note, that you can develop with any IDE and any build tool that you prefer, but the examples focus on .NET Core SDK and Visual Studio.
+The easiest starting point is the [Hello world example](REST/hello-world.md). Note that you can develop with any IDE and any build tool that you prefer, but the examples focus on .NET Core SDK and Visual Studio.
 
 ### Developing REST clients
 
