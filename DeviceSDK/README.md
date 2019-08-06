@@ -1,6 +1,6 @@
-<h1>Device SDK for C#</h1><br>
+# Device SDK Documentation
 
-**Contents**
+<br> <br>
 
 *   [Introduction](#markdown-header-introduction)
 *   []()
