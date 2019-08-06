@@ -1,4 +1,4 @@
-# Device SDK for C &#35;
+# Device SDK for C sharp
 
 
 
