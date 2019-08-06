@@ -1,6 +1,6 @@
-# Device SDK Documentation
+# Device SDK for C &#35;
 
-<br> <br>
+
 
 *   [Introduction](#markdown-header-introduction)
 *   []()
