@@ -37,15 +37,15 @@ The source code of the MQTT and REST examples can be found in the [cumulocity-sd
 
 ## MQTT implementation
 
-placeholder...
+Cumulocity supports MQTT both via TCP and WebSockets. As URL you use mqtt.cumulocity.com. The Cumulocity MQTT implementation uses SmartREST as a payload. SmartREST is a CSV-like message protocol that uses templates on the server side to create data in Cumulocity. Refer to [Device integration using MQTT](https://cumulocity.com/guides/device-sdk/mqtt/) for more details.
 
 ### Hello world MQTT example
 
-placeholder...
+The easiest starting point is the [Hello world example](MQTT/hello-world.md) following the steps presented in the example.
 
 ### Developing MQTT clients
 
-placeholder...
+It is possible to develop clients using the Cumulocity [MQTT static templates](MQTT/cs-static-templates.md) for C#.
 
 ## REST implementation
 
