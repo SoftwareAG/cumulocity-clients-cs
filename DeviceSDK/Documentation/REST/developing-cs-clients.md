@@ -1,19 +1,12 @@
----
-weight: 30
-title: Rest Client - Developing
-layout: redirect
----
+## Developing REST clients
 
-### Overview
-
-The section is tightly linked to the design of the REST interfaces, which are described in [REST implementation](/guides/reference/rest-implementation) in the Reference guide.
+The section is tightly linked to the design of the REST interfaces, which are described in [REST implementation](https://cumulocity.com/guides/reference/rest-implementation) in the Reference guide.
 
 Documentation is available on the [resources site](http://resources.cumulocity.com/documentation/cssdk/current/).
 
-
 ### Connecting to Cumulocity
 
-The root interface for connecting to Cumulocity from C# is called "Platform" (see "Root interface" in [REST implementation](/guides/reference/rest-implementation) in the Reference guide). It provides access to all other interfaces of the platform, such as the inventory. In its simplest form, it is instantiated as follows:
+The root interface for connecting to Cumulocity from C# is called "Platform" (see "Root interface" in [REST implementation](https://cumulocity.com/guides/reference/rest-implementation) in the Reference guide). It provides access to all other interfaces of the platform, such as the inventory. In its simplest form, it is instantiated as follows:
 
 ```cs
 Platform platform = new PlatformImpl("<<URL>>", new CumulocityCredentials("<<user>>", "<<password>>"));
@@ -25,14 +18,13 @@ As an example:
 Platform platform = new PlatformImpl("https://demos.cumulocity.com", new CumulocityCredentials("myuser", "mypassword"));
 ```
 
-If you use the C# client for developing an application, you need to register an application key (through [Own applications](/guides/users-guide/administration#managing-applications) in the Cumulocity Administration application, or through the [Application API](/guides/reference/applications)).
+If you use the C# client for developing an application, you need to register an application key (through [Own applications](https://cumulocity.com/guides/users-guide/administration#managing-applications) in the Cumulocity Administration application, or through the [Application API](https://cumulocity.com/guides/reference/applications)).
 
 ```cs
 new CumulocityCredentials("<<tenantID>>", "<<user>>", "<<password>>", "<<application key>>")
 ```
 
 For testing purposes, every tenant is subscribed to the demo application key "uL27no8nhvLlYmW1JIK1CA==". The constructor for PlatformImpl also allows you to specify the default number of objects returned from the server in one reply with the parameter "pageSize".
-
 
 ### Accessing the inventory
 
@@ -119,7 +111,6 @@ mo.Set(tariff);
 
 This will store the tariff information along with the meter. For converting C# objects from and towards JSON/REST, Cumulocity uses Json.NET. The [Json.NET help](https://www.newtonsoft.com/json/help) provides more information on how to influence the JSON format that is produced respectively accepted.
 
-
 ### Accessing the identity service
 
 A device typically has a technical identifier that an agent needs to know to be able to contact the device. Examples are meter numbers, IP addresses and REST URLs. To associate such identifiers with the unique identifier of Cumulocity, agents can use the identity service. Again, to create the association, create an object of type "ExternalIDRepresentation" and send it to the platform.
@@ -148,7 +139,6 @@ externalIDGid = identityApi.GetExternalId(id);
 ```
 
 The returned object will contain the unique identifier and a link to the managed object.
-
 
 ### Accessing events and measurements
 
@@ -198,9 +188,9 @@ For example, assume that you would like to switch off a relay in a meter from an
 ```cs
 IDeviceControlApi control = platform.DeviceControlApi;
 OperationRepresentation operation = new OperationRepresentation
-  {
+{
      DeviceId = mo.Id
-  };
+};
 relay.SetRelayState(Relay.RelayState.OPEN);
 operation.Set(relay);
 control.Create(operation);
@@ -219,10 +209,9 @@ Again, the returned result may come in several pages due to its potential size.
 
 ```cs
 foreach (OperationRepresentation op in oc.GetFirstPage().AllPages())
-	{
-		Console.WriteLine(op.Status);
-	}
-
+{
+	Console.WriteLine(op.Status);
+}
 ```
 
 ### Realtime features
@@ -233,27 +222,27 @@ The C# client libraries fully support the real-time APIs of Cumulocity. For exam
 subscriber = new OperationNotificationSubscriber(platform);
 subscriber.Subscribe(agentId, new Handler(operationProcessor));
 
-  public class Handler : ISubscriptionListener<GId, OperationRepresentation>
-       {
-           private SimpleOperationProcessor operationProcessor;
+public class Handler : ISubscriptionListener<GId, OperationRepresentation>
+{
+    private SimpleOperationProcessor operationProcessor;
 
-           public Handler(SimpleOperationProcessor processor)
-                {
-                    this.operationProcessor = processor;
-                }
+    public Handler(SimpleOperationProcessor processor)
+    {
+        this.operationProcessor = processor;
+    }
 
-           public void OnError(ISubscription<GId> subscription, Exception ex)
-                {
-                }
+    public void OnError(ISubscription<GId> subscription, Exception ex)
+    {
+    }
 
-           public void OnNotification(ISubscription<GId> subscription, OperationRepresentation notification)
-                {
-                    operationProcessor.Process(notification);
-                }
-       }
+    public void OnNotification(ISubscription<GId> subscription, OperationRepresentation notification)
+    {
+        operationProcessor.Process(notification);
+    }
+}
 ```
 
-> **Info:** "agentId" is the ID of your agent in the inventory.
+> **Info**: `"agentId"` is the ID of your agent in the inventory.
 
 To unsubscribe from a subscription, use the following code:
 
@@ -325,21 +314,21 @@ Log.Logger = new LoggerConfiguration()
              .WriteTo.LiterateConsole()
              .CreateLogger();
 
-         Log.Logger.Verbose("Starting...");
+Log.Logger.Verbose("Starting...");
 
-         var myClass = new MyClass();
-         myClass.DoSomething();
+var myClass = new MyClass();
+myClass.DoSomething();
 
-         Log.Logger.Verbose("Finishing...");
-         Console.ReadKey();
+Log.Logger.Verbose("Finishing...");
+Console.ReadKey();
 ```
 
 When the code is run, the console should contain a message similar to the following:
 
-```shell
+```bash
 The result is
 
-	[21:09:18 APP] Starting...
-	[21:09:18 APP] Method 'DoSomething' in progress
-	[21:09:18 APP] Finishing...
+[21:09:18 APP] Starting...
+[21:09:18 APP] Method 'DoSomething' in progress
+[21:09:18 APP] Finishing...
 ```

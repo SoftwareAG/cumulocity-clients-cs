@@ -1,10 +1,6 @@
----
-weight: 20
-layout: redirect
-title: Rest client - Hello, world!
----
+## Hello world REST example
 
-This section gives a very basic example of using C# with Cumulocity through .NET Core Software Development Kit (SDK) which is a set of libraries and tools that allow developers to create .NET Core applications and libraries. It can also be run straight from Visual Studio, provided you have a Visual Studio and .NET Core SDK installed.
+This is a very basic example of using C# with Cumulocity through .NET Core Software Development Kit (SDK) which is a set of libraries and tools that allow developers to create .NET Core applications and libraries. It can also be run straight from Visual Studio, provided you have a Visual Studio and .NET Core SDK installed.
 
 ### Prerequisites
 
@@ -30,10 +26,9 @@ Host (useful for support):
 
 .NET Core SDK can be downloaded from [https://dotnet.microsoft.com](https://dotnet.microsoft.com/download).
 
+### Developing the "Hello world" agent
 
-### Developing the "Hello, World!" agent
-
-To develop a very simple "Hello, world!" agent for Cumulocity, you need to do the following:
+To develop a very simple "Hello world" agent for Cumulocity, you need to do the following:
 
 * Create a new project.
 * Add a dependency to the Cumulocity C# client library.
@@ -55,14 +50,13 @@ This will create a folder *HelloAgent* in the current directory with a skeleton 
 To add a dependency to the Cumulocity C# client library, run
 
 ```shell
-dotnet add package Cumulocity.SDK.Client
+$ dotnet add package Cumulocity.SDK.Client
 ```
 
 Afterwards, the `HelloAgent.csproj` will be presented in this way:
 
-```cs
+```xml
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -71,14 +65,13 @@ Afterwards, the `HelloAgent.csproj` will be presented in this way:
   <ItemGroup>
     <PackageReference Include="Cumulocity.SDK.Client" Version="1.0.0" />
   </ItemGroup>
-
 </Project>
 ```
 
 Add the `version` parameter to use the right version of the client library. The version can be determined by checking the [Announcements section](https://cumulocity.zendesk.com/hc/en-us/sections/200381323-Announcements) of the Cumulocity Help Center.
 
 ```bash
-dotnet add package Cumulocity.SDK.Client --version 1.0.0
+$ dotnet add package Cumulocity.SDK.Client --version 1.0.0
 ```
 
 #### Creating a C# application
@@ -101,7 +94,7 @@ namespace HelloAgent
 {
 	internal class Program
 	{
-		private static void Main(string[] args)
+		private static void Main (string[] args)
 		{
 			Console.WriteLine("REST API client!");
 
@@ -120,17 +113,16 @@ namespace HelloAgent
 }
 ```
 
-
 Replace &lt;&lt;yourUrl&gt;&gt;, &lt;&lt;yourUser&gt;&gt; and &lt;&lt;yourPassword&gt;&gt; with your URL (e.g. *https://myurl.cumulocity.com*), username and password.
 
-What does the code in "main" do?
+What does the code in `Main` do?
 
 -   Line 1 connects the agent to the platform.
 -   Line 2 retrieves a handle to the Cumulocity inventory.
 -   Line 3 creates a new managed object.
 -   Line 4 sets the display name of the new managed object.
 -   Line 5 says that this managed object should be a device (should show up in Device Management).
--   Line 6 creates the managed object in the inventory. This will return the managed object back with a fresh, generated ID. (See "Object identity" section in [Cumulocity's domain model](/guides/concepts/domain-model)).
+-   Line 6 creates the managed object in the inventory. This will return the managed object back with a fresh, generated ID. (See "Object identity" section in [Cumulocity's domain model](https://cumulocity.com/guides/concepts/domain-model/)).
 -   Line 7 prints the URL to the new managed object that has just been stored in the inventory.
 
 #### Building and running the agent
@@ -151,11 +143,3 @@ Url: http://demos.cumulocity.com/inventory/managedObjects/110160902
 ```
 
 The last line shows that a new device has been successfully created with a particular URL. Open the Cumulocity application and go to the device list. You should see a new "Hello, world!" device.
-
-![Hello world device](/guides/images/java/hello.png)
-
-**Got an error message?** Check the [troubleshooting section](/guides/microservice-sdk/cs/#troubleshooting) in the Microservice SDK guide.
-
-### Improving the agent
-
-Now that you have done your first step, check out the section [Developing C# clients](/guides/device-sdk/device-sdk-cs/#developing-cs-clients).
