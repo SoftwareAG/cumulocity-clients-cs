@@ -19,7 +19,7 @@ namespace Cumulocity.SDK.Microservices.Utils
             _logger.Log(logLevel, eventId, state, exception, (s, ex) => $"[{DateTime.UtcNow:HH:mm:ss.fff}]: {formatter(s, ex)}");
 
         public bool IsEnabled(LogLevel logLevel) => _logger.IsEnabled(logLevel);
-
+        
         public IDisposable BeginScope<TState>(TState state) => _logger.BeginScope(state);
     }
 }

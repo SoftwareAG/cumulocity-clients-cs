@@ -1,0 +1,48 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:51007/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "api/values",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "DemoOAuth": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "api/values",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:51008/"
+    },
+    "DemoOAuthExample": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "api/values",
+      "environmentVariables": {
+        "C8Y_MICROSERIVCE_ISOLATION": "PER_TENANT",
+        "C8Y_BASEURL": "http://oauth.staging-latest.c8y.io",
+        "C8Y_BASEURL_MQTT": "",
+        "C8Y_TENANT": "",
+        "C8Y_PASSWORD": "",
+        "C8Y_USERNAME": "",
+        "SERVER_PORT": "47000",
+        "ASPNETCORE_ENVIRONMENT": "Staging",
+        "C8Y_BOOTSTRAP_TENANT": "management",
+        "C8Y_BOOTSTRAP_USERNAME": "servicebootstrap_cs-combain",
+        "C8Y_BOOTSTRAP_PASSWORD": "pass"
+      },
+      "applicationUrl": "http://localhost:59071/"
+    }
+  }
+}
