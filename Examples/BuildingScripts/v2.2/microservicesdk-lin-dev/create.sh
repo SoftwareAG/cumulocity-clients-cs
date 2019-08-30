@@ -20,6 +20,21 @@ exec 3>&1
 ARG1=${1:-project}
 ARG2=${2:-api}
 
+## each separate version number must be less than 3 digit wide !
+version () { echo "$@" | gawk -F. '{ printf("%03d%03d%03d\n", $1,$2,$3); }'; }
+
+dotnetversion_current=$(dotnet --version)
+dotnetversion_required="2.2.100"
+
+
+if [ "$(version "$dotnetversion_current")" -ge "$(version "$dotnetversion_required")" ]; then
+     echo "$dotnetversion_current is greater than or equal $dotnetversion_required !"
+else 
+     echo "$dotnetversion_current is not greater than or equal $dotnetversion_required !"
+	 exit 1
+fi
+
+
 if [ -n "$ARG1" ] && [ -n "$ARG2" ]; then
   if [ $ARG1 = "project" ] && [ $ARG2 = "api" ]; then
 	
@@ -102,8 +117,8 @@ cd nugets
 
 
 
-wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.20.0.nupkg
-wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.20.0.nupkg
+# wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.20.0.nupkg
+# wget http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.20.0.nupkg
 
 cd ..
 cd $webApiProject
@@ -112,22 +127,22 @@ restoreSources="\$(RestoreSources);../nugets;https://api.nuget.org/v3/index.json
 sed -i 's,<\/PropertyGroup>,<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest><RestoreSources>'"$restoreSources"'<\/RestoreSources>\n<\/PropertyGroup>,g' "$webApiProject.csproj"
 
 
-for f in ../nugets/*.nupkg;do
+# for f in ../nugets/*.nupkg;do
 
-pkg=$(basename $f);
+# pkg=$(basename $f);
 
-if [[ $pkg == *"Basic"* ]]; then
-  pkg=$(echo "$pkg" | cut -d. -f-4)
-fi
-if [[ $pkg == *"SDK.Microservices"* ]]; then
-  pkg=$(echo "$pkg" | cut -d. -f-3)
-fi
+# if [[ $pkg == *"Basic"* ]]; then
+#   pkg=$(echo "$pkg" | cut -d. -f-4)
+# fi
+# if [[ $pkg == *"SDK.Microservices"* ]]; then
+#   pkg=$(echo "$pkg" | cut -d. -f-3)
+# fi
 
-echo "$pkg"
+# echo "$pkg"
 
-dotnet add package $pkg	
-done;
-
+# dotnet add package $pkg	
+# done;
+dotnet add package Cumulocity.SDK.Microservices
 echo "Packages were added";
 
 csStartup="

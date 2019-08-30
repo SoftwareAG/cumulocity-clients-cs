@@ -1,47 +1,44 @@
 Param(
-[string]$ProjectName = "Project",
-[string]$WebApiProject = "WebApi"
+    [string]$ProjectName = "Project",
+    [string]$WebApiProject = "WebApi"
 )
 
-If( ($ProjectName -And !$WebApiProject) -Or (!$ProjectName -And $WebApiProject) )
-{     
-     Write-Host "Break Out! The script needs two not null parameters."
-     Break
+If ( ($ProjectName -And !$WebApiProject) -Or (!$ProjectName -And $WebApiProject) ) {     
+    Write-Host "Break Out! The script needs two not null parameters."
+    Break
 }
  
-If( (!$ProjectName -And !$WebApiProject) -Or ($ProjectName -eq "Project" -And $WebApiProject -eq "WebApi") )
-{
-	$ProjectName = Read-Host -Prompt 'Enter the solution name:'
-	$WebApiProject = Read-Host -Prompt 'Enter the name of a web API project:'
+If ( (!$ProjectName -And !$WebApiProject) -Or ($ProjectName -eq "Project" -And $WebApiProject -eq "WebApi") ) {
+    $ProjectName = Read-Host -Prompt 'Enter the solution name:'
+    $WebApiProject = Read-Host -Prompt 'Enter the name of a web API project:'
 }
  
-If(!$ProjectName -And !$WebApiProject)
-{
-	$ProjectName = Read-Host -Prompt 'Enter the solution name:'
-	$WebApiProject = Read-Host -Prompt 'Enter the name of a web API project:'
+If (!$ProjectName -And !$WebApiProject) {
+    $ProjectName = Read-Host -Prompt 'Enter the solution name:'
+    $WebApiProject = Read-Host -Prompt 'Enter the name of a web API project:'
 }
  
 
-IF ([string]::IsNullOrWhitespace($ProjectName )){
-	Write-Host "The solution name is empty.";
-	exit;
+IF ([string]::IsNullOrWhitespace($ProjectName )) {
+    Write-Host "The solution name is empty.";
+    exit;
 } 
-IF ([string]::IsNullOrWhitespace($WebApiProject)){ 
-	Write-Host "The name of web api project is empty."
-	exit;
+IF ([string]::IsNullOrWhitespace($WebApiProject)) { 
+    Write-Host "The name of web api project is empty."
+    exit;
 } 
 #####################
 #######CREATE########
 #####################
 function Select-Value {
-  param
-  (
-    [Parameter(Mandatory=$true, ValueFromPipeline=$true, HelpMessage="Data to process")]
-    $InputObject
-  )
-  process {
-     $InputObject.Value
-  }
+    param
+    (
+        [Parameter(Mandatory = $true, ValueFromPipeline = $true, HelpMessage = "Data to process")]
+        $InputObject
+    )
+    process {
+        $InputObject.Value
+    }
 }
 function Get-IniFile {
     param(
@@ -50,18 +47,18 @@ function Get-IniFile {
 
     $anonymous = "NoSection"
 
-    $ini = @{}
+    $ini = @{ }
     switch -regex -file $filePath {
-        "^\[(.+)\]$"   {
+        "^\[(.+)\]$" {
             $section = $matches[1]
-            $ini[$section] = @{}
+            $ini[$section] = @{ }
             $CommentCount = 0
         }
 
-        "^(;.*)$"   {
+        "^(;.*)$" {
             if (!($section)) {
                 $section = $anonymous
-                $ini[$section] = @{}
+                $ini[$section] = @{ }
             }
             $value = $matches[1]
             $CommentCount = $CommentCount + 1
@@ -69,12 +66,12 @@ function Get-IniFile {
             $ini[$section][$name] = $value
         }
 
-        "(.+?)\s*=\s*(.*)"  {
+        "(.+?)\s*=\s*(.*)" {
             if (!($section)) {
                 $section = $anonymous
-                $ini[$section] = @{}
+                $ini[$section] = @{ }
             }
-            $name,$value = $matches[1..2]
+            $name, $value = $matches[1..2]
             $ini[$section][$name] = $value
         }
     }
@@ -84,42 +81,42 @@ function Get-IniFile {
 
 $file = "settings.ini"
 $isLocalFile = $true
-$settingsFile = (Get-Childitem  -Include *settings.ini* -File -Recurse )  | % { $_.FullName }
+$settingsFile = (Get-Childitem  -Include *settings.ini* -File -Recurse ) | % { $_.FullName }
 
 if (($settingsFile) -and (Test-Path $settingsFile)) {
     $isLocalFile = $true;
 }
-else{
+else {
 	
     $isLocalFile = $false
     $appdata = Get-Childitem env:APPDATA | Select-Value
     $file = "$appdata\c8y\$file"
 		
 }
-if ( (-not(Test-Path $file)) -and (-not(Test-Path .\$file))){ 
-  #throw [IO.FileNotFoundException] "$file not found."
-}else{
+if ( (-not(Test-Path $file)) -and (-not(Test-Path .\$file))) { 
+    #throw [IO.FileNotFoundException] "$file not found."
+}
+else {
 	
-	if(-not($isLocalFile)) {
-		$settingsIni = Get-IniFile $file
-	}
-	else
-	{
-		$settingsIni = Get-IniFile .\$file
-	}
+    if (-not($isLocalFile)) {
+        $settingsIni = Get-IniFile $file
+    }
+    else {
+        $settingsIni = Get-IniFile .\$file
+    }
 		
-	$username = $settingsIni.deploy.username
-	$password = $settingsIni.deploy.password
-	$url = $settingsIni.deploy.url
-	$appname = $settingsIni.deploy.appname
-        $base64AuthInfo =  [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
+    $username = $settingsIni.deploy.username
+    $password = $settingsIni.deploy.password
+    $url = $settingsIni.deploy.url
+    $appname = $settingsIni.deploy.appname
+    $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
 
-	Write-Host "https://$url/application/applications"
+    Write-Host "https://$url/application/applications"
 
-	$Result = Invoke-RestMethod -Uri "https://$url/application/applicationsByName/$appname" `
-							-Headers @{Authorization = ("Basic {0}" -f $base64AuthInfo)} `
-							-ErrorVariable RestError -ErrorAction "SilentlyContinue"
-           if ($RestError) {
+    $Result = Invoke-RestMethod -Uri "https://$url/application/applicationsByName/$appname" `
+        -Headers @{Authorization = ("Basic {0}" -f $base64AuthInfo) } `
+        -ErrorVariable RestError -ErrorAction "SilentlyContinue"
+    if ($RestError) {
         $HttpStatusCode = $RestError.ErrorRecord.Exception.Response.StatusCode.value__
         $HttpStatusDescription = $RestError.ErrorRecord.Exception.Response.StatusDescription
 
@@ -129,25 +126,34 @@ if ( (-not(Test-Path $file)) -and (-not(Test-Path .\$file))){
     }
     else {
 
-        if( -not($Result.applications.id))
-            {
-                       $json = '{
-			"name": "' + (echo $appname) + '",
+        if ( -not($Result.applications.id)) {
+            $json = '{
+			"name": "' + (Write-Output $appname) + '",
 			"type": "MICROSERVICE",
-			"key": "' + (echo $appname) + '-key"
+			"key": "' + (Write-Output $appname) + '-key"
 	                }'
 
-	        $headers = @{
-		        Authorization=("Basic {0}" -f $base64AuthInfo)
-	        	Accept ="application/json"
-	        }
-	        Invoke-WebRequest -Uri "https://$url/application/applications" -Headers $headers -Method Post -Body $json -ContentType "application/json"
+            $headers = @{
+                Authorization = ("Basic {0}" -f $base64AuthInfo)
+                Accept        = "application/json"
             }
-	}
+            Invoke-WebRequest -Uri "https://$url/application/applications" -Headers $headers -Method Post -Body $json -ContentType "application/json"
+        }
+    }
 }
 ###########################
 ######Main Project#########
 ###########################
+$current_sdk = dotnet --version -outvariable variable
+$required_sdk = "2.2.100"
+
+if ([version]$current_sdk -ge [version]$required_sdk) {
+    Write-Host "Your .NET Core SDK $current_sdk is greater than or equal required version $required_sdk."
+}
+else {
+    Write-Host "Your .NET Core SDK $current_sdk is less than $required_sdk. Add a global.json file that specifies that the project requires or install .NET Core SDK >= 2.2.100."
+    Break
+}
 
 mkdir "$ProjectName" 
 $currentDir = Get-Location
@@ -162,7 +168,7 @@ Move-Item "$DeployfileOutput" "$currentDir/$projectName/deploy.ps1"
 (Get-Content "$currentDir\$projectName\build.cake").replace('[ProjectName]', "$WebApiProject") | Set-Content "$currentDir\$projectName\build.cake"
 (Get-Content "$currentDir\$projectName\Dockerfile").replace('DockerApp.dll', "$WebApiProject.dll") | Set-Content "$currentDir\$projectName\Dockerfile"
 
-cd "$ProjectName" 
+Set-Location "$ProjectName" 
 $currentDir = Get-Location 
 
 Invoke-WebRequest https://cakebuild.net/download/bootstrapper/windows -OutFile build.ps1
@@ -172,9 +178,9 @@ dotnet new sln --name "$ProjectName"
 
 mkdir tools
 cd tools
-$packagescakedir='packages.config'
+$packagescakedir = 'packages.config'
 New-Item "$packagescakedir" -type file
-$cakePackages='<?xml version="1.0" encoding="utf-8"?>
+$cakePackages = '<?xml version="1.0" encoding="utf-8"?>
 <packages>
     <package id="Cake" version="0.25.0" />
 </packages>'
@@ -204,7 +210,7 @@ $CumulocityJson = '{
 New-Item images\multi\cumulocity.json -type file
 Add-Content images\multi\cumulocity.json $CumulocityJson 
 
-cd src
+Set-Location src
 #####################
 ######WebApi#########
 #####################
@@ -227,39 +233,20 @@ $xdoc.Save($filePath)
 ######Nugets#########
 #####################
 mkdir nugets
-cd nugets 
+Set-Location nugets 
 $currentDir = Get-Location 
 $start_time = Get-Date
 
-##FTP
- $target = "$currentDir/"
-
-Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.20.0.nupkg -OutFile Cumulocity.AspNetCore.Authentication.Basic.9.20.0.nupkg
-Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.20.0.nupkg -OutFile Cumulocity.SDK.Microservices.9.20.0.nupkg
-
-$nugetsFiles = Get-ChildItem $currentDir  -Filter *.nupkg  
-
+##Nugets
 cd.. 
-cd $WebApiProject  
+Set-Location $WebApiProject  
 
 $currentDir = Get-Location  
 
-foreach ($file in $nugetsFiles ) 
-{ 
-   $package = $file.Name 
-   if ($package -like '*Authentication.Basic*') { 
-	$package =($package.Split(".",5) | Select -Index 0,1,2,3) -join "."  
-   }
-   elseif ($package -like '*Cumulocity.SDK.Microservices*'){
-	$package =($package.Split(".",4) | Select -Index 0,1,2) -join "."  
-   }  
-   Write-Host $package
-   dotnet add package "$package" 
-} 
+dotnet add package Cumulocity.SDK.Microservices
+$csStartupFile = "Startup.cs"
 
-$csStartupFile ="Startup.cs"
-
-$csStartup="
+$csStartup = "
 
 	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.AspNetCore.Http;
@@ -308,15 +295,15 @@ $csStartup="
 	}
 }"
 
-$varStartup = (get-content  -Path  $csStartupFile) | select-string -Pattern 'namespace. *'  | Select-Object -ExpandProperty LineNumber
+$varStartup = (get-content  -Path  $csStartupFile) | select-string -Pattern 'namespace. *' | Select-Object -ExpandProperty LineNumber
 $toLineNo = $varStartup[0] - 2;
 (Get-Content $csStartupFile | Select-Object -Skip $toLineNo) | Set-Content $csStartupFile
 
-$varStartup = (get-content $csStartupFile) | select-string -Pattern '{.*'  | Select-Object -ExpandProperty LineNumber
-(get-content $csStartupFile)   | select -First $varStartup[0]  | Set-Content $csStartupFile 
+$varStartup = (get-content $csStartupFile) | select-string -Pattern '{.*' | Select-Object -ExpandProperty LineNumber
+(get-content $csStartupFile) | select -First $varStartup[0] | Set-Content $csStartupFile 
 Add-Content -Path $csStartupFile -Value $csStartup
 
-$csProgram="
+$csProgram = "
   
 using System.Net;
 using Cumulocity.SDK.Microservices.Configure;
@@ -344,11 +331,11 @@ using Cumulocity.SDK.Microservices.Configure;
     }
 }"
 
-$varOther = (get-content "Program.cs") | select-string -Pattern '{.*'  | Select-Object -ExpandProperty LineNumber
-(get-content "Program.cs")   | select -First $varOther[0]  | Set-Content "Program.cs"
+$varOther = (get-content "Program.cs") | select-string -Pattern '{.*' | Select-Object -ExpandProperty LineNumber
+(get-content "Program.cs") | Select-Object -First $varOther[0] | Set-Content "Program.cs"
 Add-Content -Path "Program.cs" -Value $csProgram
 
-cd ../..
+Set-Location ../..
 dotnet sln add "./src/$WebApiProject/$WebApiProject.csproj"
 
 Pause

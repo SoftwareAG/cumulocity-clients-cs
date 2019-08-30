@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS runtime
+FROM microsoft/dotnet:2.0-runtime
 WORKDIR /app
 COPY ./publish/Web ./
 
