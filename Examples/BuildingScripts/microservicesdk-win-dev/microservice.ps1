@@ -319,7 +319,9 @@ function  createApplication() {
 
     $Result = Invoke-RestMethod -Method Post -Uri  "$DEPLOY_ADDRESS/application/applications" `
                                 -Headers @{Authorization = ("Basic {0}" -f $authorization)} `
+								-ContentType "application/json" ` 
                                 -ErrorVariable RestError -ErrorAction "SilentlyContinue" `
+								-Body $body
 }
 
 
