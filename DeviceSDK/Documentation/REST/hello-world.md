@@ -105,8 +105,8 @@ namespace HelloAgent
 			var mo = new ManagedObjectRepresentation();
 			mo.Name = "Hello, world!";
 			mo.Set(new IsDevice());
-			var mo = inventory.Create(mo);
-			Console.WriteLine($"Url: {mo.Self}");
+			var mor = inventory.Create(mo);
+			Console.WriteLine($"Url: {mor.Self}");
 			Console.ReadKey();
 		}
 	}
