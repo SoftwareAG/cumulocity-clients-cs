@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.SDK.Microservices", "src\Cumulocity.SDK.Microservices\Cumulocity.SDK.Microservices.csproj", "{E514A5E5-7D43-4328-A9DF-38E2A9079159}"
 EndProject
@@ -14,6 +14,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoWebApi", "..\Examples\MicroserviceSDK\MicroserviceExample\DemoWebApi\DemoWebApi.csproj", "{A6ED2AFC-22D2-4730-9032-CE46419E2750}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cumulocity.SDK.Microservices.FunctionalTest", "test\Cumulocity.SDK.Microservices.FunctionalTest\Cumulocity.SDK.Microservices.FunctionalTest.csproj", "{7D6533A8-0FC3-46DD-855A-014BF4B370B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9A90E32C-FC3F-48C1-A2A1-A417C5879700}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

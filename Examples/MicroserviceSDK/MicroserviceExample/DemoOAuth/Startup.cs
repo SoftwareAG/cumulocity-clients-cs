@@ -33,7 +33,8 @@ namespace DemoOAuth
             services.AddSingleton<IApplicationService, ApplicationService>();
             services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            // services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            services.AddRazorPages().AddMvcOptions(options => options.EnableEndpointRouting = false);
             services.AddCumulocityAuthenticationAll(Configuration);
         }
 
@@ -41,7 +42,7 @@ namespace DemoOAuth
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
