@@ -1,10 +1,10 @@
-﻿using Cumulocity.SDK.MQTT;
-using Cumulocity.SDK.MQTT.Enums;
-using Cumulocity.SDK.MQTT.Model;
+﻿using Cumulocity.MQTT;
+using Cumulocity.MQTT.Enums;
+using Cumulocity.MQTT.Model;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using static Cumulocity.SDK.MQTT.Client;
+using static Cumulocity.MQTT.Client;
 
 namespace MqttDemo
 {
