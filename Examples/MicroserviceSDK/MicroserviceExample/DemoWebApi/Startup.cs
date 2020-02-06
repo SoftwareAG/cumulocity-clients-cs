@@ -48,7 +48,7 @@ namespace DemoWebApi
 			});
 
 			//MVC
-			services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+			services.AddRazorPages().AddMvcOptions(options => options.EnableEndpointRouting = false);
 			//services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
 		}
 		public virtual void ConfigureServicesLayer(IServiceCollection services)
@@ -57,7 +57,7 @@ namespace DemoWebApi
 			services.AddSingleton<IApplicationService, ApplicationService>();
 		}
 
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
 		{
 			app.UseAuthentication();
 			app.UseBasicAuthentication();
