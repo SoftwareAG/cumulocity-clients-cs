@@ -48,7 +48,7 @@ namespace DemoWebApi
 			});
 
 			//MVC
-			services.AddRazorPages().AddMvcOptions(options => options.EnableEndpointRouting = false);
+			services.AddControllers(options => options.EnableEndpointRouting = false);
 			//services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
 		}
 		public virtual void ConfigureServicesLayer(IServiceCollection services)

@@ -53,8 +53,8 @@ namespace DemoHealthCheck
 			});
 
 			//MVC
-			services.AddRazorPages().AddMvcOptions(options => options.EnableEndpointRouting = false);
-            services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
+			services.AddControllers(options => options.EnableEndpointRouting = false);
+			services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)

@@ -33,7 +33,7 @@ namespace DemoOAuth
             services.AddSingleton<IApplicationService, ApplicationService>();
             services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddRazorPages().AddMvcOptions(options => options.EnableEndpointRouting = false);
+            services.AddControllers(options => options.EnableEndpointRouting = false);
             services.AddCumulocityAuthenticationAll(Configuration);
         }
 
