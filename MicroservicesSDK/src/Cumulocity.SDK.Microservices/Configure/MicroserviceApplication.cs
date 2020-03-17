@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
-using Microsoft.AspNetCore.Hosting;
 
 namespace Cumulocity.SDK.Microservices.Configure
 {
