@@ -8,7 +8,7 @@
     <PackageIconUrl>https://avatars2.githubusercontent.com/u/3456374</PackageIconUrl>
     <RepositoryUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/REST-SDK/</RepositoryUrl>
     <PackageProjectUrl>cumulocity.com</PackageProjectUrl>
-    <RepositoryType>hg</RepositoryType>
+    <RepositoryType>git</RepositoryType>
     <Description>Basic authentication for Microservice SDK of Cumulocity.</Description>
     <PackageLicenseUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/LICENSE.txt</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>

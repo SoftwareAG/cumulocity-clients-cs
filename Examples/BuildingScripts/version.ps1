@@ -4,25 +4,25 @@ function ReadCommitCountInBranch
 )
 {
 
-	$hglog = (& hg log -r "branch('$branch')" --template "{node}\n"  )
+	$gitlog = (& git log -r "branch('$branch')" )
 	
-	if ($hglog -eq $null) 
+	if ($gitlog -eq $null) 
 	{
 		return 0;
 	}else
 	{	
-		$commitCountInBranch = (& hg log -r "branch('$branch')" --template "{node}\n"  | Measure-Object -line ).Lines
+		$commitCountInBranch = git rev-list --count $branch | Measure-Object -line ).Lines
 		return $commitCountInBranch ;
 	}
 }
 function ReadBranchName
 {
-    $branchName = (& hg branch).Trim()
+    $branchName = (& git branch).Trim()
     return $branchName
 }
 function ReadCommitCount
 {
-    $count = (& hg id --num --rev tip).Trim()
+    $count = (& git rev-list --all --count).Trim()
     return $count
 }
 
@@ -33,7 +33,7 @@ function ReadIsLastTagCommit
 {
     Try
     {
-		$lasttag = (& hg log -r "branch('$branch') and last(tag('re:^r\d*'))" --template "{tags}\n").Trim()
+		$lasttag = (& git tag   --list   | sort -V | tail -1).Trim()
 				
 		if($lasttag.Length -eq 0)
 		{
@@ -60,9 +60,9 @@ function CreateReleaseBranch
 	
 	if( ($CurrentBranch -eq "develop") -And ( $CommitCountInBranch -eq  0) -And ( $LastTagCommit -ne  "r0.0.0")  )
 	{
-		hg up $LastTagCommit
-	    hg flow release start $LastTagCommit
-		hg push
+		git checkout  $LastTagCommit
+		git checkout -b  release/$LastTagCommit
+		git push -u origin release/$LastTagCommit
 	}
 	elseif($CurrentBranch.StartsWith("release/") )
 	{
@@ -74,8 +74,8 @@ function CreateReleaseBranch
 		  $major,$minor,$rev = $LastTagCommit.split('.')
 		}
 	    $rev = $rev/1 + 1
-		hg tag "$major.$minor.$rev"
-		hg push
+		git tag "$major.$minor.$rev"
+		git push
 	}
 
 }

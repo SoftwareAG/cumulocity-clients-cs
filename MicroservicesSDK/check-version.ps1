@@ -4,14 +4,14 @@ function ReadCommitCountInBranch
 )
 {
 
-	$commitCountInBranch = ((& hg log -b $branch --template "." ) | measure-object -line).Lines
+	$commitCountInBranch = ((& git rev-list --count $branch  ) | measure-object -line).Lines
 	Write-Host "->>Branch name: $branch, ReadCommitCountInBranch: $commitCountInBranch"
 	return $commitCountInBranch;
 }
 
 function ReadBranchName
 {
-    $branchName = (& hg branch).Trim()
+    $branchName = (& git branch).Trim()
     return $branchName
 }
 
@@ -19,7 +19,7 @@ function ReadIsLastTagCommit
 {
     Try
     {
-		$lasttag = (& hg log -r "last(tag('re:prerelease\d*'))" --template "{tags}\n").Trim()
+		$lasttag = (& git tag --list 'prerelease*' | sort -V | tail -1).Trim()
 		
 		
 		if($lasttag.Length -eq 0)
@@ -64,9 +64,9 @@ function CreateReleaseBranch
 
 	if( ($CurrentBranch -eq "default") -And ( $CommitCountInBranch -eq  0) -And ( $LastTagCommit -ne  "r0.0.0")  )
 	{
-		# hg up $LastTagCommit 
-	    # hg flow release start $LastTagCommit
-		# hg push
+		#  git checkout $LastTagCommit 
+		#  git checkout -b  release/$LastTagCommit 
+		#  git push -u origin release/$LastTagCommit
 	}
 	elseif($CurrentBranch.StartsWith("release/") )
 	{
@@ -80,8 +80,8 @@ function CreateReleaseBranch
 		$rev = $rev/1 + 1
 		
 
-		# hg tag "$major.$minor.$rev"
-		# hg push
+		# git tag "$major.$minor.$rev"
+		# git push
 	}
 
 }

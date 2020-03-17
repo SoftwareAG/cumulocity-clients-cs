@@ -22,7 +22,7 @@ Try
    [int]$commits = $lines-2
 
       if($commits -gt 0){
-            #hg up "prerelease$tag"           
+            #git checkout "prerelease$tag"           
        }else{
             
        }

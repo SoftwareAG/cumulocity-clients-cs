@@ -6,6 +6,6 @@ Param(
 	
 if($version)
 {
-	hg tag "bsv$version"
-	hg push
+	git tag "bsv$version"
+	git push
 }

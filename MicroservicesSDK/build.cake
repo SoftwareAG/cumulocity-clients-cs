@@ -202,7 +202,7 @@ Task("CreateRelease")
 	
 		var settings = new ProcessSettings
 		{
-		   Arguments = new ProcessArgumentBuilder().Append("hgversion.ps1 -local false")
+		   Arguments = new ProcessArgumentBuilder().Append("version.ps1 -local false")
 		};
 		StartProcess("pwsh", settings);
 		

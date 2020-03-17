@@ -28,12 +28,12 @@ function ReadBuildProps
 }
 function ReadBranchName
 {
-    $branchName = (& hg branch).Trim()
+    $branchName = (& git branch).Trim()
     return $branchName
 }
 function ReadCommitCount
 {
-    $count = (& hg id --num --rev tip).Trim()
+    $count = (& git rev-list --all --count).Trim()
     return $count
 }
 
@@ -41,7 +41,7 @@ function ReadIsLastTagCommit
 {
     Try
     {
-		$lasttag = (& hg log -r "last(tag('re:mssdkv\d*'))" --template "{tags}\n").Trim()
+		$lasttag = (& git tag  --list 'mssdkv*' | sort -V | tail -1).Trim()
 		
 		
 		if($lasttag.Length -eq 0)
@@ -57,7 +57,7 @@ function ReadIsLastTagCommit
 #function IsRepository
 #{
 #	$currentDir = Get-Location	
-#	$dirPath = "$currentDir/.hg"
+#	$dirPath = "$currentDir/.git"
 	
 #	if(!(Test-Path -Path $dirPath )){
 #		return $false
@@ -67,7 +67,7 @@ function ReadIsLastTagCommit
 
 function IsRepository
 {
-    $value = (& hg status);
+    $value = (& git status);
 	
 	if($value -eq $null){
 		return $false;
