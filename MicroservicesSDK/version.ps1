@@ -73,7 +73,7 @@ function IsRepository
 		return $false;
 	}
 	
-    $string = ((& hg status).Trim() -split '\n')[0]
+    $string = ((& git  status).Trim() -split '\n')[0]
 	
 	if ( $string -contains '*abort:*') {
 		return $false;
