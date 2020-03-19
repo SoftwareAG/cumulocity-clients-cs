@@ -176,7 +176,7 @@ $packagescakedir='packages.config'
 New-Item "$packagescakedir" -type file
 $cakePackages='<?xml version="1.0" encoding="utf-8"?>
 <packages>
-    <package id="Cake" version="0.25.0" />
+    <package id="Cake" version="0.37.0 />
 </packages>'
 Add-Content $packagescakedir $cakePackages
 cd ..
