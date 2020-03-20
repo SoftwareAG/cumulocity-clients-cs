@@ -1,5 +1,5 @@
-#addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx&version=0.7.0"
-#tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console&version=2.38.1"
+#addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx&version=0.13.1"
+#tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console&version=2.50.0"
 #addin "Cake.MiniCover"
 
 
