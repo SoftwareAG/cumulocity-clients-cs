@@ -47,6 +47,7 @@ Information("Test Results Directory: {0}", testResultDir);
 Task("PrepareDirectories")
 	.Does(() =>
 	{
+		Information("Control reached task - PrepareDirectories");
 		EnsureDirectoryExists(testResultDir);
 		EnsureDirectoryExists(artifactDir);
 	});
@@ -55,6 +56,7 @@ Task("Clean")
     .IsDependentOn("PrepareDirectories")
     .Does(() =>
 	{		
+		Information("Control reached task - Clean");
 		if (DirectoryExists(outputDir))
 			{
 				//DeleteDirectory(outputDir, recursive:true);
@@ -94,7 +96,7 @@ Task("Restore")
 Task("Build")
     .IsDependentOn("Restore")
     .Does(() => {
-	
+	Information("Control reached task - Build");
 	var buildSettings = new DotNetCoreBuildSettings
      {
          Configuration = configuration
@@ -127,6 +129,7 @@ Task("Build")
 	.ContinueOnError()
 	.Does(() =>
 	{
+		Information("Control reached task - Test");
 		var tests = GetFiles("./test/**/*.csproj");
 		
 		foreach(var test in tests)
