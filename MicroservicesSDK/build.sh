@@ -114,4 +114,4 @@ if [ ! -f "$CAKE_EXE" ]; then
 fi
 
 # Start Cake
-exec mono "$CAKE_EXE" $SCRIPT -verbosity=$VERBOSITY "${CAKE_ARGUMENTS[@]}"
+exec mono $CAKE_EXE $SCRIPT -verbosity=$VERBOSITY "${CAKE_ARGUMENTS[@]}"
