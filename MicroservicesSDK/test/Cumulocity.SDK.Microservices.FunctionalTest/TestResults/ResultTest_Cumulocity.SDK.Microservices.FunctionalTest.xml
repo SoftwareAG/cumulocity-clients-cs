@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="a0e377b7-b35f-40e7-8f31-9d843fbe2d22" name="y509225@SAG-91ZX8Y2 2020-03-20 13:56:07" runUser="EUR\y509225" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2020-03-20T13:56:07.4551328+05:30" queuing="2020-03-20T13:56:07.4551350+05:30" start="2020-03-20T13:56:02.3058474+05:30" finish="2020-03-20T13:56:11.6509611+05:30" />
+  <TestSettings name="default" id="942eb6ea-f1ea-4f6e-a4ca-b5421529b31a">
+    <Deployment runDeploymentRoot="y509225_SAG-91ZX8Y2_2020-03-20_13_56_07" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="b4aab729-fe42-466b-bb45-85179345f842" testId="5c75dda1-b819-67ae-668c-aff9c938979a" testName="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetUsers" computerName="SAG-91ZX8Y2" duration="00:00:02.0340117" startTime="2020-03-20T13:56:11.5096740+05:30" endTime="2020-03-20T13:56:11.5097118+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b4aab729-fe42-466b-bb45-85179345f842">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Threading.Tasks.TaskCanceledException : The operation was canceled.</Message>
+          <StackTrace>   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+   at Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser(String authCred) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\Services\ApplicationService.cs:line 79&#xD;
+   at Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync[TItem](IMemoryCache cache, Object key, Func`2 factory)&#xD;
+   at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetBasicAuthenticationResultAsync(String username, String authCred) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs:line 44&#xD;
+   at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetCurrentUserAsync(String username, String password) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs:line 36&#xD;
+   at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs:line 71&#xD;
+   at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs:line 118&#xD;
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()&#xD;
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)&#xD;
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)&#xD;
+   at Microsoft.AspNetCore.TestHost.HttpContextBuilder.&lt;&gt;c__DisplayClass23_0.&lt;&lt;SendAsync&gt;g__RunRequestAsync|0&gt;d.MoveNext()&#xD;
+--- End of stack trace from previous location where exception was thrown ---&#xD;
+   at Microsoft.AspNetCore.TestHost.ClientHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+   at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetAsync[T](String path, Boolean auth) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs:line 78&#xD;
+   at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetUser() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs:line 43&#xD;
+   at Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetUsers() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Scenarios\ApplicationServiceTestLive.cs:line 58&#xD;
+--- End of stack trace from previous location where exception was thrown ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d5b72800-ad01-4fbd-afe1-708e5ce4de56" testId="cfb7581f-73ae-a7be-38a5-8a0e98248dc9" testName="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_NotAuthentication_GetCurrentApplicationSubscriptionsAsync" computerName="SAG-91ZX8Y2" duration="00:00:00.0339351" startTime="2020-03-20T13:56:07.4283741+05:30" endTime="2020-03-20T13:56:07.4283755+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d5b72800-ad01-4fbd-afe1-708e5ce4de56" />
+    <UnitTestResult executionId="28396290-0642-4d07-96f6-936f55edb373" testId="b4f4a8ee-c959-c64b-1fff-10dde0631f56" testName="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentApplicationSubscriptionsAsync" computerName="SAG-91ZX8Y2" duration="00:00:02.0198170" startTime="2020-03-20T13:56:09.4815593+05:30" endTime="2020-03-20T13:56:09.4815756+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="28396290-0642-4d07-96f6-936f55edb373">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Threading.Tasks.TaskCanceledException : The operation was canceled.</Message>
+          <StackTrace>   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+   at Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser(String authCred) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\Services\ApplicationService.cs:line 79&#xD;
+   at Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync[TItem](IMemoryCache cache, Object key, Func`2 factory)&#xD;
+   at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetBasicAuthenticationResultAsync(String username, String authCred) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs:line 44&#xD;
+   at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetCurrentUserAsync(String username, String password) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs:line 36&#xD;
+   at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs:line 71&#xD;
+   at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs:line 118&#xD;
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()&#xD;
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)&#xD;
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)&#xD;
+   at Microsoft.AspNetCore.TestHost.HttpContextBuilder.&lt;&gt;c__DisplayClass23_0.&lt;&lt;SendAsync&gt;g__RunRequestAsync|0&gt;d.MoveNext()&#xD;
+--- End of stack trace from previous location where exception was thrown ---&#xD;
+   at Microsoft.AspNetCore.TestHost.ClientHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+   at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetAsync[T](String path, Boolean auth) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs:line 78&#xD;
+   at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetSubscription(Boolean isAuth) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs:line 31&#xD;
+   at Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentApplicationSubscriptionsAsync() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Scenarios\ApplicationServiceTestLive.cs:line 26&#xD;
+--- End of stack trace from previous location where exception was thrown ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5c30cedc-558a-40b9-a303-f5482270d897" testId="681a92d1-7f10-234a-2a3d-ec9966808bc0" testName="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentUser" computerName="SAG-91ZX8Y2" duration="00:00:02.0972014" startTime="2020-03-20T13:56:07.4081561+05:30" endTime="2020-03-20T13:56:07.4082401+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5c30cedc-558a-40b9-a303-f5482270d897">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Threading.Tasks.TaskCanceledException : The operation was canceled.</Message>
+          <StackTrace>   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+   at Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser(String authCred) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\Services\ApplicationService.cs:line 79&#xD;
+   at Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync[TItem](IMemoryCache cache, Object key, Func`2 factory)&#xD;
+   at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetBasicAuthenticationResultAsync(String username, String authCred) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs:line 44&#xD;
+   at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetCurrentUserAsync(String username, String password) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs:line 36&#xD;
+   at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs:line 71&#xD;
+   at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs:line 118&#xD;
+   at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()&#xD;
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)&#xD;
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)&#xD;
+   at Microsoft.AspNetCore.TestHost.HttpContextBuilder.&lt;&gt;c__DisplayClass23_0.&lt;&lt;SendAsync&gt;g__RunRequestAsync|0&gt;d.MoveNext()&#xD;
+--- End of stack trace from previous location where exception was thrown ---&#xD;
+   at Microsoft.AspNetCore.TestHost.ClientHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+   at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+   at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetAsync[T](String path, Boolean auth) in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs:line 78&#xD;
+   at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetCurrentUser() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs:line 37&#xD;
+   at Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentUser() in c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Scenarios\ApplicationServiceTestLive.cs:line 46&#xD;
+--- End of stack trace from previous location where exception was thrown ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentUser" storage="c:\csharpsdk-piotr\cumulocity-clients-cs\microservicessdk\test\cumulocity.sdk.microservices.functionaltest\bin\debug\netcoreapp3.1\cumulocity.sdk.microservices.functionaltest.dll" id="681a92d1-7f10-234a-2a3d-ec9966808bc0">
+      <Execution id="5c30cedc-558a-40b9-a303-f5482270d897" />
+      <TestMethod codeBase="c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\bin\Debug\netcoreapp3.1\Cumulocity.SDK.Microservices.FunctionalTest.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive" name="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentUser" />
+    </UnitTest>
+    <UnitTest name="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentApplicationSubscriptionsAsync" storage="c:\csharpsdk-piotr\cumulocity-clients-cs\microservicessdk\test\cumulocity.sdk.microservices.functionaltest\bin\debug\netcoreapp3.1\cumulocity.sdk.microservices.functionaltest.dll" id="b4f4a8ee-c959-c64b-1fff-10dde0631f56">
+      <Execution id="28396290-0642-4d07-96f6-936f55edb373" />
+      <TestMethod codeBase="c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\bin\Debug\netcoreapp3.1\Cumulocity.SDK.Microservices.FunctionalTest.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive" name="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentApplicationSubscriptionsAsync" />
+    </UnitTest>
+    <UnitTest name="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_NotAuthentication_GetCurrentApplicationSubscriptionsAsync" storage="c:\csharpsdk-piotr\cumulocity-clients-cs\microservicessdk\test\cumulocity.sdk.microservices.functionaltest\bin\debug\netcoreapp3.1\cumulocity.sdk.microservices.functionaltest.dll" id="cfb7581f-73ae-a7be-38a5-8a0e98248dc9">
+      <Execution id="d5b72800-ad01-4fbd-afe1-708e5ce4de56" />
+      <TestMethod codeBase="c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\bin\Debug\netcoreapp3.1\Cumulocity.SDK.Microservices.FunctionalTest.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive" name="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_NotAuthentication_GetCurrentApplicationSubscriptionsAsync" />
+    </UnitTest>
+    <UnitTest name="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetUsers" storage="c:\csharpsdk-piotr\cumulocity-clients-cs\microservicessdk\test\cumulocity.sdk.microservices.functionaltest\bin\debug\netcoreapp3.1\cumulocity.sdk.microservices.functionaltest.dll" id="5c75dda1-b819-67ae-668c-aff9c938979a">
+      <Execution id="b4aab729-fe42-466b-bb45-85179345f842" />
+      <TestMethod codeBase="c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\bin\Debug\netcoreapp3.1\Cumulocity.SDK.Microservices.FunctionalTest.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive" name="Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetUsers" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="5c75dda1-b819-67ae-668c-aff9c938979a" executionId="b4aab729-fe42-466b-bb45-85179345f842" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cfb7581f-73ae-a7be-38a5-8a0e98248dc9" executionId="d5b72800-ad01-4fbd-afe1-708e5ce4de56" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b4f4a8ee-c959-c64b-1fff-10dde0631f56" executionId="28396290-0642-4d07-96f6-936f55edb373" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="681a92d1-7f10-234a-2a3d-ec9966808bc0" executionId="5c30cedc-558a-40b9-a303-f5482270d897" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="4" executed="4" passed="1" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.1 (64-bit .NET Core 3.1.1)&#xD;
+[xUnit.net 00:00:01.84]   Discovering: Cumulocity.SDK.Microservices.FunctionalTest&#xD;
+[xUnit.net 00:00:01.89]   Discovered:  Cumulocity.SDK.Microservices.FunctionalTest&#xD;
+[xUnit.net 00:00:01.89]   Starting:    Cumulocity.SDK.Microservices.FunctionalTest&#xD;
+[xUnit.net 00:00:04.27]       System.Threading.Tasks.TaskCanceledException : The operation was canceled.&#xD;
+[xUnit.net 00:00:04.27]       Stack Trace:&#xD;
+[xUnit.net 00:00:04.27]            at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:04.27]            at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:04.27]            at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:04.27]            at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:04.27]            at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:04.27]            at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:04.27]            at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+[xUnit.net 00:00:04.27]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\Services\ApplicationService.cs(79,0): at Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser(String authCred)&#xD;
+[xUnit.net 00:00:04.27]            at Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync[TItem](IMemoryCache cache, Object key, Func`2 factory)&#xD;
+[xUnit.net 00:00:04.27]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs(44,0): at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetBasicAuthenticationResultAsync(String username, String authCred)&#xD;
+[xUnit.net 00:00:04.27]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs(36,0): at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetCurrentUserAsync(String username, String password)&#xD;
+[xUnit.net 00:00:04.27]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs(71,0): at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync()&#xD;
+[xUnit.net 00:00:04.27]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs(118,0): at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync()&#xD;
+[xUnit.net 00:00:04.27]            at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()&#xD;
+[xUnit.net 00:00:04.27]            at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)&#xD;
+[xUnit.net 00:00:04.27]            at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)&#xD;
+[xUnit.net 00:00:04.27]            at Microsoft.AspNetCore.TestHost.HttpContextBuilder.&lt;&gt;c__DisplayClass23_0.&lt;&lt;SendAsync&gt;g__RunRequestAsync|0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:04.27]         --- End of stack trace from previous location where exception was thrown ---&#xD;
+[xUnit.net 00:00:04.27]            at Microsoft.AspNetCore.TestHost.ClientHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:04.27]            at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+[xUnit.net 00:00:04.27]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs(78,0): at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetAsync[T](String path, Boolean auth)&#xD;
+[xUnit.net 00:00:04.28]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs(37,0): at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetCurrentUser()&#xD;
+[xUnit.net 00:00:04.28]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Scenarios\ApplicationServiceTestLive.cs(46,0): at Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentUser()&#xD;
+[xUnit.net 00:00:04.28]         --- End of stack trace from previous location where exception was thrown ---&#xD;
+[xUnit.net 00:00:06.33]       System.Threading.Tasks.TaskCanceledException : The operation was canceled.&#xD;
+[xUnit.net 00:00:06.33]       Stack Trace:&#xD;
+[xUnit.net 00:00:06.33]            at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.33]            at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.34]            at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.34]            at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.34]            at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.34]            at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.34]            at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+[xUnit.net 00:00:06.34]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\Services\ApplicationService.cs(79,0): at Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser(String authCred)&#xD;
+[xUnit.net 00:00:06.34]            at Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync[TItem](IMemoryCache cache, Object key, Func`2 factory)&#xD;
+[xUnit.net 00:00:06.34]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs(44,0): at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetBasicAuthenticationResultAsync(String username, String authCred)&#xD;
+[xUnit.net 00:00:06.34]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs(36,0): at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetCurrentUserAsync(String username, String password)&#xD;
+[xUnit.net 00:00:06.35]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs(71,0): at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync()&#xD;
+[xUnit.net 00:00:06.35]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs(118,0): at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync()&#xD;
+[xUnit.net 00:00:06.35]            at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()&#xD;
+[xUnit.net 00:00:06.35]            at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)&#xD;
+[xUnit.net 00:00:06.35]            at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)&#xD;
+[xUnit.net 00:00:06.35]            at Microsoft.AspNetCore.TestHost.HttpContextBuilder.&lt;&gt;c__DisplayClass23_0.&lt;&lt;SendAsync&gt;g__RunRequestAsync|0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:06.35]         --- End of stack trace from previous location where exception was thrown ---&#xD;
+[xUnit.net 00:00:06.35]            at Microsoft.AspNetCore.TestHost.ClientHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:06.35]            at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+[xUnit.net 00:00:06.35]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs(78,0): at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetAsync[T](String path, Boolean auth)&#xD;
+[xUnit.net 00:00:06.35]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs(31,0): at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetSubscription(Boolean isAuth)&#xD;
+[xUnit.net 00:00:06.35]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Scenarios\ApplicationServiceTestLive.cs(26,0): at Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentApplicationSubscriptionsAsync()&#xD;
+[xUnit.net 00:00:06.35]         --- End of stack trace from previous location where exception was thrown ---&#xD;
+[xUnit.net 00:00:08.37]       System.Threading.Tasks.TaskCanceledException : The operation was canceled.&#xD;
+[xUnit.net 00:00:08.37]       Stack Trace:&#xD;
+[xUnit.net 00:00:08.37]            at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:08.37]            at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean allowHttp2, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:08.37]            at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:08.37]            at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:08.37]            at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:08.37]            at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:08.37]            at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+[xUnit.net 00:00:08.37]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\Services\ApplicationService.cs(79,0): at Cumulocity.SDK.Microservices.Services.ApplicationService.GetCurrentUser(String authCred)&#xD;
+[xUnit.net 00:00:08.37]            at Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync[TItem](IMemoryCache cache, Object key, Func`2 factory)&#xD;
+[xUnit.net 00:00:08.37]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs(44,0): at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetBasicAuthenticationResultAsync(String username, String authCred)&#xD;
+[xUnit.net 00:00:08.37]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.SDK.Microservices\BasicAuthentication\BasicCredentialVerifier.cs(36,0): at Cumulocity.SDK.Microservices.BasicAuthentication.BasicCredentialVerifier.GetCurrentUserAsync(String username, String password)&#xD;
+[xUnit.net 00:00:08.38]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs(71,0): at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync()&#xD;
+[xUnit.net 00:00:08.38]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\src\Cumulocity.AspNetCore.Authentication.Basic\BasicAuthenticationHandler.cs(118,0): at Cumulocity.AspNetCore.Authentication.Basic.BasicAuthenticationHandler.HandleAuthenticateAsync()&#xD;
+[xUnit.net 00:00:08.38]            at Microsoft.AspNetCore.Authentication.AuthenticationHandler`1.AuthenticateAsync()&#xD;
+[xUnit.net 00:00:08.38]            at Microsoft.AspNetCore.Authentication.AuthenticationService.AuthenticateAsync(HttpContext context, String scheme)&#xD;
+[xUnit.net 00:00:08.38]            at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)&#xD;
+[xUnit.net 00:00:08.38]            at Microsoft.AspNetCore.TestHost.HttpContextBuilder.&lt;&gt;c__DisplayClass23_0.&lt;&lt;SendAsync&gt;g__RunRequestAsync|0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:08.38]         --- End of stack trace from previous location where exception was thrown ---&#xD;
+[xUnit.net 00:00:08.38]            at Microsoft.AspNetCore.TestHost.ClientHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:08.38]            at System.Net.Http.HttpClient.FinishSendAsyncBuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)&#xD;
+[xUnit.net 00:00:08.38]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs(78,0): at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetAsync[T](String path, Boolean auth)&#xD;
+[xUnit.net 00:00:08.38]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Client\ApplicationServicClient.cs(43,0): at Cumulocity.SDK.Microservices.FunctionalTest.ApplicationServicClient.GetUser()&#xD;
+[xUnit.net 00:00:08.38]         c:\CSharpSDK-Piotr\cumulocity-clients-cs\MicroservicesSDK\test\Cumulocity.SDK.Microservices.FunctionalTest\Scenarios\ApplicationServiceTestLive.cs(58,0): at Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetUsers()&#xD;
+[xUnit.net 00:00:08.38]         --- End of stack trace from previous location where exception was thrown ---&#xD;
+[xUnit.net 00:00:08.40]   Finished:    Cumulocity.SDK.Microservices.FunctionalTest&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="SAG-91ZX8Y2" outcome="Error" timestamp="2020-03-20T13:56:07.3979942+05:30">
+        <Text>[xUnit.net 00:00:04.27]     Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentUser [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="SAG-91ZX8Y2" outcome="Error" timestamp="2020-03-20T13:56:09.4627678+05:30">
+        <Text>[xUnit.net 00:00:06.33]     Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetCurrentApplicationSubscriptionsAsync [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="SAG-91ZX8Y2" outcome="Error" timestamp="2020-03-20T13:56:11.5001591+05:30">
+        <Text>[xUnit.net 00:00:08.37]     Cumulocity.SDK.Microservices.FunctionalTest.Scenarios.ApplicationServiceTestLive.ApplicationService_GetUsers [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
