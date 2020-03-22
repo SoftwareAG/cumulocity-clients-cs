@@ -1,5 +1,5 @@
-#addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx&version=0.13.1"
-#tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console&version=2.50.0"
+#addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx"
+#tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console"
 #addin "Cake.MiniCover"
 
 
@@ -84,7 +84,7 @@ Task("Clean")
 Task("Restore")
     .IsDependentOn("Clean")
     .Does(() => {
-	    
+	    Information("Control reached task - Restore");
 	    var projects = GetFiles("./src/**/*.csproj");
 		foreach (var project in projects)
 		{
