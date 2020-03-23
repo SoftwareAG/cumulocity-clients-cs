@@ -34,3 +34,5 @@
 /MicroservicesSDK/tools/Addins/Cake.MiniCover.0.28.1/
 /MicroservicesSDK/tools/docfx.console.2.38.1/
 /tools/
+**/tools
+!**/tools/packages.config
