@@ -112,14 +112,6 @@
               <c>true</c> to show task description; otherwise, <c>false</c>.
             </value>
         </member>
-        <member name="P:Cake.CakeOptions.ShowTree">
-            <summary>
-            Gets or sets a value indicating whether to show the task dependency tree
-            </summary>
-            <value>
-              <c>true</c> to show task tree; otherwise, <c>false</c>.
-            </value>
-        </member>
         <member name="P:Cake.CakeOptions.PerformDryRun">
             <summary>
             Gets or sets a value indicating whether to perform a dry run.
@@ -150,14 +142,6 @@
             </summary>
             <value>
               <c>true</c> to show version information; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="P:Cake.CakeOptions.ShowInfo">
-            <summary>
-            Gets or sets a value indicating whether to show additional information.
-            </summary>
-            <value>
-              <c>true</c> to show additional information; otherwise, <c>false</c>.
             </value>
         </member>
         <member name="P:Cake.CakeOptions.HasError">
@@ -254,12 +238,6 @@
             </summary>
             <returns>The description command.</returns>
         </member>
-        <member name="M:Cake.Commands.ICommandFactory.CreateTaskTreeCommand">
-            <summary>
-            Creates the task tree command.
-            </summary>
-            <returns>The task tree command.</returns>
-        </member>
         <member name="M:Cake.Commands.ICommandFactory.CreateDryRunCommand">
             <summary>
             Creates the dry run command.
@@ -277,22 +255,6 @@
             Creates the version command.
             </summary>
             <returns>The version command.</returns>
-        </member>
-        <member name="M:Cake.Commands.ICommandFactory.CreateInfoCommand">
-            <summary>
-            Create the info command.
-            </summary>
-            <returns>The info command.</returns>
-        </member>
-        <member name="T:Cake.Commands.InfoCommand">
-            <summary>
-            A command that shows additional information about Cake execution
-            </summary>
-        </member>
-        <member name="T:Cake.Commands.TaskTreeCommand">
-            <summary>
-            A command that displays the script task graph.
-            </summary>
         </member>
         <member name="T:Cake.Commands.VersionCommand">
             <summary>
@@ -384,26 +346,6 @@
             <param name="log">The log.</param>
         </member>
         <member name="M:Cake.Scripting.DryRunScriptHost.RunTargetAsync(System.String)">
-            <summary>
-            Runs the specified target.
-            </summary>
-            <param name="target">The target to run.</param>
-            <returns>The resulting report.</returns>
-        </member>
-        <member name="T:Cake.Scripting.TaskTreeScriptHost">
-            <summary>
-            The script host used for showing task descriptions.
-            </summary>
-        </member>
-        <member name="M:Cake.Scripting.TaskTreeScriptHost.#ctor(Cake.Core.ICakeEngine,Cake.Core.ICakeContext,Cake.Core.IConsole)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Cake.Scripting.TaskTreeScriptHost"/> class.
-            </summary>
-            <param name="engine">The engine.</param>
-            <param name="context">The context.</param>
-            <param name="console">The console.</param>
-        </member>
-        <member name="M:Cake.Scripting.TaskTreeScriptHost.RunTargetAsync(System.String)">
             <summary>
             Runs the specified target.
             </summary>
