@@ -25,6 +25,8 @@ RUN apt install -y \
 # RUN  apt update -y
 # RUN apt install -y mono-complete 
 
+RUN apt-get install mono-devel
+
 RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb && dpkg -i packages-microsoft-prod.deb
 RUN apt update -y && add-apt-repository universe
 RUN apt install -y dotnet-sdk-3.1 powershell
