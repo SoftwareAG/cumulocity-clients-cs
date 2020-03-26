@@ -36,21 +36,21 @@ pipeline {
 								sshagent (['jenkins-master-key']) {
 								sh '''#!/bin/bash
 								whoami
-								chmod +x ./MicroservicesSDK/build.sh
+								chmod +x ./MicroservicesSDK/build.ps1
 								cd MicroservicesSDK
 								pwd
-								./build.sh --script build-release.cake
+								./build.ps1 --script build-release.cake
 								'''
 								}
 					}
 					else{
 						if ("${params.DIAGNOSTIC_FLAG}" == "true") {
 							echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
-							sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
+							sh 'cd MicroservicesSDK && chmod +x ./build.ps1 && pwd && ./build.ps1 -target=Test -verbosity=diagnostic'
 						}else
 						{
 							echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
-							sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test'
+							sh 'cd MicroservicesSDK && chmod +x ./build.ps1 && pwd && ./build.ps1 -target=Test'
 						}
 					}
                 }
@@ -79,10 +79,10 @@ pipeline {
 						sshagent (['jenkins-master-key']) {
 						sh '''#!/bin/bash
 						whoami
-						chmod +x ./MicroservicesSDK/build.sh
+						chmod +x ./MicroservicesSDK/build.ps1
 						cd MicroservicesSDK
 						pwd
-						./build.sh --script build-release.cake -verbosity=diagnostic
+						./build.ps1 --script build-release.cake -verbosity=diagnostic
 						'''
 						}
 							
@@ -93,10 +93,10 @@ pipeline {
 							sshagent (['jenkins-master-key']) {
 							sh '''#!/bin/bash
 							whoami
-							chmod +x ./MicroservicesSDK/build.sh
+							chmod +x ./MicroservicesSDK/build.ps1
 							cd MicroservicesSDK
 							pwd
-							./build.sh --script build-release.cake
+							./build.ps1 --script build-release.cake
 							'''
 							}
 					} else {
