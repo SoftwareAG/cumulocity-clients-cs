@@ -30,4 +30,5 @@
 /MicroservicesSDK/test/Cumulocity.AspNetCore.Authentication.Basic.Tests/TestResults/
 /MicroservicesSDK/test/Cumulocity.SDK.Microservices.FunctionalTest/TestResults/
 /MicroservicesSDK/test/Cumulocity.SDK.Microservices.IntegrationTest/obj/
+/MicroservicesSDK/tools/*
 
