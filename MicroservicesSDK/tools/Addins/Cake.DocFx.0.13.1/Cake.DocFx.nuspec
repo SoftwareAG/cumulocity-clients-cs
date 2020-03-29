@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Cake.DocFx</id>
+    <version>0.13.1</version>
+    <title>Cake.DocFx</title>
+    <authors>Paul Reichelt</authors>
+    <owners>Paul Reichelt, cake-contrib</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/cake-contrib/Cake.DocFx</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics@a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
+    <description>DocFx Addin for Cake Build Automation System</description>
+    <summary>The DocFx Addin for Cake allows you to generated API documentation directly from .NET source code.</summary>
+    <releaseNotes>https://github.com/cake-contrib/Cake.DocFx/releases/tag/0.13.0</releaseNotes>
+    <copyright>Copyright (c) Cake Contributions 2016 - Present</copyright>
+    <tags>Cake Script DocFx</tags>
+    <repository type="git" url="https://github.com/cake-contrib/Cake.DocFx.git" />
+  </metadata>
+</package>
