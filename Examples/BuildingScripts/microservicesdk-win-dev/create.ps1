@@ -176,7 +176,7 @@ $packagescakedir='packages.config'
 New-Item "$packagescakedir" -type file
 $cakePackages='<?xml version="1.0" encoding="utf-8"?>
 <packages>
-    <package id="Cake" version="0.37.0 />
+    <package id="Cake" version="0.37.0" />
 </packages>'
 Add-Content $packagescakedir $cakePackages
 cd ..
@@ -234,8 +234,8 @@ $start_time = Get-Date
 ##FTP
  $target = "$currentDir/"
 
-Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.9.20.0.nupkg -OutFile Cumulocity.AspNetCore.Authentication.Basic.9.20.0.nupkg
-Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.9.20.0.nupkg -OutFile Cumulocity.SDK.Microservices.9.20.0.nupkg
+Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.AspNetCore.Authentication.Basic.1006.6.0.nupkg -OutFile Cumulocity.AspNetCore.Authentication.Basic.1006.6.0.nupkg
+Invoke-WebRequest  http://resources.cumulocity.com/cssdk/releases/Cumulocity.SDK.Microservices.1006.6.0.nupkg -OutFile Cumulocity.SDK.Microservices.1006.6.0.nupkg
 
 $nugetsFiles = Get-ChildItem $currentDir  -Filter *.nupkg  
 
@@ -295,11 +295,11 @@ $csStartup="
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 			//MVC
-			services.AddMvc().AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+			services.AddControllers(options => options.EnableEndpointRouting = false);
 			services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
 		}
 
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
 		{
 			app.UseAuthentication();
 			app.UseBasicAuthentication();
@@ -320,6 +320,8 @@ $csProgram="
   
 using System.Net;
 using Cumulocity.SDK.Microservices.Configure;
+using Microsoft.AspNetCore;
+
    public class Program
     {
         public static void Main(string[] args)
