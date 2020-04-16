@@ -17,7 +17,7 @@ New-Item $countCommitsFileName -ItemType file
 
 Try
 {
-   $lines = (&git tag --list 'prerelease*' | :: | measure-object -line).Lines
+   $lines = (& git tag --list 'prerelease'$tag :: | sort -V | measure-object -line).Lines
    Write-Host "Lines $lines"
    [int]$commits = $lines-2
 
