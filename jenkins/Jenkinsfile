@@ -33,7 +33,7 @@ pipeline {
 				    if ("${params.CAN_RELEASE}" == "true" && env.BRANCH_NAME == "develop") {
 							echo "CAN_RELEASE: ${params.CAN_RELEASE}"
 							    
-								sshagent (['jenkins-hg-key']) {
+								sshagent (['enkins-master-key']) {
 								sh '''#!/bin/bash
 								whoami
 								chmod +x ./MicroservicesSDK/build.sh
@@ -76,7 +76,7 @@ pipeline {
 						
 						echo "Release Branch"
 							    
-						sshagent (['jenkins-hg-key']) {
+						sshagent (['enkins-master-key']) {
 						sh '''#!/bin/bash
 						whoami
 						chmod +x ./MicroservicesSDK/build.sh
@@ -90,7 +90,7 @@ pipeline {
 					{
 							echo "Release Branch"
 							    
-							sshagent (['jenkins-hg-key']) {
+							sshagent (['enkins-master-key']) {
 							sh '''#!/bin/bash
 							whoami
 							chmod +x ./MicroservicesSDK/build.sh

@@ -17,12 +17,12 @@ New-Item $countCommitsFileName -ItemType file
 
 Try
 {
-   $lines = (& hg log --template "{rev}\n" -r"prerelease$tag":: | measure-object -line).Lines
+   $lines = (&git tag --list 'prerelease*' | :: | measure-object -line).Lines
    Write-Host "Lines $lines"
    [int]$commits = $lines-2
 
       if($commits -gt 0){
-            #hg up "prerelease$tag"           
+            #git checkout "prerelease$tag"           
        }else{
             
        }

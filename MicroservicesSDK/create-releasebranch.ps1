@@ -6,9 +6,9 @@ Param(
 	
 if($version)
 {
-    hg branch "$version"
-    hg add
-    hg commit -m "prepare release $version"
-    #hg tag "$version"
-	hg push -f
+    git branch "$version"
+    git add .
+    git commit -m "prepare release $version"
+    #git tag "$version"
+	git push -f
 }

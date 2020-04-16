@@ -19,5 +19,5 @@ param(
      )
 	 
 & ((Split-Path $MyInvocation.InvocationName) + "\bump-version.ps1") -mode "beta"  -fixVersion "$fixVersion"
-(& hg tag "prerelease$fixVersion")      
+(& git tag "prerelease$fixVersion")      
 

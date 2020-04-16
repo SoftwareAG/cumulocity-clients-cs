@@ -8,7 +8,7 @@
     <PackageIconUrl>https://avatars2.githubusercontent.com/u/3456374</PackageIconUrl>
     <RepositoryUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/REST-SDK/</RepositoryUrl>
     <PackageProjectUrl>cumulocity.com</PackageProjectUrl>
-    <RepositoryType>hg</RepositoryType>
+    <RepositoryType>git</RepositoryType>
     <Description>Microservice SDK for C# help to develop microservices on top of Cumulocity.</Description>
     <PackageLicenseUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/LICENSE.txt</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
