@@ -23,8 +23,8 @@ pipeline {
 		    
 			when {
                 anyOf{
-                    branch 'develop'
-                    branch 'feature/**'
+                    // branch 'develop'
+                    // branch 'feature/**'
                 }
             }
             steps {
