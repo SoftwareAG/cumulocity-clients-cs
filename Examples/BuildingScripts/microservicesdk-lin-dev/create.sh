@@ -57,7 +57,7 @@ packagescakedir='packages.config'
 touch "$packagescakedir"
 cakePackages='<?xml version="1.0" encoding="utf-8"?>
 <packages>
-    <package id="Cake" version="0.25.0" />
+    <package id="Cake" version="0.37.0" />
 </packages>'
 echo "$cakePackages" >> "$packagescakedir"
 cd ..
