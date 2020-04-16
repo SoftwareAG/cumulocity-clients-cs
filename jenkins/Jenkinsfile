@@ -21,12 +21,12 @@ pipeline {
     stages {
         stage('Build') {
 		    
-			when {
-                anyOf{
-                    // branch 'develop'
-                    // branch 'feature/**'
-                }
-            }
+			// when {
+            //     anyOf{
+            //         branch 'develop'
+            //         branch 'feature/**'
+            //     }
+            // }
             steps {
 			    
 				script {
