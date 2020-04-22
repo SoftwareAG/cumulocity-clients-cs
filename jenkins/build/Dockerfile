@@ -1,24 +1,30 @@
-FROM microsoft/dotnet:2.2-sdk
+FROM ubuntu:18.04
 
 RUN apt update -y
 RUN apt install -y \
         bash \
+        curl \
         mercurial \
-        mono-devel \
+        git \
         openssh-client \
         gnupg \
-        apt-transport-https
+        apt-transport-https \
+        software-properties-common \
+        wget
 
+RUN apt install -y  gnupg ca-certificates
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+RUN echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" |  tee /etc/apt/sources.list.d/mono-official-stable.list
+RUN  apt update -y 
 
-RUN  apt-key adv --no-tty --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-RUN  apt install apt-transport-https
-RUN  apt-get purge -y libmono-security4.0-cil
-RUN  apt-get install -y -f
-RUN  echo "deb https://download.mono-project.com/repo/ubuntu stable-xenial main" | tee /etc/apt/sources.list.d/mono-official-stable.list
-RUN  apt update -y
-RUN  apt install -y  mono-devel libmono-system-drawing4.0-cil
+RUN apt install -y  mono-devel
 
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main" > /etc/apt/sources.list.d/microsoft.list'
-RUN apt update -y
-RUN apt install -y powershell
+RUN wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN dpkg -i packages-microsoft-prod.deb
+
+RUN add-apt-repository universe
+RUN apt-get update -y
+RUN apt-get install -y apt-transport-https
+RUN apt-get update -y
+RUN apt-get install -y  dotnet-sdk-3.1
+RUN dotnet --list-sdks
