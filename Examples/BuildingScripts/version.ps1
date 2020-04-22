@@ -6,7 +6,7 @@ function ReadCommitCountInBranch
 
 	$gitlog = (& git log -r "branch('$branch')" )
 	
-	if ($gitlog -eq $null) 
+	if ($gitlog -eq $null)
 	{
 		return 0;
 	}else
@@ -61,7 +61,7 @@ function CreateReleaseBranch
 	if( ($CurrentBranch -eq "develop") -And ( $CommitCountInBranch -eq  0) -And ( $LastTagCommit -ne  "r0.0.0")  )
 	{
 		git checkout  $LastTagCommit
-		git checkout -b  release/$LastTagCommit
+	    git checkout -b release/$LastTagCommit
 		git push -u origin release/$LastTagCommit
 	}
 	elseif($CurrentBranch.StartsWith("release/") )

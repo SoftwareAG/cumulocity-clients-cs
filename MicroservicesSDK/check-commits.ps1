@@ -17,13 +17,12 @@ New-Item $countCommitsFileName -ItemType file
 
 Try
 {
-{
    $lines = (& git tag --list 'prerelease'$tag :: | sort -V | measure-object -line).Lines
    Write-Host "Lines $lines"
    [int]$commits = $lines-2
 
       if($commits -gt 0){
-            #git checkout  "prerelease$tag"           
+            #git checkout "prerelease$tag"           
        }else{
             
        }

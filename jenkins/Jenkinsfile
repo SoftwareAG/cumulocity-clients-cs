@@ -107,7 +107,7 @@ pipeline {
             }
         }	
     }
-	
+	'bitbucket-m2m'
 	post { 
 		success{
 

@@ -2,12 +2,13 @@
 ## Visual Studio
 ############################################################
 syntax: glob
-*vscode/
+
 ## User-specific files
 
 *.suo
 *.user
 *.sln.docstates
+*vscode/
 
 ## Build results
 
@@ -155,38 +156,60 @@ Desktop.ini
 .vs\slnx.sqlite
 .vs\ProjectSettings.json
 
-/DeviceSDK/MQTT/src/MQTT.Client.NetFramework/obj/
-/DeviceSDK/MQTT/src/MQTT.Client.NetStandard/obj/
-/DeviceSDK/MQTT/test/MQTT.Client.NetFramework/MQTT.Tests/obj/
-/DeviceSDK/MQTT/test/MQTT.Client.NetStandard/obj/
-/Examples/MicroserviceSDK/MicroserviceExample/DemoHealthCheck/obj/
-/Examples/MicroserviceSDK/MicroserviceExample/DemoOAuth/obj/
-/Examples/MicroserviceSDK/MicroserviceExample/DemoSimpleConfiguration/obj/
-/Examples/MicroserviceSDK/MicroserviceExample/DemoWebApi/bin/
-/Examples/MicroserviceSDK/MicroserviceExample/DemoWebApi/obj/
-/Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/source/DockerWebApp.Demo/obj/
-/Examples/MicroserviceSDK/Nordpool/src/Nordpool.API/obj/
-/Examples/MqttSDK/obj/
-/Externals/MQTTnet/src/MQTTnet.NetStandard/obj/
-/MicroservicesSDK/.vs/Cumulocity.AspNetCore.Authentication.Basic/DesignTimeBuild/
-/MicroservicesSDK/.vs/Cumulocity.AspNetCore.Authentication.Basic/v15/.suo
-/MicroservicesSDK/.vs/Cumulocity.AspNetCore.Authentication.Basic/v15/Server/sqlite3/storage.ide
-/MicroservicesSDK/.vs/Cumulocity.AspNetCore.Authentication.Basic/v15/Server/sqlite3/storage.ide-shm
-/MicroservicesSDK/.vs/Cumulocity.AspNetCore.Authentication.Basic/v15/Server/sqlite3/storage.ide-wal
-/MicroservicesSDK/.vs/Cumulocity.AspNetCore.Authentication.Basic/v16/
-/MicroservicesSDK/minicover/obj/
-/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/bin/
-/MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/obj/
-/MicroservicesSDK/src/Cumulocity.SDK.Microservices/bin/
-/MicroservicesSDK/src/Cumulocity.SDK.Microservices/obj/
-/MicroservicesSDK/test/Cumulocity.AspNetCore.Authentication.Basic.Tests/bin/
-/MicroservicesSDK/test/Cumulocity.AspNetCore.Authentication.Basic.Tests/obj/
-/MicroservicesSDK/test/Cumulocity.SDK.Microservices.FunctionalTest/bin/
-/MicroservicesSDK/test/Cumulocity.SDK.Microservices.FunctionalTest/obj/
-/MicroservicesSDK/test/Cumulocity.AspNetCore.Authentication.Basic.Tests/TestResults/
-/MicroservicesSDK/test/Cumulocity.SDK.Microservices.FunctionalTest/TestResults/
-/MicroservicesSDK/test/Cumulocity.SDK.Microservices.IntegrationTest/obj/
-/MicroservicesSDK/test-results/
-/MicroservicesSDK/test/Cumulocity.SDK.Microservices.IntegrationTest/TestResults/
-/MicroservicesSDK/test/Cumulocity.SDK.Microservices.IntegrationTest/bin/
 
+_ReSharper*\*
+TestResults\*
+desktop.ini
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/images/hello-world-multi/image.tar
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/images/hello-world-multi/image.zip
+MicroservicesSDK/.vs/Cumulocity.AspNetCore.Authentication.Basic/v15/Server/sqlite3/storage.ide-wal
+MicroservicesSDK/.vs/Cumulocity.AspNetCore.Authentication.Basic/v15/Server/sqlite3/storage.ide-shm
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/tools/packages.config.md5sum
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/DockerWebApp.Demo/v15/Server/sqlite3/db.lock
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/DockerWebApp.Demo/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/DockerWebApp.Demo/v15/Server/sqlite3/storage.ide-shm
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/DockerWebApp.Demo/v15/Server/sqlite3/storage.ide-wal
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/VSWorkspaceState.json
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/config/applicationhost.config
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vs/tasks.vs.json
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vscode/launch.json
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/.vscode/tasks.json
+Examples/MicroserviceSDK/MicroserviceSDKSimpleDemo/source/DockerWebApp.Demo/bower_components
+^Examples/BuildingScripts/microservicesdk-lin-dev/tools$
+^Examples/BuildingScripts/microservicesdk-win-dev/tools$
+Examples/BuildingScripts/microservicesdk-lin-dev/version.props
+Examples/BuildingScripts/microservicesdk-win-dev/version.props
+^MicroservicesSDK/tools$
+^MQTT/tools$
+
+DeviceSDK/MQTT/.vs/Cumulocity.MQTT/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/DesignTimeBuild/.dtbcache
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/sqlite3/storage.ide
+Examples/MicroserviceSDK/Nordpool/images/multi/image.tar
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/db.lock
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/storage.ide-shm
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/Server/sqlite3/storage.ide-wal
+Examples/MicroserviceSDK/MicroserviceExample/.vs/config/applicationhost.config
+Examples/MicroserviceSDK/Nordpool/images/multi/image.zip
+Examples/MicroserviceSDK/MicroserviceExample/.vs/MicroserviceExample/v15/sqlite3/storage.ide
+Examples/MicroserviceSDK/Nordpool/tools/Cake/System.Security.Cryptography.Primitives.dll
+Examples/MicroserviceSDK/Nordpool/tools/Addins/Cake.Docker.0.9.1/Cake.Docker.0.9.1.nupkg
+Examples/MicroserviceSDK/Nordpool/tools/Addins/Cake.Docker.0.9.1/cake.docker.nuspec
+Examples/MicroserviceSDK/Nordpool/tools/Addins/Cake.Docker.0.9.1/lib/netstandard2.0/Cake.Docker.xml
+Examples/MicroserviceSDK/Nordpool/tools/Addins/Cake.Docker.0.9.1/lib/netstandard2.0/Cake.Docker.dll
+Examples/MicroserviceSDK/Nordpool/tools/Cake/Autofac.dll
+Examples/MicroserviceSDK/Nordpool/tools/Cake/Cake.Common.xml
+Examples/MqttSDK/.vs/MqttDemo/v15/Server/sqlite3/db.lock
+Examples/MqttSDK/.vs/MqttDemo/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/Nordpool/tools/Cake
+MicroservicesSDK/.vs
+MicroservicesSDK/test-results
+MicroservicesSDK/test/Cumulocity.SDK.Microservices.FunctionalTest/Properties
+Examples/MicroserviceSDK/Nordpool/tools/packages.config.md5sum
+MicroservicesSDK/buildVersion.props
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/DesignTimeBuild/.dtbcache
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/Server/sqlite3/db.lock
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/Server/sqlite3/storage.ide
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/Server/sqlite3/storage.ide-shm
+Examples/MicroserviceSDK/Nordpool/.vs/Nordpool/v15/Server/sqlite3/storage.ide-wal
