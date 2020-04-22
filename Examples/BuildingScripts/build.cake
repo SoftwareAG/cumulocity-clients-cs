@@ -1,5 +1,5 @@
 //#addin nuget:https://www.nuget.org/api/v2/?package=cake.docker
-//#addin Cake.Hg
+//#addin Cake
 
 using Path = System.IO.Path;
 using IO = System.IO;
@@ -53,7 +53,7 @@ Task("CreateRelease")
 	
 		var settings = new ProcessSettings
 		{
-		   Arguments = new ProcessArgumentBuilder().Append("hgversion.ps1 -local false")
+		   Arguments = new ProcessArgumentBuilder().Append("version.ps1 -local false")
 		};
 		StartProcess("pwsh", settings);
 		
