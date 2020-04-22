@@ -1,5 +1,5 @@
-#addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx"
-#tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console"
+#addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx&version=0.13.1"
+#tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console&version=2.51.0"
 #addin "Cake.MiniCover"
 
 
@@ -47,7 +47,6 @@ Information("Test Results Directory: {0}", testResultDir);
 Task("PrepareDirectories")
 	.Does(() =>
 	{
-		Information("Control reached task - PrepareDirectories");
 		EnsureDirectoryExists(testResultDir);
 		EnsureDirectoryExists(artifactDir);
 	});
@@ -55,8 +54,7 @@ Task("PrepareDirectories")
 Task("Clean")
     .IsDependentOn("PrepareDirectories")
     .Does(() =>
-	{		
-		Information("Control reached task - Clean");
+	{	
 		if (DirectoryExists(outputDir))
 			{
 				//DeleteDirectory(outputDir, recursive:true);
@@ -84,7 +82,6 @@ Task("Clean")
 Task("Restore")
     .IsDependentOn("Clean")
     .Does(() => {
-	    Information("Control reached task - Restore");
 	    var projects = GetFiles("./src/**/*.csproj");
 		foreach (var project in projects)
 		{
@@ -96,7 +93,6 @@ Task("Restore")
 Task("Build")
     .IsDependentOn("Restore")
     .Does(() => {
-	Information("Control reached task - Build");
 	var buildSettings = new DotNetCoreBuildSettings
      {
          Configuration = configuration
@@ -129,7 +125,6 @@ Task("Build")
 	.ContinueOnError()
 	.Does(() =>
 	{
-		Information("Control reached task - Test");
 		var tests = GetFiles("./test/**/*.csproj");
 		
 		foreach(var test in tests)
