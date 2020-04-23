@@ -62,7 +62,7 @@ namespace Cumulocity.SDK.Microservices.FunctionalTest
 			var builder = new WebHostBuilder()
 				.ConfigureAppConfiguration((builderContext, config) =>
 				{
-					IHostingEnvironment env = builderContext.HostingEnvironment;
+					IWebHostEnvironment env = builderContext.HostingEnvironment;
 					config
 						//.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
 						.AddEnvironmentVariables();
