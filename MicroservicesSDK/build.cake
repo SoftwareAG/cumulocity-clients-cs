@@ -1,5 +1,5 @@
-#addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx&version=0.7.0"
-#tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console&version=2.38.1"
+#addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.DocFx&version=0.13.1"
+#tool "nuget:https://api.nuget.org/v3/index.json?package=docfx.console&version=2.51.0"
 #addin "Cake.MiniCover"
 
 
@@ -54,7 +54,7 @@ Task("PrepareDirectories")
 Task("Clean")
     .IsDependentOn("PrepareDirectories")
     .Does(() =>
-	{		
+	{	
 		if (DirectoryExists(outputDir))
 			{
 				//DeleteDirectory(outputDir, recursive:true);

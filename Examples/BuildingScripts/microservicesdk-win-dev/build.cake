@@ -1,4 +1,5 @@
-#addin nuget:https://www.nuget.org/api/v2/?package=cake.docker&version=0.8.5
+#addin nuget:https://www.nuget.org/api/v2/?package=cake.docker&version=0.11.0
+
 
 using Path = System.IO.Path;
 using IO = System.IO;
