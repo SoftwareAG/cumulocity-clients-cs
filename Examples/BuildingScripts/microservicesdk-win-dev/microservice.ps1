@@ -227,7 +227,7 @@ function  exportImage() {
     $imagename = $imagename + ":"
     $imagename = $imagename + $global:TAG_NAME
     Write-Output "[INFO] Export image"
-    docker save $imagename > "docker\image.tar"
+    docker save $imagename -o "docker\image.tar"
 }
 
 function zipFile() {
@@ -319,9 +319,8 @@ function  createApplication() {
 
     $Result = Invoke-RestMethod -Method Post -Uri  "$DEPLOY_ADDRESS/application/applications" `
                                 -Headers @{Authorization = ("Basic {0}" -f $authorization)} `
-								-ContentType "application/json" ` 
+								-Body $body `
                                 -ErrorVariable RestError -ErrorAction "SilentlyContinue" `
-								-Body $body
 }
 
 
@@ -337,7 +336,8 @@ function uploadFile() {
 	$authorization = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $global:DEPLOY_USER,$global:DEPLOY_PASSWORD)))
     $uri = [string]::Concat($global:DEPLOY_ADDRESS, "/application/applications/", $global:APPLICATION_ID,"/binaries")
 
-    Write-Output "[INFO] uri-> $authorization"
+    Write-Output "[INFO] uri-> $uri"
+	Write-Output "[INFO] authorization-> $authorization"
     Write-Output "[INFO] global:DEPLOY_ADDRESS-> $global:DEPLOY_ADDRESS"
     Write-Output "[INFO] global:APPLICATION_ID-> $global:APPLICATION_ID"
 
