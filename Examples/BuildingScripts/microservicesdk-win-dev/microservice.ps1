@@ -146,10 +146,11 @@ function setDefaults() {
 
 function printHelp() {
 
+    Write-Output "Make sure to first create the application following the step 1 of Running the microservice locally "
     Write-Output "Following functions are available. You can run specify them in single execution:"
     Write-Output "	pack - prepares deployable zip file. Requires following stucture:"
     Write-Output "		/docker/Dockerfile"
-    Write-Output "		/docker/* - all files within the directory will be included in the docker build"
+    Write-Output "		/docker/* - all files within the directory will be included in the docker build. You can copy paste the publish folder here"
     Write-Output "		/cumulocity.json "
     Write-Output "	deploy - deploys applicaiton to specified address"
     Write-Output "	subscribe - subscribes tenant to specified microservice application"
