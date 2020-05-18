@@ -67,7 +67,7 @@ function Get-IniFile {
 function getResponseAppNameJson([Parameter(Mandatory=$true)]$username,[Parameter(Mandatory=$true)]$pass,[Parameter(Mandatory=$true)]$site,[Parameter(Mandatory=$true)]$appname) {
     $aid = 0
     $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$pass)))
-    $requestAppName = "http://$site/application/applicationsByName/$appname"
+    $requestAppName = "https://$site/application/applicationsByName/$appname"
     $responseAppNameJson =Invoke-WebRequest -Uri $requestAppName  -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -ErrorAction SilentlyContinue | ConvertFrom-Json            
 
     if($responseAppNameJson) {
@@ -100,7 +100,7 @@ function Invoke-DataUpdate {
     throw "Application does not exist."
   }
   #		
-  $uri = "http://$($url)/application/applications/$($id)/binaries"		 
+  $uri = "https://$($url)/application/applications/$($id)/binaries"		 
   $filePath = Resolve-Path -Path ".\images\multi\image.zip"
   $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username,$password)))
 

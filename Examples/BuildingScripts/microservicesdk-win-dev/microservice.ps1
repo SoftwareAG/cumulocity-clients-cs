@@ -146,10 +146,11 @@ function setDefaults() {
 
 function printHelp() {
 
+    Write-Output "Make sure to first create the application following the step 1 of Running the microservice locally "
     Write-Output "Following functions are available. You can run specify them in single execution:"
     Write-Output "	pack - prepares deployable zip file. Requires following stucture:"
     Write-Output "		/docker/Dockerfile"
-    Write-Output "		/docker/* - all files within the directory will be included in the docker build"
+    Write-Output "		/docker/* - all files within the directory will be included in the docker build. You can copy paste the publish folder here"
     Write-Output "		/cumulocity.json "
     Write-Output "	deploy - deploys applicaiton to specified address"
     Write-Output "	subscribe - subscribes tenant to specified microservice application"
@@ -227,7 +228,7 @@ function  exportImage() {
     $imagename = $imagename + ":"
     $imagename = $imagename + $global:TAG_NAME
     Write-Output "[INFO] Export image"
-    docker save $imagename > "docker\image.tar"
+    docker save $imagename -o "docker\image.tar"
 }
 
 function zipFile() {
@@ -319,9 +320,8 @@ function  createApplication() {
 
     $Result = Invoke-RestMethod -Method Post -Uri  "$DEPLOY_ADDRESS/application/applications" `
                                 -Headers @{Authorization = ("Basic {0}" -f $authorization)} `
-								-ContentType "application/json" ` 
+								-Body $body `
                                 -ErrorVariable RestError -ErrorAction "SilentlyContinue" `
-								-Body $body
 }
 
 
@@ -337,7 +337,8 @@ function uploadFile() {
 	$authorization = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $global:DEPLOY_USER,$global:DEPLOY_PASSWORD)))
     $uri = [string]::Concat($global:DEPLOY_ADDRESS, "/application/applications/", $global:APPLICATION_ID,"/binaries")
 
-    Write-Output "[INFO] uri-> $authorization"
+    Write-Output "[INFO] uri-> $uri"
+	Write-Output "[INFO] authorization-> $authorization"
     Write-Output "[INFO] global:DEPLOY_ADDRESS-> $global:DEPLOY_ADDRESS"
     Write-Output "[INFO] global:APPLICATION_ID-> $global:APPLICATION_ID"
 
