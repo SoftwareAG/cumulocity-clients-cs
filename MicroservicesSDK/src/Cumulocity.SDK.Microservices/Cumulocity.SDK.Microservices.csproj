@@ -13,6 +13,7 @@
     <PackageLicenseUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/LICENSE.txt</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Easy.MessageHub" Version="4.0.0" />

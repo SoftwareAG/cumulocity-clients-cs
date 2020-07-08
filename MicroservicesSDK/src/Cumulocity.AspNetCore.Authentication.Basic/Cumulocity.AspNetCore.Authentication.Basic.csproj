@@ -12,6 +12,7 @@
     <Description>Basic authentication for Microservice SDK of Cumulocity.</Description>
     <PackageLicenseUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/LICENSE.txt</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
