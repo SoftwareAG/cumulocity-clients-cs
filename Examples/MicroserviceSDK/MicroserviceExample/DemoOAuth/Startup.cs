@@ -34,6 +34,7 @@ namespace DemoOAuth
             services.Replace(ServiceDescriptor.Singleton(typeof(ILogger<>), typeof(TimedLogger<>)));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllers(options => options.EnableEndpointRouting = false);
+            services.AddMemoryCache();
             services.AddCumulocityAuthenticationAll(Configuration);
         }
 
