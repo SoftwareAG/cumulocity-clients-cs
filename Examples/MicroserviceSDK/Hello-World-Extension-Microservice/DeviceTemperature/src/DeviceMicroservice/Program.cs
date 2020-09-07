@@ -12,14 +12,15 @@ namespace DeviceMicroservice
 
   
 using System.Net;
-using Cumulocity.SDK.Microservices.Configure;
+    using System.Text.Json;
+    using Cumulocity.SDK.Microservices.Configure;
 using Microsoft.AspNetCore;
 
    public class Program
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+			BuildWebHost(args).Run();
         }
 
 		public static IWebHost BuildWebHost(string[] args) =>
