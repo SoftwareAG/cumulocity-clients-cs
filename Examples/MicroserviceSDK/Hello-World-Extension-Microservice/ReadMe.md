@@ -22,13 +22,12 @@ This scenario has smart thermometers that send readings to Cumulocity IoT. This 
 
 - Endpoint - 1
 Implement the endpoint <microservice-name>/<controller-name>/thermometers 
-Example of full endpoint - <C8Y_BASEURL>/service/thermomicroservice/api/Thermostat/thermometers
+Example of full endpoint - <C8Y_BASEURL>/service/thermomicroservice/Thermostat/thermometers
 Action: Register a new thermometer    
 Method: POST    
 Payload:
   {
-    "nameID" : "<thermometer-name>",
-    "TemperatureC" : int 
+    "nameID" : "<thermometer-name>"
   }
 
 The endpoint internally calls /inventory/managedObjects POST request with the below mentioned payload to create a thermometer in the platform -
@@ -45,13 +44,13 @@ The custom fragment `c8y_IsThermometer` is used to identify the devices as therm
 
 - Endpoint - 2
 Implement the endpoint <microservice-name>/<controller-name>/thermometers
-Example of full endpoint - <C8Y_BASEURL>/service/thermomicroservice/api/Thermostat/thermometers
+Example of full endpoint - <C8Y_BASEURL>/service/thermomicroservice/Thermostat/thermometers
 Action: Retrieve all registered thermometers    
 Method: GET     
-internally the microservice calls /inventory/managedObjects?fragmentType=c8y_IsThermometer&fragmentType=c8y_SupportedMeasurements
+internally the microservice calls /inventory/managedObjects?query =$filter=(has(c8y_IsThermometer) + and + has(c8y_SupportedMeasurements)
 
 - Endpoint - 3
-Implement the endpoint <microservice-name>/thermometers/{id}/temperatures/ 
+Implement the endpoint <microservice-name>/<controller-name>/thermometers/{id}/temperatures/ 
 Example of full endpoint - <C8Y_BASEURL>/service/thermomicroservice/thermometers/<device-id>/temperatures
 Method: POST 
 Payload:
