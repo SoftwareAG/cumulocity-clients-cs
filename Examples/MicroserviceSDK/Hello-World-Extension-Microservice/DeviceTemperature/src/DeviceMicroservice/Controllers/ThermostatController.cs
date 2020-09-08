@@ -72,7 +72,7 @@ namespace ThermostatMicroservice.Controllers
 
         // We are calling the default weather forcast endpoint and if any returned forecast temprature is greater than 25º then we are raising an alarm with alarmText 
         // POST thermometers/<DeviceID>/temperatures
-        [HttpPost("/thermometers/{id}/temperatures")]
+        [HttpPost("thermometers/{id}/temperatures")]
         public string Post([FromBody]AlarmText alarmText)
         {
             try
