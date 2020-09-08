@@ -53,12 +53,20 @@ namespace ThermostatMicroservice.Controllers
                     return null;
                 }
 
+                string thermometerCreationPayload = JsonSerializer.Serialize(new ThermometerBody
+                {
+                    name = thermometer.nameID,
+                    c8y_IsDevice = new Dictionary<string, string> { },
+                    c8y_IsThermometer = new Dictionary<string, string> { },
+                    c8y_SupportedMeasurements = new string[] { "c8y_TemperatureMeasurement" }
+                });
+
                 var client = new RestClient(PlatformSettings.BASEURL+"/inventory/managedObjects");
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("Authorization", Request.Headers["Authorization"]);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("Accept", "application/json");
-                request.AddParameter("application/json", "{\"name\": \"" + thermometer.nameID + "\", \"c8y_IsDevice\": {}, \"c8y_IsThermometer\": {},\"c8y_SupportedMeasurements\": [\"c8y_TemperatureMeasurement\"]}", ParameterType.RequestBody);
+                request.AddParameter("application/json", thermometerCreationPayload, ParameterType.RequestBody);
                 IRestResponse response = client.Execute(request);
                 Console.WriteLine((response.StatusCode.ToString().Equals("Created")) ? "Thermometer created !!" : "Thermometer couldn't be created !! \n Below is the response body from cumulocity \n");
                 Console.WriteLine(response.Content);
