@@ -1,0 +1,39 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:38049",
+      "sslPort": 44370
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "weatherforecast",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "DeviceMicroservice": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "thermostat",
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "environmentVariables": {
+        "SERVER_PORT": "47000",
+        "C8Y_MICROSERIVCE_ISOLATION": "PER_TENANT",
+        "C8Y_BASEURL": "",
+        "C8Y_BASEURL_MQTT": "",
+        "C8Y_TENANT": "",
+        "C8Y_PASSWORD": "",
+        "C8Y_USERNAME": "",
+        "C8Y_BOOTSTRAP_TENANT": "",
+        "C8Y_BOOTSTRAP_USER": "",
+        "C8Y_BOOTSTRAP_PASSWORD": ""
+      }
+    }
+  }
+}
