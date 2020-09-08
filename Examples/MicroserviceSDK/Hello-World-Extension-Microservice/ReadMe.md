@@ -51,7 +51,7 @@ internally the microservice calls /inventory/managedObjects?query =$filter=(has(
 
 - Endpoint - 3
 Implement the endpoint <microservice-name>/<controller-name>/thermometers/{id}/temperatures/ 
-Example of full endpoint - <C8Y_BASEURL>/service/thermomicroservice/thermometers/<device-id>/temperatures
+Example of full endpoint - <C8Y_BASEURL>/service/thermomicroservice/Thermostat/thermometers/<device-id>/temperatures
 Method: POST 
 Payload:
 {
