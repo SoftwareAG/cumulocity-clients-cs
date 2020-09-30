@@ -1,0 +1,24 @@
+{{ $version := env "RELEASE_VERSION" }}
+
+name = "c8y-connection-sdk"
+revision = "{{ $version }}"
+
+[[scan]]
+type = "VSC#"
+path = "MicroservicesSDK/src/Cumulocity.AspNetCore.Authentication.Basic/Cumulocity.AspNetCore.Authentication.Basic.csproj"
+excludes = ["com.nsn.cumulocity"]
+
+[[scan]]
+type = "VSC#"
+path = "MicroservicesSDK/src/Cumulocity.SDK.Microservices/Cumulocity.SDK.Microservices.csproj"
+excludes = ["com.nsn.cumulocity"]
+
+[[scan]]
+type = "VSC#"
+path = "DeviceSDK/MQTT/src/MQTT.Client.NetStandard/MQTT.NetStandard.csproj"
+excludes = ["com.nsn.cumulocity"]
+
+[[scan]]
+type = "VSC#"
+path = "DeviceSDK/MQTT/src/MQTT.Client.NetFramework/MQTT.NetFramework.csproj"
+excludes = ["com.nsn.cumulocity"]
