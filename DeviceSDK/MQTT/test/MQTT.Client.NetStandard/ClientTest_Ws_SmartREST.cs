@@ -134,25 +134,25 @@ namespace Cumulocity.MQTT.Test
         }
 
         [Test]
-        public void ClientTest_WsConnection_CheckTemplateCollectionExists_CreateGetInventoryDataAsync()
-        {
-            var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("GetTemplate4",
-                                                                     new List<Request> {
-                                                                        new InventoryGetRequest("9999",null, String.Empty, true),
-                                                                        new InventoryGetRequest("9998",null, "c8y_Serial", false)
-                                                                     },
-                                                                     new List<Response> {
-                                                                         new Response("8889",
-                                                                         String.Empty,
-                                                                         "c8y_IsDevice",
-                                                                         new List<string> { "type", "c8y_MQTTDevice", "c8y_Mobile.cellId" }),
-                                                                         new Response("8888",
-                                                                         String.Empty,
-                                                                         "c8y_IsDevice",
-                                                                         new List<string> { "type", "c8y_MQTTDevice", "c8y_Mobile.cellId" })
-                                                                     })).Result;
-            Assert.IsTrue(res2);
-        }
+        // public void ClientTest_WsConnection_CheckTemplateCollectionExists_CreateGetInventoryDataAsync()
+        // {
+        //     var res2 = Task.Run(() => cl.MqttCustomSmartRest.CreateTemplateDataAsync("GetTemplate4",
+        //                                                              new List<Request> {
+        //                                                                 new InventoryGetRequest("9999",null, String.Empty, true),
+        //                                                                 new InventoryGetRequest("9998",null, "c8y_Serial", false)
+        //                                                              },
+        //                                                              new List<Response> {
+        //                                                                  new Response("8889",
+        //                                                                  String.Empty,
+        //                                                                  "c8y_IsDevice",
+        //                                                                  new List<string> { "type", "c8y_MQTTDevice", "c8y_Mobile.cellId" }),
+        //                                                                  new Response("8888",
+        //                                                                  String.Empty,
+        //                                                                  "c8y_IsDevice",
+        //                                                                  new List<string> { "type", "c8y_MQTTDevice", "c8y_Mobile.cellId" })
+        //                                                              })).Result;
+        //     Assert.IsTrue(res2);
+        // }
 
         [Test]
         [Ignore("Firewall")]
