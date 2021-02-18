@@ -1,137 +1,80 @@
+
 pipeline {
     agent {
         kubernetes {
-            label 'mono3'
             inheritFrom 'mono3'
-            defaultContainer 'default'
+            defaultContainer 'mono3'
         }
     }
     triggers{
         bitbucketPush()
     }
     options{
-     buildDiscarder(logRotator(numToKeepStr: '10'))
-     timeout(time: 1, unit: 'HOURS')
-     disableConcurrentBuilds()
-    }
+        buildDiscarder(logRotator(numToKeepStr: '3'))
+        timeout(time: 1, unit: 'HOURS')
+        disableConcurrentBuilds() }
 	parameters {
-        booleanParam(defaultValue: true, description: '', name: 'DIAGNOSTIC_FLAG')
-		booleanParam(defaultValue: false, description: '', name: 'CAN_RELEASE')
-    }
-    environment {
-        CI = 'true'
-    }
+        booleanParam(defaultValue: true, description: 'verbose mode', name: 'DIAGNOSTIC_FLAG')
+        booleanParam(defaultValue: false, description: 'branch ready to release', name: 'CAN_RELEASE')
+        string(defaultValue: 'feature/MTM-37209/test-build-branch', description: 'specific build/release branch name', name: 'branch_name', trim: true)
+        }
+    environment { DIAGNOSTIC_FLAG_ENV = "${params.DIAGNOSTIC_FLAG ? '-verbosity=diagnostic' : ''}" }
     stages {
-        stage('Build') {
-		    
-			when {
+        stage('Checkout') {
+            steps {
+                container('mono3') {
+                    checkout([
+                    $class: 'GitSCM', branches: [[name: params.branch_name]],
+                    extensions: [[$class: 'CleanCheckout']],
+                    userRemoteConfigs: [[url: 'git@bitbucket.org:m2m/cumulocity-clients-cs.git',credentialsId:'jenkins-master']] ]) }
+                    }
+                }
+         stage('Build') {
+		    when {
                 anyOf{
                     branch 'develop'
                     branch 'feature/**'
                 }
             }
             steps {
-			    
-				script {
-				    if ("${params.CAN_RELEASE}" == "true" && env.BRANCH_NAME == "develop") {
-							echo "CAN_RELEASE: ${params.CAN_RELEASE}"
-							    
-								sshagent (['jenkins-master-key']) {
-								sh '''#!/bin/bash
-								whoami
-								chmod +x ./MicroservicesSDK/build.sh
-								cd MicroservicesSDK
-								pwd
-								./build.sh --script build-release.cake
-								'''
-								}
-					}
-					else{
-						if ("${params.DIAGNOSTIC_FLAG}" == "true") {
-							echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
-							sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test -verbosity=diagnostic'
-						}else
-						{
-							echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
-							sh 'cd MicroservicesSDK && chmod +x ./build.sh && pwd && ./build.sh -target=Test'
-						}
-					}
+                container('mono3') {
+                    script {
+                        echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
+                        sh 'cd MicroservicesSDK && chmod +x ./build.sh && ./build.sh -target=Test  ${DIAGNOSTIC_FLAG_ENV} && cd .. '
+                        }
+                    }
                 }
-            }
-        } 
-		stage('Deliver for development') {
-            when {
-                branch 'development'
-            }
-            steps {
-				sh 'echo DevelopmentBranch'
-            }
-        }
+            } 
         stage('Release') {
             when {
-                branch "release/*"
-            }
-            steps {
-				script {
-                    if ("${params.DIAGNOSTIC_FLAG}" == "true" && ("${params.CAN_RELEASE}" == "true")) {
-					    sh 'echo Release Branch'
-						echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
-						
-						echo "Release Branch"
-							    
-						sshagent (['jenkins-master-key']) {
-						sh '''#!/bin/bash
-						whoami
-						chmod +x ./MicroservicesSDK/build.sh
-						cd MicroservicesSDK
-						pwd
-						./build.sh --script build-release.cake -verbosity=diagnostic
-						'''
-						}
-							
-                    }else if ("${params.CAN_RELEASE}" == "true")
-					{
-							echo "Release Branch"
-							    
-							sshagent (['jenkins-master-key']) {
-							sh '''#!/bin/bash
-							whoami
-							chmod +x ./MicroservicesSDK/build.sh
-							cd MicroservicesSDK
-							pwd
-							./build.sh --script build-release.cake
-							'''
-							}
-					} else {
-					    sh 'echo Release Branch'
-						echo "CAN_RELEASE: ${params.CAN_RELEASE}"
-					}
+                anyOf{
+                    branch 'develop'
+                    branch "release/*"
                 }
             }
-        }	
-    }
+            steps {
+                container('mono3') {
+                    script {
+                            echo "CAN_RELEASE: ${params.CAN_RELEASE}" 
+                            echo "diagnostic flag: ${params.DIAGNOSTIC_FLAG}"
+                            if ("${params.CAN_RELEASE}" == "true") {
+                            sshagent (['jenkins-master']) {
+                            sh 'cd MicroservicesSDK && chmod +x ./build.sh && ./build.sh --script build-release.cake ${DIAGNOSTIC_FLAG_ENV}'
+                                }
+                            }
+                        }
+                    }
+                }
+            }	
+        }
 
 	post { 
-		success{
-
-            withCredentials([usernamePassword(credentialsId: 'bitbucket-m2m', passwordVariable: 'BITBUCKET_PASSWORD', usernameVariable: 'BITBUCKET_USER')]) {
-                sh "chmod +x .jenkins/scripts/status.sh && .jenkins/scripts/status.sh 'SUCCESSFUL' ${JOB_NAME} ${BUILD_TAG} "
-            }
-        }
 		failure {
             script {
                 if (env.BRANCH_NAME ==~ '(develop|release/.*)') {
-                   chat 'AAAAvnc5o90'
+              //     chat 'AAAAvnc5o90'
                 }
             }
-
-            withCredentials([usernamePassword(credentialsId: 'bitbucket-m2m', passwordVariable: 'BITBUCKET_PASSWORD', usernameVariable: 'BITBUCKET_USER')]) {
-                sh "chmod +x .jenkins/scripts/status.sh && .jenkins/scripts/status.sh 'FAILED' ${JOB_NAME} ${BUILD_TAG} "
-            }
-        }
-        cleanup {
-            echo 'One way or another, I have finished.'
-            deleteDir() /* clean up our workspace */
         }
     }
 }
