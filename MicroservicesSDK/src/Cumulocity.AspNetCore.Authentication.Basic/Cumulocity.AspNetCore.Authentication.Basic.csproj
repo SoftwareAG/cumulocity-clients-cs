@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1006.6.0</Version>
+    <Version>1013.0.0</Version>
     <Authors>Cumulocity</Authors>
     <Product>Cumulocity</Product>
     <Copyright>Cumulocity</Copyright>
     <PackageIconUrl>https://avatars2.githubusercontent.com/u/3456374</PackageIconUrl>
-    <RepositoryUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/REST-SDK/</RepositoryUrl>
+    <RepositoryUrl>https://github.com/SoftwareAG/cumulocity-sdk-cs/tree/master/REST-SDK</RepositoryUrl>
     <PackageProjectUrl>cumulocity.com</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <Description>Basic authentication for Microservice SDK of Cumulocity.</Description>
-    <PackageLicenseUrl>https://bitbucket.org/m2m/cumulocity-sdk-cs/src/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/SoftwareAG/cumulocity-sdk-cs/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
